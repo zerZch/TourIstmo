@@ -1,0 +1,347 @@
+<!-- perfil-empresa.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Empresa - BetaTech Solutions</title>
+    <link rel="stylesheet" href="./perfil-empresa.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Izquierdo -->
+        <aside class="sidebar">
+            <!-- Información de la Empresa -->
+            <div class="user-info">
+                <div class="user-avatar">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%235A8DFF'/%3E%3Ctext x='200' y='200' font-size='180' fill='white' text-anchor='middle' alignment-baseline='middle'%3EB%3C/text%3E%3C/svg%3E" alt="BetaTech Solutions">
+                </div>
+                <h1 class="user-name">BetaTech Solutions</h1>
+                <p class="user-username">@betatech</p>
+            </div>
+
+            <!-- Estadísticas -->
+            <div class="user-stats">
+                <div class="stat-item">
+                    <span class="stat-number">128</span>
+                    <span class="stat-label">Proyectos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">250</span>
+                    <span class="stat-label">Empleados</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">75</span>
+                    <span class="stat-label">Casos Éxito</span>
+                </div>
+            </div>
+            </aside>
+
+        <!-- Contenido Principal -->
+        <main class="main-content">
+            <!-- Header con imagen de portada -->
+            <header class="profile-header">
+                <div class="cover-image">
+                    <img src="img/empresa-banner.jpg" alt="Banner BetaTech">
+                    <div class="cover-overlay">
+                        <h2 class="cover-title">BetaTech Solutions</h2>
+                        <button class="explore-btn">Conócenos</button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Navegación de Planes Activos -->
+            <nav class="destinations-nav">
+                <h3>Planes Activos</h3>
+                <div class="destinations-tabs">
+                    <button class="tab-btn active">Todos</button>
+                </div>
+            </nav>
+
+            <!-- Grid de Proyectos -->
+            <section class="destinations-grid">
+                <!-- Proyecto 1 -->
+                <article class="destination-card">
+                    <div class="destination-image">
+                        <img src="img/portal-corporativo.jpg" alt="Portal Corporativo">
+                        <span class="destination-badge">Completado</span>
+                    </div>
+                    <div class="destination-info">
+                        <h4>Portal Corporativo</h4>
+                        <p class="destination-location">📍 Panamá</p>
+                        <p class="destination-date">Completado en mayo 2025</p>
+                        <div class="destination-meta">
+                            <span class="rating">⭐ 4.8</span>
+                            <button class="save-btn" data-tooltip="Ver detalles">🔍</button>
+                        </div>
+                    </div>
+                </article>
+                <!-- Proyecto 2 -->
+                <article class="destination-card">
+                    <div class="destination-image">
+                        <img src="img/app-movil.jpg" alt="Aplicación Móvil">
+                        <span class="destination-badge pending">En Proceso</span>
+                    </div>
+                    <div class="destination-info">
+                        <h4>Aplicación Móvil</h4>
+                        <p class="destination-location">📍 Remote</p>
+                        <p class="destination-date">Entrega prevista ago 2025</p>
+                        <div class="destination-meta">
+                            <span class="rating">⭐ 4.6</span>
+                            <button class="save-btn" data-tooltip="Ver detalles">🔍</button>
+                        </div>
+                    </div>
+                </article>
+                <!-- Proyecto 3 -->
+                <article class="destination-card">
+                    <div class="destination-image">
+                        <img src="img/e-commerce.jpg" alt="E-commerce">
+                        <span class="destination-badge">Completado</span>
+                    </div>
+                    <div class="destination-info">
+                        <h4>E-commerce</h4>
+                        <p class="destination-location">📍 Ciudad de Panamá</p>
+                        <p class="destination-date">Completado en mar 2025</p>
+                        <div class="destination-meta">
+                            <span class="rating">⭐ 4.9</span>
+                            <button class="save-btn" data-tooltip="Ver detalles">🔍</button>
+                        </div>
+                    </div>
+                </article>
+                <!-- Proyecto 4 -->
+                <article class="destination-card">
+                    <div class="destination-image">
+                        <img src="img/automatizacion.jpg" alt="Automatización Industrial">
+                        <span class="destination-badge pending">En Proceso</span>
+                    </div>
+                    <div class="destination-info">
+                        <h4>Automatización Industrial</h4>
+                        <p class="destination-location">📍 Colón</p>
+                        <p class="destination-date">Entrega prevista jul 2025</p>
+                        <div class="destination-meta">
+                            <span class="rating">⭐ 4.7</span>
+                            <button class="save-btn" data-tooltip="Ver detalles">🔍</button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Sección de Clientes Destacados -->
+            <section class="saved-places">
+                <div class="section-header">
+                    <h3>Clientes Destacados</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active">Todos</button>
+                        <button class="filter-btn">Pymes</button>
+                        <button class="filter-btn">Corporativos</button>
+                    </div>
+                </div>
+
+                <div class="saved-grid">
+                    <div class="saved-card">
+                        <img src="img/cliente1.jpg" alt="Panamá Travel">
+                        <div class="saved-info">
+                            <h5>Panamá Travel</h5>
+                            <p>🗺️ Agencia de Viajes</p>
+                            <div class="saved-actions">
+                                <span class="saved-rating">⭐ 4.9</span>
+                                <button class="remove-btn" data-tooltip="Eliminar">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="saved-card">
+                        <img src="img/cliente2.jpg" alt="Global Finance">
+                        <div class="saved-info">
+                            <h5>Global Finance</h5>
+                            <p>🏦 Sector Bancario</p>
+                            <div class="saved-actions">
+                                <span class="saved-rating">⭐ 4.7</span>
+                                <button class="remove-btn" data-tooltip="Eliminar">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="saved-card">
+                        <img src="img/cliente3.jpg" alt="EcoGreen">
+                        <div class="saved-info">
+                            <h5>EcoGreen</h5>
+                            <p>🌱 Energías Renovables</p>
+                            <div class="saved-actions">
+                                <span class="saved-rating">⭐ 5.0</span>
+                                <button class="remove-btn" data-tooltip="Eliminar">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sidebar Derecho -->
+        <aside class="right-sidebar">
+            <!-- Sobre Nosotros -->
+            <div class="user-details">
+                <h3>Sobre Nosotros</h3>
+                <p class="user-bio">
+                    BetaTech Solutions es una empresa líder en desarrollo de software y consultoría IT, comprometida con la innovación y la excelencia.
+                </p>
+                <div class="user-meta">
+                    <p><span class="icon">📍</span> Ciudad de Panamá, Panamá</p>
+                    <p><span class="icon">📅</span> Fundada en 2010</p>
+                    <p><span class="icon">🌐</span> <a href="https://www.betatech.com">www.betatech.com</a></p>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn-primary" id="editProfileBtn">Editar Perfil</button>
+                    <button class="btn-secondary">Configuración</button>
+                </div>
+            </div>
+
+            <!-- Widget de Actividad -->
+            <div class="activity-widget">
+                <h3>Actividad Reciente</h3>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <span class="activity-icon">🚀</span>
+                        <p>Lanzó servicio <strong>Portal Corporativo</strong></p>
+                        <span class="activity-time">Hace 3 horas</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-icon">🏆</span>
+                        <p>Publicó caso de <strong>Global Finance</strong></p>
+                        <span class="activity-time">Hace 1 día</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-icon">🛠️</span>
+                        <p>Actualizó proyecto <strong>Automatización Industrial</strong></p>
+                        <span class="activity-time">Hace 2 días</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tiempo actual -->
+            <div class="time-widget">
+                <span class="current-time"></span>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modal de Edición de Perfil de Empresa -->
+    <div class="edit-profile-modal" id="editProfileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Perfil de Empresa</h2>
+                <button class="close-modal" id="closeModalBtn">&times;</button>
+            </div>
+            <form class="edit-profile-form" id="editProfileForm">
+                <div class="form-group">
+                    <label>Logo de Empresa</label>
+                    <div class="avatar-upload">
+                        <div class="avatar-preview">
+                            <img id="avatarPreview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%235A8DFF'/%3E%3Ctext x='200' y='200' font-size='180' fill='white' text-anchor='middle' alignment-baseline='middle'%3EB%3C/text%3E%3C/svg%3E" alt="Logo">
+                        </div>
+                        <input type="file" id="avatarInput" accept="image/*" hidden>
+                        <button type="button" class="upload-btn" onclick="document.getElementById('avatarInput').click()">
+                            Cambiar Logo
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Banner de Empresa</label>
+                    <div class="banner-upload">
+                        <div class="banner-preview">
+                            <img id="bannerPreview" src="img/empresa-banner.jpg" alt="Banner">
+                        </div>
+                        <input type="file" id="bannerInput" accept="image/*" hidden>
+                        <button type="button" class="upload-btn" onclick="document.getElementById('bannerInput').click()">
+                            Cambiar Banner
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nameInput">Nombre de la Empresa</label>
+                    <input type="text" id="nameInput" class="form-input" value="BetaTech Solutions" required>
+                </div>
+                <div class="form-group">
+                    <label for="usernameInput">Nombre de Usuario</label>
+                    <div class="input-with-prefix">
+                        <span class="input-prefix">@</span>
+                        <input type="text" id="usernameInput" class="form-input" value="betatech" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="bioInput">Sobre Nosotros</label>
+                    <textarea id="bioInput" class="form-textarea" rows="4" required>BetaTech Solutions es una empresa líder en desarrollo de software y consultoría IT, comprometida con la innovación y la excelencia.</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="locationInput">Ubicación</label>
+                    <input type="text" id="locationInput" class="form-input" value="Ciudad de Panamá, Panamá" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancelEditBtn">Cancelar</button>
+                    <button type="submit" class="btn-save">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    // El mismo script de perfil-usuario.js funciona sin cambios
+    document.addEventListener('DOMContentLoaded', function() {
+        // Placeholder para imágenes que fallen
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function() {
+                const w = this.width||400, h = this.height||300;
+                const txt = this.alt.charAt(0).toUpperCase()||'?';
+                this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'%3E%3Crect width='${w}' height='${h}' fill='%23E0E6ED'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='%237F8C8D' text-anchor='middle' alignment-baseline='middle'%3E${txt}%3C/text%3E%3C/svg%3E`;
+            };
+        });
+        // Reloj
+        function updateTime(){
+            const now=new Date();
+            const h=now.getHours().toString().padStart(2,'0');
+            const m=now.getMinutes().toString().padStart(2,'0');
+            document.querySelector('.current-time').textContent=`${h}:${m}`;
+        }
+        updateTime();
+        setInterval(updateTime,60000);
+
+        // Modal
+        const modal=document.getElementById('editProfileModal');
+        const openBtn=document.getElementById('editProfileBtn');
+        const closeBtns=[ document.getElementById('closeModalBtn'), document.getElementById('cancelEditBtn') ];
+        openBtn.onclick=()=>{ modal.classList.add('active'); document.body.style.overflow='hidden'; };
+        closeBtns.forEach(b=>b.onclick=()=>{ modal.classList.remove('active'); document.body.style.overflow='auto'; });
+        modal.addEventListener('click',e=>{ if(e.target===modal) closeBtns[0].onclick(); });
+
+        // Previews
+        ['avatar','banner'].forEach(type=>{
+            const inp=document.getElementById(`${type}Input`);
+            const prev=document.getElementById(`${type}Preview`);
+            inp.addEventListener('change',e=>{
+                const f=e.target.files[0];
+                if(f&&f.type.startsWith('image/')){
+                    const r=new FileReader();
+                    r.onload=ev=> prev.src=ev.target.result;
+                    r.readAsDataURL(f);
+                }
+            });
+        });
+
+        // Guardar cambios
+        document.getElementById('editProfileForm').addEventListener('submit',e=>{
+            e.preventDefault();
+            document.querySelector('.user-name').textContent = document.getElementById('nameInput').value;
+            document.querySelector('.user-username').textContent = '@' + document.getElementById('usernameInput').value;
+            document.querySelector('.user-bio').textContent = document.getElementById('bioInput').value;
+            document.querySelector('.user-meta p:first-child').innerHTML = '<span class="icon">📍</span> ' + document.getElementById('locationInput').value;
+            document.querySelector('.user-avatar img').src = document.getElementById('avatarPreview').src;
+            document.querySelector('.cover-image img').src = document.getElementById('bannerPreview').src;
+            modal.classList.remove('active');
+            document.body.style.overflow='auto';
+            alert('Perfil actualizado correctamente!');
+        });
+    });
+    </script>
+</body>
+</html>

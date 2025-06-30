@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Perfil de Usuario - Jenna Smith</title>
+    <link rel="stylesheet" href="./perfil-usuario.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Izquierdo -->
+        <aside class="sidebar">
+            <!-- Información del Usuario -->
+            <div class="user-info">
+                <div class="user-avatar">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23FF5A7D'/%3E%3Ctext x='200' y='200' font-size='180' fill='white' text-anchor='middle' alignment-baseline='middle'%3EJ%3C/text%3E%3C/svg%3E" alt="Jenna Smith">
+                </div>
+                <h1 class="user-name">Jenna Smith</h1>
+                <p class="user-username">@jennasmith</p>
+            </div>
+
+            <!-- Estadísticas -->
+            <div class="user-stats">
+                <div class="stat-item">
+                    <span class="stat-number">42</span>
+                    <span class="stat-label">Destinos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1,302</span>
+                    <span class="stat-label">Seguidores</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">18K</span>
+                    <span class="stat-label">Guardados</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Contenido Principal -->
+        <main class="main-content">
+            <!-- Header con imagen de portada -->
+            <header class="profile-header">
+                <div class="cover-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='400'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234B6CB7'/%3E%3Cstop offset='100%25' style='stop-color:%23182848'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='400' fill='url(%23grad)'/%3E%3C/svg%3E" alt="Mountains">
+                    <div class="cover-overlay">
+                        
+                    </div>
+                </div>
+            </header>
+
+            <!-- Navegación de Destinos -->
+            <nav class="destinations-nav">
+                <h3>Destinos Recientes</h3>
+                <div class="destinations-tabs">
+                    <button class="tab-btn active">Todos</button>
+                    <button class="tab-btn">Visitados</button>
+                    <button class="tab-btn">Pendientes</button>
+                </div>
+            </nav>
+
+            <!-- Grid de Destinos -->
+            <section class="destinations-grid">
+                <!-- Destino 1 -->
+                <article class="destination-card">
+                    <div class="destination-image">
+                        <img src="img/biomuseo.jpg.webp" alt="biomuseo">
+                        <span class="destination-badge">Visitado</span>
+                    </div>
+                    <div class="destination-info">
+                        <h4>biomuseo</h4>
+                        <p class="destination-location">📍 Amador</p>
+                        <p class="destination-date">Visitado en marzo 2024</p>
+                        <div class="destination-meta">
+                            <span class="rating">⭐ 4.5</span>
+                            <button class="save-btn">💜</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Destino 2 -->
+                <article class="destination-card">
+                    <div class="destination-image">
+                        <img src="img/casco-viejo.webp" alt="Casco Viejo">
+                        <span class="destination-badge pending">Pendiente</span>
+                    </div>
+                    <div class="destination-info">
+                        <h4>casco Viejo</h4>
+                        <p class="destination-location">📍 Panama</p>
+                        <p class="destination-date">Planeado para julio 2024</p>
+                        <div class="destination-meta">
+                            <span class="rating">⭐ 4.9</span>
+                            <button class="save-btn">🤍</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Destino 3 -->
+                <article class="destination-card">
+                    <div class="destination-image">
+                        <img src="img/el valle.webp" alt="El valle de Anton">
+                        <span class="destination-badge">Visitado</span>
+                    </div>
+                    <div class="destination-info">
+                        <h4>El valle de Anton</h4>
+                        <p class="destination-location">📍 Anton </p>
+                        <p class="destination-date">Visitado en enero 2024</p>
+                        <div class="destination-meta">
+                            <span class="rating">⭐ 4.7</span>
+                            <button class="save-btn">💜</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Destino 4 -->
+                <article class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=400" alt="Picos de Europa">
+                        <span class="destination-badge">Visitado</span>
+                    </div>
+                    <div class="destination-info">
+                        <h4>Picos de Europa</h4>
+                        <p class="destination-location">📍 Asturias, España</p>
+                        <p class="destination-date">Visitado en octubre 2023</p>
+                        <div class="destination-meta">
+                            <span class="rating">⭐ 4.6</span>
+                            <button class="save-btn">💜</button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Sección de Sitios Guardados -->
+            <section class="saved-places">
+                <div class="section-header">
+                    <h3>Sitios Guardados</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active">Todos</button>
+                        <button class="filter-btn">Restaurantes</button>
+                        <button class="filter-btn">Hoteles</button>
+                        <button class="filter-btn">Atracciones</button>
+                    </div>
+                </div>
+
+                <div class="saved-grid">
+                    <!-- Sitio Guardado 1 -->
+                    <div class="saved-card">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=300" alt="Restaurante">
+                        <div class="saved-info">
+                            <h5>La Montaña Azul</h5>
+                            <p>🍴 Restaurante • Suiza</p>
+                            <div class="saved-actions">
+                                <span class="saved-rating">⭐ 4.9</span>
+                                <button class="remove-btn">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sitio Guardado 2 -->
+                    <div class="saved-card">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300" alt="Hotel">
+                        <div class="saved-info">
+                            <h5>Alpine Resort</h5>
+                            <p>🏨 Hotel • Austria</p>
+                            <div class="saved-actions">
+                                <span class="saved-rating">⭐ 4.7</span>
+                                <button class="remove-btn">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sitio Guardado 3 -->
+                    <div class="saved-card">
+                        <img src="https://images.unsplash.com/photo-1533284133567-0da9844151e0?w=300" alt="Mirador">
+                        <div class="saved-info">
+                            <h5>Mirador del Águila</h5>
+                            <p>🏔️ Atracción • Perú</p>
+                            <div class="saved-actions">
+                                <span class="saved-rating">⭐ 5.0</span>
+                                <button class="remove-btn">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sidebar Derecho -->
+        <aside class="right-sidebar">
+            <!-- Información Adicional del Usuario -->
+            <div class="user-details">
+                <h3>Sobre mí</h3>
+                <p class="user-bio">
+                    Exploradora apasionada de montañas y paisajes naturales. 
+                    Siempre en busca de nuevas aventuras y lugares por descubrir. 
+                    Amante de la fotografía y las culturas locales.
+                </p>
+                
+                <div class="user-meta">
+                    <p><span class="icon">📍</span> Barcelona, España</p>
+                    <p><span class="icon">📅</span> Miembro desde 2021</p>
+                    <p><span class="icon">🌐</span> <a href="#">jennasmith.travel</a></p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-primary" id="editProfileBtn">Editar Perfil</button>
+                    <button class="btn-secondary">Configuración</button>
+                </div>
+            </div>
+
+            <!-- Widget de Actividad -->
+            <div class="activity-widget">
+                <h3>Actividad Reciente</h3>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <span class="activity-icon">📸</span>
+                        <p>Añadió fotos a <strong>Picos de Europa</strong></p>
+                        <span class="activity-time">Hace 2 horas</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-icon">💜</span>
+                        <p>Guardó <strong>Mirador del Águila</strong></p>
+                        <span class="activity-time">Hace 5 horas</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-icon">✈️</span>
+                        <p>Planificó viaje a <strong>Patagonia</strong></p>
+                        <span class="activity-time">Hace 1 día</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tiempo actual -->
+            <div class="time-widget">
+                <span class="current-time">04:20 PM</span>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modal de Edición de Perfil -->
+    <div class="edit-profile-modal" id="editProfileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Perfil</h2>
+                <button class="close-modal" id="closeModalBtn">&times;</button>
+            </div>
+            
+            <form class="edit-profile-form" id="editProfileForm">
+                <!-- Editar Foto de Perfil -->
+                <div class="form-group">
+                    <label>Foto de Perfil</label>
+                    <div class="avatar-upload">
+                        <div class="avatar-preview">
+                            <img id="avatarPreview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23FF5A7D'/%3E%3Ctext x='200' y='200' font-size='180' fill='white' text-anchor='middle' alignment-baseline='middle'%3EJ%3C/text%3E%3C/svg%3E" alt="Avatar">
+                        </div>
+                        <input type="file" id="avatarInput" accept="image/*" hidden>
+                        <button type="button" class="upload-btn" onclick="document.getElementById('avatarInput').click()">
+                            Cambiar Foto
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Editar Banner -->
+                <div class="form-group">
+                    <label>Foto de Banner</label>
+                    <div class="banner-upload">
+                        <div class="banner-preview">
+                            <img id="bannerPreview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='400'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234B6CB7'/%3E%3Cstop offset='100%25' style='stop-color:%23182848'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='400' fill='url(%23grad)'/%3E%3C/svg%3E" alt="Banner">
+                        </div>
+                        <input type="file" id="bannerInput" accept="image/*" hidden>
+                        <button type="button" class="upload-btn" onclick="document.getElementById('bannerInput').click()">
+                            Cambiar Banner
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Editar Nombre -->
+                <div class="form-group">
+                    <label for="nameInput">Nombre Completo</label>
+                    <input type="text" id="nameInput" class="form-input" value="Jenna Smith" required>
+                </div>
+
+                <!-- Editar Username -->
+                <div class="form-group">
+                    <label for="usernameInput">Nombre de Usuario</label>
+                    <div class="input-with-prefix">
+                        <span class="input-prefix">@</span>
+                        <input type="text" id="usernameInput" class="form-input" value="jennasmith" required>
+                    </div>
+                </div>
+
+                <!-- Editar Sobre Mí -->
+                <div class="form-group">
+                    <label for="bioInput">Sobre Mí</label>
+                    <textarea id="bioInput" class="form-textarea" rows="4" required>Exploradora apasionada de montañas y paisajes naturales. Siempre en busca de nuevas aventuras y lugares por descubrir. Amante de la fotografía y las culturas locales.</textarea>
+                </div>
+
+                <!-- Editar Ubicación -->
+                <div class="form-group">
+                    <label for="locationInput">Ubicación</label>
+                    <input type="text" id="locationInput" class="form-input" value="Barcelona, España" required>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancelEditBtn">Cancelar</button>
+                    <button type="submit" class="btn-save">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Script para manejar errores de carga de imágenes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Reemplazar imágenes que fallen con placeholders
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.onerror = function() {
+                    // Crear un placeholder SVG basado en el tipo de imagen
+                    const width = this.width || 400;
+                    const height = this.height || 300;
+                    const text = this.alt ? this.alt.charAt(0).toUpperCase() : '?';
+                    
+                    this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width}' height='${height}'%3E%3Crect width='${width}' height='${height}' fill='%23E0E6ED'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='%237F8C8D' text-anchor='middle' alignment-baseline='middle'%3E${text}%3C/text%3E%3C/svg%3E`;
+                };
+            });
+
+            // Actualizar el reloj
+            function updateTime() {
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const timeString = `${hours}:${minutes}`;
+                
+                const timeElement = document.querySelector('.current-time');
+                if (timeElement) {
+                    timeElement.textContent = timeString;
+                }
+            }
+
+            updateTime();
+            setInterval(updateTime, 60000); // Actualizar cada minuto
+
+            // Funcionalidad de la Modal de Edición
+            const editProfileBtn = document.getElementById('editProfileBtn');
+            const editProfileModal = document.getElementById('editProfileModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const cancelEditBtn = document.getElementById('cancelEditBtn');
+            const editProfileForm = document.getElementById('editProfileForm');
+
+            // Abrir modal
+            editProfileBtn.addEventListener('click', function() {
+                editProfileModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Cerrar modal
+            function closeModal() {
+                editProfileModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+            cancelEditBtn.addEventListener('click', closeModal);
+
+            // Cerrar modal al hacer clic fuera
+            editProfileModal.addEventListener('click', function(e) {
+                if (e.target === editProfileModal) {
+                    closeModal();
+                }
+            });
+
+            // Manejar cambio de avatar
+            const avatarInput = document.getElementById('avatarInput');
+            const avatarPreview = document.getElementById('avatarPreview');
+
+            avatarInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        avatarPreview.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Manejar cambio de banner
+            const bannerInput = document.getElementById('bannerInput');
+            const bannerPreview = document.getElementById('bannerPreview');
+
+            bannerInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        bannerPreview.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Manejar envío del formulario
+            editProfileForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Obtener valores del formulario
+                const newName = document.getElementById('nameInput').value;
+                const newUsername = document.getElementById('usernameInput').value;
+                const newBio = document.getElementById('bioInput').value;
+                const newLocation = document.getElementById('locationInput').value;
+                const newAvatar = avatarPreview.src;
+                const newBanner = bannerPreview.src;
+
+                // Actualizar la información en la página
+                document.querySelector('.user-name').textContent = newName;
+                document.querySelector('.user-username').textContent = '@' + newUsername;
+                document.querySelector('.user-bio').textContent = newBio;
+                document.querySelector('.user-meta p:first-child').innerHTML = '<span class="icon">📍</span> ' + newLocation;
+                document.querySelector('.user-avatar img').src = newAvatar;
+                document.querySelector('.cover-image img').src = newBanner;
+
+                // Cerrar modal
+                closeModal();
+
+                // Mostrar mensaje de éxito (opcional)
+                alert('Perfil actualizado correctamente!');
+            });
+        // ——————————————————————————————
+    // 6) FILTRADO de “Todos”, “Visitados” y “Pendientes”
+    const tabButtons = document.querySelectorAll('.destinations-tabs .tab-btn');
+    const cards      = document.querySelectorAll('.destination-card');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // a) Activar botón
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // b) Determinar filtro
+            const filter = button.textContent.trim(); // "Todos" | "Visitados" | "Pendientes"
+
+            // c) Mostrar u ocultar tarjetas
+            cards.forEach(card => {
+                const badge     = card.querySelector('.destination-badge');
+                const isPending = badge && badge.classList.contains('pending');
+
+                if (
+                    filter === 'Todos' ||
+                    (filter === 'Visitados'  && !isPending) ||
+                    (filter === 'Pendientes' &&  isPending)
+                ) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+    </script>
+</body>
+</html>
