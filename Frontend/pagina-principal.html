@@ -4,777 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>tourIstmo | Inicio</title>
+  <link rel="stylesheet" href="css/paginaprincipal.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Modak&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-
-  <style>
-    /* ===== VARIABLES GLOBALES ===== */
-    :root {
-      /* Paleta de colores touristmo */
-      --primary-dark: #283951;
-      --primary-teal: #588684;
-      --primary-green: #8BAD65;
-      --accent-orange: #D57133;
-      --neutral-light: #E2E1E0;
-      
-      /* Gradientes temáticos */
-      --gradient-primary: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-teal) 100%);
-      --gradient-nature: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-green) 100%);
-      --gradient-warm: linear-gradient(135deg, var(--accent-orange) 0%, #E8955A 100%);
-      --gradient-overlay: linear-gradient(0deg, rgba(40, 57, 81, 0.7) 0%, rgba(40, 57, 81, 0.3) 100%);
-      
-      /* Colores de interfaz */
-      --bg-primary: #FFFFFF;
-      --bg-secondary: #F8F9FA;
-      --bg-light: var(--neutral-light);
-      --text-primary: var(--primary-dark);
-      --text-secondary: #5A6B7D;
-      --text-muted: #8A9BA8;
-      --text-white: #FFFFFF;
-      
-      /* Colores de estado */
-      --success: #4CAF50;
-      --warning: #FFA726;
-      --error: #E74C3C;
-      --info: var(--primary-teal);
-      
-      /* Bordes y sombras */
-      --border-color: #E1E8ED;
-      --border-radius: 8px;
-      --border-radius-lg: 12px;
-      --border-radius-xl: 16px;
-      --border-radius-full: 50px;
-      
-      /* Sombras */
-      --shadow-sm: 0 1px 3px rgba(40, 57, 81, 0.08);
-      --shadow-md: 0 4px 12px rgba(40, 57, 81, 0.12);
-      --shadow-lg: 0 8px 25px rgba(40, 57, 81, 0.15);
-      --shadow-xl: 0 15px 35px rgba(40, 57, 81, 0.20);
-      
-      /* Transiciones */
-      --transition-fast: 0.2s ease;
-      --transition-normal: 0.3s ease;
-      --transition-slow: 0.5s ease;
-      
-      /* Espaciado */
-      --spacing-xs: 4px;
-      --spacing-sm: 8px;
-      --spacing-md: 16px;
-      --spacing-lg: 24px;
-      --spacing-xl: 32px;
-      --spacing-2xl: 48px;
-      --spacing-3xl: 64px;
-      
-      /* Tipografía */
-      --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --font-family-display: 'Poppins', var(--font-family-primary);
-      
-      /* Tamaños de fuente */
-      --text-xs: 0.75rem;
-      --text-sm: 0.875rem;
-      --text-base: 1rem;
-      --text-lg: 1.125rem;
-      --text-xl: 1.25rem;
-      --text-2xl: 1.5rem;
-      --text-3xl: 1.875rem;
-      --text-4xl: 2.25rem;
-      --text-5xl: 3rem;
-      
-      /* Pesos de fuente */
-      --font-light: 300;
-      --font-normal: 400;
-      --font-medium: 500;
-      --font-semibold: 600;
-      --font-bold: 700;
-    }
-
-    /* ===== RESET Y BASE ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: var(--font-family-primary);
-      line-height: 1.6;
-      color: var(--text-primary);
-      background-color: var(--neutral-light);
-    }
-
-    .container {
-      padding-left: 5%;
-      padding-right: 5%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* ===== SECCIÓN TÍTULOS ===== */
-    .section-title {
-      font-family: var(--font-family-display);
-      font-size: var(--text-3xl);
-      font-weight: var(--font-bold);
-      color: var(--text-primary);
-      margin-bottom: var(--spacing-2xl);
-      text-align: center;
-    }
-
-    /* ===== BOTONES ===== */
-    .btn-primary {
-      display: inline-block;
-      background: var(--accent-orange);
-      color: var(--text-white);
-      padding: var(--spacing-md) var(--spacing-xl);
-      border: none;
-      border-radius: var(--border-radius-full);
-      font-weight: var(--font-semibold);
-      font-size: var(--text-base);
-      text-decoration: none;
-      cursor: pointer;
-      transition: var(--transition-normal);
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-      color: var(--text-white);
-    }
-
-    /* ===== MODERN NAVBAR ===== */
-    .modern-navbar {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-color);
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: var(--shadow-md);
-      margin-bottom: var(--spacing-xl);
-    }
-
-    .navbar-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 2rem;
-    }
-
-    .navbar-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: inherit;
-      transition: var(--transition-fast);
-    }
-
-    .navbar-brand:hover {
-      transform: scale(1.05);
-    }
-
-    .navbar-brand img {
-      height: 40px;
-      width: auto;
-    }
-
-    .navbar-brand h1 {
-      font-family: 'Pacifico', cursive;
-      font-size: var(--text-2xl);
-      margin: 0;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .navbar-nav {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 2rem;
-    }
-
-    .navbar-nav li a {
-      text-decoration: none;
-      color: var(--text-primary);
-      font-weight: var(--font-medium);
-      font-size: var(--text-base);
-      padding: 0.5rem 1rem;
-      border-radius: var(--border-radius-full);
-      transition: var(--transition-normal);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .navbar-nav li a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: var(--gradient-primary);
-      transition: left var(--transition-normal);
-      z-index: -1;
-    }
-
-    .navbar-nav li a:hover::before {
-      left: 0;
-    }
-
-    .navbar-nav li a:hover {
-      color: var(--text-white);
-      transform: translateY(-2px);
-    }
-
-    .navbar-actions {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .contact-btn {
-      background: var(--gradient-primary);
-      color: var(--text-white);
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: var(--border-radius-full);
-      font-weight: var(--font-semibold);
-      cursor: pointer;
-      transition: var(--transition-normal);
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .contact-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-      color: var(--text-white);
-    }
-
-    /* Mobile Responsive */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--text-primary);
-    }
-
-    @media (max-width: 768px) {
-      .navbar-nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        padding: 1rem;
-        box-shadow: var(--shadow-lg);
-        gap: 0.5rem;
-      }
-
-      .navbar-nav.active {
-        display: flex;
-      }
-
-      .mobile-menu-btn {
-        display: block;
-      }
-
-      .navbar-container {
-        padding: 0 1rem;
-      }
-
-      .contact-btn {
-        display: none;
-      }
-    }
-
-    /* ===== TARJETAS MODERNAS ===== */
-    .destination-card {
-      background: var(--bg-secondary);
-      border-radius: var(--border-radius-xl);
-      overflow: hidden;
-      transition: var(--transition-normal);
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      flex: 0 0 300px;
-      scroll-snap-align: start;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .destination-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-xl);
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .destination-image {
-      position: relative;
-      height: 200px;
-      overflow: hidden;
-    }
-
-    .destination-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition-slow);
-    }
-
-    .destination-card:hover .destination-image img {
-      transform: scale(1.1);
-    }
-
-    .destination-info {
-      padding: var(--spacing-lg);
-      position: relative;
-      width: 100%;
-    }
-
-    /* ===== HORIZONTAL INFO CON CORAZÓN ===== */
-    .horizontal-info {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--spacing-sm);
-      margin-bottom: var(--spacing-sm);
-      width: 100%;
-    }
-
-    .horizontal-info h4 {
-      flex: 1;
-      margin: 0;
-      font-size: var(--text-lg);
-      font-weight: var(--font-semibold);
-      color: var(--text-primary);
-      font-family: var(--font-family-display);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      min-width: 0;
-    }
-
-    .save-btn-overlay {
-      background: rgba(0, 0, 0, 0.05);
-      border: none;
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      padding: 0;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition-fast);
-      flex-shrink: 0;
-      color: var(--text-muted);
-    }
-
-    .save-btn-overlay:hover {
-      background: rgba(0, 0, 0, 0.1);
-      transform: scale(1.1);
-    }
-
-    .save-btn-overlay.saved {
-      background: rgba(220, 38, 38, 0.1);
-      color: var(--error);
-    }
-
-    .save-btn-overlay.saved:hover {
-      background: rgba(220, 38, 38, 0.15);
-    }
-
-    .heart-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 16px;
-      height: 16px;
-    }
-
-    .heart-icon svg {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
-    }
-
-    /* ===== OTROS ELEMENTOS DE LA TARJETA ===== */
-    .destination-location {
-      font-size: var(--text-sm);
-      color: var(--text-secondary);
-      margin-bottom: var(--spacing-xs);
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-xs);
-    }
-
-    .destination-date {
-  display: inline-block;
-  background-color: #e3f2fd;
-  color: #1565c0;
-  padding: 4px 12px;
-  border-radius: 16px;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: capitalize;
-  margin-top: 8px;
-  border: 1px solid #bbdefb;
-  white-space: nowrap;
-}
-
-/* Variantes de color para diferentes tipos/categorías */
-.destination-date.historico {
-  background-color: #fff3e0;
-  color: #ef6c00;
-  border-color: #ffcc02;
-}
-
-.destination-date.natural {
-  background-color: #e8f5e8;
-  color: #2e7d32;
-  border-color: #a5d6a7;
-}
-
-.destination-date.aventura {
-  background-color: #fce4ec;
-  color: #c2185b;
-  border-color: #f8bbd9;
-}
-
-.destination-date.cultural {
-  background-color: #f3e5f5;
-  color: #7b1fa2;
-  border-color: #ce93d8;
-}
-
-.destination-date.playa {
-  background-color: #e0f2f1;
-  color: #00695c;
-  border-color: #80cbc4;
-}
-
-/* Hover effect */
-.destination-date:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: all 0.2s ease;
-}
-
-    .destination-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: var(--spacing-md);
-    }
-
-    .rating {
-      font-size: var(--text-sm);
-      font-weight: var(--font-medium);
-      color: var(--accent-orange);
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-xs);
-    }
-
-    .price {
-      font-size: var(--text-base);
-      font-weight: var(--font-bold);
-      color: var(--primary-teal);
-    }
-
-    /* ===== CARRUSEL ===== */
-    .carousel-wrapper {
-      position: relative;
-      margin-bottom: var(--spacing-xl);
-    }
-
-    .carousel {
-      display: flex;
-      gap: var(--spacing-lg);
-      overflow-x: auto;
-      padding-bottom: var(--spacing-sm);
-      scroll-behavior: smooth;
-      scroll-snap-type: x mandatory;
-    }
-
-    .carousel::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .carousel::-webkit-scrollbar-track {
-      background: var(--bg-light);
-      border-radius: var(--border-radius);
-    }
-
-    .carousel::-webkit-scrollbar-thumb {
-      background: var(--primary-teal);
-      border-radius: var(--border-radius);
-    }
-
-    /* ===== BOTONES DE NAVEGACIÓN ===== */
-    .car-btn {
-      position: absolute;
-      top: 45%;
-      transform: translateY(-50%);
-      width: 48px;
-      height: 48px;
-      border: none;
-      border-radius: 50%;
-      background: var(--primary-teal);
-      color: var(--text-white);
-      font-size: var(--text-lg);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition-normal);
-      box-shadow: var(--shadow-md);
-      z-index: 10;
-    }
-
-    .car-btn:hover {
-      transform: translateY(-50%) scale(1.1);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .car-btn.left {
-      left: -24px;
-    }
-
-    .car-btn.right {
-      right: -24px;
-    }
-
-    @media(max-width: 600px) {
-      .car-btn {
-        display: none;
-      }
-    }
-
-    /* ===== HERO SECTION ===== */
-    .hero-section {
-      position: relative;
-      height: 80vh;
-      min-height: 600px;
-      background: linear-gradient(135deg, rgba(40, 57, 81, 0.4), rgba(88, 134, 132, 0.3)),
-        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop') center/cover;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      color: var(--text-white);
-      border-radius: var(--spacing-xl);
-      overflow: hidden;
-      margin: 0 var(--spacing-xl);
-    }
-
-    .hero-content {
-      max-width: 1200px;
-      width: 100%;
-      padding: 0 var(--spacing-2xl);
-      margin: 0 auto;
-      z-index: 2;
-    }
-
-    .hero-title {
-      font-family: var(--font-family-display);
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      font-weight: var(--font-bold);
-      line-height: 1.1;
-      margin-bottom: var(--spacing-lg);
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      animation: fadeInUp 1s ease-out;
-    }
-
-    .hero-subtitle {
-      font-size: var(--text-xl);
-      font-weight: var(--font-normal);
-      margin-bottom: var(--spacing-2xl);
-      opacity: 0.95;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      animation: fadeInUp 1s ease-out 0.2s both;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      background: var(--accent-orange);
-      color: var(--neutral-light);
-      padding: var(--spacing-md) var(--spacing-xl);
-      border-radius: var(--border-radius-full);
-      font-weight: var(--font-semibold);
-      font-size: var(--text-lg);
-      text-decoration: none;
-      transition: var(--transition-normal);
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow-lg);
-      animation: fadeInUp 1s ease-out 0.4s both;
-    }
-
-    .hero-cta:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-xl);
-      background: var(--primary-teal);
-      color: var(--neutral-light);
-    }
-
-    .hero-controls {
-      position: absolute;
-      bottom: var(--spacing-xl);
-      left: var(--spacing-2xl);
-      display: flex;
-      gap: var(--spacing-md);
-      z-index: 3;
-    }
-
-    .hero-control {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: var(--text-white);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition-normal);
-      font-size: var(--text-lg);
-    }
-
-    .hero-control:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: scale(1.1);
-    }
-
-    .hero-control.play {
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--text-primary);
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ===== CONTENIDO PRINCIPAL ===== */
-    .main-content {
-      margin-top: var(--spacing-3xl);
-      margin-bottom: var(--spacing-3xl);
-    }
-
-    @media (max-width: 768px) {
-      .hero-section {
-        height: 70vh;
-        min-height: 500px;
-        margin: 0 var(--spacing-md);
-      }
-      
-      .hero-content {
-        padding: 0 var(--spacing-lg);
-      }
-      
-      .hero-controls {
-        left: var(--spacing-lg);
-        bottom: var(--spacing-lg);
-      }
-      
-      .hero-control {
-        width: 40px;
-        height: 40px;
-        font-size: var(--text-base);
-      }
-
-      .container {
-        padding-left: var(--spacing-md);
-        padding-right: var(--spacing-md);
-      }
-
-      .section-title {
-        font-size: var(--text-2xl);
-        margin-bottom: var(--spacing-xl);
-      }
-
-      .destination-card {
-        flex: 0 0 280px;
-      }
-
-      .carousel {
-        gap: var(--spacing-md);
-      }
-
-      .horizontal-info h4 {
-        font-size: var(--text-base);
-      }
-      
-      .save-btn-overlay {
-        width: 28px;
-        height: 28px;
-      }
-      
-      .heart-icon,
-      .heart-icon svg {
-        width: 14px;
-        height: 14px;
-      }
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--gradient-primary);
-      color: var(--text-white);
-      padding: var(--spacing-2xl) 0;
-      text-align: center;
-    }
-
-    footer .wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-  </style>
 </head>
 
 <body>
-<!-- ===== Modern Navbar ===== -->
-<nav class="modern-navbar">
-  <div class="navbar-container">
-    <a href="pagina-principal.jsp" class="navbar-brand">
-      <img src="assets/logo-touristmo.svg" alt="Logo tourIstmo" />
-      <h1>tourIstmo</h1>
-    </a>
-    
-    <ul class="navbar-nav" id="navbarNav">
-      <li><a href="destino-pagina.jsp">Destinos</a></li>
-      <li><a href="planes-pagina.jsp">Planes</a></li>
-      <li><a href="perfil.html">Perfil</a></li>
-    </ul>
-    
-    <div class="navbar-actions">
-      <a href="contacto.html" class="contact-btn">Contáctanos</a>
-      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+
+<!-- Navbar Flotante -->
+ <nav class="floating-navbar" id="navbar">
+    <!-- Menú Izquierdo -->
+    <div class="menu-left">
+        <a href="#destino" class="nav-link">Destino</a>
+        <a href="#planes" class="nav-link">Planes</a>
+        <a href="#perfil" class="nav-link">Perfil</a>
     </div>
-  </div>
+
+    <!-- Logo Central -->
+    <div class="menu-center">
+        <a href="#" class="menu-title">
+            <img class="logo-icon"  src="img/logo.svg" alt="">
+            <span>TourIstmo</span>
+        </a>
+    </div>
+
+    <!-- Menú Derecho -->
+    <div class="menu-right">
+        <a href="#login" class="cta-button-nav">Login</a>
+    </div>
+
+    <!-- Menú móvil hamburguesa -->
+    <div class="mobile-menu-toggle" id="mobileToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 </nav>
 
 <!-- ===== Hero Section ===== -->
@@ -790,7 +55,7 @@
   
   <div class="hero-controls">
     <button class="hero-control" onclick="previousHero()">‹</button>
-    <button class="hero-control play" onclick="togglePlay()">▶</button>
+    <button class="hero-control play" onclick="togglePlay()">⏸</button>
   </div>
 </section>
 
@@ -802,7 +67,9 @@
 
     <div class="carousel-wrapper">
       <button class="car-btn left" data-target="destCarousel">‹</button>
-      <div class="carousel" id="destCarousel"></div>
+      <div class="carousel" id="destCarousel">
+        <!-- Las cartas se cargarán aquí dinámicamente -->
+      </div>
       <button class="car-btn right" data-target="destCarousel">›</button>
     </div>
 
@@ -817,7 +84,9 @@
 
     <div class="carousel-wrapper">
       <button class="car-btn left" data-target="planCarousel">‹</button>
-      <div class="carousel" id="planCarousel"></div>
+      <div class="carousel" id="planCarousel">
+        <!-- Las cartas se cargarán aquí dinámicamente -->
+      </div>
       <button class="car-btn right" data-target="planCarousel">›</button>
     </div>
 
@@ -828,14 +97,408 @@
 </main>
 
 <!-- ===== Footer ===== -->
-<footer>
-  <div class="wrapper">
-    <small>&copy; <span id="year"></span> tourIstmo · Todos los derechos reservados</small>
+<footer class="footer">
+  <div class="footer-container">
+      <div class="footer-grid">
+          <!-- Logo y descripción -->
+          <div class="footer-brand">
+              <a href="#" class="footer-logo">
+                  <img class="logo-icon"  src="img/logowhite.png" alt="">
+                  <span class="footer-logo-text">TourIstmo</span>
+              </a>
+              <p class="footer-description">
+                  Explora, comparte y disfruta de los mejores destinos turísticos de Panamá. 
+                  Tu aventura comienza aquí.
+              </p>
+          </div>
+
+          <!-- Navegación principal -->
+          <div class="footer-section">
+              <h4>TourIstmo</h4>
+              <ul class="footer-links">
+                  <li><a href="index.jsp">Inicio</a></li>
+                  <li><a href="formulario.jsp">Agregar Destino</a></li>
+                  <li><a href="planes.jsp">Planes Turísticos</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Reservar</a></li>
+              </ul>
+          </div>
+
+          <!-- Colaboración y Soporte -->
+          <div class="footer-section">
+              <h4>Colabora</h4>
+              <ul class="footer-links">
+                  <li><a href="#">Únete al equipo</a></li>
+                  <li><a href="#">Publica tus planes</a></li>
+              </ul>
+              
+              <h4 style="margin-top: var(--spacing-lg);">Soporte</h4>
+              <ul class="footer-links">
+                  <li><a href="#">Términos y Condiciones</a></li>
+                  <li><a href="#">Privacidad</a></li>
+                  <li><a href="#">Ayuda</a></li>
+              </ul>
+          </div>
+
+          <!-- Métodos de pago y app -->
+          <div class="footer-section">
+              <div class="footer-payments">
+                  <h4>Métodos de Pago</h4>
+                  <div class="payment-methods">
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
+                      </div>
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+                      </div>
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="footer-app">
+                  <h4>Descarga la App</h4>
+                  <a href="#" class="app-download">
+                      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Descargar en App Store">
+                  </a>
+              </div>
+          </div>
+      </div>
+
+      <div class="footer-bottom">
+          <p class="footer-copyright">
+              © 2025 Touristmo. Todos los derechos reservados.
+          </p>
+      </div>
   </div>
 </footer>
 
+
 <!-- ===== Script ===== -->
 <script>
+// ===============================
+// NAVBAR FLOTANTE - FUNCIONALIDAD
+// ===============================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.getElementById('navbar');
+    const mobileToggle = document.getElementById('mobileToggle');
+    const menuLeft = document.querySelector('.menu-left');
+    const menuRight = document.querySelector('.menu-right');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let lastScrollTop = 0;
+    let scrollTimer = null;
+
+    // ===============================
+    // EFECTO DE SCROLL DEL NAVBAR
+    // ===============================
+    function handleScroll() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Añadir clase 'scrolled' cuando se hace scroll hacia abajo
+        if (scrollTop > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        // Ocultar/mostrar navbar en scroll móvil
+        if (window.innerWidth <= 768) {
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+                navbar.style.transform = 'translateX(-50%) translateY(-100px)';
+                navbar.style.opacity = '0.8';
+            } else {
+                navbar.style.transform = 'translateX(-50%) translateY(0)';
+                navbar.style.opacity = '1';
+            }
+        }
+
+        lastScrollTop = scrollTop;
+    }
+
+    // ===============================
+    // SMOOTH SCROLL OPTIMIZADO
+    // ===============================
+    function optimizedScroll() {
+        if (scrollTimer) {
+            clearTimeout(scrollTimer);
+        }
+        
+        scrollTimer = setTimeout(handleScroll, 10);
+    }
+
+    window.addEventListener('scroll', optimizedScroll, { passive: true });
+
+    // ===============================
+    // MENÚ MÓVIL TOGGLE
+    // ===============================
+    function toggleMobileMenu() {
+        mobileToggle.classList.toggle('active');
+        menuLeft.classList.toggle('mobile-open');
+        menuRight.classList.toggle('mobile-open');
+        
+        // Prevenir scroll del body cuando el menú está abierto
+        if (mobileToggle.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+
+    mobileToggle.addEventListener('click', toggleMobileMenu);
+
+    // ===============================
+    // NAVEGACIÓN SUAVE
+    // ===============================
+    function smoothScrollTo(targetId) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            const offsetTop = targetElement.offsetTop - 120; // Ajuste para el navbar flotante
+            
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    // ===============================
+    // ACTIVAR LINKS SEGÚN SECCIÓN
+    // ===============================
+    function updateActiveLink() {
+        const scrollPosition = window.scrollY + 150;
+        
+        navLinks.forEach(link => {
+            const targetId = link.getAttribute('href');
+            if (targetId.startsWith('#')) {
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    const sectionTop = targetSection.offsetTop;
+                    const sectionBottom = sectionTop + targetSection.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                }
+            }
+        });
+    }
+
+    // ===============================
+    // EVENT LISTENERS PARA LINKS
+    // ===============================
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Solo aplicar smooth scroll a anchors internos
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                smoothScrollTo(href);
+                
+                // Cerrar menú móvil si está abierto
+                if (mobileToggle.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            }
+        });
+    });
+
+    // ===============================
+    // EFECTO PARALLAX SUTIL
+    // ===============================
+    function handleParallax() {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.hero-section');
+        
+        parallaxElements.forEach(element => {
+            const speed = 0.5;
+            const yPos = -(scrolled * speed);
+            element.style.transform = `translateY(${yPos}px)`;
+        });
+    }
+
+    window.addEventListener('scroll', handleParallax, { passive: true });
+
+    // ===============================
+    // EFECTOS DE HOVER MEJORADOS
+    // ===============================
+    function addHoverEffects() {
+        const navbarElements = navbar.querySelectorAll('a, button');
+        
+        navbarElements.forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform += ' scale(1.05)';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = this.style.transform.replace(' scale(1.05)', '');
+            });
+        });
+    }
+
+    // ===============================
+    // ANIMACIÓN DE ENTRADA
+    // ===============================
+    function animateNavbarEntrance() {
+        navbar.style.opacity = '0';
+        navbar.style.transform = 'translateX(-50%) translateY(-50px) scale(0.9)';
+        
+        setTimeout(() => {
+            navbar.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            navbar.style.opacity = '1';
+            navbar.style.transform = 'translateX(-50%) translateY(0) scale(1)';
+        }, 200);
+    }
+
+    // ===============================
+    // DETECCIÓN DE DISPOSITIVO
+    // ===============================
+    function detectDevice() {
+        const isMobile = window.innerWidth <= 768;
+        const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+        
+        navbar.classList.toggle('mobile-device', isMobile);
+        navbar.classList.toggle('tablet-device', isTablet);
+    }
+
+    // ===============================
+    // RESIZE HANDLER
+    // ===============================
+    function handleResize() {
+        detectDevice();
+        
+        // Cerrar menú móvil en resize
+        if (window.innerWidth > 768 && mobileToggle.classList.contains('active')) {
+            toggleMobileMenu();
+        }
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    // ===============================
+    // INTERSECCIÓN OBSERVER PARA ANIMACIONES
+    // ===============================
+    function setupIntersectionObserver() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observar secciones para animaciones
+        document.querySelectorAll('.demo-section').forEach(section => {
+            observer.observe(section);
+        });
+    }
+
+    // ===============================
+    // GESTIÓN DE FOCUS PARA ACCESIBILIDAD
+    // ===============================
+    function setupAccessibility() {
+        // Navegación con teclado
+        navLinks.forEach(link => {
+            link.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        // Indicador de focus visible
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-navigation');
+        });
+    }
+
+    // ===============================
+    // INICIALIZACIÓN
+    // ===============================
+    function init() {
+        detectDevice();
+        animateNavbarEntrance();
+        addHoverEffects();
+        updateActiveLink();
+        setupIntersectionObserver();
+        setupAccessibility();
+        
+        // Scroll listener optimizado para active links
+        let activeTimeout;
+        window.addEventListener('scroll', () => {
+            if (activeTimeout) clearTimeout(activeTimeout);
+            activeTimeout = setTimeout(updateActiveLink, 100);
+        }, { passive: true });
+    }
+
+    // Ejecutar inicialización
+    init();
+
+    // ===============================
+    // UTILIDADES PÚBLICAS
+    // ===============================
+    window.NavbarUtils = {
+        toggleMobileMenu,
+        smoothScrollTo,
+        updateActiveLink
+    };
+});
+
+// ===============================
+// ESTILOS CSS DINÁMICOS
+// ===============================
+const dynamicStyles = `
+    .keyboard-navigation *:focus {
+        outline: 2px solid var(--accent-orange) !important;
+        outline-offset: 2px;
+    }
+
+    .animate-in {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .mobile-device .floating-navbar {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+    .tablet-device .floating-navbar {
+        max-width: 95%;
+    }
+`;
+
+// Inyectar estilos dinámicos
+const styleSheet = document.createElement('style');
+styleSheet.textContent = dynamicStyles;
+document.head.appendChild(styleSheet);
+
 /* ---- Hero controls functionality ---- */
 const heroImages = [
   'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop', // Casco Viejo
@@ -867,9 +530,11 @@ function updateHero(index) {
   const heroTitle = document.querySelector('.hero-title');
   const heroSubtitle = document.querySelector('.hero-subtitle');
   
-  heroSection.style.backgroundImage = `linear-gradient(135deg, rgba(40, 57, 81, 0.4), rgba(88, 134, 132, 0.3)), url('${heroImages[index]}')`;
-  heroTitle.textContent = heroTitles[index];
-  heroSubtitle.textContent = heroSubtitles[index];
+  if (heroSection && heroTitle && heroSubtitle) {
+    heroSection.style.backgroundImage = `linear-gradient(135deg, rgba(40, 57, 81, 0.4), rgba(88, 134, 132, 0.3)), url('${heroImages[index]}')`;
+    heroTitle.textContent = heroTitles[index];
+    heroSubtitle.textContent = heroSubtitles[index];
+  }
 }
 
 function nextHero() {
@@ -885,14 +550,16 @@ function previousHero() {
 function togglePlay() {
   const playBtn = document.querySelector('.hero-control.play');
   
-  if (isPlaying) {
-    clearInterval(heroInterval);
-    playBtn.textContent = '▶';
-    isPlaying = false;
-  } else {
-    heroInterval = setInterval(nextHero, 5000);
-    playBtn.textContent = '⏸';
-    isPlaying = true;
+  if (playBtn) {
+    if (isPlaying) {
+      clearInterval(heroInterval);
+      playBtn.textContent = '▶';
+      isPlaying = false;
+    } else {
+      heroInterval = setInterval(nextHero, 5000);
+      playBtn.textContent = '⏸';
+      isPlaying = true;
+    }
   }
 }
 
@@ -900,43 +567,124 @@ function startHeroSlideshow() {
   heroInterval = setInterval(nextHero, 5000);
 }
 
-/* ---- Mobile menu toggle ---- */
-document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-  const navbarNav = document.getElementById('navbarNav');
-  navbarNav.classList.toggle('active');
-});
-
-/* ---- Close mobile menu when clicking on a link ---- */
-document.querySelectorAll('.navbar-nav a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('navbarNav').classList.remove('active');
-  });
-});
-
 /* ---- Endpoints reales ---- */
 const apiTopDest = '/api/destinos/top?limit=6';
 const apiTopPlan = '/api/planes/top?limit=6';
 
 /* ---- Datos mock por si falla fetch ---- */
-const mockDest = Array.from({length:6},(_,i)=>({
-  id:i+1,
-  nombre:'Casco Viejo',
-  provincia:'Panamá',
-  tipo:'Histórico',
-  precio:i%2?25:null,
-  rating: 4.9,
-  imagen:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop'
-}));
+const mockDest = [
+  {
+    id: 1,
+    nombre: 'Casco Viejo',
+    provincia: 'Panamá',
+    tipo: 'Histórico',
+    precio: 25,
+    rating: 4.9,
+    imagen: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop'
+  },
+  {
+    id: 2,
+    nombre: 'Bocas del Toro',
+    provincia: 'Bocas del Toro',
+    tipo: 'Playa',
+    precio: null,
+    rating: 4.8,
+    imagen: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop'
+  },
+  {
+    id: 3,
+    nombre: 'Canal de Panamá',
+    provincia: 'Panamá',
+    tipo: 'Ingeniería',
+    precio: 35,
+    rating: 4.7,
+    imagen: 'https://images.unsplash.com/photo-1641176716788-d4816a66dc6d?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    id: 4,
+    nombre: 'San Blas',
+    provincia: 'Guna Yala',
+    tipo: 'Paradisíaco',
+    precio: null,
+    rating: 4.9,
+    imagen: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=200&fit=crop'
+  },
+  {
+    id: 5,
+    nombre: 'Volcán Barú',
+    provincia: 'Chiriquí',
+    tipo: 'Aventura',
+    precio: 45,
+    rating: 4.6,
+    imagen: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=200&fit=crop'
+  },
+  {
+    id: 6,
+    nombre: 'El Valle de Antón',
+    provincia: 'Coclé',
+    tipo: 'Natural',
+    precio: 30,
+    rating: 4.5,
+    imagen: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=200&fit=crop'
+  }
+];
 
-const mockPlan = Array.from({length:6},(_,i)=>({
-  id:i+1,
-  nombre:'Tour Bocas del Toro',
-  provincia:'Bocas del Toro',
-  tipo:'Aventura',
-  precio:i%2?85:null,
-  rating: 4.7,
-  imagen:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop'
-}));
+const mockPlan = [
+  {
+    id: 1,
+    nombre: 'Tour Bocas del Toro',
+    provincia: 'Bocas del Toro',
+    tipo: 'Aventura',
+    precio: 85,
+    rating: 4.7,
+    imagen: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop'
+  },
+  {
+    id: 2,
+    nombre: 'Expedición Darién',
+    provincia: 'Darién',
+    tipo: 'Exploración',
+    precio: null,
+    rating: 4.8,
+    imagen: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=200&fit=crop'
+  },
+  {
+    id: 3,
+    nombre: 'City Tour Panamá',
+    provincia: 'Panamá',
+    tipo: 'Cultural',
+    precio: 65,
+    rating: 4.6,
+    imagen: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop'
+  },
+  {
+    id: 4,
+    nombre: 'Snorkel San Blas',
+    provincia: 'Guna Yala',
+    tipo: 'Acuático',
+    precio: 120,
+    rating: 4.9,
+    imagen: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=200&fit=crop'
+  },
+  {
+    id: 5,
+    nombre: 'Senderismo Chiriquí',
+    provincia: 'Chiriquí',
+    tipo: 'Aventura',
+    precio: null,
+    rating: 4.4,
+    imagen: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=200&fit=crop'
+  },
+  {
+    id: 6,
+    nombre: 'Relax en Coclé',
+    provincia: 'Coclé',
+    tipo: 'Relajación',
+    precio: 75,
+    rating: 4.3,
+    imagen: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=200&fit=crop'
+  }
+];
 
 // Funciones helper para generar iconos SVG
 const icons = {
@@ -987,12 +735,20 @@ function cardHTML(o, isPlan) {
 
 async function loadCarousel(id, api, mock, isPlan = false) {
   const el = document.getElementById(id);
+  if (!el) {
+    console.error('Elemento no encontrado:', id);
+    return;
+  }
+  
   try {
+    console.log('Intentando cargar desde API:', api);
     const res = await fetch(api);
+    if (!res.ok) throw new Error('API no disponible');
     const arr = await res.json();
     el.innerHTML = arr.map(o => cardHTML(o, isPlan)).join('');
+    console.log('Datos cargados desde API para', id);
   } catch(e) {
-    console.warn('Using mock data for', id);
+    console.warn('Usando datos mock para', id, '- Error:', e.message);
     el.innerHTML = mock.map(o => cardHTML(o, isPlan)).join('');
   }
 }
@@ -1027,19 +783,27 @@ function toggleSave(btn) {
 document.querySelectorAll('.car-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const target = document.getElementById(btn.dataset.target);
-    const step = 324; // ancho de tarjeta + gap
-    const dir = btn.classList.contains('left') ? -step : step;
-    target.scrollBy({left: dir, behavior: 'smooth'});
+    if (target) {
+      const step = 324; // ancho de tarjeta + gap
+      const dir = btn.classList.contains('left') ? -step : step;
+      target.scrollBy({left: dir, behavior: 'smooth'});
+    }
   });
 });
 
 /* ---- Footer año ---- */
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearElement = document.getElementById('year');
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
 
 /* ---- Inicialización ---- */
-loadCarousel('destCarousel', apiTopDest, mockDest, false);
-loadCarousel('planCarousel', apiTopPlan, mockPlan, true);
-startHeroSlideshow();
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM cargado, inicializando carruseles...');
+  loadCarousel('destCarousel', apiTopDest, mockDest, false);
+  loadCarousel('planCarousel', apiTopPlan, mockPlan, true);
+  startHeroSlideshow();
+});
 </script>
 </body>
 </html>
