@@ -1,0 +1,148 @@
+<html>
+<head>
+    <title>Registrar Destino Turístico</title>
+</head>
+<body style="margin: 0; font-family: Arial, sans-serif; background: #f0f4f8; display: flex; flex-direction: column; min-height: 100vh;">
+
+    <div style="flex: 1;">
+        <div style="max-width: 700px; margin: 40px auto; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 30px;">
+            <h2 style="text-align: center; color: #2c3e50;"> Nuevo Destino Turístico</h2>
+
+            <form action="GuardarDestino.jsp" method="post" style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="hidden" name="ID_Usuario" value="<%= session.getAttribute("usuario_id") %>" />
+
+                <label style="font-weight: bold; color: #34495e;">Provincia:
+                    <select name="ID_Provincia" id="provincia" required 
+                            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+                        <option value="">Seleccione una provincia</option>
+                        <option value="1">Bocas del Toro</option>
+                        <option value="2">Coclé</option>
+                        <option value="3">Colón</option>
+                        <option value="4">Chiriquí</option>
+                        <option value="5">Darién</option>
+                        <option value="6">Herrera</option>
+                        <option value="7">Los Santos</option>
+                        <option value="8">Panamá</option>
+                        <option value="9">Panamá Oeste</option>
+                        <option value="10">Veraguas</option>
+                    </select>
+                </label>
+
+                <label style="font-weight: bold; color: #34495e;">Distrito:
+                    <select name="ID_Distrito" id="distrito" required 
+                            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+                        <option value="">Seleccione un distrito</option>
+                    </select>
+                </label>
+
+                <label style="font-weight: bold; color: #34495e;">Nombre del lugar:
+                    <input type="text" name="Nombre" required 
+                           style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;" />
+                </label>
+
+                <label style="font-weight: bold; color: #34495e;">Descripción:
+                    <textarea name="Descripcion" required rows="3"
+                              style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;"></textarea>
+                </label>
+
+                <label style="font-weight: bold; color: #34495e;">URL del mapa (Google Maps):
+                    <input type="url" name="Ubicacion_Mapa_URL" required
+                           style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;" />
+                </label>
+
+                <label style="font-weight: bold; color: #34495e;">Tipo de destino:
+                    <select name="Tipo" required 
+                            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+                        <option value="">Seleccione un tipo</option>
+                        <option value="Playa">Playa</option>
+                        <option value="Montaña">Montaña</option>
+                        <option value="Sitio histórico">Sitio histórico</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </label>
+
+                <label style="font-weight: bold; color: #34495e;">Precio de entrada (USD):
+                    <input type="text" name="Precio_Entrada"
+                           style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;" />
+                </label>
+
+                <label style="font-weight: bold; color: #34495e;">Descripción del estado actual:
+                    <textarea name="Descripcion_EST" rows="2"
+                              style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;"></textarea>
+                </label>
+
+                <label style="font-weight: bold; color: #34495e;">Horario:
+                    <input type="text" name="Horario" placeholder="Ej: 8:00 AM - 5:00 PM"
+                           style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;" />
+                </label>
+
+                <button type="submit" 
+                        style="margin-top: 10px; background-color: #27ae60; color: white; font-size: 16px; font-weight: bold; padding: 12px; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s;">
+                    Publicar destino
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer style="background-color: #2c3e50; color: white; padding: 40px 0; margin-top: 40px;">
+        <div style="max-width: 1000px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; padding: 0 30px;">
+            
+            <div style="flex: 1 1 250px; margin-bottom: 20px;">
+                <h3 style="margin-bottom: 10px;">🌍 Touristmo</h3>
+                <p style="line-height: 1.6;">Tu guía confiable para descubrir los mejores destinos turísticos de Panamá. Comparte tus lugares favoritos y conoce nuevos rincones.</p>
+            </div>
+
+            <div style="flex: 1 1 200px; margin-bottom: 20px;">
+                <h4 style="margin-bottom: 10px;">Enlaces útiles</h4>
+                <ul style="list-style: none; padding: 0; line-height: 1.8;">
+                    <li><a href="index.jsp" style="color: #ecf0f1; text-decoration: none;">Inicio</a></li>
+                    <li><a href="formulario.jsp" style="color: #ecf0f1; text-decoration: none;">Agregar destino</a></li>
+                    <li><a href="destinos.jsp" style="color: #ecf0f1; text-decoration: none;">Ver destinos</a></li>
+                </ul>
+            </div>
+
+            <div style="flex: 1 1 200px; margin-bottom: 20px;">
+                <h4 style="margin-bottom: 10px;">Contacto</h4>
+                <p style="line-height: 1.6;">Email: contacto@touristmo.com<br/>Teléfono: +507 6000-0000<br/>Panamá, Panamá</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; font-size: 14px; color: #bdc3c7;">
+            © 2025 Touristmo. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- Script JS para distritos -->
+    <script>
+        const distritosPorProvincia = {
+            "1": ["Bocas del Toro", "Changuinola", "Chiriquí Grande"],
+            "2": ["Aguadulce", "Antón", "La Pintada", "Natá", "Olá", "Penonomé"],
+            "3": ["Colón", "Chagres", "Donoso", "Portobelo", "Santa Isabel"],
+            "4": ["Alanje", "Barú", "Boquerón", "Boquete", "Bugaba", "David", "Dolega", "Gualaca", "Remedios", "Renacimiento", "San Félix", "San Lorenzo", "Tierras Altas"],
+            "5": ["Chepigana", "Pinogana"],
+            "6": ["Chitré", "La Arena", "Las Minas", "Los Pozos", "Ocú", "Parita", "Pesé", "Santa María"],
+            "7": ["Guararé", "Las Tablas", "Los Santos", "Macaracas", "Pedasí", "Pocrí", "Tonosí"],
+            "8": ["Panamá", "San Miguelito", "Chepo", "Chimán", "Balboa", "Taboga"],
+            "9": ["Arraiján", "La Chorrera", "Capira", "Chame", "San Carlos"],
+            "10": ["Atalaya", "Calobre", "Cañazas", "La Mesa", "Las Palmas", "Montijo", "Río de Jesús", "San Francisco", "Santa Fe", "Santiago", "Soná"]
+        };
+
+        document.getElementById("provincia").addEventListener("change", function () {
+            const provinciaSeleccionada = this.value;
+            const distritoSelect = document.getElementById("distrito");
+            distritoSelect.innerHTML = '<option value="">Seleccione un distrito</option>';
+
+            if (distritosPorProvincia[provinciaSeleccionada]) {
+                distritosPorProvincia[provinciaSeleccionada].forEach((distrito) => {
+                    const option = document.createElement("option");
+                    option.value = distrito;
+                    option.textContent = distrito;
+                    distritoSelect.appendChild(option);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

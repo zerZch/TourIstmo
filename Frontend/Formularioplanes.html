@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Plan Turístico</title>
+</head>
+<body style="margin: 0; font-family: Arial, sans-serif; background: #f0f4f8; display: flex; flex-direction: column; min-height: 100vh;">
+
+    <div style="flex: 1;">
+        <div style="max-width: 700px; margin: 40px auto; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 30px;">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">✈️ Nuevo Plan Turístico</h2>
+
+            <form action="GuardarPlan.jsp" method="post" style="display: flex; flex-direction: column; gap: 20px;">
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label for="nombre" style="font-weight: bold; color: #34495e;">Nombre del Plan:</label>
+                    <input type="text" id="nombre" name="Nombre" required 
+                           placeholder="Ej: Tour por Casco Viejo"
+                           style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; box-sizing: border-box; transition: border-color 0.3s;"
+                           onfocus="this.style.borderColor='#3498db'" onblur="this.style.borderColor='#e0e0e0'" />
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label for="descripcion" style="font-weight: bold; color: #34495e;">Descripción Principal:</label>
+                    <textarea id="descripcion" name="Descripcion" required rows="4"
+                              placeholder="Describe los atractivos y actividades incluidas en el plan..."
+                              style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; box-sizing: border-box; resize: vertical; transition: border-color 0.3s;"
+                              onfocus="this.style.borderColor='#3498db'" onblur="this.style.borderColor='#e0e0e0'"></textarea>
+                </div>
+
+                <div style="display: flex; gap: 15px;">
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+                        <label for="precio" style="font-weight: bold; color: #34495e;">Precio (USD):</label>
+                        <input type="number" id="precio" name="Precio" required min="0" step="0.01"
+                               placeholder="150.00"
+                               style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; box-sizing: border-box; transition: border-color 0.3s;"
+                               onfocus="this.style.borderColor='#3498db'" onblur="this.style.borderColor='#e0e0e0'" />
+                    </div>
+                    
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+                        <label for="personas" style="font-weight: bold; color: #34495e;">Cantidad de Personas:</label>
+                        <input type="number" id="personas" name="Cantidad_Personas" min="1" max="50" required
+                               placeholder="4"
+                               style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; box-sizing: border-box; transition: border-color 0.3s;"
+                               onfocus="this.style.borderColor='#3498db'" onblur="this.style.borderColor='#e0e0e0'" />
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label for="horarios" style="font-weight: bold; color: #34495e;">Horarios Disponibles:</label>
+                    <input type="text" id="horarios" name="Horarios_Disponibles"
+                           placeholder="Ej: 8:00 AM - 5:00 PM, Lunes a Viernes"
+                           style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; box-sizing: border-box; transition: border-color 0.3s;"
+                           onfocus="this.style.borderColor='#3498db'" onblur="this.style.borderColor='#e0e0e0'" />
+                </div>
+
+                <div style="display: flex; gap: 15px;">
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+                        <label for="fecha_inicio" style="font-weight: bold; color: #34495e;">Fecha de Inicio:</label>
+                        <input type="date" id="fecha_inicio" name="Fecha_Inicio" required
+                               style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; box-sizing: border-box; transition: border-color 0.3s;"
+                               onfocus="this.style.borderColor='#3498db'" onblur="this.style.borderColor='#e0e0e0'" />
+                    </div>
+                    
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+                        <label for="fecha_fin" style="font-weight: bold; color: #34495e;">Fecha de Fin:</label>
+                        <input type="date" id="fecha_fin" name="Fecha_Fin" required
+                               style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; box-sizing: border-box; transition: border-color 0.3s;"
+                               onfocus="this.style.borderColor='#3498db'" onblur="this.style.borderColor='#e0e0e0'" />
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label for="requisitos" style="font-weight: bold; color: #34495e;">Requisitos:</label>
+                    <textarea id="requisitos" name="Requisitos" rows="3"
+                              placeholder="Ej: Documento de identidad, ropa cómoda, protector solar..."
+                              style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; box-sizing: border-box; resize: vertical; transition: border-color 0.3s;"
+                              onfocus="this.style.borderColor='#3498db'" onblur="this.style.borderColor='#e0e0e0'"></textarea>
+                </div>
+
+                <div style="display: flex; gap: 15px;">
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+                        <label for="calificacion" style="font-weight: bold; color: #34495e;">Calificación Promedio:</label>
+                        <input type="number" id="calificacion" step="0.1" name="Promedio_Calificacion" min="0" max="5"
+                               placeholder="4.5"
+                               style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; box-sizing: border-box; transition: border-color 0.3s;"
+                               onfocus="this.style.borderColor='#3498db'" onblur="this.style.borderColor='#e0e0e0'" />
+                    </div>
+                    
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+                        <label for="fecha_publicacion" style="font-weight: bold; color: #34495e;">Fecha de Publicación:</label>
+                        <input type="date" id="fecha_publicacion" name="Fecha_Publicacion"
+                               style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; box-sizing: border-box; transition: border-color 0.3s;"
+                               onfocus="this.style.borderColor='#3498db'" onblur="this.style.borderColor='#e0e0e0'" />
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label for="mapa_url" style="font-weight: bold; color: #34495e;">URL de Ubicación (Google Maps):</label>
+                    <input type="url" id="mapa_url" name="Ubicacion_Mapa_URL" 
+                           placeholder="https://maps.google.com/..."
+                           style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; box-sizing: border-box; transition: border-color 0.3s;"
+                           onfocus="this.style.borderColor='#3498db'" onblur="this.style.borderColor='#e0e0e0'" />
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label for="comprar_url" style="font-weight: bold; color: #34495e;">URL para Reservar/Comprar:</label>
+                    <input type="url" id="comprar_url" name="Comprar_URL" 
+                           placeholder="https://..."
+                           style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; box-sizing: border-box; transition: border-color 0.3s;"
+                           onfocus="this.style.borderColor='#3498db'" onblur="this.style.borderColor='#e0e0e0'" />
+                </div>
+
+                <button type="submit" 
+                        style="margin-top: 20px; background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; font-size: 16px; font-weight: bold; padding: 15px; border: none; border-radius: 10px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);"
+                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(39, 174, 96, 0.4)'"
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(39, 174, 96, 0.3)'">
+                    🚀 Publicar Plan Turístico
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer style="background-color: #d0f0fd; padding: 60px 30px; font-family: Arial, sans-serif; color: #1a1a1a;">
+        <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+
+            <!-- Logo y redes -->
+            <div style="flex: 1 1 200px;">
+                <h2 style="font-weight: bold; font-size: 22px; margin-bottom: 10px;">🌴 Touristmo</h2>
+                <p style="margin-bottom: 20px;">Explora, comparte y disfruta de los mejores destinos turísticos de Panamá.</p>
+                <div style="font-size: 22px; display: flex; gap: 15px;">
+                    <a href="#" style="color: #1a1a1a; text-decoration: none;">📘</a>
+                    <a href="#" style="color: #1a1a1a; text-decoration: none;">📷</a>
+                    <a href="#" style="color: #1a1a1a; text-decoration: none;">🐦</a>
+                    <a href="#" style="color: #1a1a1a; text-decoration: none;">💼</a>
+                    <a href="#" style="color: #1a1a1a; text-decoration: none;">📺</a>
+                </div>
+            </div>
+
+            <!-- Navegación -->
+            <div style="flex: 1 1 150px;">
+                <h4 style="font-weight: bold; margin-bottom: 10px;">Touristmo</h4>
+                <ul style="list-style: none; padding: 0; line-height: 1.8; margin: 0;">
+                    <li><a href="index.jsp" style="color: #1a1a1a; text-decoration: none;">Inicio</a></li>
+                    <li><a href="formulario.jsp" style="color: #1a1a1a; text-decoration: none;">Agregar Destino</a></li>
+                    <li><a href="planes.jsp" style="color: #1a1a1a; text-decoration: none;">Planes Turísticos</a></li>
+                    <li><a href="#" style="color: #1a1a1a; text-decoration: none;">Blog</a></li>
+                    <li><a href="#" style="color: #1a1a1a; text-decoration: none;">Reservar</a></li>
+                </ul>
+            </div>
+
+            <!-- Trabajo y Soporte -->
+            <div style="flex: 1 1 150px;">
+                <h4 style="font-weight: bold; margin-bottom: 10px;">Colabora</h4>
+                <ul style="list-style: none; padding: 0; line-height: 1.8; margin: 0;">
+                    <li><a href="#" style="color: #1a1a1a; text-decoration: none;">Únete al equipo</a></li>
+                    <li><a href="#" style="color: #1a1a1a; text-decoration: none;">Publica tus planes</a></li>
+                </ul>
+
+                <h4 style="font-weight: bold; margin-top: 20px; margin-bottom: 10px;">Soporte</h4>
+                <ul style="list-style: none; padding: 0; line-height: 1.8; margin: 0;">
+                    <li><a href="#" style="color: #1a1a1a; text-decoration: none;">Términos y Condiciones</a></li>
+                    <li><a href="#" style="color: #1a1a1a; text-decoration: none;">Privacidad</a></li>
+                    <li><a href="#" style="color: #1a1a1a; text-decoration: none;">Ayuda</a></li>
+                </ul>
+            </div>
+
+            <!-- App y pagos -->
+            <div style="flex: 1 1 200px;">
+                <h4 style="font-weight: bold; margin-bottom: 10px;">Métodos de Pago</h4>
+                <div style="display: flex; gap: 10px; margin-bottom: 20px; align-items: center;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" style="height: 25px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard" style="height: 25px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" style="height: 25px;">
+                </div>
+
+                <h4 style="font-weight: bold; margin-bottom: 10px;">Descarga la App</h4>
+                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" style="height: 40px;">
+            </div>
+        </div>
+
+        <div style="text-align: center; font-size: 14px; color: #666; margin-top: 40px; border-top: 1px solid #b8e6f4; padding-top: 20px;">
+            © 2025 Touristmo. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // Validación básica del formulario
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const fechaInicio = new Date(document.getElementById('fecha_inicio').value);
+            const fechaFin = new Date(document.getElementById('fecha_fin').value);
+            
+            if (fechaFin <= fechaInicio) {
+                alert('La fecha de fin debe ser posterior a la fecha de inicio');
+                e.preventDefault();
+                return false;
+            }
+            
+            const precio = parseFloat(document.getElementById('precio').value);
+            if (precio <= 0) {
+                alert('El precio debe ser mayor a 0');
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Establecer fecha mínima como hoy
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('fecha_inicio').min = today;
+        document.getElementById('fecha_fin').min = today;
+        document.getElementById('fecha_publicacion').value = today;
+    </script>
+</body>
+</html>
