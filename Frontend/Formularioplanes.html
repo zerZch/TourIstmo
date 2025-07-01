@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Plan Turístico</title>
+    <style>
+        :root {
+            --primary-dark: #283951;
+            --primary-teal: #588684;
+            --primary-green: #8BAD65;
+            --accent-orange: #D57133;
+            --neutral-light: #E2E1E0;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary-dark) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        .main-container {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            min-height: 700px;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
+            margin: auto;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .left-panel {
+            background: linear-gradient(135deg, var(--primary-dark) 100%);
+            width: 380px;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .left-panel::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-20px, -20px) rotate(5deg); }
+        }
+        
+        .logo-section {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-green), var(--neutral-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .logo-text {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .progress-section {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .progress-title {
+            color: white;
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+        
+        .progress-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 0;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin: 0 -16px;
+        }
+        
+        .step:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .step-indicator {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .step.active .step-indicator {
+            background: var(--primary-green);
+            box-shadow: 0 0 0 4px rgba(139, 173, 101, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .step.completed .step-indicator {
+            background: white;
+            color: var(--primary-green);
+        }
+        
+        .step.completed .step-indicator::after {
+            content: '✓';
+            font-size: 12px;
+        }
+        
+        .step-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .step.active .step-text {
+            color: white;
+            font-weight: 600;
+        }
+        
+        .step.completed .step-text {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .plan-preview {
+            position: relative;
+            z-index: 2;
+            margin-top: 40px;
+        }
+        
+        .preview-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, var(--primary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+        
+        .preview-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            line-height: 1.5;
+            transition: var(--transition);
+        }
+        
+        .plan-info {
+            margin-top: 20px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+        
+        .plan-info.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .plan-name {
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .plan-details {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .right-panel {
+            flex: 1;
+            padding: 50px 50px 40px;
+            background: white;
+            overflow-y: auto;
+        }
+        
+        .form-section {
+            display: none;
+        }
+        
+        .form-section.active {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-header {
+            margin-bottom: 40px;
+        }
+        
+        .form-title {
+            color: var(--primary-dark);
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .form-subtitle {
+            color: #6B7280;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .success-message {
+            background: linear-gradient(135deg, var(--primary-green));
+            color: white;
+            padding: 16px 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #E5E7EB;
+            border-radius: 16px;
+            font-size: 16px;
+            transition: var(--transition);
+            background: #FAFAFA;
+            color: var(--primary-dark);
+            font-family: inherit;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-teal);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(88, 134, 132, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #9CA3AF;
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid #E5E7EB;
+        }
+        
+        .btn {
+            padding: 16px 32px;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn-secondary {
+            background: #F3F4F6;
+            color: #6B7280;
+            flex: 1;
+        }
+        
+        .btn-secondary:hover:not(:disabled) {
+            background: #E5E7EB;
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green));
+            color: white;
+            flex: 2;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(88, 134, 132, 0.3);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            margin-top: 30px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-green), white);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+            width: 20%;
+        }
+        
+        .field-validation {
+            border-color: #EF4444 !important;
+            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1) !important;
+        }
+        
+        .field-valid {
+            border-color: var(--primary-green) !important;
+            box-shadow: 0 0 0 4px rgba(139, 173, 101, 0.1) !important;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #d0f0fd;
+            padding: 60px 30px;
+            font-family: Arial, sans-serif;
+            color: #1a1a1a;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-section {
+            flex: 1 1 200px;
+        }
+
+        .footer-logo {
+            font-weight: bold;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section h4 {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .footer-section ul li a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .footer-social {
+            font-size: 22px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .footer-payments img {
+            height: 25px;
+            margin-right: 10px;
+        }
+
+        .footer-app img {
+            height: 40px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-top: 40px;
+            border-top: 1px solid #b8e6f4;
+            padding-top: 20px;
+        }
+        
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+                max-width: 600px;
+            }
+            
+            .left-panel {
+                width: 100%;
+                padding: 40px 30px 30px;
+                min-height: auto;
+            }
+            
+            .progress-steps {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .plan-preview {
+                display: none;
+            }
+            
+            .right-panel {
+                padding: 30px;
+            }
+            
+            .form-title {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-container {
+                margin: 10px;
+                min-height: auto;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .right-panel {
+                padding: 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="logo-section">
+                <div class="logo">
+                    <div class="logo-icon">✈️</div>
+                    <div class="logo-text">TOURISTMO</div>
+                </div>
+                
+                <div class="progress-section">
+                    <h2 class="progress-title" id="progressTitle">¡Crea un plan turístico increíble!</h2>
+                    
+                    <div class="progress-steps">
+                        <div class="step active" data-step="1">
+                            <div class="step-indicator">1</div>
+                            <div class="step-text">Información básica</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-indicator">2</div>
+                            <div class="step-text">Descripción y fechas</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-indicator">3</div>
+                            <div class="step-text">Detalles y precios</div>
+                        </div>
+                        <div class="step" data-step="4">
+                            <div class="step-indicator">4</div>
+                            <div class="step-text">URLs y ubicación</div>
+                        </div>
+                        <div class="step" data-step="5">
+                            <div class="step-indicator">5</div>
+                            <div class="step-text">Confirmar</div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="plan-preview">
+                <div class="preview-image" id="previewImage">✈️</div>
+                <div class="preview-text" id="previewText">
+                    Tu plan turístico se unirá a nuestra colección de experiencias únicas en Panamá
+                </div>
+                <div class="plan-info" id="planInfo">
+                    <div class="plan-name" id="planName">Nombre del plan</div>
+                    <div class="plan-details" id="planDetails">
+                        Completa el formulario para ver los detalles
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <div class="form-header">
+                <h1 class="form-title" id="formTitle">Información Básica</h1>
+                <p class="form-subtitle" id="formSubtitle">Comencemos con los datos básicos de tu plan turístico.</p>
+            </div>
+            
+            <div id="successMessage" class="success-message">
+                ¡Plan turístico registrado exitosamente! 🎉
+            </div>
+            
+            <form id="planForm" action="GuardarPlan.jsp" method="post">
+                <!-- Sección 1: Información básica -->
+                <div class="form-section active" data-section="1">
+                    <div class="form-group">
+                        <label class="form-label" for="nombre">Nombre del Plan</label>
+                        <input type="text" name="Nombre" id="nombre" class="form-input" required 
+                               placeholder="Ej: Tour por Casco Viejo, Aventura en Volcán Barú..." />
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="precio">Precio (USD)</label>
+                            <input type="number" name="Precio" id="precio" class="form-input" required 
+                                   min="0" step="0.01" placeholder="150.00" />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="personas">Cantidad de Personas</label>
+                            <input type="number" name="Cantidad_Personas" id="personas" class="form-input" 
+                                   min="1" max="50" required placeholder="4" />
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sección 2: Descripción y fechas -->
+                <div class="form-section" data-section="2">
+                    <div class="form-group">
+                        <label class="form-label" for="descripcion">Descripción Principal</label>
+                        <textarea name="Descripcion" id="descripcion" class="form-textarea" required rows="4"
+                                  placeholder="Describe los atractivos y actividades incluidas en el plan..."></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="fecha_inicio">Fecha de Inicio</label>
+                            <input type="date" name="Fecha_Inicio" id="fecha_inicio" class="form-input" required />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="fecha_fin">Fecha de Fin</label>
+                            <input type="date" name="Fecha_Fin" id="fecha_fin" class="form-input" required />
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sección 3: Detalles y precios -->
+                <div class="form-section" data-section="3">
+                    <div class="form-group">
+                        <label class="form-label" for="horarios">Horarios Disponibles</label>
+                        <input type="text" name="Horarios_Disponibles" id="horarios" class="form-input"
+                               placeholder="Ej: 8:00 AM - 5:00 PM, Lunes a Viernes" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="requisitos">Requisitos</label>
+                        <textarea name="Requisitos" id="requisitos" class="form-textarea" rows="3"
+                                  placeholder="Ej: Documento de identidad, ropa cómoda, protector solar..."></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="calificacion">Calificación Promedio</label>
+                            <input type="number" name="Promedio_Calificacion" id="calificacion" class="form-input"
+                                   step="0.1" min="0" max="5" placeholder="4.5" />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="fecha_publicacion">Fecha de Publicación</label>
+                            <input type="date" name="Fecha_Publicacion" id="fecha_publicacion" class="form-input" />
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sección 4: URLs y ubicación -->
+                <div class="form-section" data-section="4">
+                    <div class="form-group">
+                        <label class="form-label" for="mapa_url">URL de Ubicación (Google Maps)</label>
+                        <input type="url" name="Ubicacion_Mapa_URL" id="mapa_url" class="form-input"
+                               placeholder="https://maps.google.com/..." />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="comprar_url">URL para Reservar/Comprar</label>
+                        <input type="url" name="Comprar_URL" id="comprar_url" class="form-input"
+                               placeholder="https://..." />
+                    </div>
+                </div>
+                
+                <!-- Sección 5: Confirmación -->
+                <div class="form-section" data-section="5">
+                    <div class="form-group">
+                        <h3 style="color: var(--primary-dark); margin-bottom: 20px;">Resumen del Plan Turístico</h3>
+                        <div id="summaryContent" style="background: #F9FAFB; padding: 20px; border-radius: 16px; border: 2px solid #E5E7EB;">
+                            <p>Completa las secciones anteriores para ver el resumen.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" onclick="previousStep()" disabled>
+                        ← Anterior
+                    </button>
+                    <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextStep()">
+                        Siguiente →
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">
+                        🚀 Publicar Plan Turístico
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2 class="footer-logo">🌴 Touristmo</h2>
+                <p style="margin-bottom: 20px;">Explora, comparte y disfruta de los mejores destinos turísticos de Panamá.</p>
+                <div class="footer-social">
+                    <a href="#">📘</a>
+                    <a href="#">📷</a>
+                    <a href="#">🐦</a>
+                    <a href="#">💼</a>
+                    <a href="#">📺</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Touristmo</h4>
+                <ul>
+                    <li><a href="index.jsp">Inicio</a></li>
+                    <li><a href="formulario.jsp">Agregar Destino</a></li>
+                    <li><a href="planes.jsp">Planes Turísticos</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Reservar</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Colabora</h4>
+                <ul>
+                    <li><a href="#">Únete al equipo</a></li>
+                    <li><a href="#">Publica tus planes</a></li>
+                </ul>
+                <h4 style="margin-top: 20px;">Soporte</h4>
+                <ul>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Ayuda</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Métodos de Pago</h4>
+                <div class="footer-payments" style="margin-bottom: 20px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                </div>
+                <h4>Descarga la App</h4>
+                <div class="footer-app">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 Touristmo. Todos los derechos reservados.
+        </div>
+    </footer>
+    
+    <script>
+       let currentStep = 1;
+const totalSteps = 5;
+
+const stepContent = {
+    1: {
+        title: "Información Básica",
+        subtitle: "Comencemos con los datos básicos de tu plan turístico."
+    },
+    2: {
+        title: "Descripción y Fechas",
+        subtitle: "Cuéntanos sobre las actividades y fechas disponibles."
+    },
+    3: {
+        title: "Detalles y Precios",
+        subtitle: "Información sobre horarios, requisitos y calificaciones."
+    },
+    4: {
+        title: "URLs y Ubicación",
+        subtitle: "Enlaces importantes y ubicación del plan."
+    },
+    5: {
+        title: "Confirmar Registro",
+        subtitle: "Revisa la información antes de publicar tu plan."
+    }
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateStepDisplay();
+    initializeDates();
+    setupEventListeners();
+});
+
+function initializeDates() {
+    const today = new Date().toISOString().split('T')[0];
+    const fechaInicioInput = document.getElementById('fecha_inicio');
+    const fechaFinInput = document.getElementById('fecha_fin');
+    const fechaPublicacionInput = document.getElementById('fecha_publicacion');
+    
+    if (fechaInicioInput) fechaInicioInput.min = today;
+    if (fechaFinInput) fechaFinInput.min = today;
+    if (fechaPublicacionInput) fechaPublicacionInput.value = today;
+}
+
+function setupEventListeners() {
+    // Validación en tiempo real
+    const inputs = document.querySelectorAll('.form-input, .form-textarea');
+    inputs.forEach(input => {
+        input.addEventListener('input', updatePreview);
+        input.addEventListener('blur', validateField);
+    });
+
+    // Validación de fechas
+    const fechaInicio = document.getElementById('fecha_inicio');
+    const fechaFin = document.getElementById('fecha_fin');
+    
+    if (fechaInicio) {
+        fechaInicio.addEventListener('change', function() {
+            if (fechaFin) {
+                fechaFin.min = this.value;
+                validateDates();
+            }
+        });
+    }
+    
+    if (fechaFin) {
+        fechaFin.addEventListener('change', validateDates);
+    }
+
+    // Submit del formulario
+    const form = document.getElementById('planForm');
+    if (form) {
+        form.addEventListener('submit', handleSubmit);
+    }
+}
+
+function nextStep() {
+    if (validateCurrentStep()) {
+        if (currentStep < totalSteps) {
+            currentStep++;
+            updateStepDisplay();
+            updatePreview();
+        }
+    }
+}
+
+function previousStep() {
+    if (currentStep > 1) {
+        currentStep--;
+        updateStepDisplay();
+    }
+}
+
+function updateStepDisplay() {
+    // Actualizar indicadores de pasos
+    const steps = document.querySelectorAll('.step');
+    steps.forEach((step, index) => {
+        const stepNumber = index + 1;
+        step.classList.remove('active', 'completed');
+        
+        if (stepNumber === currentStep) {
+            step.classList.add('active');
+        } else if (stepNumber < currentStep) {
+            step.classList.add('completed');
+        }
+    });
+
+    // Actualizar secciones del formulario
+    const sections = document.querySelectorAll('.form-section');
+    sections.forEach((section, index) => {
+        section.classList.remove('active');
+        if (index + 1 === currentStep) {
+            section.classList.add('active');
+        }
+    });
+
+    // Actualizar títulos
+    const formTitle = document.getElementById('formTitle');
+    const formSubtitle = document.getElementById('formSubtitle');
+    const progressTitle = document.getElementById('progressTitle');
+    
+    if (formTitle && stepContent[currentStep]) {
+        formTitle.textContent = stepContent[currentStep].title;
+    }
+    if (formSubtitle && stepContent[currentStep]) {
+        formSubtitle.textContent = stepContent[currentStep].subtitle;
+    }
+    if (progressTitle) {
+        if (currentStep === totalSteps) {
+            progressTitle.textContent = "¡Ya casi terminas!";
+        } else {
+            progressTitle.textContent = "¡Crea un plan turístico increíble!";
+        }
+    }
+
+    // Actualizar barra de progreso
+    const progressFill = document.getElementById('progressFill');
+    if (progressFill) {
+        const progress = (currentStep / totalSteps) * 100;
+        progressFill.style.width = progress + '%';
+    }
+
+    // Actualizar botones
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
+
+    if (prevBtn) {
+        prevBtn.disabled = currentStep === 1;
+    }
+
+    if (nextBtn && submitBtn) {
+        if (currentStep === totalSteps) {
+            nextBtn.style.display = 'none';
+            submitBtn.style.display = 'inline-flex';
+            generateSummary();
+        } else {
+            nextBtn.style.display = 'inline-flex';
+            submitBtn.style.display = 'none';
+        }
+    }
+}
+
+function validateCurrentStep() {
+    const currentSection = document.querySelector(`.form-section[data-section="${currentStep}"]`);
+    if (!currentSection) return true;
+
+    const requiredFields = currentSection.querySelectorAll('[required]');
+    let isValid = true;
+
+    requiredFields.forEach(field => {
+        if (!validateField({ target: field })) {
+            isValid = false;
+        }
+    });
+
+    if (currentStep === 2) {
+        isValid = isValid && validateDates();
+    }
+
+    return isValid;
+}
+
+function validateField(event) {
+    const field = event.target;
+    const value = field.value.trim();
+    let isValid = true;
+    let errorMessage = '';
+
+    // Remover clases de error previas
+    field.classList.remove('error');
+    const existingError = field.parentNode.querySelector('.error-message');
+    if (existingError) {
+        existingError.remove();
+    }
+
+    // Validaciones específicas
+    if (field.hasAttribute('required') && !value) {
+        isValid = false;
+        errorMessage = 'Este campo es obligatorio';
+    } else if (field.type === 'email' && value && !isValidEmail(value)) {
+        isValid = false;
+        errorMessage = 'Por favor ingresa un email válido';
+    } else if (field.type === 'url' && value && !isValidURL(value)) {
+        isValid = false;
+        errorMessage = 'Por favor ingresa una URL válida';
+    } else if (field.type === 'number') {
+        const num = parseFloat(value);
+        const min = parseFloat(field.min);
+        const max = parseFloat(field.max);
+        
+        if (value && isNaN(num)) {
+            isValid = false;
+            errorMessage = 'Por favor ingresa un número válido';
+        } else if (!isNaN(min) && num < min) {
+            isValid = false;
+            errorMessage = `El valor mínimo es ${min}`;
+        } else if (!isNaN(max) && num > max) {
+            isValid = false;
+            errorMessage = `El valor máximo es ${max}`;
+        }
+    }
+
+    // Mostrar error si existe
+    if (!isValid) {
+        field.classList.add('error');
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.textContent = errorMessage;
+        field.parentNode.appendChild(errorDiv);
+    }
+
+    return isValid;
+}
+
+function validateDates() {
+    const fechaInicioInput = document.getElementById('fecha_inicio');
+    const fechaFinInput = document.getElementById('fecha_fin');
+    
+    if (!fechaInicioInput || !fechaFinInput) return true;
+    
+    const fechaInicio = new Date(fechaInicioInput.value);
+    const fechaFin = new Date(fechaFinInput.value);
+    
+    // Remover errores previos
+    fechaFinInput.classList.remove('error');
+    const existingError = fechaFinInput.parentNode.querySelector('.error-message');
+    if (existingError) {
+        existingError.remove();
+    }
+    
+    if (fechaInicioInput.value && fechaFinInput.value && fechaFin <= fechaInicio) {
+        fechaFinInput.classList.add('error');
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.textContent = 'La fecha de fin debe ser posterior a la fecha de inicio';
+        fechaFinInput.parentNode.appendChild(errorDiv);
+        return false;
+    }
+    
+    return true;
+}
+
+function updatePreview() {
+    const nombre = document.getElementById('nombre')?.value || '';
+    const precio = document.getElementById('precio')?.value || '';
+    const personas = document.getElementById('personas')?.value || '';
+    const descripcion = document.getElementById('descripcion')?.value || '';
+    
+    const planName = document.getElementById('planName');
+    const planDetails = document.getElementById('planDetails');
+    const previewText = document.getElementById('previewText');
+    
+    if (planName) {
+        planName.textContent = nombre || 'Nombre del plan';
+    }
+    
+    if (planDetails) {
+        if (precio && personas) {
+            planDetails.innerHTML = `
+                <div style="margin-bottom: 8px;">💰 $${precio} USD</div>
+                <div style="margin-bottom: 8px;">👥 Hasta ${personas} personas</div>
+                ${descripcion ? `<div>📝 ${descripcion.substring(0, 100)}${descripcion.length > 100 ? '...' : ''}</div>` : ''}
+            `;
+        } else {
+            planDetails.textContent = 'Completa el formulario para ver los detalles';
+        }
+    }
+    
+    if (previewText && nombre) {
+        previewText.textContent = `"${nombre}" se unirá a nuestra colección de experiencias únicas en Panamá`;
+    }
+}
+
+function generateSummary() {
+    const summaryContent = document.getElementById('summaryContent');
+    if (!summaryContent) return;
+    
+    const formData = new FormData(document.getElementById('planForm'));
+    const data = Object.fromEntries(formData.entries());
+    
+    const summary = `
+        <div style="display: grid; gap: 15px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 1.5em;">🎯</span>
+                <div>
+                    <strong style="color: var(--primary-dark);">${data.Nombre || 'Sin nombre'}</strong>
+                    <div style="color: var(--gray-600); font-size: 0.9em;">Plan turístico</div>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span>💰</span>
+                    <div>
+                        <div style="font-weight: 500;">$${data.Precio || '0'} USD</div>
+                        <div style="font-size: 0.8em; color: var(--gray-500);">Precio</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span>👥</span>
+                    <div>
+                        <div style="font-weight: 500;">${data.Cantidad_Personas || '0'} personas</div>
+                        <div style="font-size: 0.8em; color: var(--gray-500);">Capacidad máxima</div>
+                    </div>
+                </div>
+            </div>
+            
+            ${data.Descripcion ? `
+            <div style="display: flex; gap: 8px;">
+                <span style="margin-top: 2px;">📝</span>
+                <div>
+                    <div style="font-weight: 500; margin-bottom: 4px;">Descripción:</div>
+                    <div style="color: var(--gray-600); font-size: 0.9em; line-height: 1.4;">${data.Descripcion}</div>
+                </div>
+            </div>
+            ` : ''}
+            
+            ${data.Fecha_Inicio && data.Fecha_Fin ? `
+            <div style="display: flex; gap: 8px;">
+                <span style="margin-top: 2px;">📅</span>
+                <div>
+                    <div style="font-weight: 500; margin-bottom: 4px;">Fechas disponibles:</div>
+                    <div style="color: var(--gray-600); font-size: 0.9em;">
+                        Del ${formatDate(data.Fecha_Inicio)} al ${formatDate(data.Fecha_Fin)}
+                    </div>
+                </div>
+            </div>
+            ` : ''}
+            
+            ${data.Horarios_Disponibles ? `
+            <div style="display: flex; gap: 8px;">
+                <span style="margin-top: 2px;">🕐</span>
+                <div>
+                    <div style="font-weight: 500; margin-bottom: 4px;">Horarios:</div>
+                    <div style="color: var(--gray-600); font-size: 0.9em;">${data.Horarios_Disponibles}</div>
+                </div>
+            </div>
+            ` : ''}
+            
+            ${data.Promedio_Calificacion ? `
+            <div style="display: flex; gap: 8px;">
+                <span style="margin-top: 2px;">⭐</span>
+                <div>
+                    <div style="font-weight: 500;">${data.Promedio_Calificacion}/5.0</div>
+                    <div style="font-size: 0.8em; color: var(--gray-500);">Calificación promedio</div>
+                </div>
+            </div>
+            ` : ''}
+        </div>
+    `;
+    
+    summaryContent.innerHTML = summary;
+}
+
+function handleSubmit(event) {
+    event.preventDefault();
+    
+    if (!validateCurrentStep()) {
+        return;
+    }
+    
+    // Mostrar mensaje de éxito
+    const successMessage = document.getElementById('successMessage');
+    if (successMessage) {
+        successMessage.style.display = 'block';
+        successMessage.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Simular envío (en un caso real aquí harías el POST al servidor)
+    setTimeout(() => {
+        alert('¡Plan turístico registrado exitosamente! 🎉\n\nEn breve aparecerá en nuestra plataforma.');
+        
+        // Opcional: reiniciar formulario o redirigir
+        // window.location.href = 'planes.jsp';
+    }, 1000);
+}
+
+// Funciones auxiliares
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function isValidURL(url) {
+    try {
+        new URL(url);
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+function formatDate(dateString) {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('es-ES', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    });
+}
+
+// Animaciones y efectos adicionales
+function addLoadingState(button) {
+    const originalText = button.textContent;
+    button.disabled = true;
+    button.textContent = 'Procesando...';
+    
+    setTimeout(() => {
+        button.disabled = false;
+        button.textContent = originalText;
+    }, 2000);
+}
+
+// Atajos de teclado
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey || event.metaKey) {
+        switch(event.key) {
+            case 'ArrowRight':
+                event.preventDefault();
+                nextStep();
+                break;
+            case 'ArrowLeft':
+                event.preventDefault();
+                previousStep();
+                break;
+            case 'Enter':
+                if (currentStep === totalSteps) {
+                    event.preventDefault();
+                    document.getElementById('planForm').dispatchEvent(new Event('submit'));
+                }
+                break;
+        }
+    }
+});
+
+// Funciones globales para los botones HTML
+window.nextStep = nextStep;
+window.previousStep = previousStep;
+    </script>
+</body>
+</html>
