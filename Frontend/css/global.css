@@ -1,0 +1,91 @@
+/* ===== TOURISTMO - GLOBAL STYLES ===== */
+/* Sistema de turismo para Panamá */
+
+/* ===== VARIABLES GLOBALES ===== */
+:root {
+    /* Paleta de colores touristmo */
+    --primary-dark: #283951;      /* Azul oscuro principal */
+    --primary-teal: #588684;      /* Verde-azul secundario */
+    --primary-green: #8BAD65;     /* Verde natural */
+    --accent-orange: #D57133;     /* Naranja de acento */
+    --neutral-light: #E2E1E0;     /* Gris claro neutro */
+    
+    /* Gradientes temáticos */
+    --gradient-primary: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-teal) 100%);
+    --gradient-nature: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-green) 100%);
+    --gradient-warm: linear-gradient(135deg, var(--accent-orange) 0%, #E8955A 100%);
+    --gradient-overlay: linear-gradient(0deg, rgba(40, 57, 81, 0.7) 0%, rgba(40, 57, 81, 0.3) 100%);
+    
+    /* Colores de interfaz */
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F8F9FA;
+    --bg-light: var(--neutral-light);
+    --text-primary: var(--primary-dark);
+    --text-secondary: #5A6B7D;
+    --text-muted: #8A9BA8;
+    --text-white: #FFFFFF;
+    
+    /* Colores de estado */
+    --success: #4CAF50;
+    --warning: #FFA726;
+    --error: #E74C3C;
+    --info: var(--primary-teal);
+    
+    /* Bordes y sombras */
+    --border-color: #E1E8ED;
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-xl: 16px;
+    --border-radius-full: 50px;
+    
+    /* Sombras */
+    --shadow-sm: 0 1px 3px rgba(40, 57, 81, 0.08);
+    --shadow-md: 0 4px 12px rgba(40, 57, 81, 0.12);
+    --shadow-lg: 0 8px 25px rgba(40, 57, 81, 0.15);
+    --shadow-xl: 0 15px 35px rgba(40, 57, 81, 0.20);
+    
+    /* Transiciones */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Espaciado */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+    
+    /* Tipografía */
+    --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-family-display: 'Poppins', var(--font-family-primary);
+    
+    /* Tamaños de fuente */
+    --text-xs: 0.75rem;     /* 12px */
+    --text-sm: 0.875rem;    /* 14px */
+    --text-base: 1rem;      /* 16px */
+    --text-lg: 1.125rem;    /* 18px */
+    --text-xl: 1.25rem;     /* 20px */
+    --text-2xl: 1.5rem;     /* 24px */
+    --text-3xl: 1.875rem;   /* 30px */
+    --text-4xl: 2.25rem;    /* 36px */
+    --text-5xl: 3rem;       /* 48px */
+    
+    /* Pesos de fuente */
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    
+    /* Z-index */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+}
