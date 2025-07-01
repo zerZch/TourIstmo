@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tourIstmo | Inicio</title>
+  <link rel="stylesheet" href="css/paginaprincipal.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Modak&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Navbar Flotante -->
+ <nav class="floating-navbar" id="navbar">
+    <!-- Menú Izquierdo -->
+    <div class="menu-left">
+        <a href="#destino" class="nav-link">Destino</a>
+        <a href="#planes" class="nav-link">Planes</a>
+        <a href="#perfil" class="nav-link">Perfil</a>
+    </div>
+
+    <!-- Logo Central -->
+    <div class="menu-center">
+        <a href="#" class="menu-title">
+            <img class="logo-icon"  src="img/logo.svg" alt="">
+            <span>TourIstmo</span>
+        </a>
+    </div>
+
+    <!-- Menú Derecho -->
+    <div class="menu-right">
+        <a href="#login" class="cta-button-nav">Login</a>
+    </div>
+
+    <!-- Menú móvil hamburguesa -->
+    <div class="mobile-menu-toggle" id="mobileToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<!-- ===== Hero Section ===== -->
+<section class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-title">Explora las maravillas de Panamá</h1>
+    <p class="hero-subtitle">Un lugar donde la naturaleza y la aventura se unen</p>
+    <a href="#destinos" class="hero-cta">
+      <span>Descubre más</span>
+      <span>→</span>
+    </a>
+  </div>
+  
+  <div class="hero-controls">
+    <button class="hero-control" onclick="previousHero()">‹</button>
+    <button class="hero-control play" onclick="togglePlay()">⏸</button>
+  </div>
+</section>
+
+<!-- ===== Main Content ===== -->
+<main class="main-content">
+  <!-- ===== Destinos destacados ===== -->
+  <section class="container" id="destinos">
+    <h2 class="section-title">Top 6 destinos mejor valorados</h2>
+
+    <div class="carousel-wrapper">
+      <button class="car-btn left" data-target="destCarousel">‹</button>
+      <div class="carousel" id="destCarousel">
+        <!-- Las cartas se cargarán aquí dinámicamente -->
+      </div>
+      <button class="car-btn right" data-target="destCarousel">›</button>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="destino-pagina.jsp" class="btn-primary">Ver todos los destinos</a>
+    </div>
+  </section>
+
+  <!-- ===== Planes destacados ===== -->
+  <section class="container" style="margin-top: var(--spacing-3xl);">
+    <h2 class="section-title">Top 6 planes mejor valorados</h2>
+
+    <div class="carousel-wrapper">
+      <button class="car-btn left" data-target="planCarousel">‹</button>
+      <div class="carousel" id="planCarousel">
+        <!-- Las cartas se cargarán aquí dinámicamente -->
+      </div>
+      <button class="car-btn right" data-target="planCarousel">›</button>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="planes-pagina.jsp" class="btn-primary">Ver todos los planes</a>
+    </div>
+  </section>
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="footer-container">
+      <div class="footer-grid">
+          <!-- Logo y descripción -->
+          <div class="footer-brand">
+              <a href="#" class="footer-logo">
+                  <img class="logo-icon"  src="img/logowhite.png" alt="">
+                  <span class="footer-logo-text">TourIstmo</span>
+              </a>
+              <p class="footer-description">
+                  Explora, comparte y disfruta de los mejores destinos turísticos de Panamá. 
+                  Tu aventura comienza aquí.
+              </p>
+          </div>
+
+          <!-- Navegación principal -->
+          <div class="footer-section">
+              <h4>TourIstmo</h4>
+              <ul class="footer-links">
+                  <li><a href="index.jsp">Inicio</a></li>
+                  <li><a href="formulario.jsp">Agregar Destino</a></li>
+                  <li><a href="planes.jsp">Planes Turísticos</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Reservar</a></li>
+              </ul>
+          </div>
+
+          <!-- Colaboración y Soporte -->
+          <div class="footer-section">
+              <h4>Colabora</h4>
+              <ul class="footer-links">
+                  <li><a href="#">Únete al equipo</a></li>
+                  <li><a href="#">Publica tus planes</a></li>
+              </ul>
+              
+              <h4 style="margin-top: var(--spacing-lg);">Soporte</h4>
+              <ul class="footer-links">
+                  <li><a href="#">Términos y Condiciones</a></li>
+                  <li><a href="#">Privacidad</a></li>
+                  <li><a href="#">Ayuda</a></li>
+              </ul>
+          </div>
+
+          <!-- Métodos de pago y app -->
+          <div class="footer-section">
+              <div class="footer-payments">
+                  <h4>Métodos de Pago</h4>
+                  <div class="payment-methods">
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
+                      </div>
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+                      </div>
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="footer-app">
+                  <h4>Descarga la App</h4>
+                  <a href="#" class="app-download">
+                      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Descargar en App Store">
+                  </a>
+              </div>
+          </div>
+      </div>
+
+      <div class="footer-bottom">
+          <p class="footer-copyright">
+              © 2025 Touristmo. Todos los derechos reservados.
+          </p>
+      </div>
+  </div>
+</footer>
+
+
+<!-- ===== Script ===== -->
+<script>
+// ===============================
+// NAVBAR FLOTANTE - FUNCIONALIDAD
+// ===============================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.getElementById('navbar');
+    const mobileToggle = document.getElementById('mobileToggle');
+    const menuLeft = document.querySelector('.menu-left');
+    const menuRight = document.querySelector('.menu-right');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let lastScrollTop = 0;
+    let scrollTimer = null;
+
+    // ===============================
+    // EFECTO DE SCROLL DEL NAVBAR
+    // ===============================
+    function handleScroll() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Añadir clase 'scrolled' cuando se hace scroll hacia abajo
+        if (scrollTop > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        // Ocultar/mostrar navbar en scroll móvil
+        if (window.innerWidth <= 768) {
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+                navbar.style.transform = 'translateX(-50%) translateY(-100px)';
+                navbar.style.opacity = '0.8';
+            } else {
+                navbar.style.transform = 'translateX(-50%) translateY(0)';
+                navbar.style.opacity = '1';
+            }
+        }
+
+        lastScrollTop = scrollTop;
+    }
+
+    // ===============================
+    // SMOOTH SCROLL OPTIMIZADO
+    // ===============================
+    function optimizedScroll() {
+        if (scrollTimer) {
+            clearTimeout(scrollTimer);
+        }
+        
+        scrollTimer = setTimeout(handleScroll, 10);
+    }
+
+    window.addEventListener('scroll', optimizedScroll, { passive: true });
+
+    // ===============================
+    // MENÚ MÓVIL TOGGLE
+    // ===============================
+    function toggleMobileMenu() {
+        mobileToggle.classList.toggle('active');
+        menuLeft.classList.toggle('mobile-open');
+        menuRight.classList.toggle('mobile-open');
+        
+        // Prevenir scroll del body cuando el menú está abierto
+        if (mobileToggle.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+
+    mobileToggle.addEventListener('click', toggleMobileMenu);
+
+    // ===============================
+    // NAVEGACIÓN SUAVE
+    // ===============================
+    function smoothScrollTo(targetId) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            const offsetTop = targetElement.offsetTop - 120; // Ajuste para el navbar flotante
+            
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    // ===============================
+    // ACTIVAR LINKS SEGÚN SECCIÓN
+    // ===============================
+    function updateActiveLink() {
+        const scrollPosition = window.scrollY + 150;
+        
+        navLinks.forEach(link => {
+            const targetId = link.getAttribute('href');
+            if (targetId.startsWith('#')) {
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    const sectionTop = targetSection.offsetTop;
+                    const sectionBottom = sectionTop + targetSection.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                }
+            }
+        });
+    }
+
+    // ===============================
+    // EVENT LISTENERS PARA LINKS
+    // ===============================
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Solo aplicar smooth scroll a anchors internos
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                smoothScrollTo(href);
+                
+                // Cerrar menú móvil si está abierto
+                if (mobileToggle.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            }
+        });
+    });
+
+    // ===============================
+    // EFECTO PARALLAX SUTIL
+    // ===============================
+    function handleParallax() {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.hero-section');
+        
+        parallaxElements.forEach(element => {
+            const speed = 0.5;
+            const yPos = -(scrolled * speed);
+            element.style.transform = `translateY(${yPos}px)`;
+        });
+    }
+
+    window.addEventListener('scroll', handleParallax, { passive: true });
+
+    // ===============================
+    // EFECTOS DE HOVER MEJORADOS
+    // ===============================
+    function addHoverEffects() {
+        const navbarElements = navbar.querySelectorAll('a, button');
+        
+        navbarElements.forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform += ' scale(1.05)';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = this.style.transform.replace(' scale(1.05)', '');
+            });
+        });
+    }
+
+    // ===============================
+    // ANIMACIÓN DE ENTRADA
+    // ===============================
+    function animateNavbarEntrance() {
+        navbar.style.opacity = '0';
+        navbar.style.transform = 'translateX(-50%) translateY(-50px) scale(0.9)';
+        
+        setTimeout(() => {
+            navbar.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            navbar.style.opacity = '1';
+            navbar.style.transform = 'translateX(-50%) translateY(0) scale(1)';
+        }, 200);
+    }
+
+    // ===============================
+    // DETECCIÓN DE DISPOSITIVO
+    // ===============================
+    function detectDevice() {
+        const isMobile = window.innerWidth <= 768;
+        const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+        
+        navbar.classList.toggle('mobile-device', isMobile);
+        navbar.classList.toggle('tablet-device', isTablet);
+    }
+
+    // ===============================
+    // RESIZE HANDLER
+    // ===============================
+    function handleResize() {
+        detectDevice();
+        
+        // Cerrar menú móvil en resize
+        if (window.innerWidth > 768 && mobileToggle.classList.contains('active')) {
+            toggleMobileMenu();
+        }
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    // ===============================
+    // INTERSECCIÓN OBSERVER PARA ANIMACIONES
+    // ===============================
+    function setupIntersectionObserver() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observar secciones para animaciones
+        document.querySelectorAll('.demo-section').forEach(section => {
+            observer.observe(section);
+        });
+    }
+
+    // ===============================
+    // GESTIÓN DE FOCUS PARA ACCESIBILIDAD
+    // ===============================
+    function setupAccessibility() {
+        // Navegación con teclado
+        navLinks.forEach(link => {
+            link.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        // Indicador de focus visible
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-navigation');
+        });
+    }
+
+    // ===============================
+    // INICIALIZACIÓN
+    // ===============================
+    function init() {
+        detectDevice();
+        animateNavbarEntrance();
+        addHoverEffects();
+        updateActiveLink();
+        setupIntersectionObserver();
+        setupAccessibility();
+        
+        // Scroll listener optimizado para active links
+        let activeTimeout;
+        window.addEventListener('scroll', () => {
+            if (activeTimeout) clearTimeout(activeTimeout);
+            activeTimeout = setTimeout(updateActiveLink, 100);
+        }, { passive: true });
+    }
+
+    // Ejecutar inicialización
+    init();
+
+    // ===============================
+    // UTILIDADES PÚBLICAS
+    // ===============================
+    window.NavbarUtils = {
+        toggleMobileMenu,
+        smoothScrollTo,
+        updateActiveLink
+    };
+});
+
+// ===============================
+// ESTILOS CSS DINÁMICOS
+// ===============================
+const dynamicStyles = `
+    .keyboard-navigation *:focus {
+        outline: 2px solid var(--accent-orange) !important;
+        outline-offset: 2px;
+    }
+
+    .animate-in {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .mobile-device .floating-navbar {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+    .tablet-device .floating-navbar {
+        max-width: 95%;
+    }
+`;
+
+// Inyectar estilos dinámicos
+const styleSheet = document.createElement('style');
+styleSheet.textContent = dynamicStyles;
+document.head.appendChild(styleSheet);
+
+/* ---- Hero controls functionality ---- */
+const heroImages = [
+  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop', // Casco Viejo
+  'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&h=1080&fit=crop', // Bocas del Toro
+  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&h=1080&fit=crop', // Selva
+  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&h=1080&fit=crop'  // Playa
+];
+
+const heroTitles = [
+  'Explora las maravillas de Panamá',
+  'Descubre paraísos tropicales',
+  'Aventúrate en la selva',
+  'Relájate en playas pristinas'
+];
+
+const heroSubtitles = [
+  'Un lugar donde la naturaleza y la aventura se unen',
+  'Donde el mar Caribe te espera',
+  'Experimenta la biodiversidad única',
+  'Disfruta del sol y la arena blanca'
+];
+
+let currentHeroIndex = 0;
+let isPlaying = true;
+let heroInterval;
+
+function updateHero(index) {
+  const heroSection = document.querySelector('.hero-section');
+  const heroTitle = document.querySelector('.hero-title');
+  const heroSubtitle = document.querySelector('.hero-subtitle');
+  
+  if (heroSection && heroTitle && heroSubtitle) {
+    heroSection.style.backgroundImage = `linear-gradient(135deg, rgba(40, 57, 81, 0.4), rgba(88, 134, 132, 0.3)), url('${heroImages[index]}')`;
+    heroTitle.textContent = heroTitles[index];
+    heroSubtitle.textContent = heroSubtitles[index];
+  }
+}
+
+function nextHero() {
+  currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
+  updateHero(currentHeroIndex);
+}
+
+function previousHero() {
+  currentHeroIndex = currentHeroIndex === 0 ? heroImages.length - 1 : currentHeroIndex - 1;
+  updateHero(currentHeroIndex);
+}
+
+function togglePlay() {
+  const playBtn = document.querySelector('.hero-control.play');
+  
+  if (playBtn) {
+    if (isPlaying) {
+      clearInterval(heroInterval);
+      playBtn.textContent = '▶';
+      isPlaying = false;
+    } else {
+      heroInterval = setInterval(nextHero, 5000);
+      playBtn.textContent = '⏸';
+      isPlaying = true;
+    }
+  }
+}
+
+function startHeroSlideshow() {
+  heroInterval = setInterval(nextHero, 5000);
+}
+
+/* ---- Endpoints reales ---- */
+const apiTopDest = '/api/destinos/top?limit=6';
+const apiTopPlan = '/api/planes/top?limit=6';
+
+/* ---- Datos mock por si falla fetch ---- */
+const mockDest = [
+  {
+    id: 1,
+    nombre: 'Casco Viejo',
+    provincia: 'Panamá',
+    tipo: 'Histórico',
+    precio: 25,
+    rating: 4.9,
+    imagen: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop'
+  },
+  {
+    id: 2,
+    nombre: 'Bocas del Toro',
+    provincia: 'Bocas del Toro',
+    tipo: 'Playa',
+    precio: null,
+    rating: 4.8,
+    imagen: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop'
+  },
+  {
+    id: 3,
+    nombre: 'Canal de Panamá',
+    provincia: 'Panamá',
+    tipo: 'Ingeniería',
+    precio: 35,
+    rating: 4.7,
+    imagen: 'https://images.unsplash.com/photo-1641176716788-d4816a66dc6d?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    id: 4,
+    nombre: 'San Blas',
+    provincia: 'Guna Yala',
+    tipo: 'Paradisíaco',
+    precio: null,
+    rating: 4.9,
+    imagen: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=200&fit=crop'
+  },
+  {
+    id: 5,
+    nombre: 'Volcán Barú',
+    provincia: 'Chiriquí',
+    tipo: 'Aventura',
+    precio: 45,
+    rating: 4.6,
+    imagen: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=200&fit=crop'
+  },
+  {
+    id: 6,
+    nombre: 'El Valle de Antón',
+    provincia: 'Coclé',
+    tipo: 'Natural',
+    precio: 30,
+    rating: 4.5,
+    imagen: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=200&fit=crop'
+  }
+];
+
+const mockPlan = [
+  {
+    id: 1,
+    nombre: 'Tour Bocas del Toro',
+    provincia: 'Bocas del Toro',
+    tipo: 'Aventura',
+    precio: 85,
+    rating: 4.7,
+    imagen: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop'
+  },
+  {
+    id: 2,
+    nombre: 'Expedición Darién',
+    provincia: 'Darién',
+    tipo: 'Exploración',
+    precio: null,
+    rating: 4.8,
+    imagen: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=200&fit=crop'
+  },
+  {
+    id: 3,
+    nombre: 'City Tour Panamá',
+    provincia: 'Panamá',
+    tipo: 'Cultural',
+    precio: 65,
+    rating: 4.6,
+    imagen: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop'
+  },
+  {
+    id: 4,
+    nombre: 'Snorkel San Blas',
+    provincia: 'Guna Yala',
+    tipo: 'Acuático',
+    precio: 120,
+    rating: 4.9,
+    imagen: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=200&fit=crop'
+  },
+  {
+    id: 5,
+    nombre: 'Senderismo Chiriquí',
+    provincia: 'Chiriquí',
+    tipo: 'Aventura',
+    precio: null,
+    rating: 4.4,
+    imagen: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=200&fit=crop'
+  },
+  {
+    id: 6,
+    nombre: 'Relax en Coclé',
+    provincia: 'Coclé',
+    tipo: 'Relajación',
+    precio: 75,
+    rating: 4.3,
+    imagen: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=200&fit=crop'
+  }
+];
+
+// Funciones helper para generar iconos SVG
+const icons = {
+  target: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+  
+  mapPin: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>',
+  
+  star: '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>',
+  
+  heart: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  
+  heartFilled: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'
+};
+
+function cardHTML(o, isPlan) {
+  const url = isPlan ? `plan.html?id=${o.id}` : `destino.html?id=${o.id}`;
+  const priceText = o.precio ? `$${o.precio}` : 'Gratis';
+  const typeIcon = isPlan ? icons.target : icons.mapPin;
+  
+  return `
+    <a href="${url}" class="destination-card">
+      <div class="destination-image">
+        <img src="${o.imagen}" alt="${o.nombre}">
+      </div>
+      <div class="destination-info">
+        <div class="horizontal-info">
+          <h4>${o.nombre}</h4>
+          <button class="save-btn save-btn-overlay" onclick="event.preventDefault(); toggleSave(this)" data-saved="false">
+            <span class="heart-icon">${icons.heart}</span>
+          </button>
+        </div>
+        <p class="destination-location">
+          <span class="location-icon">${typeIcon}</span>
+          ${o.provincia}
+        </p>
+        <p class="destination-date ${o.tipo.toLowerCase()}">${o.tipo}</p>
+        <div class="destination-meta">
+          <span class="rating">
+            <span class="star-icon">${icons.star}</span>
+            ${o.rating || '4.5'}
+          </span>
+          <span class="price">${priceText}</span>
+        </div>
+      </div>
+    </a>
+  `;
+}
+
+async function loadCarousel(id, api, mock, isPlan = false) {
+  const el = document.getElementById(id);
+  if (!el) {
+    console.error('Elemento no encontrado:', id);
+    return;
+  }
+  
+  try {
+    console.log('Intentando cargar desde API:', api);
+    const res = await fetch(api);
+    if (!res.ok) throw new Error('API no disponible');
+    const arr = await res.json();
+    el.innerHTML = arr.map(o => cardHTML(o, isPlan)).join('');
+    console.log('Datos cargados desde API para', id);
+  } catch(e) {
+    console.warn('Usando datos mock para', id, '- Error:', e.message);
+    el.innerHTML = mock.map(o => cardHTML(o, isPlan)).join('');
+  }
+}
+
+/* ---- Función para toggle de favoritos ---- */
+function toggleSave(btn) {
+  const isSaved = btn.dataset.saved === 'true';
+  const heartIcon = btn.querySelector('.heart-icon');
+  
+  if (isSaved) {
+    // Cambiar a no guardado
+    heartIcon.innerHTML = icons.heart;
+    btn.style.color = 'var(--text-muted)';
+    btn.dataset.saved = 'false';
+    btn.classList.remove('saved');
+  } else {
+    // Cambiar a guardado
+    heartIcon.innerHTML = icons.heartFilled;
+    btn.style.color = 'var(--error)';
+    btn.dataset.saved = 'true';
+    btn.classList.add('saved');
+  }
+  
+  // Añadir animación de pulso
+  btn.style.transform = 'scale(1.2)';
+  setTimeout(() => {
+    btn.style.transform = 'scale(1)';
+  }, 150);
+}
+
+/* ---- Navegación del carrusel ---- */
+document.querySelectorAll('.car-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (target) {
+      const step = 324; // ancho de tarjeta + gap
+      const dir = btn.classList.contains('left') ? -step : step;
+      target.scrollBy({left: dir, behavior: 'smooth'});
+    }
+  });
+});
+
+/* ---- Footer año ---- */
+const yearElement = document.getElementById('year');
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
+
+/* ---- Inicialización ---- */
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM cargado, inicializando carruseles...');
+  loadCarousel('destCarousel', apiTopDest, mockDest, false);
+  loadCarousel('planCarousel', apiTopPlan, mockPlan, true);
+  startHeroSlideshow();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solicitudes de planes | tourIstmo (Admin)</title>
+  <link rel="stylesheet" href="global.css" />
+
+  <style>
+    .container{padding-left:5%;padding-right:5%;}
+
+    /* ------- tabla ------- */
+    table{width:100%;border-collapse:collapse;margin-top:20px;font-size:.9rem;}
+    th,td{padding:8px 10px;border:1px solid #e0e0e0;white-space:nowrap;}
+    th{background:#00417e;color:#fff;text-align:left;position:sticky;top:0;}
+    tbody tr:nth-child(even){background:#f9f9f9;}
+
+    img.thumb{width:80px;height:50px;object-fit:cover;border-radius:4px;}
+
+    .btn-primary,.btn-danger{padding:5px 9px;font-size:.8rem;}
+
+    /* contenedor scroll horizontal */
+    .scroll-x{overflow-x:auto;margin-top:12px;}
+  </style>
+</head>
+
+<body>
+  <!-- ===== Encabezado ===== -->
+  <header>
+    <div class="container wrapper">
+      <img src="assets/logo-touristmo.svg" class="logo" alt="Logo tourIstmo" />
+      <h1>Panel Admin · Planes</h1>
+    </div>
+  </header>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="dashboard-destinos.jsp">Solicitudes Destinos</a></li>
+      <li><a href="dashboard-planes.jsp" style="text-decoration:underline;">Solicitudes Planes</a></li>
+      <li><a href="pagina-principal.jsp">Volver a la web</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== LISTADO TABULAR ===== -->
+  <section class="container">
+    <h2 class="section-title" style="text-align:center;">Planes pendientes de aprobación</h2>
+
+    <div class="scroll-x">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Img</th>
+            <th>ID Empresa</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Horarios</th>
+            <th>F.Inicio</th>
+            <th>F.Final</th>
+            <th>#Pers.</th>
+            <th>Requisitos</th>
+            <th>Prom.★</th>
+            <th>Provincia</th>
+            <th>Distrito</th>
+            <th>Mapa URL</th>
+            <th>Comprar URL</th>
+            <th>F.Publicación</th>
+            <th style="text-align:center;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyPlanes"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="wrapper">
+      <small>&copy; <span id="year"></span> tourIstmo · Panel de administración</small>
+    </div>
+  </footer>
+
+<!-- ===== Script (mock data) ===== -->
+<script>
+/* ---------- datos de prueba ---------- */
+const mockPlanes = [
+  {
+    id: 1,
+    idEmpresa: 7,
+    nombre: "Rafting Río Chiriquí Viejo",
+    descripcion: "Descenso de categoría III-IV por rápidos emocionantes.",
+    precio: 65.00,
+    horarios: "08:00 / 13:00",
+    fechaInicio: "2025-07-01",
+    fechaFinal: "2025-12-31",
+    cantidad: 20,
+    requisitos: "Saber nadar, >12 años",
+    promedio: 4.7,
+    provincia: "Chiriquí",
+    distrito: "Boquete",
+    mapaUrl: "https://maps.google.com/…",
+    comprarUrl: "https://whatsapp.com/…",
+    fechaPublicacion: "2025-06-10 09:15",
+    imagen: "https://via.placeholder.com/150x90?text=Rafting"
+  },
+  {
+    id: 2,
+    idEmpresa: 3,
+    nombre: "Tour Canal + Casco Antiguo",
+    descripcion: "Visita las esclusas y recorrido guiado por el casco histórico.",
+    precio: 45.00,
+    horarios: "09:00",
+    fechaInicio: "2025-07-15",
+    fechaFinal: "2025-10-15",
+    cantidad: 30,
+    requisitos: "Zapatos cómodos",
+    promedio: 4.5,
+    provincia: "Panamá",
+    distrito: "Panamá",
+    mapaUrl: "https://maps.google.com/…",
+    comprarUrl: "https://pagos.ejemplo.com/canal",
+    fechaPublicacion: "2025-06-08 14:30",
+    imagen: "https://via.placeholder.com/150x90?text=Canal"
+  }
+];
+
+/* ---------- render tabla ---------- */
+function fila(p){
+  return `<tr>
+      <td>${p.id}</td>
+      <td><img src="${p.imagen}" class="thumb"></td>
+      <td>${p.idEmpresa}</td>
+      <td>${p.nombre}</td>
+      <td>${p.descripcion}</td>
+      <td>${p.precio ?? 'Gratis'}</td>
+      <td>${p.horarios}</td>
+      <td>${p.fechaInicio}</td>
+      <td>${p.fechaFinal}</td>
+      <td>${p.cantidad}</td>
+      <td>${p.requisitos}</td>
+      <td>${p.promedio}</td>
+      <td>${p.provincia}</td>
+      <td>${p.distrito}</td>
+      <td><a href="${p.mapaUrl}" target="_blank">Mapa</a></td>
+      <td><a href="${p.comprarUrl}" target="_blank">Comprar</a></td>
+      <td>${p.fechaPublicacion}</td>
+      <td style="text-align:center;">
+        <button class="btn-primary" onclick="accion(${p.id},'ACEPTAR')">Aceptar</button>
+        <button class="btn-danger"  onclick="accion(${p.id},'RECHAZAR')">Descartar</button>
+      </td>
+    </tr>`;
+}
+document.getElementById('tbodyPlanes').innerHTML = mockPlanes.map(fila).join('');
+
+function accion(id,op){
+  alert(`${op==='ACEPTAR'?'Aceptado':'Rechazado'} plan #${id}`);
+}
+
+/* ---------- footer ---------- */
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
+
