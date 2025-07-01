@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tourIstmo | Inicio</title>
+  <link rel="stylesheet" href="global.css" />
+
+  <!-- ===== Estilos extra (carrousel y tarjetas) ===== -->
+  <style>
+    .container{padding-left:5%;padding-right:5%;}
+
+    /* --- tarjeta --- */
+    a.card{
+      display:block;color:inherit;text-decoration:none;
+      border-radius:10px;background:#fff;overflow:hidden;
+      box-shadow:0 4px 12px rgba(0,0,0,.1);transition:transform .15s;
+      flex:0 0 280px;            /* ancho fijo para carrousel */
+      scroll-snap-align:start;
+    }
+    a.card:hover{transform:translateY(-4px);}
+    .card-img{height:160px;width:100%;object-fit:cover;}
+    .card-body{text-align:center;padding:16px;}
+    .card-title{font-size:1.3rem;font-weight:700;margin-bottom:6px;}
+
+    /* --- contenedor carrousel --- */
+    .carousel-wrapper{position:relative;margin-bottom:16px;}
+    .carousel{
+      display:flex;gap:24px;overflow-x:auto;padding-bottom:8px;
+      scroll-behavior:smooth;scroll-snap-type:x mandatory;
+    }
+    .carousel::-webkit-scrollbar{display:none;}
+
+    /* --- botones flecha --- */
+    .car-btn{
+      position:absolute;top:45%;transform:translateY(-50%);
+      width:36px;height:36px;border:none;border-radius:50%;
+      background:rgba(0,0,0,.6);color:#fff;font-size:18px;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .car-btn.left{left:-18px;}
+    .car-btn.right{right:-18px;}
+    @media(max-width:600px){ .car-btn{display:none;} } /* oculta flechas en móvil */
+  </style>
+</head>
+
+<body>
+<!-- ===== Encabezado ===== -->
+<header>
+  <div class="container wrapper">
+    <img src="assets/logo-touristmo.svg" class="logo" alt="Logo tourIstmo" />
+    <h1>tourIstmo</h1>
+  </div>
+</header>
+
+<!-- ===== Navegación ===== -->
+<nav class="menu">
+  <ul>
+    <li><a href="pagina-principal.jsp">Inicio</a></li>
+    <li><a href="destino-pagina.jsp">Destinos</a></li>
+    <li><a href="planes-pagina.jsp">Planes</a></li>
+    <li><a href="perfil.html">Perfil</a></li>
+  </ul>
+</nav>
+
+<!-- ===== Destinos destacados ===== -->
+<section class="container">
+  <h2 class="section-title" style="text-align:center;">Top 6 destinos mejor valorados</h2>
+
+  <div class="carousel-wrapper">
+    <button class="car-btn left"   data-target="destCarousel">&#9664;</button>
+    <div class="carousel" id="destCarousel"></div>
+    <button class="car-btn right"  data-target="destCarousel">&#9654;</button>
+  </div>
+
+  <div style="text-align:center;">
+    <a href="destino-pagina.jsp" class="btn-primary">Ver todos los destinos</a>
+  </div>
+</section>
+
+<!-- ===== Planes destacados ===== -->
+<section class="container" style="margin-top:48px;">
+  <h2 class="section-title" style="text-align:center;">Top 6 planes mejor valorados</h2>
+
+  <div class="carousel-wrapper">
+    <button class="car-btn left"  data-target="planCarousel">&#9664;</button>
+    <div class="carousel" id="planCarousel"></div>
+    <button class="car-btn right" data-target="planCarousel">&#9654;</button>
+  </div>
+
+  <div style="text-align:center;">
+    <a href="planes-pagina.jsp" class="btn-primary">Ver todos los planes</a>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="wrapper">
+    <small>&copy; <span id="year"></span> tourIstmo · Todos los derechos reservados</small>
+  </div>
+</footer>
+
+<!-- ===== Script ===== -->
+<script>
+/* ---- Endpoints reales ---- */
+const apiTopDest = '/api/destinos/top?limit=6';
+const apiTopPlan = '/api/planes/top?limit=6';
+
+/* ---- Datos mock por si falla fetch ---- */
+const mockDest = Array.from({length:6},(_,i)=>({
+  id:i+1,nombre:'Destino '+(i+1),provincia:'Panamá',
+  tipo:'Playa',precio:i%2?10:null,
+  imagen:'https://via.placeholder.com/400x160?text=Destino+'+(i+1)
+}));
+const mockPlan = Array.from({length:6},(_,i)=>({
+  id:i+1,nombre:'Plan '+(i+1),provincia:'Chiriquí',
+  tipo:'Aventura',precio:i%2?45:null,
+  imagen:'https://via.placeholder.com/400x160?text=Plan+'+(i+1)
+}));
+
+function cardHTML(o,isPlan){const url=isPlan?`plan.html?id=${o.id}`:`destino.html?id=${o.id}`;
+return `<a href="${url}" class="card">
+  <img src="${o.imagen}" class="card-img" alt="${o.nombre}">
+  <div class="card-body">
+    <h3 class="card-title">${o.nombre}</h3>
+    <p class="card-meta">${o.provincia} · ${o.tipo}</p>
+    <p><strong>${o.precio ?? 'Gratis'}</strong></p>
+  </div></a>`;}
+
+async function loadCarousel(id,api,mock,isPlan=false){
+  const el=document.getElementById(id);
+  try{const res=await fetch(api);const arr=await res.json();el.innerHTML=arr.map(o=>cardHTML(o,isPlan)).join('');}
+  catch(e){console.warn('mock',id);el.innerHTML=mock.map(o=>cardHTML(o,isPlan)).join('');}
+}
+
+/* flechas */
+document.querySelectorAll('.car-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const target=document.getElementById(btn.dataset.target);
+    const step=300;                 // scroll ~ ancho tarjeta
+    const dir=btn.classList.contains('left')?-step:step;
+    target.scrollBy({left:dir,behavior:'smooth'});
+  });
+});
+
+/* footer año */
+document.getElementById('year').textContent=new Date().getFullYear();
+
+/* init */
+loadCarousel('destCarousel',apiTopDest,mockDest,false);
+loadCarousel('planCarousel',apiTopPlan,mockPlan,true);
+</script>
+</body>
+</html>

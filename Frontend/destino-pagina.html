@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Destinos | tourIstmo</title>
+  <link rel="stylesheet" href="global.css" />
+
+  <!-- Reglas extra para la grilla y la tarjeta -->
+  <style>
+    /* Contenedor con padding lateral para que las tarjetas no peguen al borde */
+    .container{
+      padding-left:5%;
+      padding-right:5%;
+    }
+
+    /* ===== Grid responsive ===== */
+    .grid-cards{
+      display:grid;
+      gap:24px;
+      grid-template-columns:repeat(3,1fr);
+    }
+    @media(max-width:1024px){
+      .grid-cards{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(max-width:600px){
+      .grid-cards{grid-template-columns:1fr;}
+    }
+
+    /* ===== Bloque tarjeta con sombra, esquinas redondeadas y texto centrado ===== */
+    a.card{
+      display:block;
+      color:inherit;
+      text-decoration:none;
+      border-radius:10px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:0 4px 12px rgba(0,0,0,.1);
+      transition:transform .15s;
+    }
+    a.card:hover{transform:translateY(-4px);}
+
+    .card-img{
+      height:220px;
+      object-fit:cover;
+      width:100%;
+    }
+    .card-body{
+      padding:16px;
+      text-align:center;       /* --- centra texto --- */
+    }
+    .card-title{
+      font-size:1.4rem;
+      font-weight:700;
+      margin-bottom:6px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== Encabezado ===== -->
+  <header>
+    <div class="container wrapper">
+      <img src="assets/logo-touristmo.svg" class="logo" alt="Logo tourIstmo" />
+      <h1>tourIstmo</h1>
+    </div>
+  </header>
+
+  <!-- ===== Menú principal ===== -->
+  <nav class="menu">
+    <ul>
+      <li><a href="index.html">Destinos</a></li>
+      <li><a href="planes.html">Planes</a></li>
+      <li><a href="perfil.html">Perfil</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== Listado de Destinos ===== -->
+  <section class="container">
+    <h2 class="section-title" style="text-align:center;">Explora destinos en Panamá</h2>
+
+    <!-- buscador sencillo -->
+    <div class="form-row" style="margin-bottom:24px;justify-content:center;">
+      <div class="field" style="flex:1;max-width:400px;">
+        <input id="searchInput" type="text" placeholder="Buscar por nombre, provincia o tipo…" />
+      </div>
+      <div class="field" style="max-width:160px;">
+        <button class="btn-primary" id="searchBtn">Buscar</button>
+      </div>
+    </div>
+
+    <div id="destinosGrid" class="grid-cards"></div>
+
+    <!-- paginación -->
+    <div id="paginador" style="margin-top:32px;text-align:center;"></div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="wrapper">
+      <small>&copy; <span id="year"></span> tourIstmo · Todos los derechos reservados</small>
+    </div>
+  </footer>
+
+<!-- ===== Script (igual que antes) ===== -->
+<script>
+/* ---------- CONFIG ---------- */
+const pageSize = 20;
+const apiBase  = '/api/destinos';
+
+/* ---------- Datos de prueba ---------- */
+const mockData = Array.from({length:57},(_,i)=>({
+  id:i+1,
+  nombre:`Destino ${i+1}`,
+  provincia:'Panamá',
+  tipo:'Playa',
+  precio:i%3?10.00:null,
+  imagen:'https://via.placeholder.com/400x220?text=Destino+'+(i+1)
+}));
+
+/* ---------- Utilidades ---------- */
+const gridEl = document.getElementById('destinosGrid');
+const pagEl  = document.getElementById('paginador');
+
+function cardHTML(d){
+  return `
+    <a href="destino.html?id=${d.id}" class="card">
+      <img src="${d.imagen}" alt="Imagen de ${d.nombre}" class="card-img">
+      <div class="card-body">
+        <h3 class="card-title">${d.nombre}</h3>
+        <p class="card-meta">${d.provincia} · ${d.tipo}</p>
+        <p><strong>${d.precio ?? 'Gratis'}</strong></p>
+      </div>
+    </a>`;
+}
+
+/* ---------- Render ---------- */
+let listAll = [];
+let current = 1;
+
+function renderPage(page){
+  current = page;
+  const start = (page-1)*pageSize;
+  const slice = listAll.slice(start,start+pageSize);
+  gridEl.innerHTML = slice.map(cardHTML).join('');
+
+  const totalPages = Math.ceil(listAll.length/pageSize);
+  let html='';
+  for(let i=1;i<=totalPages;i++){
+    html += `<button class="btn-outline" style="margin:0 4px;${i===page?'background:#00417e;color:#fff;':''}" onclick="renderPage(${i})">${i}</button>`;
+  }
+  pagEl.innerHTML = html;
+}
+
+/* ---------- Carga ---------- */
+async function loadDestinos(query=''){
+  try{
+    const url = query ? `${apiBase}?q=${encodeURIComponent(query)}` : apiBase;
+    const r   = await fetch(url);
+    listAll   = await r.json();
+  }catch(e){
+    listAll = mockData.filter(d=>d.nombre.toLowerCase().includes(query.toLowerCase()));
+  }
+  if(!listAll.length){
+    gridEl.innerHTML = '<p>No se encontraron destinos.</p>';
+    pagEl.innerHTML  = '';
+    return;
+  }
+  renderPage(1);
+}
+
+/* ---------- Buscador ---------- */
+document.getElementById('searchBtn').addEventListener('click',()=>{
+  loadDestinos(document.getElementById('searchInput').value.trim());
+});
+
+/* ---------- Footer ---------- */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- Init ---------- */
+loadDestinos();
+</script>
+</body>
+</html>

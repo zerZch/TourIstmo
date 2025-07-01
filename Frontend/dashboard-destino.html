@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solicitudes de destinos | tourIstmo (Admin)</title>
+  <link rel="stylesheet" href="global.css" />
+
+  <style>
+    .container{padding-left:5%;padding-right:5%;}
+
+    /* --- tabla ancha --- */
+    table{width:100%;border-collapse:collapse;margin-top:20px;min-width:1400px;}
+    th,td{padding:10px;border:1px solid #e0e0e0;vertical-align:top;}
+    th{background:#00417e;color:#fff;text-align:left;font-size:.9rem;}
+    tbody tr:nth-child(even){background:#f9f9f9;}
+
+    .btn-primary,.btn-danger{padding:6px 10px;font-size:.8rem;}
+
+    /* contenedor que permite scroll horizontal */
+    .scroll-wrap{overflow-x:auto;}
+  </style>
+</head>
+
+<body>
+  <!-- ===== Encabezado ===== -->
+  <header>
+    <div class="container wrapper">
+      <img src="assets/logo-touristmo.svg" class="logo" alt="Logo tourIstmo" />
+      <h1>Panel Admin · Destinos</h1>
+    </div>
+  </header>
+
+  <!-- Menú admin simple -->
+  <nav class="menu">
+    <ul>
+      <li><a href="dashboard-destinos.jsp" style="text-decoration:underline;">Solicitudes Destinos</a></li>
+      <li><a href="dashboard-planes.jsp">Solicitudes Planes</a></li>
+      <li><a href="pagina-principal.jsp">Volver a la web</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== LISTADO TABULAR ===== -->
+  <section class="container">
+    <h2 class="section-title" style="text-align:center;">Destinos pendientes de aprobación</h2>
+
+    <div class="scroll-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID&nbsp;Usuario&nbsp;Autor</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Provincia</th>
+            <th>Distrito</th>
+            <th>URL&nbsp;Mapa</th>
+            <th>Tipo</th>
+            <th>Precio&nbsp;Entrada</th>
+            <th>Desc. Estacionamiento</th>
+            <th>Horario</th>
+            <th>Promedio&nbsp;Calif.</th>
+            <th>Fecha&nbsp;Creación</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="destinosTBody">
+          <!-- filas se inyectan con JS -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="wrapper">
+      <small>&copy; <span id="year"></span> tourIstmo · Panel de administración</small>
+    </div>
+  </footer>
+
+<!-- ===== Script con datos MOCK ===== -->
+<script>
+/* -------- Datos estáticos de ejemplo -------- */
+const mockSolicitudes = [
+  {
+    id: 21,
+    idUsuarioAutor: 5,
+    nombre: "Isla Iguana",
+    descripcion: "Reserva silvestre con abundante vida marina.",
+    provincia: "Los Santos",
+    distrito: "Pedasí",
+    urlMapa: "https://maps.google.com/?q=isla+iguana",
+    tipo: "Playa",
+    precioEntrada: 10.00,
+    descripcionEst: "Estacionamiento público a 200 m.",
+    horario: "08:00 – 17:00",
+    promedioCalif: 4.5,
+    fechaCreacion: "2025-06-01 12:30"
+  },
+  {
+    id: 22,
+    idUsuarioAutor: 8,
+    nombre: "Cerro Ancón",
+    descripcion: "Mirador icónico con vistas panorámicas de la ciudad.",
+    provincia: "Panamá",
+    distrito: "Panamá",
+    urlMapa: "https://maps.google.com/?q=cerro+ancon",
+    tipo: "Mirador",
+    precioEntrada: null,
+    descripcionEst: "Pequeña área de estacionamiento gratuito.",
+    horario: "05:30 – 18:30",
+    promedioCalif: 4.7,
+    fechaCreacion: "2025-06-03 09:15"
+  }
+];
+
+/* -------- Render estático -------- */
+const tbody = document.getElementById('destinosTBody');
+
+function filaHTML(d){
+  return `<tr>
+      <td>${d.id}</td>
+      <td>${d.idUsuarioAutor}</td>
+      <td>${d.nombre}</td>
+      <td>${d.descripcion}</td>
+      <td>${d.provincia ?? ''}</td>
+      <td>${d.distrito ?? ''}</td>
+      <td style="max-width:180px;word-break:break-all;">${d.urlMapa}</td>
+      <td>${d.tipo}</td>
+      <td>${d.precioEntrada ?? 'Gratis'}</td>
+      <td>${d.descripcionEst ?? ''}</td>
+      <td>${d.horario ?? ''}</td>
+      <td>${d.promedioCalif ?? '—'}</td>
+      <td>${d.fechaCreacion}</td>
+      <td style="white-space:nowrap;">
+        <button class="btn-primary" onclick="accion(${d.id},'ACEPTAR')">Aceptar</button>
+        <button class="btn-danger"  onclick="accion(${d.id},'RECHAZAR')">Descartar</button>
+      </td>
+    </tr>`;
+}
+
+tbody.innerHTML = mockSolicitudes.map(filaHTML).join('');
+
+function accion(id,op){
+  alert(`${op==='ACEPTAR'?'Aceptado':'Rechazado'} destino #${id}`);
+}
+
+/* Footer año */
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
