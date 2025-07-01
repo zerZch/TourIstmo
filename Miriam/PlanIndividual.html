@@ -1,0 +1,137 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.Locale" %>
+<%
+    // Obtener parámetros de la URL
+    String planId = request.getParameter("planId");
+    String destinoId = request.getParameter("destinoId");
+    
+    // Variables para almacenar los datos del plan
+    String nombrePlan = "";
+    String descripcionPlan = "";
+    String precio = "";
+    String horariosDisponibles = "";
+    String cantidadPersonas = "";
+    String fechaInicio = "";
+    String fechaFinal = "";
+    String requisitos = "";
+    String promedioCalificacion = "";
+    String fechaPublicacion = "";
+    
+    // Variables del destino asociado
+    String nombreDestino = "";
+    String tipoDestino = "";
+    String nombreDistrito = "";
+    String nombreProvincia = "";
+    
+    // Variables de la empresa
+    String nombreEmpresa = "";
+    String telefonoEmpresa = "";
+    String correoEmpresa = "";
+    String tipoEmpresa = "";
+    String ubicacionTexto = "";
+    String instagramUrl = "";
+    String facebookUrl = "";
+    String paginaWebUrl = "";
+    
+    // Conexión a la base de datos
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+    
+    try {
+        // Configurar conexión
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/turismo_db", "usuario", "password");
+        
+        // Query para obtener información del plan, destino y empresa
+        String query = "SELECT p.Descripcion_principal, p.Precio, p.Horarios_disponibles, " +
+                      "p.Cantidad_personas, p.Fecha_Inicio, p.Fecha_Final, p.Requisitos, " +
+                      "p.Promedio_calificacion, p.Fecha_publicacion, " +
+                      "d.Nombre as destino_nombre, d.Tipo as destino_tipo, " +
+                      "pr.Nombre as provincia_nombre, dt.Nombre as distrito_nombre, " +
+                      "e.Nombre as empresa_nombre, e.Telefono, e.Correo, e.Tipo_Empresa, " +
+                      "e.Ubicacion_Texto, e.Instagram_Url, e.Facebook_Url, e.Pagina_Web_Url " +
+                      "FROM Plan p " +
+                      "JOIN Destino d ON p.ID_Destino = d.ID_Destino " +
+                      "JOIN Empresa e ON p.ID_Empresa = e.ID_Empresa " +
+                      "JOIN Provincia pr ON e.ID_Provincia = pr.ID_Provincia " +
+                      "JOIN Distrito dt ON p.ID_Distrito = dt.ID_Distrito " +
+                      "WHERE p.ID_Plan = ?";
+        
+        stmt = conn.prepareStatement(query);
+        stmt.setString(1, planId);
+        rs = stmt.executeQuery();
+        
+        if (rs.next()) {
+            descripcionPlan = rs.getString("Descripcion_principal");
+            precio = rs.getString("Precio");
+            horariosDisponibles = rs.getString("Horarios_disponibles");
+            cantidadPersonas = rs.getString("Cantidad_personas");
+            fechaInicio = rs.getString("Fecha_Inicio");
+            fechaFinal = rs.getString("Fecha_Final");
+            requisitos = rs.getString("Requisitos");
+            promedioCalificacion = rs.getString("Promedio_calificacion");
+            fechaPublicacion = rs.getString("Fecha_publicacion");
+            
+            nombreDestino = rs.getString("destino_nombre");
+            tipoDestino = rs.getString("destino_tipo");
+            nombreDistrito = rs.getString("distrito_nombre");
+            nombreProvincia = rs.getString("provincia_nombre");
+            
+            nombreEmpresa = rs.getString("empresa_nombre");
+            telefonoEmpresa = rs.getString("Telefono");
+            correoEmpresa = rs.getString("Correo");
+            tipoEmpresa = rs.getString("Tipo_Empresa");
+            ubicacionTexto = rs.getString("Ubicacion_Texto");
+            instagramUrl = rs.getString("Instagram_Url");
+            facebookUrl = rs.getString("Facebook_Url");
+            paginaWebUrl = rs.getString("Pagina_Web_Url");
+        }
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        if (rs != null) try { rs.close(); } catch (SQLException e) {}
+        if (stmt != null) try { stmt.close(); } catch (SQLException e) {}
+        if (conn != null) try { conn.close(); } catch (SQLException e) {}
+    }
+    
+    // Formatear precio
+    NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("es", "PA"));
+    String precioFormateado = "";
+    if (precio != null && !precio.isEmpty()) {
+        try {
+            double precioDouble = Double.parseDouble(precio);
+            precioFormateado = formatter.format(precioDouble);
+        } catch (NumberFormatException e) {
+            precioFormateado = "$" + precio;
+        }
+    }
+%>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan: <%= nombreDestino %> - Turismo Panamá</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .plan-image {
+            width: 100%;
+            height: 400px;
+            background-color: #f8f9fa;
+            border: 2px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        
+        .plan-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover

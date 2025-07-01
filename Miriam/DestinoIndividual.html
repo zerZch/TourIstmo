@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= nombreDestino %> - Turismo Panamá</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .destino-image {
+            width: 100%;
+            height: 400px;
+            background-color: #f8f9fa;
+            border: 2px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        
+        .destino-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        
+        .placeholder-image {
+            color: #6c757d;
+            font-size: 4rem;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        .thumbnail:hover {
+            border-color: #007bff;
+        }
+        
+        .rating {
+            color: #ffc107;
+        }
+        
+        .precio-entrada {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #28a745;
+        }
+        
+        .info-item {
+            margin-bottom: 15px;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #495057;
+        }
+        
+        .info-value {
+            color: #6c757d;
+        }
+        
+        .planes-section {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .plan-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        .plan-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .plan-precio {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        .map-container {
+            height: 300px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.jsp">
+                <i class="fas fa-mountain"></i> Turismo Panamá
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="destinos.jsp">Destinos</a>
+                <a class="nav-link" href="planes.jsp">Planes</a>
+                <a class="nav-link" href="contacto.jsp">Contacto</a>
+                <a class="nav-link" href="login.jsp">Iniciar Sesión</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.jsp">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="destinos.jsp">Destinos</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><%= nombreDestino %></li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <!-- Columna de imágenes -->
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-2">
+                        <!-- Thumbnails -->
+                        <div class="thumbnail">
+                            <i class="fas fa-image text-muted"></i>
+                        </div>
+                        <div class="thumbnail">
+                            <i class="fas fa-image text-muted"></i>
+                        </div>
+                        <div class="thumbnail">
+                            <i class="fas fa-image text-muted"></i>
+                        </div>
+                        <div class="thumbnail">
+                            <i class="fas fa-image text-muted"></i>
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <!-- Imagen principal -->
+                        <div class="destino-image">
+                            <i class="fas fa-image placeholder-image"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna de información -->
+            <div class="col-md-6">
+                <div class="mb-2">
+                    <span class="badge bg-secondary"><%= tipoDestino %></span>
+                </div>
+                
+                <h1 class="h2 mb-3"><%= nombreDestino %></h1>
+                
+                <!-- Rating -->
+                <div class="rating mb-3">
+                    <% 
+                    double rating = 0;
+                    try {
+                        rating = Double.parseDouble(promedioCalificacion != null ? promedioCalificacion : "0");
+                    } catch (NumberFormatException e) {
+                        rating = 0;
+                    }
+                    
+                    for (int i = 1; i <= 5; i++) {
+                        if (i <= rating) {
+                    %>
+                            <i class="fas fa-star"></i>
+                    <%  } else { %>
+                            <i class="far fa-star"></i>
+                    <%  }
+                    } %>
+                    <span class="ms-2 text-muted">(<%= promedioCalificacion != null ? promedioCalificacion : "0" %>/5)</span>
+                </div>
+                
+                <!-- Precio de entrada -->
+                <% if (precioEntradaFormateado != null && !precioEntradaFormateado.isEmpty()) { %>
+                <div class="precio-entrada mb-4">
+                    Entrada: <%= precioEntradaFormateado %>
+                </div>
+                <% } %>
+                
+                <!-- Información del destino -->
+                <div class="mb-4">
+                    <div class="info-item">
+                        <span class="info-label">Ubicación:</span>
+                        <span class="info-value"><%= nombreDistrito %>, <%= nombreProvincia %></span>
+                    </div>
+                    
+                    <% if (horario != null && !horario.isEmpty()) { %>
+                    <div class="info-item">
+                        <span class="info-label">Horario:</span>
+                        <span class="info-value"><%= horario %></span>
+                    </div>
+                    <% } %>
+                    
+                    <% if (fechaCreacion != null && !fechaCreacion.isEmpty()) { %>
+                    <div class="info-item">
+                        <span class="info-label">Fecha de publicación:</span>
+                        <span class="info-value"><%= fechaCreacion %></span>
+                    </div>
+                    <% } %>
+                </div>
+                
+                <!-- Botones de acción -->
+                <div class="mb-4">
+                    <button class="btn btn-primary btn-lg w-100 mb-2" onclick="verPlanes()">
+                        <i class="fas fa-list me-2"></i>Ver Planes Disponibles
+                    </button>
+                    
+                    <button class="btn btn-outline-secondary w-100" onclick="addToWishlist()">
+                        <i class="fas fa-heart me-2"></i>Agregar a Favoritos
+                    </button>
+                </div>
+                
+                <!-- Compartir en redes sociales -->
+                <div class="social-share">
+                    <span class="me-3">Compartir:</span>
+                    <a href="#" onclick="shareOnFacebook()"><i class="fab fa-facebook"></i></a>
+                    <a href="#" onclick="shareOnTwitter()"><i class="fab fa-twitter"></i></a>
+                    <a href="#" onclick="shareOnInstagram()"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Información detallada -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <ul class="nav nav-tabs" id="infoTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="description-tab" data-bs-toggle="tab" 
+                                data-bs-target="#description" type="button" role="tab" 
+                                aria-controls="description" aria-selected="true">
+                            Descripción
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="location-tab" data-bs-toggle="tab" 
+                                data-bs-target="#location" type="button" role="tab" 
+                                aria-controls="location" aria-selected="false">
+                            Ubicación
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" 
+                                data-bs-target="#reviews" type="button" role="tab" 
+                                aria-controls="reviews" aria-selected="false">
+                            Reseñas
+                        </button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content mt-4" id="infoTabsContent">
+                    <div class="tab-pane fade show active" id="description" role="tabpanel" 
+                         aria-labelledby="description-tab">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5>Descripción</h5>
+                                <p><%= descripcionDestino %></p>
+                                
+                                <% if (descripcionEst != null && !descripcionEst.isEmpty()) { %>
+                                <h6 class="mt-4">Información adicional</h6>
+                                <p><%= descripcionEst %></p>
+                                <% } %>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Información General</h6>
+                                <table class="table table-borderless">
+                                    <tr>
+                                        <td><strong>Tipo:</strong></td>
+                                        <td><%= tipoDestino %></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Ubicación:</strong></td>
+                                        <td><%= nombreDistrito %>, <%= nombreProvincia %></td>
+                                    </tr>
+                                    <% if (horario != null && !horario.isEmpty()) { %>
+                                    <tr>
+                                        <td><strong>Horario:</strong></td>
+                                        <td><%= horario %></td>
+                                    </tr>
+                                    <% } %>
+                                    <% if (precioEntradaFormateado != null && !precioEntradaFormateado.isEmpty()) { %>
+                                    <tr>
+                                        <td><strong>Entrada:</strong></td>
+                                        <td><%= precioEntradaFormateado %></td>
+                                    </tr>
+                                    <% } %>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="location" role="tabpanel" aria-labelledby="location-tab">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5>Ubicación</h5>
+                                <div class="map-container">
+                                    <% if (ubicacionMapa != null && !ubicacionMapa.isEmpty()) { %>
+                                        <iframe src="<%= ubicacionMapa %>" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                    <% } else { %>
+                                        <div class="text-center">
+                                            <i class="fas fa-map-marked-alt fa-3x text-muted mb-3"></i>
+                                            <p class="text-muted">Mapa no disponible</p>
+                                        </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Cómo llegar</h6>
+                                <p><strong>Dirección:</strong><br>
+                                <%= nombreDistrito %>, <%= nombreProvincia %></p>
+                                
+                                <h6 class="mt-4">Transporte recomendado</h6>
+                                <ul>
+                                    <li>Automóvil particular</li>
+                                    <li>Transporte público</li>
+                                    <li>Tour organizado</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5>Reseñas de Visitantes</h5>
+                                <p class="text-muted">Las reseñas aparecerán aquí una vez que los visitantes compartan sus experiencias.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sección de planes disponibles -->
+        <div class="planes-section">
+            <h3 class="mb-4">Planes Disponibles para este Destino</h3>
+            <div id="planes-container">
+                <p class="text-center">Cargando planes disponibles...</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-light mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Turismo Panamá</h5>
+                    <p>Descubre los mejores destinos de Panamá con nosotros.</p>
+                </div>
+                <div class="col-md-4">
+                    <h6>Enlaces Rápidos</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="destinos.jsp" class="text-decoration-none">Destinos</a></li>
+                        <li><a href="planes.jsp" class="text-decoration-none">Planes</a></li>
+                        <li><a href="contacto.jsp" class="text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6>Contacto</h6>
+                    <p>Email: info@turismopanamá.com<br>
+                    Teléfono: +507 1234-5678</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2025 Turismo Panamá. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function verPlanes() {
+            // Scroll hasta la sección de planes
+            document.querySelector('.planes-section').scrollIntoView({ behavior: 'smooth' });
+            // Cargar planes del destino
+            cargarPlanes();
+        }
+        
+        function cargarPlanes() {
+            const destinoId = '<%= destinoId %>';
+            
+            // Simulación de carga de planes (aquí harías una petición AJAX real)
+            setTimeout(() => {
+                const planesContainer = document.getElementById('planes-container');
+                planesContainer.innerHTML = `
+                    <div class="plan-card">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5>Plan Básico</h5>
+                                <p>Incluye transporte y guía turístico para visitar ${nombreDestino}.</p>
+                                <small class="text-muted">Duración: 4 horas</small>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <div class="plan-precio mb-2">$45.00</div>
+                                <a href="plan-detalle.jsp?planId=1&destinoId=${destinoId}" class="btn btn-primary">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plan-card">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5>Plan Premium</h5>
+                                <p>Incluye transporte, guía, almuerzo y actividades adicionales.</p>
+                                <small class="text-muted">Duración: 8 horas</small>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <div class="plan-precio mb-2">$85.00</div>
+                                <a href="plan-detalle.jsp?planId=2&destinoId=${destinoId}" class="btn btn-primary">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }, 1000);
+        }
+        
+        function addToWishlist() {
+            alert('Destino agregado a favoritos');
+        }
+        
+        function shareOnFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + url, '_blank');
+        }
+        
+        function shareOnTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('¡Mira este increíble destino en Panamá!');
+            window.open('https://twitter.com/intent/tweet?url=' + url + '&text=' + text, '_blank');
+        }
+        
+        function shareOnInstagram() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                alert('URL copiada al portapapeles. Puedes pegarla en tu post de Instagram.');
+            });
+        }
+        
+        // Cargar planes al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            cargarPlanes();
+        });
+    </script>
+</body>
+</html>
