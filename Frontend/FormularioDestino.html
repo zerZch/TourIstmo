@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Destino Turístico</title>
-        <style>
+    <style>
         :root {
             --primary-dark: #283951;
             --primary-teal: #588684;
@@ -12,6 +12,8 @@
             --accent-orange: #D57133;
             --neutral-light: #E2E1E0;
             --transition: all 0.3s ease;
+            --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-family-display: 'Poppins', var(--font-family-primary);
         }
         
         * {
@@ -21,8 +23,8 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--primary-dark) 100%);
+            font-family: var(--font-family-primary);
+            background: linear-gradient(135deg, var(--neutral-light) 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -30,16 +32,18 @@
             padding: 20px;
         }
         
+        
         .main-container {
             display: flex;
-            max-width: 1100px;
+            max-width: 1200px;
             width: 100%;
-            min-height: 600px;
+            min-height: 700px;
             background: white;
             border-radius: 32px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
             overflow: hidden;
             animation: slideIn 0.6s ease-out;
+            margin: auto;
         }
         
         @keyframes slideIn {
@@ -91,17 +95,19 @@
             gap: 12px;
             margin-bottom: 40px;
         }
-        
+
         .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-green), var(--neutral-light));
-            border-radius: 16px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            color: var(--primary-green);    
+            font-weight: var(--font-bold);
+            font-size: var(--text-base);
+            transition: var(--transition-fast);
         }
+        
         
         .logo-text {
             color: white;
@@ -193,7 +199,7 @@
             color: rgba(255, 255, 255, 0.9);
         }
         
-        .destination-preview {
+        .plan-preview {
             position: relative;
             z-index: 2;
             margin-top: 40px;
@@ -219,7 +225,7 @@
             transition: var(--transition);
         }
         
-        .destination-info {
+        .plan-info {
             margin-top: 20px;
             padding: 16px;
             background: rgba(255, 255, 255, 0.1);
@@ -230,19 +236,19 @@
             transition: var(--transition);
         }
         
-        .destination-info.show {
+        .plan-info.show {
             opacity: 1;
             transform: translateY(0);
         }
         
-        .destination-name {
+        .plan-name {
             color: white;
             font-weight: 600;
             font-size: 16px;
             margin-bottom: 8px;
         }
         
-        .destination-details {
+        .plan-details {
             color: rgba(255, 255, 255, 0.8);
             font-size: 14px;
             line-height: 1.4;
@@ -376,7 +382,80 @@
             padding-top: 24px;
             border-top: 1px solid #E5E7EB;
         }
-        
+                /* Estilos para el campo de imagen */
+        .image-upload-container {
+            border: 2px dashed var(--gray-300);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            background: var(--gray-50);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .image-upload-container:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .image-upload-container.dragover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            transform: scale(1.02);
+        }
+
+        .image-upload-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            color: var(--gray-400);
+        }
+
+        .image-upload-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 8px;
+        }
+
+        .image-upload-subtext {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        .image-preview {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 12px;
+            margin-top: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            padding: 12px;
+            background: var(--gray-100);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+
+        .remove-image {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .remove-image:hover {
+            background: #DC2626;
+        }
         .btn {
             padding: 16px 32px;
             border-radius: 16px;
@@ -436,7 +515,91 @@
             background: linear-gradient(90deg, var(--primary-green), white);
             border-radius: 2px;
             transition: width 0.5s ease;
-            width: 25%;
+            width: 20%;
+        }
+        
+        .field-validation {
+            border-color: #EF4444 !important;
+            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1) !important;
+        }
+        
+        .field-valid {
+            border-color: var(--primary-green) !important;
+            box-shadow: 0 0 0 4px rgba(139, 173, 101, 0.1) !important;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #d0f0fd;
+            padding: 60px 30px;
+            font-family: Arial, sans-serif;
+            color: #1a1a1a;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-section {
+            flex: 1 1 200px;
+        }
+
+        .footer-logo {
+            font-weight: bold;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section h4 {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .footer-section ul li a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .footer-social {
+            font-size: 22px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .footer-payments img {
+            height: 25px;
+            margin-right: 10px;
+        }
+
+        .footer-app img {
+            height: 40px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-top: 40px;
+            border-top: 1px solid #b8e6f4;
+            padding-top: 20px;
         }
         
         @media (max-width: 1024px) {
@@ -456,7 +619,7 @@
                 justify-content: space-between;
             }
             
-            .destination-preview {
+            .plan-preview {
                 display: none;
             }
             
@@ -486,29 +649,25 @@
             .right-panel {
                 padding: 20px;
             }
-        }
-        
-        .field-validation {
-            border-color: #EF4444 !important;
-            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1) !important;
-        }
-        
-        .field-valid {
-            border-color: var(--primary-green) !important;
-            box-shadow: 0 0 0 4px rgba(139, 173, 101, 0.1) !important;
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
+<body>
 <body>
     <div class="main-container">
         <!-- Left Panel -->
         <div class="left-panel">
             <div class="logo-section">
                 <div class="logo">
-                    <div class="logo-icon">🏝️</div>
+                    <img class="logo-icon"  src="img/logowhite.png" alt="">
                     <div class="logo-text">TOURISTMO</div>
                 </div>
-                
+
                 <div class="progress-section">
                     <h2 class="progress-title" id="progressTitle">¡Comparte tu destino favorito con el mundo!</h2>
                     
@@ -519,7 +678,7 @@
                         </div>
                         <div class="step" data-step="2">
                             <div class="step-indicator">2</div>
-                            <div class="step-text">Detalles del lugar</div>
+                            <div class="step-text">Detalles y fotos</div>
                         </div>
                         <div class="step" data-step="3">
                             <div class="step-indicator">3</div>
@@ -558,7 +717,7 @@
             </div>
             
             <div id="successMessage" class="success-message">
-                ¡Destino registrado exitosamente! 🎉
+                ¡Destino registrado exitosamente!
             </div>
             
             <form id="destinoForm">
@@ -610,7 +769,7 @@
                     </div>
                 </div>
                 
-                <!-- Sección 2: Detalles del lugar -->
+                <!-- Sección 2: Detalles del lugar y fotos -->
                 <div class="form-section" data-section="2">
                     <div class="form-group">
                         <label class="form-label" for="descripcion">Descripción</label>
@@ -630,6 +789,21 @@
                             <input type="text" name="Descripcion_EST" id="estado" class="form-input" 
                                    placeholder="Ej: Excelente, En renovación..." />
                         </div>
+                    </div>
+
+                    <!-- Sección de subida de fotos -->
+                    <div class="photo-upload-section">
+                        <label class="form-label">Fotos del destino</label>
+                        <div class="photo-upload-container" id="photoUploadContainer">
+                            <div class="upload-text">Arrastra y suelta las fotos aquí</div>
+                            <div class="upload-subtext">o haz clic para seleccionar archivos</div>
+                            <button type="button" class="upload-btn" onclick="document.getElementById('photoInput').click()">
+                                Seleccionar Fotos
+                            </button>
+                            <input type="file" id="photoInput" class="file-input" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview-grid" id="photoPreviewGrid"></div>
+                        <div class="photo-count" id="photoCount">0 fotos seleccionadas (máximo 10)</div>
                     </div>
                 </div>
                 
@@ -660,22 +834,25 @@
                 
                 <div class="form-actions">
                     <button type="button" class="btn btn-secondary" id="prevBtn" onclick="previousStep()" disabled>
-                        ← Anterior
+                        Anterior
                     </button>
                     <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextStep()">
-                        Siguiente →
+                        Siguiente
                     </button>
                     <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">
-                        Publicar Destino
+                        Enviar
                     </button>
                 </div>
             </form>
         </div>
-    </div>    
+    </div>
+
     <script>
         // Variables globales
         let currentStep = 1;
         const totalSteps = 4;
+        let selectedPhotos = [];
+        const maxPhotos = 10;
         
         // Datos de distritos por provincia
         const distritosPorProvincia = {
@@ -698,8 +875,8 @@
                 subtitle: "Comencemos con los datos básicos de tu destino turístico."
             },
             2: {
-                title: "Detalles del Lugar",
-                subtitle: "Cuéntanos más sobre las características de este destino."
+                title: "Detalles y Fotos",
+                subtitle: "Cuéntanos más sobre las características de este destino y agrega algunas fotos."
             },
             3: {
                 title: "Ubicación y Precios",
@@ -714,8 +891,119 @@
         // Inicialización
         document.addEventListener('DOMContentLoaded', function() {
             updateStepDisplay();
+            initializePhotoUpload();
             document.getElementById('destinoForm').addEventListener('submit', handleSubmit);
         });
+
+        // Inicializar funcionalidad de subida de fotos
+        function initializePhotoUpload() {
+            const photoInput = document.getElementById('photoInput');
+            const photoUploadContainer = document.getElementById('photoUploadContainer');
+
+            // Evento de selección de archivos
+            photoInput.addEventListener('change', handlePhotoSelection);
+
+            // Eventos de drag and drop
+            photoUploadContainer.addEventListener('click', () => photoInput.click());
+            photoUploadContainer.addEventListener('dragover', handleDragOver);
+            photoUploadContainer.addEventListener('dragleave', handleDragLeave);
+            photoUploadContainer.addEventListener('drop', handleDrop);
+        }
+
+        // Manejar selección de fotos
+        function handlePhotoSelection(event) {
+            const files = Array.from(event.target.files);
+            addPhotos(files);
+        }
+
+        // Manejar drag over
+        function handleDragOver(event) {
+            event.preventDefault();
+            event.currentTarget.classList.add('dragover');
+        }
+
+        // Manejar drag leave
+        function handleDragLeave(event) {
+            event.currentTarget.classList.remove('dragover');
+        }
+
+        // Manejar drop
+        function handleDrop(event) {
+            event.preventDefault();
+            event.currentTarget.classList.remove('dragover');
+            
+            const files = Array.from(event.dataTransfer.files);
+            const imageFiles = files.filter(file => file.type.startsWith('image/'));
+            addPhotos(imageFiles);
+        }
+
+        // Agregar fotos
+        function addPhotos(files) {
+            const remainingSlots = maxPhotos - selectedPhotos.length;
+            const filesToAdd = files.slice(0, remainingSlots);
+
+            filesToAdd.forEach(file => {
+                if (file.size > 5 * 1024 * 1024) { // 5MB máximo
+                    alert(`La foto ${file.name} es muy grande. Tamaño máximo: 5MB`);
+                    return;
+                }
+
+                const photoObject = {
+                    file: file,
+                    id: Date.now() + Math.random(),
+                    preview: URL.createObjectURL(file)
+                };
+
+                selectedPhotos.push(photoObject);
+            });
+
+            updatePhotoPreview();
+            updatePhotoCount();
+        }
+
+        // Actualizar preview de fotos
+        function updatePhotoPreview() {
+            const previewGrid = document.getElementById('photoPreviewGrid');
+            previewGrid.innerHTML = '';
+
+            selectedPhotos.forEach(photo => {
+                const previewDiv = document.createElement('div');
+                previewDiv.className = 'photo-preview';
+                previewDiv.innerHTML = `
+                    <img src="${photo.preview}" alt="Preview">
+                    <button type="button" class="photo-remove" onclick="removePhoto('${photo.id}')">×</button>
+                `;
+                previewGrid.appendChild(previewDiv);
+            });
+        }
+
+        // Remover foto
+        function removePhoto(photoId) {
+            const photoIndex = selectedPhotos.findIndex(photo => photo.id === photoId);
+            if (photoIndex !== -1) {
+                URL.revokeObjectURL(selectedPhotos[photoIndex].preview);
+                selectedPhotos.splice(photoIndex, 1);
+                updatePhotoPreview();
+                updatePhotoCount();
+            }
+        }
+
+        // Actualizar contador de fotos
+        function updatePhotoCount() {
+            const photoCount = document.getElementById('photoCount');
+            photoCount.textContent = `${selectedPhotos.length} fotos seleccionadas (máximo ${maxPhotos})`;
+            
+            const photoInput = document.getElementById('photoInput');
+            const uploadContainer = document.getElementById('photoUploadContainer');
+            
+            if (selectedPhotos.length >= maxPhotos) {
+                uploadContainer.style.opacity = '0.5';
+                uploadContainer.style.pointerEvents = 'none';
+            } else {
+                uploadContainer.style.opacity = '1';
+                uploadContainer.style.pointerEvents = 'auto';
+            }
+        }
 
         // Funciones de navegación
         function nextStep() {
@@ -815,23 +1103,11 @@
             const destinationInfo = document.getElementById('destinationInfo');
             const destinationName = document.getElementById('destinationName');
             const destinationDetails = document.getElementById('destinationDetails');
-            const previewImage = document.getElementById('previewImage');
 
             if (nombre && tipo) {
                 destinationName.textContent = nombre;
                 destinationDetails.textContent = `${tipo} en ${distrito}, ${provincia}`;
                 destinationInfo.classList.add('show');
-
-                // Cambiar emoji según tipo
-                const tipoEmojis = {
-                    'Playa': '🏖️',
-                    'Montaña': '🏔️',
-                    'Sitio histórico': '🏛️',
-                    'Parque Nacional': '🌲',
-                    'Ciudad': '🏙️',
-                    'Otro': '📍'
-                };
-                previewImage.textContent = tipoEmojis[tipo] || '📍';
             } else {
                 destinationInfo.classList.remove('show');
             }
@@ -867,6 +1143,9 @@
                 </div>
                 <div style="margin-bottom: 15px;">
                     <strong style="color: var(--primary-dark);">Precio de entrada:</strong> ${data.Precio_Entrada || '0.00'} USD
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: var(--primary-dark);">Fotos:</strong> ${selectedPhotos.length} imagen${selectedPhotos.length !== 1 ? 'es' : ''} seleccionada${selectedPhotos.length !== 1 ? 's' : ''}
                 </div>
             `;
             
@@ -908,7 +1187,18 @@
             const formData = new FormData(event.target);
             const data = Object.fromEntries(formData.entries());
             
+            // Agregar información de las fotos
+            data.fotos = selectedPhotos.map(photo => ({
+                name: photo.file.name,
+                size: photo.file.size,
+                type: photo.file.type
+            }));
+            
             console.log('Datos del destino:', data);
+            console.log('Fotos seleccionadas:', selectedPhotos);
+            
+            // Aquí normalmente enviarías los datos al servidor
+            // Por ahora solo mostramos el mensaje de éxito
             
             const successMessage = document.getElementById('successMessage');
             successMessage.style.display = 'block';
@@ -924,6 +1214,15 @@
             document.getElementById('destinoForm').reset();
             document.getElementById('distrito').innerHTML = '<option value="">Primero selecciona provincia</option>';
             document.getElementById('successMessage').style.display = 'none';
+            
+            // Limpiar fotos seleccionadas
+            selectedPhotos.forEach(photo => {
+                URL.revokeObjectURL(photo.preview);
+            });
+            selectedPhotos = [];
+            updatePhotoPreview();
+            updatePhotoCount();
+            
             currentStep = 1;
             updateStepDisplay();
             document.getElementById('destinationInfo').classList.remove('show');
@@ -944,5 +1243,6 @@
             });
         });
     </script>
+</body>>
 </body>
 </html>
