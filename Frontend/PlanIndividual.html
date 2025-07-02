@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casco Viejo - Turismo Panamá</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #283951;
+            --primary-teal: #588684;
+            --primary-green: #8BAD65;
+            --accent-orange: #D57133;
+            --neutral-light: #E2E1E0;
+            --transition: all 0.3s ease;
+            
+            --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-family-display: 'Poppins', var(--font-family-primary);
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-family-primary);
+            background: linear-gradient(135deg, var(--neutral-light) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        
+        .destino-image {
+            width: 100%;
+            height: 400px;
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+        
+        .destino-image:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+        }
+        
+        .destino-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+        }
+        
+        .placeholder-image {
+            color: var(--primary-teal);
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+        
+        .thumbnail:hover {
+            border-color: var(--primary-teal);
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        
+        .thumbnail i {
+            color: var(--primary-teal);
+            opacity: 0.4;
+        }
+        
+        .rating {
+            color: #ffc107;
+        }
+        
+        .precio-entrada {
+            font-size: 1 rem;
+            font-weight: 600;
+            color: var(--neutral-light);
+            background: rgba(139, 173, 101, 0.1);
+            padding: 12px 20px;
+            border-radius: 16px;
+            display: inline-block;
+        }
+        
+        .info-item {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: var(--primary-dark);
+            min-width: 100px;
+        }
+        
+        .info-value {
+            color: #6c757d;
+            flex: 1;
+        }
+        
+        .planes-section {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 24px;
+            margin-top: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+        
+        .plan-card {
+            border: 1px solid #e9ecef;
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 20px;
+            background: #ffffff;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+        
+        .plan-card:hover {
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+            border-color: var(--primary-teal);
+        }
+        
+        .plan-precio {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            background: rgba(139, 173, 101, 0.1);
+            padding: 8px 16px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+        
+        .map-container {
+            height: 350px;
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+        
+        .badge {
+            background-color: var(--primary-teal) !important;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+            border-radius: 16px;
+            padding: 12px 24px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(139, 173, 101, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: #7a9c56;
+            border-color: #7a9c56;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(139, 173, 101, 0.4);
+        }
+        
+        .btn-outline-secondary {
+            border-color: #e9ecef;
+            color: var(--primary-dark);
+            border-radius: 16px;
+            padding: 12px 24px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .btn-outline-secondary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .nav-tabs {
+            border-bottom: 2px solid #e9ecef;
+            margin-bottom: 30px;
+        }
+        
+        .nav-tabs .nav-link {
+            border: none;
+            border-radius: 16px 16px 0 0;
+            color: #6c757d;
+            font-weight: 600;
+            padding: 12px 24px;
+            margin-right: 8px;
+            transition: var(--transition);
+        }
+        
+        .nav-tabs .nav-link:hover {
+            color: var(--primary-teal);
+            background-color: rgba(88, 134, 132, 0.1);
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--primary-teal);
+            background-color: rgba(88, 134, 132, 0.1);
+            border-bottom: 3px solid var(--primary-teal);
+        }
+    
+        
+        .table-borderless td {
+            padding: 8px 0;
+            vertical-align: top;
+        }
+        
+        .table-borderless td:first-child {
+            font-weight: 600;
+            color: var(--primary-dark);
+            width: 120px;
+        }
+        
+        .container {
+            background-color: var(--primary-teal);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--neutral-light);
+            font-weight: 700;
+        }
+        
+        .text-muted {
+            color: #8a8a8a !important;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+                border-radius: 16px;
+            }
+            
+            .destino-image {
+                height: 250px;
+                border-radius: 16px;
+            }
+            
+            .thumbnail {
+                width: 60px;
+                height: 60px;
+                border-radius: 12px;
+            }
+            
+            .planes-section {
+                padding: 24px;
+                border-radius: 16px;
+            }
+            
+            .plan-card {
+                border-radius: 16px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Columna de imágenes -->
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-2">
+                        <!-- Thumbnails -->
+                        <div class="thumbnail">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="thumbnail">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="thumbnail">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="thumbnail">
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <!-- Imagen principal -->
+                        <div class="destino-image">
+                            <i class="fas fa-image placeholder-image"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna de información -->
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <span class="badge">Sitio Histórico</span>
+                </div>
+                
+                <h1 class="h2 mb-3">Casco Viejo</h1>
+                
+                <!-- Rating -->
+                <div class="rating mb-3">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <span class="ms-2 text-muted">(4.2/5)</span>
+                </div>
+                
+                <!-- Precio de entrada -->
+                <div class="precio-entrada mb-4">
+                    Entrada: $5.00
+                </div>
+                
+                <!-- Información del destino -->
+                <div class="mb-4">
+                    <div class="info-item">
+                        <span class="info-label">Ubicación:</span>
+                        <span class="info-value">San Felipe, Panamá</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-label">Horario:</span>
+                        <span class="info-value">8:00 AM - 6:00 PM</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-label">Fecha:</span>
+                        <span class="info-value">15 de marzo, 2024</span>
+                    </div>
+                </div>
+                
+                <!-- Botones de acción -->
+                <div class="mb-4">                    
+                    <button class="btn btn-outline-secondary w-100" onclick="addToWishlist()">
+                        <i class="fas fa-heart me-2"></i>Agregar a Favoritos
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Información detallada -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <ul class="nav nav-tabs" id="infoTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="description-tab" data-bs-toggle="tab" 
+                                data-bs-target="#description" type="button" role="tab" 
+                                aria-controls="description" aria-selected="true">
+                            Descripción
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="location-tab" data-bs-toggle="tab" 
+                                data-bs-target="#location" type="button" role="tab" 
+                                aria-controls="location" aria-selected="false">
+                            Ubicación
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" 
+                                data-bs-target="#reviews" type="button" role="tab" 
+                                aria-controls="reviews" aria-selected="false">
+                            Reseñas
+                        </button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content mt-4" id="infoTabsContent">
+                    <div class="tab-pane fade show active" id="description" role="tabpanel" 
+                         aria-labelledby="description-tab">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5>Descripción</h5>
+                                <p>El Casco Viejo es el corazón histórico de la Ciudad de Panamá, declarado Patrimonio de la Humanidad por la UNESCO. Sus calles empedradas, arquitectura colonial y vistas panorámicas al océano Pacífico lo convierten en uno de los destinos más fascinantes del país.</p>
+                                
+                                <h6 class="mt-4">Información adicional</h6>
+                                <p>Fundado en 1673, este barrio histórico alberga iglesias coloniales, museos, restaurantes gourmet y boutiques únicas. Es el lugar perfecto para experimentar la rica historia y cultura panameña.</p>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Información General</h6>
+                                <table class="table table-borderless">
+                                    <tr>
+                                        <td><strong>Tipo:</strong></td>
+                                        <td>Sitio Histórico</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Ubicación:</strong></td>
+                                        <td>San Felipe, Panamá</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Horario:</strong></td>
+                                        <td>8:00 AM - 6:00 PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Entrada:</strong></td>
+                                        <td>$5.00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="location" role="tabpanel" aria-labelledby="location-tab">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5>Ubicación</h5>
+                                <div class="map-container">
+                                    <div class="text-center">
+                                        <i class="fas fa-map-marked-alt fa-3x text-muted mb-3"></i>
+                                        <p class="text-muted">Mapa interactivo</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Cómo llegar</h6>
+                                <p><strong>Dirección:</strong><br>
+                                San Felipe, Panamá</p>
+                                
+                                <h6 class="mt-4">Transporte recomendado</h6>
+                                <ul>
+                                    <li>Metro hasta estación 5 de Mayo</li>
+                                    <li>Taxi o Uber</li>
+                                    <li>Autobús urbano</li>
+                                    <li>Tour organizado</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5>Reseñas de Visitantes</h5>
+                                <p class="text-muted">Las reseñas aparecerán aquí una vez que los visitantes compartan sus experiencias.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sección de planes disponibles -->
+        <div class="planes-section">
+            <h3 class="mb-4">Planes Disponibles para este Destino</h3>
+            <div id="planes-container">
+                <div class="plan-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5>Plan Básico - Casco Viejo</h5>
+                            <p class="mb-2">Incluye transporte y guía turístico para explorar el centro histórico.</p>
+                            <small class="text-muted"><i class="fas fa-clock me-1"></i>Duración: 4 horas</small>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <div class="plan-precio mb-3">$45.00</div>
+                            <button class="btn btn-primary">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="plan-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5>Plan Premium - Experiencia Completa</h5>
+                            <p class="mb-2">Incluye transporte, guía especializado, almuerzo típico y entrada a museos.</p>
+                            <small class="text-muted"><i class="fas fa-clock me-1"></i>Duración: 8 horas</small>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <div class="plan-precio mb-3">$85.00</div>
+                            <button class="btn btn-primary">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function verPlanes() {
+            document.querySelector('.planes-section').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function addToWishlist() {
+            alert('¡Destino agregado a favoritos!');
+        }
+        
+        function shareOnFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + url, '_blank');
+        }
+        
+        function shareOnTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('¡Descubre el hermoso Casco Viejo de Panamá!');
+            window.open('https://twitter.com/intent/tweet?url=' + url + '&text=' + text, '_blank');
+        }
+        
+        function shareOnInstagram() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                alert('URL copiada al portapapeles. Puedes pegarla en tu post de Instagram.');
+            });
+        }
+    </script>
+</body>
+</html>

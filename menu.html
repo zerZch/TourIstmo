@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menú TourIstmo</title>
+  <style>
+    :root {
+      --primary-dark: #283951;
+      --primary-teal: #588684;
+      --primary-green: #8BAD65;
+      --accent-orange: #D57133;
+      --neutral-light: #E2E1E0;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: var(--neutral-light);
+      margin: 0;
+    }
+
+   .menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #283951;
+      padding: 1.3rem 2rem;
+      box-shadow: 0 4px 12px rgba(40, 57, 81, 0.08);
+      position: relative;
+      border-radius: 35px 35px 35px 35px;
+      border: 0.5px solid rgba(40, 57, 81, 0.1);
+      margin-top: 10px ;
+      margin-left: 10px ;
+      margin-right: 10px ;
+    }
+        .menu-left {
+      display: flex;
+      gap: 3rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    .menu-left a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.8rem 1.2rem;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .menu-left a:hover {
+      color: var(--accent-orange);
+      background: rgba(213, 113, 51, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(213, 113, 51, 0.3);
+    }
+
+    .menu-left a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: var(--accent-orange);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .menu-left a:hover::after {
+      width: 80%;
+    }
+
+    .menu-title-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .menu-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      position: relative;
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+    }
+
+    .menu-title img {
+      height: 28px;
+    }
+
+    .menu-title:hover {
+      color: var(--primary-teal);
+    }
+
+    /* Remueve subrayado del título */
+    .menu-title::after {
+      display: none !important;
+    }
+
+    .menu-right {
+      display: flex;
+      z-index: 2;
+      position: relative;
+    }
+
+    .menu-right a {
+      background: linear-gradient(135deg, var(--accent-orange), #e8804a);
+      border: 2px solid var(--accent-orange);
+      border-radius: 999px;
+      padding: 12px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(213, 113, 51, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-right a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: var(--transition);
+    }
+
+    .menu-right a:hover::before {
+      left: 100%;
+      transition: left 0.5s ease;
+    }
+
+    .menu-right a:hover {
+      background: linear-gradient(135deg, #e8804a, var(--accent-orange));
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(213, 113, 51, 0.5);
+      border-color: #e8804a;
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+
+      .menu-left,
+      .menu-right {
+        margin: 0;
+        gap: 1rem;
+      }
+
+      .menu-title {
+        margin: 0;
+        order: -1;
+      }
+
+      .menu-title-container {
+        position: static;
+        transform: none;
+      }
+    }
+
+    .content {
+      text-align: center;
+      margin-top: 4rem;
+      color: #6c757d;
+      padding: 0 2rem;
+    }
+
+    .content h2 {
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    /* Sección de demostración de colores */
+    .color-demo {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(40, 57, 81, 0.1);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .color-palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .color-item {
+      text-align: center;
+      padding: 1rem;
+      border-radius: 8px;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .color-primary-dark { background: var(--primary-dark); }
+    .color-primary-teal { background: var(--primary-teal); }
+    .color-primary-green { background: var(--primary-green); }
+    .color-accent-orange { background: var(--accent-orange); }
+    .color-neutral-light { background: var(--neutral-light); color: var(--primary-dark); border: 1px solid var(--primary-teal); }
+
+    .cta-section {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent-orange);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: rgba(213, 113, 51, 0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(213, 113, 51, 0.3);
+    }
+
+    .btn-secondary {
+      background: var(--primary-teal);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(88, 134, 132, 0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(88, 134, 132, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <div class="menu-left">
+      <a href="#destino">Destino</a>
+      <a href="#planes">Planes</a>
+      <a href="#perfil">Perfil</a>
+    </div>
+
+        <div class="menu-title-container">
+        <a href="#inicio" class="menu-title">
+        <img src="img/Logo.png" alt="Logo TourIstmo" />
+        TourIstmo
+        </a>
+        </div>
+
+    <div class="menu-right">
+      <a href="#login">Login</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>Menú TourIstmo - Paleta de Colores Turismo</h2>
+    <p>Navegación profesional con los colores de tu marca turística</p>
+  </div>
+</body>
+</html>
