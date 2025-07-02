@@ -3,163 +3,352 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solicitudes de planes | tourIstmo (Admin)</title>
-  <link rel="stylesheet" href="global.css" />
-
-  <style>
-    .container{padding-left:5%;padding-right:5%;}
-
-    /* ------- tabla ------- */
-    table{width:100%;border-collapse:collapse;margin-top:20px;font-size:.9rem;}
-    th,td{padding:8px 10px;border:1px solid #e0e0e0;white-space:nowrap;}
-    th{background:#00417e;color:#fff;text-align:left;position:sticky;top:0;}
-    tbody tr:nth-child(even){background:#f9f9f9;}
-
-    img.thumb{width:80px;height:50px;object-fit:cover;border-radius:4px;}
-
-    .btn-primary,.btn-danger{padding:5px 9px;font-size:.8rem;}
-
-    /* contenedor scroll horizontal */
-    .scroll-x{overflow-x:auto;margin-top:12px;}
-  </style>
+  <title>Solicitudes de Planes | tourIstmo (Admin)</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/dashboard-p.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <!-- ===== Encabezado ===== -->
-  <header>
-    <div class="container wrapper">
-      <img src="assets/logo-touristmo.svg" class="logo" alt="Logo tourIstmo" />
-      <h1>Panel Admin · Planes</h1>
+    <!-- Navbar Flotante -->
+  <nav class="floating-navbar" id="navbar">
+    <!-- Menú Izquierdo -->
+    <div class="menu-left">
+        <a href="#destino" class="nav-link">Destino</a>
+        <a href="#planes" class="nav-link">Planes</a>
+        <a href="#perfil" class="nav-link">Perfil</a>
     </div>
-  </header>
 
-  <nav class="menu">
-    <ul>
-      <li><a href="dashboard-destinos.jsp">Solicitudes Destinos</a></li>
-      <li><a href="dashboard-planes.jsp" style="text-decoration:underline;">Solicitudes Planes</a></li>
-      <li><a href="pagina-principal.jsp">Volver a la web</a></li>
-    </ul>
+    <!-- Logo Central -->
+    <div class="menu-center">
+        <a href="#" class="menu-title">
+            <img class="logo-icon"  src="img/logo.svg" alt="">
+            <span>TourIstmo</span>
+        </a>
+    </div>
+
+    <!-- Menú Derecho -->
+    <div class="menu-right">
+        <a href="#login" class="cta-button-nav">Login</a>
+    </div>
+
+    <!-- Menú móvil hamburguesa -->
+    <div class="mobile-menu-toggle" id="mobileToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
   </nav>
 
-  <!-- ===== LISTADO TABULAR ===== -->
-  <section class="container">
-    <h2 class="section-title" style="text-align:center;">Planes pendientes de aprobación</h2>
+  <div class="panel-central">
+    <!-- Header Mejorado -->
+    <header class="admin-header">
+      <div class="header-content">
+        <div class="brand-section">
+          <div class="header-titles">
+            <h1>Panel Administrativo</h1>
+            <div class="subtitle">Gestión de Solicitudes de Planes</div>
+          </div>
+        </div>
+        <div class="admin-stats">
+          <div class="stat-item-pending">
+            <div class="stat-number" id="pendingCount">2</div>
+            <div class="stat-label">Pendientes</div>
+          </div>
+          <div class="stat-item-approved">
+            <div class="stat-number">15</div>
+            <div class="stat-label">Aprobados</div>
+          </div>
+          <div class="stat-item-rejected">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Rechazados</div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-    <div class="scroll-x">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Img</th>
-            <th>ID Empresa</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Horarios</th>
-            <th>F.Inicio</th>
-            <th>F.Final</th>
-            <th>#Pers.</th>
-            <th>Requisitos</th>
-            <th>Prom.★</th>
-            <th>Provincia</th>
-            <th>Distrito</th>
-            <th>Mapa URL</th>
-            <th>Comprar URL</th>
-            <th>F.Publicación</th>
-            <th style="text-align:center;">Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="tbodyPlanes"></tbody>
-      </table>
-    </div>
-  </section>
+    <!-- Navegación Mejorada -->
+    <nav class="admin-nav">
+      <div class="nav-container">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="dashboard-destinos.jsp" class="nav-link">
+              <span class="nav-icon">🏖️</span>
+              Solicitudes Destinos
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="dashboard-planes.jsp" class="nav-link active">
+              <span class="nav-icon">📋</span>
+              Solicitudes Planes
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-  <!-- ===== Footer ===== -->
-  <footer>
-    <div class="wrapper">
-      <small>&copy; <span id="year"></span> tourIstmo · Panel de administración</small>
-    </div>
-  </footer>
+    <!-- Contenido Principal -->
+    <main class="main-container">
+      <!-- Controles Superiores -->
+      <section class="controls-section">
+        <div class="controls-header">
+          <h2 class="section-title">Planes Pendientes de Aprobación</h2>
+          <div class="controls-actions">
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input 
+                type="text" 
+                class="search-input" 
+                placeholder="Buscar por nombre, empresa, ubicación..."
+                id="searchInput"
+              >
+            </div>
+            <select class="filter-select" id="provinceFilter">
+              <option value="">Todas las Provincias</option>
+              <option value="Chiriquí">Chiriquí</option>
+              <option value="Panamá">Panamá</option>
+              <option value="Colón">Colón</option>
+              <option value="Coclé">Coclé</option>
+              <option value="Los Santos">Los Santos</option>
+              <option value="Veraguas">Veraguas</option>
+              <option value="Herrera">Herrera</option>
+              <option value="Daríen">Daríen</option>
+            </select>
+          </div>
+        </div>
+      </section>
 
-<!-- ===== Script (mock data) ===== -->
+      <!-- Tabla Moderna -->
+      <section class="table-container">
+        <div class="table-scroll">
+          <table class="modern-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Imagen</th>
+                <th>Plan</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Horarios</th>
+                <th>Fechas</th>
+                <th>Capacidad</th>
+                <th>Requisitos</th>
+                <th>Rating</th>
+                <th>Ubicación</th>
+                <th>Enlaces</th>
+                <th>Publicación</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="planesTableBody">
+              <!-- Los datos se cargarán dinámicamente -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="footer-container">
+      <div class="footer-grid">
+          <!-- Logo y descripción -->
+          <div class="footer-brand">
+              <a href="#" class="footer-logo">
+                  <img class="logo-icon"  src="img/logowhite.png" alt="">
+                  <span class="footer-logo-text">TourIstmo</span>
+              </a>
+              <p class="footer-description">
+                  Explora, comparte y disfruta de los mejores destinos turísticos de Panamá. 
+                  Tu aventura comienza aquí.
+              </p>
+          </div>
+
+          <!-- Navegación principal -->
+          <div class="footer-section">
+              <h4>TourIstmo</h4>
+              <ul class="footer-links">
+                  <li><a href="index.jsp">Inicio</a></li>
+                  <li><a href="formulario.jsp">Agregar Destino</a></li>
+                  <li><a href="planes.jsp">Planes Turísticos</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Reservar</a></li>
+              </ul>
+          </div>
+
+          <!-- Colaboración y Soporte -->
+          <div class="footer-section">
+              <h4>Colabora</h4>
+              <ul class="footer-links">
+                  <li><a href="#">Únete al equipo</a></li>
+                  <li><a href="#">Publica tus planes</a></li>
+              </ul>
+              
+              <h4 style="margin-top: var(--spacing-lg);">Soporte</h4>
+              <ul class="footer-links">
+                  <li><a href="#">Términos y Condiciones</a></li>
+                  <li><a href="#">Privacidad</a></li>
+                  <li><a href="#">Ayuda</a></li>
+              </ul>
+          </div>
+
+          <!-- Métodos de pago y app -->
+          <div class="footer-section">
+              <div class="footer-payments">
+                  <h4>Métodos de Pago</h4>
+                  <div class="payment-methods">
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
+                      </div>
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+                      </div>
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="footer-app">
+                  <h4>Descarga la App</h4>
+                  <a href="#" class="app-download">
+                      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Descargar en App Store">
+                  </a>
+              </div>
+          </div>
+      </div>
+
+      <div class="footer-bottom">
+          <p class="footer-copyright">
+              © 2025 Touristmo. Todos los derechos reservados.
+          </p>
+      </div>
+  </div>
+</footer>
 <script>
-/* ---------- datos de prueba ---------- */
-const mockPlanes = [
-  {
-    id: 1,
-    idEmpresa: 7,
-    nombre: "Rafting Río Chiriquí Viejo",
-    descripcion: "Descenso de categoría III-IV por rápidos emocionantes.",
-    precio: 65.00,
-    horarios: "08:00 / 13:00",
-    fechaInicio: "2025-07-01",
-    fechaFinal: "2025-12-31",
-    cantidad: 20,
-    requisitos: "Saber nadar, >12 años",
-    promedio: 4.7,
-    provincia: "Chiriquí",
-    distrito: "Boquete",
-    mapaUrl: "https://maps.google.com/…",
-    comprarUrl: "https://whatsapp.com/…",
-    fechaPublicacion: "2025-06-10 09:15",
-    imagen: "https://via.placeholder.com/150x90?text=Rafting"
-  },
-  {
-    id: 2,
-    idEmpresa: 3,
-    nombre: "Tour Canal + Casco Antiguo",
-    descripcion: "Visita las esclusas y recorrido guiado por el casco histórico.",
-    precio: 45.00,
-    horarios: "09:00",
-    fechaInicio: "2025-07-15",
-    fechaFinal: "2025-10-15",
-    cantidad: 30,
-    requisitos: "Zapatos cómodos",
-    promedio: 4.5,
-    provincia: "Panamá",
-    distrito: "Panamá",
-    mapaUrl: "https://maps.google.com/…",
-    comprarUrl: "https://pagos.ejemplo.com/canal",
-    fechaPublicacion: "2025-06-08 14:30",
-    imagen: "https://via.placeholder.com/150x90?text=Canal"
-  }
-];
-
-/* ---------- render tabla ---------- */
-function fila(p){
-  return `<tr>
-      <td>${p.id}</td>
-      <td><img src="${p.imagen}" class="thumb"></td>
-      <td>${p.idEmpresa}</td>
-      <td>${p.nombre}</td>
-      <td>${p.descripcion}</td>
-      <td>${p.precio ?? 'Gratis'}</td>
-      <td>${p.horarios}</td>
-      <td>${p.fechaInicio}</td>
-      <td>${p.fechaFinal}</td>
-      <td>${p.cantidad}</td>
-      <td>${p.requisitos}</td>
-      <td>${p.promedio}</td>
-      <td>${p.provincia}</td>
-      <td>${p.distrito}</td>
-      <td><a href="${p.mapaUrl}" target="_blank">Mapa</a></td>
-      <td><a href="${p.comprarUrl}" target="_blank">Comprar</a></td>
-      <td>${p.fechaPublicacion}</td>
-      <td style="text-align:center;">
-        <button class="btn-primary" onclick="accion(${p.id},'ACEPTAR')">Aceptar</button>
-        <button class="btn-danger"  onclick="accion(${p.id},'RECHAZAR')">Descartar</button>
-      </td>
-    </tr>`;
-}
-document.getElementById('tbodyPlanes').innerHTML = mockPlanes.map(fila).join('');
-
-function accion(id,op){
-  alert(`${op==='ACEPTAR'?'Aceptado':'Rechazado'} plan #${id}`);
-}
-
-/* ---------- footer ---------- */
-document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-</body>
-</html>
-
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Referencias al DOM
+    const searchInput     = document.getElementById("searchInput");
+    const provinceFilter  = document.getElementById("provinceFilter");
+    const tbody           = document.getElementById("planesTableBody");
+    const pendingCount    = document.getElementById("pendingCount");
+  
+    // 2. Datos de prueba
+    const mockPlanes = [
+      {
+        id: 1,
+        idEmpresa: 7,
+        nombre: "Rafting Río Chiriquí Viejo",
+        descripcion: "Descenso de categoría III-IV por rápidos emocionantes en las aguas cristalinas del río.",
+        precio: 65.0,
+        horarios: "08:00 / 13:00",
+        fechaInicio: "2025-07-01",
+        fechaFinal: "2025-12-31",
+        cantidad: 20,
+        requisitos: "Saber nadar, >12 años",
+        promedio: 4.7,
+        provincia: "Chiriquí",
+        distrito: "Boquete",
+        mapaUrl: "https://maps.google.com/rafting-chiriqui",
+        comprarUrl: "https://whatsapp.com/rafting-booking",
+        fechaPublicacion: "2025-06-10 09:15",
+        imagen: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=300&h=200&fit=crop"
+      },
+      {
+        id: 2,
+        idEmpresa: 3,
+        nombre: "Tour Canal + Casco Antiguo",
+        descripcion: "Visita las esclusas de Miraflores y recorrido guiado por el casco histórico de la ciudad.",
+        precio: 45.0,
+        horarios: "09:00",
+        fechaInicio: "2025-07-15",
+        fechaFinal: "2025-10-15",
+        cantidad: 30,
+        requisitos: "Zapatos cómodos",
+        promedio: 4.5,
+        provincia: "Panamá",
+        distrito: "Panamá",
+        mapaUrl: "https://maps.google.com/canal-tour",
+        comprarUrl: "https://pagos.ejemplo.com/canal",
+        fechaPublicacion: "2025-06-08 14:30",
+        imagen: "https://images.unsplash.com/photo-1607990283143-e81e7c1a8be3?w=300&h=200&fit=crop"
+      }
+    ];
+  
+    // 3. Estado interno de los filtros
+    let planesFiltrados = [...mockPlanes];
+  
+    // 4. Renderizado de una fila
+    function crearFila(plan) {
+      return `
+        <tr>
+          <td>${plan.id}</td>
+          <td><img src="${plan.imagen}" alt="${plan.nombre}" style="width:80px;height:50px;object-fit:cover;border-radius:8px"></td>
+          <td><strong>${plan.nombre}</strong></td>
+          <td>${plan.descripcion}</td>
+          <td>$${plan.precio.toFixed(2)}</td>
+          <td>${plan.horarios}</td>
+          <td>${plan.fechaInicio} &rarr; ${plan.fechaFinal}</td>
+          <td>${plan.cantidad} personas</td>
+          <td>${plan.requisitos}</td>
+          <td>⭐ ${plan.promedio}</td>
+          <td>${plan.provincia}, ${plan.distrito}</td>
+          <td>
+            <a href="${plan.mapaUrl}" target="_blank" style="color:var(--primary-teal);text-decoration:underline">Mapa</a><br>
+            <a href="${plan.comprarUrl}" target="_blank" style="color:var(--accent-orange);text-decoration:underline">Reservar</a>
+          </td>
+          <td>${plan.fechaPublicacion}</td>
+          <td style="text-align:center">
+            <button class="btn-primary" onclick="gestionPlan(${plan.id}, 'ACEPTAR')">Aceptar</button>
+            <button class="btn-danger"  onclick="gestionPlan(${plan.id}, 'RECHAZAR')">Rechazar</button>
+          </td>
+        </tr>
+      `;
+    }
+  
+    // 5. Función para refrescar la tabla y el contador
+    function cargarPlanes() {
+      tbody.innerHTML = planesFiltrados.map(crearFila).join("");
+      pendingCount.textContent = planesFiltrados.length;
+    }
+  
+    // 6. Acción de los botones
+    function gestionarPlan(id, accion) {
+      const msg = accion === "ACEPTAR"
+        ? `✅ Plan aprobado: #${id}`
+        : `❌ Plan rechazado: #${id}`;
+      alert(msg);
+      planesFiltrados = planesFiltrados.filter(p => p.id !== id);
+      cargarPlanes();
+    }
+    // Exponemos la función para los onclick inline
+    window.gestionPlan = gestionarPlan;
+  
+    // 7. Filtro combinado
+    function aplicarFiltros() {
+      const texto = searchInput.value.toLowerCase();
+      const provincia = provinceFilter.value;
+      planesFiltrados = mockPlanes.filter(p => {
+        const matchTxt = 
+          p.nombre.toLowerCase().includes(texto) ||
+          p.descripcion.toLowerCase().includes(texto) ||
+          p.provincia.toLowerCase().includes(texto) ||
+          p.distrito.toLowerCase().includes(texto);
+        const matchProv = !provincia || p.provincia === provincia;
+        return matchTxt && matchProv;
+      });
+      cargarPlanes();
+    }
+  
+    // 8. Registramos los eventos de filtro
+    searchInput.addEventListener("input", aplicarFiltros);
+    provinceFilter.addEventListener("change", aplicarFiltros);
+  
+    // 9. Año dinámico y render inicial
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+    cargarPlanes();
+  });
+  </script>
+  
+  

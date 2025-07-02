@@ -3,150 +3,641 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solicitudes de destinos | tourIstmo (Admin)</title>
-  <link rel="stylesheet" href="global.css" />
-
-  <style>
-    .container{padding-left:5%;padding-right:5%;}
-
-    /* --- tabla ancha --- */
-    table{width:100%;border-collapse:collapse;margin-top:20px;min-width:1400px;}
-    th,td{padding:10px;border:1px solid #e0e0e0;vertical-align:top;}
-    th{background:#00417e;color:#fff;text-align:left;font-size:.9rem;}
-    tbody tr:nth-child(even){background:#f9f9f9;}
-
-    .btn-primary,.btn-danger{padding:6px 10px;font-size:.8rem;}
-
-    /* contenedor que permite scroll horizontal */
-    .scroll-wrap{overflow-x:auto;}
-  </style>
+  <title>Solicitudes de Destinos | TourIstmo (Admin)</title>
+  <link rel="stylesheet" href="css/dashboard-d.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <!-- ===== Encabezado ===== -->
-  <header>
-    <div class="container wrapper">
-      <img src="assets/logo-touristmo.svg" class="logo" alt="Logo tourIstmo" />
-      <h1>Panel Admin · Destinos</h1>
-    </div>
-  </header>
+ <!-- Navbar Flotante -->
+ <nav class="floating-navbar" id="navbar">
+  <!-- Menú Izquierdo -->
+  <div class="menu-left">
+      <a href="#destino" class="nav-link">Destino</a>
+      <a href="#planes" class="nav-link">Planes</a>
+      <a href="#perfil" class="nav-link">Perfil</a>
+  </div>
 
-  <!-- Menú admin simple -->
-  <nav class="menu">
-    <ul>
-      <li><a href="dashboard-destinos.jsp" style="text-decoration:underline;">Solicitudes Destinos</a></li>
-      <li><a href="dashboard-planes.jsp">Solicitudes Planes</a></li>
-      <li><a href="pagina-principal.jsp">Volver a la web</a></li>
-    </ul>
-  </nav>
+  <!-- Logo Central -->
+  <div class="menu-center">
+      <a href="#" class="menu-title">
+          <img class="logo-icon"  src="img/logo.svg" alt="">
+          <span>TourIstmo</span>
+      </a>
+  </div>
 
-  <!-- ===== LISTADO TABULAR ===== -->
-  <section class="container">
-    <h2 class="section-title" style="text-align:center;">Destinos pendientes de aprobación</h2>
+  <!-- Menú Derecho -->
+  <div class="menu-right">
+      <a href="#login" class="cta-button-nav">Login</a>
+  </div>
 
-    <div class="scroll-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>ID&nbsp;Usuario&nbsp;Autor</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Provincia</th>
-            <th>Distrito</th>
-            <th>URL&nbsp;Mapa</th>
-            <th>Tipo</th>
-            <th>Precio&nbsp;Entrada</th>
-            <th>Desc. Estacionamiento</th>
-            <th>Horario</th>
-            <th>Promedio&nbsp;Calif.</th>
-            <th>Fecha&nbsp;Creación</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="destinosTBody">
-          <!-- filas se inyectan con JS -->
-        </tbody>
-      </table>
-    </div>
-  </section>
+  <!-- Menú móvil hamburguesa -->
+  <div class="mobile-menu-toggle" id="mobileToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+  </div>
+</nav>
+
+  <div class="panel-central">
+    <!-- Header Mejorado -->
+    <header class="admin-header">
+      <div class="header-content">
+        <div class="brand-section">
+          <div class="header-titles">
+            <h1>Panel Administrativo</h1>
+            <div class="subtitle">Gestión de Solicitudes de Destinos</div>
+          </div>
+        </div>
+        <div class="admin-stats">
+          <div class="stat-item-pending">
+            <div class="stat-number" id="pendingCount">2</div>
+            <div class="stat-label">Pendientes</div>
+          </div>
+          <div class="stat-item-approved">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Aprobados</div>
+          </div>
+          <div class="stat-item-rejected">
+            <div class="stat-number">1</div>
+            <div class="stat-label">Rechazados</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navegación Mejorada -->
+    <nav class="admin-nav">
+      <div class="nav-container">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <span class="nav-icon">🏖️</span>
+              Solicitudes Destinos
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="nav-icon">📋</span>
+              Solicitudes Planes
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-container">
+      <!-- Controles Superiores -->
+      <section class="controls-section">
+        <div class="controls-header">
+          <h2 class="section-title">Destinos Pendientes de Aprobación</h2>
+          <div class="controls-actions">
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input 
+                type="text" 
+                class="search-input" 
+                placeholder="Buscar por nombre, descripción, ubicación..."
+                id="searchInput"
+              >
+            </div>
+            <select class="filter-select" id="provinceFilter">
+              <option value="">Todas las Provincias</option>
+              <option value="Chiriquí">Chiriquí</option>
+              <option value="Panamá">Panamá</option>
+              <option value="Colón">Colón</option>
+              <option value="Coclé">Coclé</option>
+              <option value="Los Santos">Los Santos</option>
+              <option value="Veraguas">Veraguas</option>
+              <option value="Herrera">Herrera</option>
+              <option value="Daríen">Daríen</option>
+            </select>
+            <select class="filter-select" id="typeFilter">
+              <option value="">Todos los Tipos</option>
+              <option value="Playa">Playa</option>
+              <option value="Mirador">Mirador</option>
+              <option value="Parque Nacional">Parque Nacional</option>
+              <option value="Museo">Museo</option>
+              <option value="Aventura">Aventura</option>
+              <option value="Cultural">Cultural</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tabla Moderna -->
+      <section class="table-container">
+        <div class="table-scroll">
+          <table class="modern-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Autor</th>
+                <th>Destino</th>
+                <th>Descripción</th>
+                <th>Ubicación</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Estacionamiento</th>
+                <th>Horario</th>
+                <th>Rating</th>
+                <th>Mapa</th>
+                <th>Creación</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="destinosTableBody">
+              <!-- Los datos se cargarán dinámicamente -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
 
   <!-- ===== Footer ===== -->
-  <footer>
-    <div class="wrapper">
-      <small>&copy; <span id="year"></span> tourIstmo · Panel de administración</small>
-    </div>
-  </footer>
+<footer class="footer">
+  <div class="footer-container">
+      <div class="footer-grid">
+          <!-- Logo y descripción -->
+          <div class="footer-brand">
+              <a href="#" class="footer-logo">
+                  <img class="logo-icon"  src="img/logowhite.png" alt="">
+                  <span class="footer-logo-text">TourIstmo</span>
+              </a>
+              <p class="footer-description">
+                  Explora, comparte y disfruta de los mejores destinos turísticos de Panamá. 
+                  Tu aventura comienza aquí.
+              </p>
+          </div>
 
-<!-- ===== Script con datos MOCK ===== -->
-<script>
-/* -------- Datos estáticos de ejemplo -------- */
-const mockSolicitudes = [
-  {
-    id: 21,
-    idUsuarioAutor: 5,
-    nombre: "Isla Iguana",
-    descripcion: "Reserva silvestre con abundante vida marina.",
-    provincia: "Los Santos",
-    distrito: "Pedasí",
-    urlMapa: "https://maps.google.com/?q=isla+iguana",
-    tipo: "Playa",
-    precioEntrada: 10.00,
-    descripcionEst: "Estacionamiento público a 200 m.",
-    horario: "08:00 – 17:00",
-    promedioCalif: 4.5,
-    fechaCreacion: "2025-06-01 12:30"
-  },
-  {
-    id: 22,
-    idUsuarioAutor: 8,
-    nombre: "Cerro Ancón",
-    descripcion: "Mirador icónico con vistas panorámicas de la ciudad.",
-    provincia: "Panamá",
-    distrito: "Panamá",
-    urlMapa: "https://maps.google.com/?q=cerro+ancon",
-    tipo: "Mirador",
-    precioEntrada: null,
-    descripcionEst: "Pequeña área de estacionamiento gratuito.",
-    horario: "05:30 – 18:30",
-    promedioCalif: 4.7,
-    fechaCreacion: "2025-06-03 09:15"
+          <!-- Navegación principal -->
+          <div class="footer-section">
+              <h4>TourIstmo</h4>
+              <ul class="footer-links">
+                  <li><a href="index.jsp">Inicio</a></li>
+                  <li><a href="formulario.jsp">Agregar Destino</a></li>
+                  <li><a href="planes.jsp">Planes Turísticos</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Reservar</a></li>
+              </ul>
+          </div>
+
+          <!-- Colaboración y Soporte -->
+          <div class="footer-section">
+              <h4>Colabora</h4>
+              <ul class="footer-links">
+                  <li><a href="#">Únete al equipo</a></li>
+                  <li><a href="#">Publica tus planes</a></li>
+              </ul>
+              
+              <h4 style="margin-top: var(--spacing-lg);">Soporte</h4>
+              <ul class="footer-links">
+                  <li><a href="#">Términos y Condiciones</a></li>
+                  <li><a href="#">Privacidad</a></li>
+                  <li><a href="#">Ayuda</a></li>
+              </ul>
+          </div>
+
+          <!-- Métodos de pago y app -->
+          <div class="footer-section">
+              <div class="footer-payments">
+                  <h4>Métodos de Pago</h4>
+                  <div class="payment-methods">
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
+                      </div>
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+                      </div>
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="footer-app">
+                  <h4>Descarga la App</h4>
+                  <a href="#" class="app-download">
+                      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Descargar en App Store">
+                  </a>
+              </div>
+          </div>
+      </div>
+
+      <div class="footer-bottom">
+          <p class="footer-copyright">
+              © 2025 Touristmo. Todos los derechos reservados.
+          </p>
+      </div>
+  </div>
+</footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  // 1. Referencias al DOM
+  const searchInput = document.getElementById("searchInput");
+  const provinceFilter = document.getElementById("provinceFilter");
+  const typeFilter = document.getElementById("typeFilter");
+  const tbody = document.getElementById("destinosTableBody");
+  const pendingCount = document.getElementById("pendingCount");
+
+  // 2. Datos de prueba
+  const mockDestinos = [
+    {
+      id: 21,
+      idUsuarioAutor: 5,
+      nombreAutor: "María González",
+      nombre: "Isla Iguana",
+      descripcion: "Reserva silvestre con abundante vida marina, playas de arena blanca y aguas cristalinas perfectas para el buceo.",
+      provincia: "Los Santos",
+      distrito: "Pedasí",
+      urlMapa: "https://maps.google.com/?q=isla+iguana",
+      tipo: "Playa",
+      precioEntrada: 10.00,
+      descripcionEst: "Estacionamiento público a 200 m del embarcadero",
+      horario: "08:00 – 17:00",
+      promedioCalif: 4.5,
+      fechaCreacion: "2025-06-01 12:30"
+    },
+    {
+      id: 22,
+      idUsuarioAutor: 8,
+      nombreAutor: "Carlos Mendoza",
+      nombre: "Cerro Ancón",
+      descripcion: "Mirador icónico con vistas panorámicas de la ciudad de Panamá, el Canal y el skyline urbano.",
+      provincia: "Panamá",
+      distrito: "Panamá",
+      urlMapa: "https://maps.google.com/?q=cerro+ancon",
+      tipo: "Mirador",
+      precioEntrada: null,
+      descripcionEst: "Pequeña área de estacionamiento gratuito en la base",
+      horario: "05:30 – 18:30",
+      promedioCalif: 4.7,
+      fechaCreacion: "2025-06-03 09:15"
+    },
+    {
+      id: 23,
+      idUsuarioAutor: 12,
+      nombreAutor: "Ana Rodríguez",
+      nombre: "Parque Nacional Soberanía",
+      descripcion: "Bosque tropical con senderos para observación de aves, vida silvestre y la famosa Canopy Tower.",
+      provincia: "Panamá",
+      distrito: "Gamboa",
+      urlMapa: "https://maps.google.com/?q=parque+nacional+soberania",
+      tipo: "Parque Nacional",
+      precioEntrada: 5.00,
+      descripcionEst: "Área de estacionamiento pavimentado con capacidad para 50 vehículos",
+      horario: "06:00 – 18:00",
+      promedioCalif: 4.8,
+      fechaCreacion: "2025-06-05 14:20"
+    },
+    {
+      id: 24,
+      idUsuarioAutor: 15,
+      nombreAutor: "Roberto Silva",
+      nombre: "Volcán Barú",
+      descripcion: "El punto más alto de Panamá con vistas espectaculares del Pacífico y Caribe en días despejados.",
+      provincia: "Chiriquí",
+      distrito: "Boquete",
+      urlMapa: "https://maps.google.com/?q=volcan+baru",
+      tipo: "Montaña",
+      precioEntrada: 15.00,
+      descripcionEst: "Estacionamiento básico en el inicio del sendero",
+      horario: "24 horas",
+      promedioCalif: 4.9,
+      fechaCreacion: "2025-06-07 08:45"
+    },
+    {
+      id: 25,
+      idUsuarioAutor: 3,
+      nombreAutor: "Laura Vásquez",
+      nombre: "Playa Venao",
+      descripcion: "Playa ideal para surf con oleaje constante, arena volcánica y ambiente relajado.",
+      provincia: "Los Santos",
+      distrito: "Tonosí",
+      urlMapa: "https://maps.google.com/?q=playa+venao",
+      tipo: "Playa",
+      precioEntrada: null,
+      descripcionEst: "Varios estacionamientos privados y públicos disponibles",
+      horario: "24 horas",
+      promedioCalif: 4.6,
+      fechaCreacion: "2025-06-09 16:10"
+    }
+  ];
+
+  // 3. Estado interno de los filtros
+  let destinosFiltrados = [...mockDestinos];
+
+  // 4. Renderizado de una fila
+  function crearFila(destino) {
+    return `
+      <tr>
+        <td>${destino.id}</td>
+        <td>
+          <div class="destination-name">ID: ${destino.idUsuarioAutor}</div>
+          <div class="destination-author">${destino.nombreAutor || 'Usuario'}</div>
+        </td>
+        <td>
+          <div class="destination-name">${destino.nombre}</div>
+        </td>
+        <td>
+          <div class="destination-description">${destino.descripcion}</div>
+        </td>
+        <td>
+          <div class="location-info">
+            <div class="location-province">${destino.provincia}</div>
+            <div>${destino.distrito}</div>
+          </div>
+        </td>
+        <td>
+          <span class="type-badge">${destino.tipo}</span>
+        </td>
+        <td>
+          ${destino.precioEntrada
+            ? `<span class="price-info">$${destino.precioEntrada.toFixed(2)}</span>`
+            : `<span class="price-free">Gratis</span>`
+          }
+        </td>
+        <td>
+          <div class="parking-info" title="${destino.descripcionEst || 'No especificado'}">
+            ${destino.descripcionEst || 'No especificado'}
+          </div>
+        </td>
+        <td>
+          <div class="schedule-info">${destino.horario || 'No especificado'}</div>
+        </td>
+        <td>
+          ${destino.promedioCalif 
+            ? `<div class="rating-info">⭐ ${destino.promedioCalif.toFixed(1)}</div>`
+            : `<div class="rating-info">Sin calificar</div>`
+          }
+        </td>
+        <td>
+          <a href="${destino.urlMapa}" target="_blank" class="map-link">
+            🗺️ Ver Mapa
+          </a>
+        </td>
+        <td>
+          <div class="date-info">${destino.fechaCreacion}</div>
+        </td>
+        <td style="text-align:center">
+          <button class="btn-primary" onclick="gestionDestino(${destino.id}, 'ACEPTAR')">
+            ✅ Aceptar
+          </button>
+          <button class="btn-danger" onclick="gestionDestino(${destino.id}, 'RECHAZAR')">
+            ❌ Rechazar
+          </button>
+          <button class="btn-secondary" onclick="verDetalles(${destino.id})">
+            👁️ Ver
+          </button>
+        </td>
+      </tr>
+    `;
   }
-];
 
-/* -------- Render estático -------- */
-const tbody = document.getElementById('destinosTBody');
+  // 5. Función para refrescar la tabla y el contador
+  function cargarDestinos() {
+    tbody.innerHTML = destinosFiltrados.map(crearFila).join("");
+    pendingCount.textContent = destinosFiltrados.length;
+  }
 
-function filaHTML(d){
-  return `<tr>
-      <td>${d.id}</td>
-      <td>${d.idUsuarioAutor}</td>
-      <td>${d.nombre}</td>
-      <td>${d.descripcion}</td>
-      <td>${d.provincia ?? ''}</td>
-      <td>${d.distrito ?? ''}</td>
-      <td style="max-width:180px;word-break:break-all;">${d.urlMapa}</td>
-      <td>${d.tipo}</td>
-      <td>${d.precioEntrada ?? 'Gratis'}</td>
-      <td>${d.descripcionEst ?? ''}</td>
-      <td>${d.horario ?? ''}</td>
-      <td>${d.promedioCalif ?? '—'}</td>
-      <td>${d.fechaCreacion}</td>
-      <td style="white-space:nowrap;">
-        <button class="btn-primary" onclick="accion(${d.id},'ACEPTAR')">Aceptar</button>
-        <button class="btn-danger"  onclick="accion(${d.id},'RECHAZAR')">Descartar</button>
-      </td>
-    </tr>`;
-}
+  // 6. Acción de los botones de gestión
+  function gestionarDestino(id, accion) {
+    const destino = destinosFiltrados.find(d => d.id === id);
+    const nombreDestino = destino ? destino.nombre : `ID ${id}`;
+    
+    let mensaje = "";
+    let confirmacion = "";
+    
+    if (accion === "ACEPTAR") {
+      confirmacion = `¿Estás seguro de que deseas APROBAR el destino "${nombreDestino}"?`;
+      mensaje = `✅ Destino "${nombreDestino}" ha sido APROBADO exitosamente`;
+    } else if (accion === "RECHAZAR") {
+      confirmacion = `¿Estás seguro de que deseas RECHAZAR el destino "${nombreDestino}"?`;
+      mensaje = `❌ Destino "${nombreDestino}" ha sido RECHAZADO`;
+    }
+    
+    if (confirm(confirmacion)) {
+      // Simular llamada a API
+      console.log(`Acción: ${accion} para destino ID: ${id}`);
+      
+      // Mostrar mensaje de éxito
+      alert(mensaje);
+      
+      // Remover de la lista de pendientes
+      destinosFiltrados = destinosFiltrados.filter(d => d.id !== id);
+      
+      // Actualizar vista
+      cargarDestinos();
+      
+      // Opcional: Enviar notificación al usuario que creó el destino
+      if (destino) {
+        console.log(`Notificar a usuario ID: ${destino.idUsuarioAutor} sobre la decisión`);
+      }
+    }
+  }
 
-tbody.innerHTML = mockSolicitudes.map(filaHTML).join('');
+  // 7. Función para ver detalles del destino
+  function verDetalles(id) {
+    const destino = mockDestinos.find(d => d.id === id);
+    if (!destino) {
+      alert("Destino no encontrado");
+      return;
+    }
+    
+    const detalles = `
+DETALLES DEL DESTINO
 
-function accion(id,op){
-  alert(`${op==='ACEPTAR'?'Aceptado':'Rechazado'} destino #${id}`);
-}
+📍 Nombre: ${destino.nombre}
+👤 Creado por: ${destino.nombreAutor} (ID: ${destino.idUsuarioAutor})
+📅 Fecha de creación: ${destino.fechaCreacion}
 
-/* Footer año */
-document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-</body>
-</html>
+🏷️ Tipo: ${destino.tipo}
+🌍 Ubicación: ${destino.provincia}, ${destino.distrito}
+💰 Precio: ${destino.precioEntrada ? `$${destino.precioEntrada.toFixed(2)}` : 'Gratis'}
+⭐ Calificación: ${destino.promedioCalif ? destino.promedioCalif.toFixed(1) : 'Sin calificar'}
+
+📝 Descripción:
+${destino.descripcion}
+
+🚗 Estacionamiento:
+${destino.descripcionEst}
+
+🕐 Horario:
+${destino.horario}
+
+🗺️ Mapa: ${destino.urlMapa}
+    `;
+    
+    alert(detalles);
+  }
+
+  // Exponemos las funciones para los onclick inline
+  window.gestionDestino = gestionarDestino;
+  window.verDetalles = verDetalles;
+
+  // 8. Filtro combinado
+  function aplicarFiltros() {
+    const texto = searchInput.value.toLowerCase();
+    const provincia = provinceFilter.value;
+    const tipo = typeFilter.value;
+    
+    destinosFiltrados = mockDestinos.filter(destino => {
+      // Filtro de texto
+      const matchTexto = 
+        destino.nombre.toLowerCase().includes(texto) ||
+        destino.descripcion.toLowerCase().includes(texto) ||
+        destino.provincia.toLowerCase().includes(texto) ||
+        destino.distrito.toLowerCase().includes(texto) ||
+        destino.nombreAutor.toLowerCase().includes(texto) ||
+        destino.tipo.toLowerCase().includes(texto);
+      
+      // Filtro de provincia
+      const matchProvincia = !provincia || destino.provincia === provincia;
+      
+      // Filtro de tipo
+      const matchTipo = !tipo || destino.tipo === tipo;
+      
+      return matchTexto && matchProvincia && matchTipo;
+    });
+    
+    cargarDestinos();
+  }
+
+  // 9. Función de ordenamiento
+  function ordenarDestinos(criterio) {
+    switch(criterio) {
+      case 'fecha':
+        destinosFiltrados.sort((a, b) => new Date(b.fechaCreacion) - new Date(a.fechaCreacion));
+        break;
+      case 'nombre':
+        destinosFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+        break;
+      case 'calificacion':
+        destinosFiltrados.sort((a, b) => (b.promedioCalif || 0) - (a.promedioCalif || 0));
+        break;
+      case 'provincia':
+        destinosFiltrados.sort((a, b) => a.provincia.localeCompare(b.provincia));
+        break;
+      default:
+        // Orden por ID por defecto
+        destinosFiltrados.sort((a, b) => a.id - b.id);
+    }
+    cargarDestinos();
+  }
+
+  // 10. Función para exportar datos
+  function exportarDestinos() {
+    const datos = destinosFiltrados.map(d => ({
+      ID: d.id,
+      Nombre: d.nombre,
+      Autor: d.nombreAutor,
+      Provincia: d.provincia,
+      Distrito: d.distrito,
+      Tipo: d.tipo,
+      Precio: d.precioEntrada || 'Gratis',
+      Calificacion: d.promedioCalif || 'Sin calificar',
+      Fecha: d.fechaCreacion
+    }));
+    
+    console.log("Datos para exportar:", datos);
+    alert(`Se exportarían ${datos.length} destinos. Ver consola para detalles.`);
+  }
+
+  // 11. Función para estadísticas rápidas
+  function mostrarEstadisticas() {
+    const total = mockDestinos.length;
+    const porProvincia = {};
+    const porTipo = {};
+    let totalGratis = 0;
+    let totalPago = 0;
+    let sumaCalificaciones = 0;
+    let destinosCalificados = 0;
+    
+    mockDestinos.forEach(d => {
+      // Contar por provincia
+      porProvincia[d.provincia] = (porProvincia[d.provincia] || 0) + 1;
+      
+      // Contar por tipo
+      porTipo[d.tipo] = (porTipo[d.tipo] || 0) + 1;
+      
+      // Contar gratis vs pago
+      if (d.precioEntrada) {
+        totalPago++;
+      } else {
+        totalGratis++;
+      }
+      
+      // Calcular promedio de calificaciones
+      if (d.promedioCalif) {
+        sumaCalificaciones += d.promedioCalif;
+        destinosCalificados++;
+      }
+    });
+    
+    const promedioGeneral = destinosCalificados > 0 ? (sumaCalificaciones / destinosCalificados) : 0;
+    
+    const estadisticas = `
+ESTADÍSTICAS DE DESTINOS PENDIENTES
+
+📊 Total de destinos: ${total}
+🆓 Gratuitos: ${totalGratis}
+💰 De pago: ${totalPago}
+⭐ Calificación promedio: ${promedioGeneral.toFixed(1)}
+
+📍 Por provincia:
+${Object.entries(porProvincia).map(([prov, count]) => `   ${prov}: ${count}`).join('\n')}
+
+🏷️ Por tipo:
+${Object.entries(porTipo).map(([tipo, count]) => `   ${tipo}: ${count}`).join('\n')}
+    `;
+    
+    alert(estadisticas);
+  }
+
+  // 12. Registrar eventos de filtro
+  searchInput.addEventListener("input", aplicarFiltros);
+  provinceFilter.addEventListener("change", aplicarFiltros);
+  typeFilter.addEventListener("change", aplicarFiltros);
+
+  // 13. Exponer funciones adicionales
+  window.ordenarDestinos = ordenarDestinos;
+  window.exportarDestinos = exportarDestinos;
+  window.mostrarEstadisticas = mostrarEstadisticas;
+
+  // 14. Actualizar año dinámico y cargar datos iniciales
+  const currentYearElement = document.getElementById("currentYear");
+  if (currentYearElement) {
+    currentYearElement.textContent = new Date().getFullYear();
+  }
+  
+  // Cargar destinos inicialmente
+  cargarDestinos();
+
+  // 15. Función para refrescar datos (simular)
+  function refrescarDatos() {
+    // Simular carga de datos desde API
+    console.log("Refrescando datos desde el servidor...");
+    
+    // Mostrar indicador de carga
+    const loadingMsg = "🔄 Actualizando datos...";
+    const originalContent = tbody.innerHTML;
+    tbody.innerHTML = `<tr><td colspan="13" style="text-align:center; padding:20px;">${loadingMsg}</td></tr>`;
+    
+    // Simular delay de red
+    setTimeout(() => {
+      destinosFiltrados = [...mockDestinos];
+      aplicarFiltros();
+      console.log("Datos actualizados");
+    }, 1000);
+  }
+
+  window.refrescarDatos = refrescarDatos;
+
+  console.log("Dashboard de Destinos inicializado correctamente");
+  console.log(`Total de destinos cargados: ${mockDestinos.length}`);
+});
+  </script>
