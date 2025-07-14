@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Turismo</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Header -->
+            <div class="login-header">
+                <div class="logo">
+                    <img class="logo-icon"  src="img/logo2.png">
+                    <span class="logo-text">TourIstmo</span>
+                </div>
+                <h1>Bienvenido</h1>
+                <p>Inicia sesión para continuar explorando</p>
+            </div>
+
+            <!-- Form -->
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <div class="password-input-container">
+                        <input type="password" id="password" name="password" required>
+                        <button type="button" class="password-toggle" id="passwordToggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+
+                <div class="form-options">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Recordarme</label>
+                    </div>
+                    <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <button type="submit" class="login-button" id="loginButton">
+                    <span class="button-text">Iniciar Sesión</span>
+                    <div class="loading-spinner" id="loadingSpinner">
+                        <div class="spinner"></div>
+                    </div>
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="divider">
+                <span>O continúa con</span>
+            </div>
+
+            <!-- Social Login -->
+            <div class="social-login">
+                <button type="button" class="social-btn" id="googleLogin">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Google
+                </button>
+                <button type="button" class="social-btn" id="facebookLogin">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    Facebook
+                </button>
+            </div>
+
+            <!-- Signup Link -->
+            <div class="signup-link">
+                <p>¿No tienes una cuenta? <a href="registro.html" id="signupLink">Regístrate aquí</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        <div class="success-content">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <circle cx="30" cy="30" r="30" fill="#4CAF50"/>
+                <path d="M20 30L26 36L40 22" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h2>¡Inicio de sesión exitoso!</h2>
+            <p>Redirigiendo...</p>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        const loginForm = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const passwordToggle = document.getElementById('passwordToggle');
+        const loginButton = document.getElementById('loginButton');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const successMessage = document.getElementById('successMessage');
+
+        // Toggle password visibility
+        passwordToggle.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            // Change icon
+            const icon = this.querySelector('svg');
+            if (type === 'password') {
+                icon.innerHTML = `
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                `;
+            } else {
+                icon.innerHTML = `
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                `;
+            }
+        });
+
+        // Form validation
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function showError(inputId, message) {
+            const input = document.getElementById(inputId);
+            const errorElement = document.getElementById(inputId + 'Error');
+            
+            input.classList.add('error');
+            errorElement.textContent = message;
+            errorElement.classList.add('show');
+        }
+
+        function clearError(inputId) {
+            const input = document.getElementById(inputId);
+            const errorElement = document.getElementById(inputId + 'Error');
+            
+            input.classList.remove('error');
+            errorElement.classList.remove('show');
+        }
+
+        function showLoading() {
+            loginButton.disabled = true;
+            loadingSpinner.style.display = 'block';
+            document.querySelector('.button-text').style.opacity = '0';
+        }
+
+        function hideLoading() {
+            loginButton.disabled = false;
+            loadingSpinner.style.display = 'none';
+            document.querySelector('.button-text').style.opacity = '1';
+        }
+
+        function showSuccess() {
+            successMessage.classList.add('show');
+            setTimeout(() => {
+                // Aquí puedes redirigir a la página principal
+                console.log('Redirigiendo a la página principal...');
+            }, 2000);
+        }
+
+        // Real-time validation
+        emailInput.addEventListener('input', function() {
+            if (this.value && !validateEmail(this.value)) {
+                showError('email', 'Por favor ingresa un correo válido');
+            } else {
+                clearError('email');
+            }
+        });
+
+        passwordInput.addEventListener('input', function() {
+            if (this.value && this.value.length < 6) {
+                showError('password', 'La contraseña debe tener al menos 6 caracteres');
+            } else {
+                clearError('password');
+            }
+        });
+
+        // Form submission
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+            
+            // Clear previous errors
+            clearError('email');
+            clearError('password');
+            
+            let hasErrors = false;
+            
+            // Validate email
+            if (!email) {
+                showError('email', 'El correo electrónico es requerido');
+                hasErrors = true;
+            } else if (!validateEmail(email)) {
+                showError('email', 'Por favor ingresa un correo válido');
+                hasErrors = true;
+            }
+            
+            // Validate password
+            if (!password) {
+                showError('password', 'La contraseña es requerida');
+                hasErrors = true;
+            } else if (password.length < 6) {
+                showError('password', 'La contraseña debe tener al menos 6 caracteres');
+                hasErrors = true;
+            }
+            
+            if (hasErrors) return;
+            
+            // Simulate API call
+            showLoading();
+            
+            setTimeout(() => {
+                hideLoading();
+                // Simulate success (you can add error handling here)
+                showSuccess();
+            }, 2000);
+        });
+
+        // Social login buttons
+        document.getElementById('googleLogin').addEventListener('click', function() {
+            console.log('Google login clicked');
+            // Implement Google OAuth here
+        });
+
+        document.getElementById('facebookLogin').addEventListener('click', function() {
+            console.log('Facebook login clicked');
+            // Implement Facebook OAuth here
+        });
+
+        // Signup link
+        document.getElementById('signupLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Redirect to signup page');
+            // Implement redirect to signup page
+        });
+
+       
+        // Reset transform on mouse leave
+        document.addEventListener('mouseleave', function() {
+            card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+        });
+    </script>
+</body>
+</html>
