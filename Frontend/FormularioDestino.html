@@ -1,120 +1,860 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Destino Turístico</title>
+    <style>
+        :root {
+            --primary-dark: #283951;
+            --primary-teal: #588684;
+            --primary-green: #8BAD65;
+            --accent-orange: #D57133;
+            --neutral-light: #E2E1E0;
+            --transition: all 0.3s ease;
+            --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-family-display: 'Poppins', var(--font-family-primary);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: var(--font-family-primary);
+            background: linear-gradient(135deg, var(--neutral-light) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        
+        .main-container {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            min-height: 700px;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
+            margin: auto;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .left-panel {
+            background: linear-gradient(135deg, var(--primary-dark) 100%);
+            width: 380px;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .left-panel::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-20px, -20px) rotate(5deg); }
+        }
+        
+        .logo-section {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);    
+            font-weight: var(--font-bold);
+            font-size: var(--text-base);
+            transition: var(--transition-fast);
+        }
+        
+        
+        .logo-text {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .progress-section {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .progress-title {
+            color: white;
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+        
+        .progress-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 0;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin: 0 -16px;
+        }
+        
+        .step:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .step-indicator {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .step.active .step-indicator {
+            background: var(--primary-green);
+            box-shadow: 0 0 0 4px rgba(139, 173, 101, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .step.completed .step-indicator {
+            background: white;
+            color: var(--primary-green);
+        }
+        
+        .step.completed .step-indicator::after {
+            content: '✓';
+            font-size: 12px;
+        }
+        
+        .step-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .step.active .step-text {
+            color: white;
+            font-weight: 600;
+        }
+        
+        .step.completed .step-text {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .plan-preview {
+            position: relative;
+            z-index: 2;
+            margin-top: 40px;
+        }
+        
+        .preview-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, var(--primary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+        
+        .preview-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            line-height: 1.5;
+            transition: var(--transition);
+        }
+        
+        .plan-info {
+            margin-top: 20px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+        
+        .plan-info.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .plan-name {
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .plan-details {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .right-panel {
+            flex: 1;
+            padding: 50px 50px 40px;
+            background: white;
+            overflow-y: auto;
+        }
+        
+        .form-section {
+            display: none;
+        }
+        
+        .form-section.active {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-header {
+            margin-bottom: 40px;
+        }
+        
+        .form-title {
+            color: var(--primary-dark);
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .form-subtitle {
+            color: #6B7280;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .success-message {
+            background: linear-gradient(135deg, var(--primary-green));
+            color: white;
+            padding: 16px 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #E5E7EB;
+            border-radius: 16px;
+            font-size: 16px;
+            transition: var(--transition);
+            background: #FAFAFA;
+            color: var(--primary-dark);
+            font-family: inherit;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-teal);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(88, 134, 132, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #9CA3AF;
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid #E5E7EB;
+        }
+                /* Estilos para el campo de imagen */
+        .image-upload-container {
+            border: 2px dashed var(--gray-300);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            background: var(--gray-50);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .image-upload-container:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .image-upload-container.dragover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            transform: scale(1.02);
+        }
+
+        .image-upload-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            color: var(--gray-400);
+        }
+
+        .image-upload-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 8px;
+        }
+
+        .image-upload-subtext {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        .image-preview {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 12px;
+            margin-top: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            padding: 12px;
+            background: var(--gray-100);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+
+        .remove-image {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .remove-image:hover {
+            background: #DC2626;
+        }
+        .btn {
+            padding: 16px 32px;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn-secondary {
+            background: #F3F4F6;
+            color: #6B7280;
+            flex: 1;
+        }
+        
+        .btn-secondary:hover:not(:disabled) {
+            background: #E5E7EB;
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green));
+            color: white;
+            flex: 2;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(88, 134, 132, 0.3);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            margin-top: 30px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-green), white);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+            width: 20%;
+        }
+        
+        .field-validation {
+            border-color: #EF4444 !important;
+            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1) !important;
+        }
+        
+        .field-valid {
+            border-color: var(--primary-green) !important;
+            box-shadow: 0 0 0 4px rgba(139, 173, 101, 0.1) !important;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #d0f0fd;
+            padding: 60px 30px;
+            font-family: Arial, sans-serif;
+            color: #1a1a1a;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-section {
+            flex: 1 1 200px;
+        }
+
+        .footer-logo {
+            font-weight: bold;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section h4 {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .footer-section ul li a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .footer-social {
+            font-size: 22px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .footer-payments img {
+            height: 25px;
+            margin-right: 10px;
+        }
+
+        .footer-app img {
+            height: 40px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-top: 40px;
+            border-top: 1px solid #b8e6f4;
+            padding-top: 20px;
+        }
+        
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+                max-width: 600px;
+            }
+            
+            .left-panel {
+                width: 100%;
+                padding: 40px 30px 30px;
+                min-height: auto;
+            }
+            
+            .progress-steps {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .plan-preview {
+                display: none;
+            }
+            
+            .right-panel {
+                padding: 30px;
+            }
+            
+            .form-title {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-container {
+                margin: 10px;
+                min-height: auto;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .right-panel {
+                padding: 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
-<body style="margin: 0; font-family: Arial, sans-serif; background: #f0f4f8; display: flex; flex-direction: column; min-height: 100vh;">
+<body>
+<body>
+    <div class="main-container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="logo-section">
+                <div class="logo">
+                    <img class="logo-icon"  src="img/logowhite.png" alt="">
+                    <div class="logo-text">TOURISTMO</div>
+                </div>
 
-    <div style="flex: 1;">
-        <div style="max-width: 700px; margin: 40px auto; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 30px;">
-            <h2 style="text-align: center; color: #2c3e50;"> Nuevo Destino Turístico</h2>
+                <div class="progress-section">
+                    <h2 class="progress-title" id="progressTitle">¡Comparte tu destino favorito con el mundo!</h2>
+                    
+                    <div class="progress-steps">
+                        <div class="step active" data-step="1">
+                            <div class="step-indicator">1</div>
+                            <div class="step-text">Información básica</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-indicator">2</div>
+                            <div class="step-text">Detalles y fotos</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-indicator">3</div>
+                            <div class="step-text">Ubicación y precios</div>
+                        </div>
+                        <div class="step" data-step="4">
+                            <div class="step-indicator">4</div>
+                            <div class="step-text">Confirmar</div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="destination-preview">
+                <div class="preview-text" id="previewText">
+                    Tu destino se unirá a nuestra colección de lugares increíbles de Panamá
+                </div>
+                <div class="destination-info" id="destinationInfo">
+                    <div class="destination-name" id="destinationName">Nombre del destino</div>
+                    <div class="destination-details" id="destinationDetails">
+                        Completa el formulario para ver los detalles
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <div class="form-header">
+                <h1 class="form-title" id="formTitle">Información Básica</h1>
+                <p class="form-subtitle" id="formSubtitle">Comencemos con los datos básicos de tu destino turístico.</p>
+            </div>
+            
+            <div id="successMessage" class="success-message">
+                ¡Destino registrado exitosamente!
+            </div>
+            
+            <form id="destinoForm">
+                <!-- Sección 1: Información básica -->
+                <div class="form-section active" data-section="1">
+                    <div class="form-group">
+                        <label class="form-label" for="nombre">Nombre del lugar</label>
+                        <input type="text" name="Nombre" id="nombre" class="form-input" required 
+                               placeholder="Ej: Playa Blanca, Volcán Barú, Casco Viejo..." />
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="provincia">Provincia</label>
+                            <select name="ID_Provincia" id="provincia" class="form-select" required>
+                                <option value="">Selecciona una provincia</option>
+                                <option value="1">Bocas del Toro</option>
+                                <option value="2">Coclé</option>
+                                <option value="3">Colón</option>
+                                <option value="4">Chiriquí</option>
+                                <option value="5">Darién</option>
+                                <option value="6">Herrera</option>
+                                <option value="7">Los Santos</option>
+                                <option value="8">Panamá</option>
+                                <option value="9">Panamá Oeste</option>
+                                <option value="10">Veraguas</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="distrito">Distrito</label>
+                            <select name="ID_Distrito" id="distrito" class="form-select" required>
+                                <option value="">Primero selecciona provincia</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="tipo">Tipo de destino</label>
+                        <select name="Tipo" id="tipo" class="form-select" required>
+                            <option value="">Selecciona el tipo</option>
+                            <option value="Playa">Playa</option>
+                            <option value="Montaña">Montaña</option>
+                            <option value="Sitio histórico">Sitio histórico</option>
+                            <option value="Parque Nacional">Parque Nacional</option>
+                            <option value="Ciudad">Ciudad</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Sección 2: Detalles del lugar y fotos -->
+                <div class="form-section" data-section="2">
+                    <div class="form-group">
+                        <label class="form-label" for="descripcion">Descripción</label>
+                        <textarea name="Descripcion" id="descripcion" class="form-textarea" required rows="4"
+                                  placeholder="Cuéntanos qué hace especial a este lugar. ¿Qué pueden esperar los visitantes?"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="horario">Horario de funcionamiento</label>
+                            <input type="text" name="Horario" id="horario" class="form-input" 
+                                   placeholder="Ej: 8:00 AM - 5:00 PM" />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="estado">Estado actual</label>
+                            <input type="text" name="Descripcion_EST" id="estado" class="form-input" 
+                                   placeholder="Ej: Excelente, En renovación..." />
+                        </div>
+                    </div>
 
-            <form action="GuardarDestino.jsp" method="post" style="display: flex; flex-direction: column; gap: 15px;">
-                <input type="hidden" name="ID_Usuario" value="<%= session.getAttribute("usuario_id") %>" />
-
-                <label style="font-weight: bold; color: #34495e;">Provincia:
-                    <select name="ID_Provincia" id="provincia" required 
-                            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
-                        <option value="">Seleccione una provincia</option>
-                        <option value="1">Bocas del Toro</option>
-                        <option value="2">Coclé</option>
-                        <option value="3">Colón</option>
-                        <option value="4">Chiriquí</option>
-                        <option value="5">Darién</option>
-                        <option value="6">Herrera</option>
-                        <option value="7">Los Santos</option>
-                        <option value="8">Panamá</option>
-                        <option value="9">Panamá Oeste</option>
-                        <option value="10">Veraguas</option>
-                    </select>
-                </label>
-
-                <label style="font-weight: bold; color: #34495e;">Distrito:
-                    <select name="ID_Distrito" id="distrito" required 
-                            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
-                        <option value="">Seleccione un distrito</option>
-                    </select>
-                </label>
-
-                <label style="font-weight: bold; color: #34495e;">Nombre del lugar:
-                    <input type="text" name="Nombre" required 
-                           style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;" />
-                </label>
-
-                <label style="font-weight: bold; color: #34495e;">Descripción:
-                    <textarea name="Descripcion" required rows="3"
-                              style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;"></textarea>
-                </label>
-
-                <label style="font-weight: bold; color: #34495e;">URL del mapa (Google Maps):
-                    <input type="url" name="Ubicacion_Mapa_URL" required
-                           style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;" />
-                </label>
-
-                <label style="font-weight: bold; color: #34495e;">Tipo de destino:
-                    <select name="Tipo" required 
-                            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
-                        <option value="">Seleccione un tipo</option>
-                        <option value="Playa">Playa</option>
-                        <option value="Montaña">Montaña</option>
-                        <option value="Sitio histórico">Sitio histórico</option>
-                        <option value="Otro">Otro</option>
-                    </select>
-                </label>
-
-                <label style="font-weight: bold; color: #34495e;">Precio de entrada (USD):
-                    <input type="text" name="Precio_Entrada"
-                           style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;" />
-                </label>
-
-                <label style="font-weight: bold; color: #34495e;">Descripción del estado actual:
-                    <textarea name="Descripcion_EST" rows="2"
-                              style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;"></textarea>
-                </label>
-
-                <label style="font-weight: bold; color: #34495e;">Horario:
-                    <input type="text" name="Horario" placeholder="Ej: 8:00 AM - 5:00 PM"
-                           style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;" />
-                </label>
-
-                <button type="submit" 
-                        style="margin-top: 10px; background-color: #27ae60; color: white; font-size: 16px; font-weight: bold; padding: 12px; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s;">
-                    Publicar destino
-                </button>
+                    <!-- Sección de subida de fotos -->
+                    <div class="photo-upload-section">
+                        <label class="form-label">Fotos del destino</label>
+                        <div class="photo-upload-container" id="photoUploadContainer">
+                            <div class="upload-text">Arrastra y suelta las fotos aquí</div>
+                            <div class="upload-subtext">o haz clic para seleccionar archivos</div>
+                            <button type="button" class="upload-btn" onclick="document.getElementById('photoInput').click()">
+                                Seleccionar Fotos
+                            </button>
+                            <input type="file" id="photoInput" class="file-input" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview-grid" id="photoPreviewGrid"></div>
+                        <div class="photo-count" id="photoCount">0 fotos seleccionadas (máximo 10)</div>
+                    </div>
+                </div>
+                
+                <!-- Sección 3: Ubicación y precios -->
+                <div class="form-section" data-section="3">
+                    <div class="form-group">
+                        <label class="form-label" for="mapa">URL del mapa (Google Maps)</label>
+                        <input type="url" name="Ubicacion_Mapa_URL" id="mapa" class="form-input" required
+                               placeholder="https://maps.google.com/..." />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="precio">Precio entrada (USD)</label>
+                        <input type="number" name="Precio_Entrada" id="precio" class="form-input" 
+                               min="0" step="0.01" placeholder="0.00" />
+                    </div>
+                </div>
+                
+                <!-- Sección 4: Confirmación -->
+                <div class="form-section" data-section="4">
+                    <div class="form-group">
+                        <h3 style="color: var(--primary-dark); margin-bottom: 20px;">Resumen del destino</h3>
+                        <div id="summaryContent" style="background: #F9FAFB; padding: 20px; border-radius: 16px; border: 2px solid #E5E7EB;">
+                            <p>Completa las secciones anteriores para ver el resumen.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" onclick="previousStep()" disabled>
+                        Anterior
+                    </button>
+                    <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextStep()">
+                        Siguiente
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">
+                        Enviar
+                    </button>
+                </div>
             </form>
         </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer style="background-color: #2c3e50; color: white; padding: 40px 0; margin-top: 40px;">
-        <div style="max-width: 1000px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; padding: 0 30px;">
-            
-            <div style="flex: 1 1 250px; margin-bottom: 20px;">
-                <h3 style="margin-bottom: 10px;">🌍 Touristmo</h3>
-                <p style="line-height: 1.6;">Tu guía confiable para descubrir los mejores destinos turísticos de Panamá. Comparte tus lugares favoritos y conoce nuevos rincones.</p>
-            </div>
-
-            <div style="flex: 1 1 200px; margin-bottom: 20px;">
-                <h4 style="margin-bottom: 10px;">Enlaces útiles</h4>
-                <ul style="list-style: none; padding: 0; line-height: 1.8;">
-                    <li><a href="index.jsp" style="color: #ecf0f1; text-decoration: none;">Inicio</a></li>
-                    <li><a href="formulario.jsp" style="color: #ecf0f1; text-decoration: none;">Agregar destino</a></li>
-                    <li><a href="destinos.jsp" style="color: #ecf0f1; text-decoration: none;">Ver destinos</a></li>
-                </ul>
-            </div>
-
-            <div style="flex: 1 1 200px; margin-bottom: 20px;">
-                <h4 style="margin-bottom: 10px;">Contacto</h4>
-                <p style="line-height: 1.6;">Email: contacto@touristmo.com<br/>Teléfono: +507 6000-0000<br/>Panamá, Panamá</p>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 20px; font-size: 14px; color: #bdc3c7;">
-            © 2025 Touristmo. Todos los derechos reservados.
-        </div>
-    </footer>
-
-    <!-- Script JS para distritos -->
     <script>
+        // Variables globales
+        let currentStep = 1;
+        const totalSteps = 4;
+        let selectedPhotos = [];
+        const maxPhotos = 10;
+        
+        // Datos de distritos por provincia
         const distritosPorProvincia = {
             "1": ["Bocas del Toro", "Changuinola", "Chiriquí Grande"],
             "2": ["Aguadulce", "Antón", "La Pintada", "Natá", "Olá", "Penonomé"],
@@ -128,9 +868,295 @@
             "10": ["Atalaya", "Calobre", "Cañazas", "La Mesa", "Las Palmas", "Montijo", "Río de Jesús", "San Francisco", "Santa Fe", "Santiago", "Soná"]
         };
 
-        document.getElementById("provincia").addEventListener("change", function () {
+        // Títulos y subtítulos por paso
+        const stepContent = {
+            1: {
+                title: "Información Básica",
+                subtitle: "Comencemos con los datos básicos de tu destino turístico."
+            },
+            2: {
+                title: "Detalles y Fotos",
+                subtitle: "Cuéntanos más sobre las características de este destino y agrega algunas fotos."
+            },
+            3: {
+                title: "Ubicación y Precios",
+                subtitle: "Información sobre la ubicación y costos de entrada."
+            },
+            4: {
+                title: "Confirmar Registro",
+                subtitle: "Revisa la información antes de publicar tu destino."
+            }
+        };
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStepDisplay();
+            initializePhotoUpload();
+            document.getElementById('destinoForm').addEventListener('submit', handleSubmit);
+        });
+
+        // Inicializar funcionalidad de subida de fotos
+        function initializePhotoUpload() {
+            const photoInput = document.getElementById('photoInput');
+            const photoUploadContainer = document.getElementById('photoUploadContainer');
+
+            // Evento de selección de archivos
+            photoInput.addEventListener('change', handlePhotoSelection);
+
+            // Eventos de drag and drop
+            photoUploadContainer.addEventListener('click', () => photoInput.click());
+            photoUploadContainer.addEventListener('dragover', handleDragOver);
+            photoUploadContainer.addEventListener('dragleave', handleDragLeave);
+            photoUploadContainer.addEventListener('drop', handleDrop);
+        }
+
+        // Manejar selección de fotos
+        function handlePhotoSelection(event) {
+            const files = Array.from(event.target.files);
+            addPhotos(files);
+        }
+
+        // Manejar drag over
+        function handleDragOver(event) {
+            event.preventDefault();
+            event.currentTarget.classList.add('dragover');
+        }
+
+        // Manejar drag leave
+        function handleDragLeave(event) {
+            event.currentTarget.classList.remove('dragover');
+        }
+
+        // Manejar drop
+        function handleDrop(event) {
+            event.preventDefault();
+            event.currentTarget.classList.remove('dragover');
+            
+            const files = Array.from(event.dataTransfer.files);
+            const imageFiles = files.filter(file => file.type.startsWith('image/'));
+            addPhotos(imageFiles);
+        }
+
+        // Agregar fotos
+        function addPhotos(files) {
+            const remainingSlots = maxPhotos - selectedPhotos.length;
+            const filesToAdd = files.slice(0, remainingSlots);
+
+            filesToAdd.forEach(file => {
+                if (file.size > 5 * 1024 * 1024) { // 5MB máximo
+                    alert(`La foto ${file.name} es muy grande. Tamaño máximo: 5MB`);
+                    return;
+                }
+
+                const photoObject = {
+                    file: file,
+                    id: Date.now() + Math.random(),
+                    preview: URL.createObjectURL(file)
+                };
+
+                selectedPhotos.push(photoObject);
+            });
+
+            updatePhotoPreview();
+            updatePhotoCount();
+        }
+
+        // Actualizar preview de fotos
+        function updatePhotoPreview() {
+            const previewGrid = document.getElementById('photoPreviewGrid');
+            previewGrid.innerHTML = '';
+
+            selectedPhotos.forEach(photo => {
+                const previewDiv = document.createElement('div');
+                previewDiv.className = 'photo-preview';
+                previewDiv.innerHTML = `
+                    <img src="${photo.preview}" alt="Preview">
+                    <button type="button" class="photo-remove" onclick="removePhoto('${photo.id}')">×</button>
+                `;
+                previewGrid.appendChild(previewDiv);
+            });
+        }
+
+        // Remover foto
+        function removePhoto(photoId) {
+            const photoIndex = selectedPhotos.findIndex(photo => photo.id === photoId);
+            if (photoIndex !== -1) {
+                URL.revokeObjectURL(selectedPhotos[photoIndex].preview);
+                selectedPhotos.splice(photoIndex, 1);
+                updatePhotoPreview();
+                updatePhotoCount();
+            }
+        }
+
+        // Actualizar contador de fotos
+        function updatePhotoCount() {
+            const photoCount = document.getElementById('photoCount');
+            photoCount.textContent = `${selectedPhotos.length} fotos seleccionadas (máximo ${maxPhotos})`;
+            
+            const photoInput = document.getElementById('photoInput');
+            const uploadContainer = document.getElementById('photoUploadContainer');
+            
+            if (selectedPhotos.length >= maxPhotos) {
+                uploadContainer.style.opacity = '0.5';
+                uploadContainer.style.pointerEvents = 'none';
+            } else {
+                uploadContainer.style.opacity = '1';
+                uploadContainer.style.pointerEvents = 'auto';
+            }
+        }
+
+        // Funciones de navegación
+        function nextStep() {
+            if (validateCurrentStep() && currentStep < totalSteps) {
+                currentStep++;
+                updateStepDisplay();
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepDisplay();
+            }
+        }
+
+        // Validación del paso actual
+        function validateCurrentStep() {
+            const currentSection = document.querySelector(`[data-section="${currentStep}"]`);
+            const requiredFields = currentSection.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('field-validation');
+                    isValid = false;
+                } else {
+                    field.classList.remove('field-validation');
+                    field.classList.add('field-valid');
+                }
+            });
+
+            return isValid;
+        }
+
+        // Actualizar visualización del paso
+        function updateStepDisplay() {
+            // Actualizar progreso
+            const progressFill = document.getElementById('progressFill');
+            progressFill.style.width = `${(currentStep / totalSteps) * 100}%`;
+
+            // Actualizar pasos
+            document.querySelectorAll('.step').forEach((step, index) => {
+                const stepNumber = index + 1;
+                step.classList.remove('active', 'completed');
+                
+                if (stepNumber === currentStep) {
+                    step.classList.add('active');
+                } else if (stepNumber < currentStep) {
+                    step.classList.add('completed');
+                }
+            });
+
+            // Actualizar secciones del formulario
+            document.querySelectorAll('.form-section').forEach((section, index) => {
+                const sectionNumber = index + 1;
+                section.classList.remove('active');
+                
+                if (sectionNumber === currentStep) {
+                    section.classList.add('active');
+                }
+            });
+
+            // Actualizar títulos
+            const formTitle = document.getElementById('formTitle');
+            const formSubtitle = document.getElementById('formSubtitle');
+            formTitle.textContent = stepContent[currentStep].title;
+            formSubtitle.textContent = stepContent[currentStep].subtitle;
+
+            // Actualizar botones
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+
+            prevBtn.disabled = currentStep === 1;
+            
+            if (currentStep === totalSteps) {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'flex';
+                updateSummary();
+            } else {
+                nextBtn.style.display = 'flex';
+                submitBtn.style.display = 'none';
+            }
+
+            // Actualizar preview
+            updatePreview();
+        }
+
+        // Actualizar preview del destino
+        function updatePreview() {
+            const nombre = document.getElementById('nombre').value;
+            const tipo = document.getElementById('tipo').value;
+            const provincia = document.getElementById('provincia').selectedOptions[0]?.text || '';
+            const distrito = document.getElementById('distrito').selectedOptions[0]?.text || '';
+
+            const destinationInfo = document.getElementById('destinationInfo');
+            const destinationName = document.getElementById('destinationName');
+            const destinationDetails = document.getElementById('destinationDetails');
+
+            if (nombre && tipo) {
+                destinationName.textContent = nombre;
+                destinationDetails.textContent = `${tipo} en ${distrito}, ${provincia}`;
+                destinationInfo.classList.add('show');
+            } else {
+                destinationInfo.classList.remove('show');
+            }
+        }
+
+        // Actualizar resumen
+        function updateSummary() {
+            const formData = new FormData(document.getElementById('destinoForm'));
+            const data = Object.fromEntries(formData.entries());
+            
+            const provinciaText = document.getElementById('provincia').selectedOptions[0]?.text || '';
+            const distritoText = document.getElementById('distrito').selectedOptions[0]?.text || '';
+            
+            const summaryHTML = `
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: var(--primary-dark);">Nombre:</strong> ${data.Nombre || 'No especificado'}
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: var(--primary-dark);">Ubicación:</strong> ${distritoText}, ${provinciaText}
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: var(--primary-dark);">Tipo:</strong> ${data.Tipo || 'No especificado'}
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: var(--primary-dark);">Descripción:</strong><br>
+                    <span style="color: #6B7280;">${data.Descripcion || 'No especificada'}</span>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: var(--primary-dark);">Horario:</strong> ${data.Horario || 'No especificado'}
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: var(--primary-dark);">Estado:</strong> ${data.Descripcion_EST || 'No especificado'}
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: var(--primary-dark);">Precio de entrada:</strong> ${data.Precio_Entrada || '0.00'} USD
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: var(--primary-dark);">Fotos:</strong> ${selectedPhotos.length} imagen${selectedPhotos.length !== 1 ? 'es' : ''} seleccionada${selectedPhotos.length !== 1 ? 's' : ''}
+                </div>
+            `;
+            
+            document.getElementById('summaryContent').innerHTML = summaryHTML;
+        }
+
+        // Actualizar distritos cuando cambia la provincia
+        document.getElementById("provincia").addEventListener("change", function() {
             const provinciaSeleccionada = this.value;
             const distritoSelect = document.getElementById("distrito");
+            
             distritoSelect.innerHTML = '<option value="">Seleccione un distrito</option>';
 
             if (distritosPorProvincia[provinciaSeleccionada]) {
@@ -141,8 +1167,82 @@
                     distritoSelect.appendChild(option);
                 });
             }
+            updatePreview();
+        });
+
+        // Actualizar preview en tiempo real
+        document.querySelectorAll('#nombre, #tipo, #distrito').forEach(element => {
+            element.addEventListener('input', updatePreview);
+            element.addEventListener('change', updatePreview);
+        });
+
+        // Manejar envío del formulario
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            if (!validateCurrentStep()) {
+                return;
+            }
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Agregar información de las fotos
+            data.fotos = selectedPhotos.map(photo => ({
+                name: photo.file.name,
+                size: photo.file.size,
+                type: photo.file.type
+            }));
+            
+            console.log('Datos del destino:', data);
+            console.log('Fotos seleccionadas:', selectedPhotos);
+            
+            // Aquí normalmente enviarías los datos al servidor
+            // Por ahora solo mostramos el mensaje de éxito
+            
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+            
+            setTimeout(() => {
+                resetForm();
+            }, 3000);
+        }
+
+        // Resetear formulario
+        function resetForm() {
+            document.getElementById('destinoForm').reset();
+            document.getElementById('distrito').innerHTML = '<option value="">Primero selecciona provincia</option>';
+            document.getElementById('successMessage').style.display = 'none';
+            
+            // Limpiar fotos seleccionadas
+            selectedPhotos.forEach(photo => {
+                URL.revokeObjectURL(photo.preview);
+            });
+            selectedPhotos = [];
+            updatePhotoPreview();
+            updatePhotoCount();
+            
+            currentStep = 1;
+            updateStepDisplay();
+            document.getElementById('destinationInfo').classList.remove('show');
+        }
+
+        // Validación en tiempo real
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.classList.add('field-validation');
+                    this.classList.remove('field-valid');
+                } else if (this.value.trim()) {
+                    this.classList.remove('field-validation');
+                    this.classList.add('field-valid');
+                } else {
+                    this.classList.remove('field-validation', 'field-valid');
+                }
+            });
         });
     </script>
-
+</body>>
 </body>
 </html>
