@@ -72,14 +72,12 @@
       <div class="nav-container">
         <ul class="nav-list">
           <li class="nav-item">
-            <a href="dashboard-destinos.jsp" class="nav-link">
-              <span class="nav-icon">🏖️</span>
+            <a href="dashboard-destino.html" class="nav-link">
               Solicitudes Destinos
             </a>
           </li>
           <li class="nav-item">
-            <a href="dashboard-planes.jsp" class="nav-link active">
-              <span class="nav-icon">📋</span>
+            <a href="dashboard-planes.html" class="nav-link active">
               Solicitudes Planes
             </a>
           </li>
@@ -95,7 +93,7 @@
           <h2 class="section-title">Planes Pendientes de Aprobación</h2>
           <div class="controls-actions">
             <div class="search-box">
-              <span class="search-icon">🔍</span>
+              <i class="lucide lucide-search"></i>
               <input 
                 type="text" 
                 class="search-input" 
@@ -292,7 +290,7 @@
           <td>${plan.fechaInicio} &rarr; ${plan.fechaFinal}</td>
           <td>${plan.cantidad} personas</td>
           <td>${plan.requisitos}</td>
-          <td>⭐ ${plan.promedio}</td>
+          <td> ${plan.promedio}</td>
           <td>${plan.provincia}, ${plan.distrito}</td>
           <td>
             <a href="${plan.mapaUrl}" target="_blank" style="color:var(--primary-teal);text-decoration:underline">Mapa</a><br>
@@ -349,6 +347,8 @@
     document.getElementById("currentYear").textContent = new Date().getFullYear();
     cargarPlanes();
   });
+
+  
   </script>
   
   

@@ -96,6 +96,7 @@
       .panel-central {
         width: 95%;
         margin: 0 auto;
+        margin-bottom: var(--spacing-2xl);
         background-color: #FFFFFF;
         border-radius: 20px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
@@ -255,11 +256,7 @@
         height: 3px;
         background: var(--gradient-warm);
       }
-  
-      .nav-icon {
-        font-size: var(--text-base);
-      }
-  
+
       /* ===== CONTENEDOR PRINCIPAL ===== */
       .main-container {
         max-width: 1400px;
@@ -332,15 +329,6 @@
         border-color: var(--primary-teal);
         background: var(--bg-primary);
         box-shadow: 0 0 0 3px rgba(88, 134, 132, 0.1);
-      }
-  
-      .search-icon {
-        position: absolute;
-        left: var(--spacing-md);
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--text-muted);
-        font-size: var(--text-sm);
       }
   
       .filter-select {
@@ -742,3 +730,23 @@
         0% { background-position: -200% 0; }
         100% { background-position: 200% 0; }
       }
+
+      .lucide {
+        width: 24px;
+        height: 24px;
+        stroke: currentColor;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        display: inline-block;
+        vertical-align: middle;
+        transition: color 0.2s ease;
+        color: var(--primary-teal) /* o cualquier color que desees */
+      }
+      
+      .lucide:hover {
+        color: #007bff; /* cambia el color al hacer hover */
+        cursor: pointer;
+      }
+      

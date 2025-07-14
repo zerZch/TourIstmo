@@ -254,48 +254,48 @@
   }
 
   .destination-date {
-display: inline-block;
-background-color: #e3f2fd;
-color: #1565c0;
-padding: 4px 12px;
-border-radius: 16px;
-font-size: 12px;
-font-weight: 500;
-text-transform: capitalize;
-margin-top: 8px;
-border: 1px solid #bbdefb;
-white-space: nowrap;
+    display: inline-block;
+    background-color: #e3f2fd;
+    color: #1565c0;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-top: 8px;
+    border: 1px solid #bbdefb;
+    white-space: nowrap;
 }
 
 /* Variantes de color para diferentes tipos/categorías */
 .destination-date.historico {
-background-color: #fff3e0;
-color: #ef6c00;
-border-color: #ffcc02;
+  background-color: #fff3e0;
+  color: #ef6c00;
+  border-color: #ffcc02;
 }
 
 .destination-date.natural {
-background-color: #e8f5e8;
-color: #2e7d32;
-border-color: #a5d6a7;
+  background-color: #e8f5e8;
+  color: #2e7d32;
+  border-color: #a5d6a7;
 }
 
 .destination-date.aventura {
-background-color: #fce4ec;
-color: #c2185b;
-border-color: #f8bbd9;
+  background-color: #fce4ec;
+  color: #c2185b;
+  border-color: #f8bbd9;
 }
 
 .destination-date.cultural {
-background-color: #f3e5f5;
-color: #7b1fa2;
-border-color: #ce93d8;
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+  border-color: #ce93d8;
 }
 
 .destination-date.playa {
-background-color: #e0f2f1;
-color: #00695c;
-border-color: #80cbc4;
+  background-color: #e0f2f1;
+  color: #00695c;
+  border-color: #80cbc4;
 }
 
 /* Hover effect */

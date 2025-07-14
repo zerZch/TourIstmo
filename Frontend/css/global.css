@@ -21,6 +21,7 @@
     width: 95%;
     transition: var(--transition-normal);
     margin-bottom: var(--spacing-2xl);
+    box-sizing: border-box;
 }
 
 .floating-navbar:hover {

@@ -72,14 +72,12 @@
       <div class="nav-container">
         <ul class="nav-list">
           <li class="nav-item">
-            <a href="#" class="nav-link active">
-              <span class="nav-icon">🏖️</span>
+            <a href="dashboard-destino.html" class="nav-link active">
               Solicitudes Destinos
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <span class="nav-icon">📋</span>
+            <a href="dashboard-planes.html" class="nav-link">
               Solicitudes Planes
             </a>
           </li>
@@ -371,28 +369,20 @@
         </td>
         <td>
           ${destino.promedioCalif 
-            ? `<div class="rating-info">⭐ ${destino.promedioCalif.toFixed(1)}</div>`
+            ? `<div class="rating-info"> ${destino.promedioCalif.toFixed(1)}</div>`
             : `<div class="rating-info">Sin calificar</div>`
           }
         </td>
         <td>
-          <a href="${destino.urlMapa}" target="_blank" class="map-link">
-            🗺️ Ver Mapa
-          </a>
+          <a href="${destino.urlMapa}" target="_blank" class="map-link"> Ver Mapa </a>
         </td>
         <td>
           <div class="date-info">${destino.fechaCreacion}</div>
         </td>
         <td style="text-align:center">
-          <button class="btn-primary" onclick="gestionDestino(${destino.id}, 'ACEPTAR')">
-            ✅ Aceptar
-          </button>
-          <button class="btn-danger" onclick="gestionDestino(${destino.id}, 'RECHAZAR')">
-            ❌ Rechazar
-          </button>
-          <button class="btn-secondary" onclick="verDetalles(${destino.id})">
-            👁️ Ver
-          </button>
+          <button class="btn-primary" onclick="gestionDestino(${destino.id}, 'ACEPTAR')"> Aceptar </button>
+          <button class="btn-danger" onclick="gestionDestino(${destino.id}, 'RECHAZAR')"> Rechazar </button>
+          <button class="btn-secondary" onclick="verDetalles(${destino.id})"> Ver </button>
         </td>
       </tr>
     `;

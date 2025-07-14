@@ -1,55 +1,117 @@
-<!-- perfil-empresa.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Empresa - BetaTech Solutions</title>
-    <link rel="stylesheet" href="css/perfil-empresa.css">
+    <title>Perfil de Empresa - Get Panamá</title>
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/perfil-empresa.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Modak&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
+    <script>
+        // Inicializar iconos cuando el DOM y Lucide estén listos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Esperar a que Lucide esté completamente cargado
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            } else {
+                // Fallback si Lucide no está listo
+                setTimeout(() => {
+                    if (typeof lucide !== 'undefined') {
+                        lucide.createIcons();
+                    }
+                }, 100);
+            }
+        });
+    </script>
+</head>
 <body>
+    <!-- Navbar Flotante -->
+    <nav class="floating-navbar" id="navbar">
+        <!-- Menú Izquierdo -->
+        <div class="menu-left">
+            <a href="#destino" class="nav-link">Destino</a>
+            <a href="#planes" class="nav-link">Planes</a>
+            <a href="#perfil" class="nav-link">Perfil</a>
+        </div>
+
+        <!-- Logo Central -->
+        <div class="menu-center">
+            <a href="#" class="menu-title">
+                <img class="logo-icon" src="img/logo.svg" alt="">
+                <span>TourIstmo</span>
+            </a>
+        </div>
+
+        <!-- Menú Derecho -->
+        <div class="menu-right">
+            <a href="#login" class="cta-button-nav">Login</a>
+        </div>
+
+        <!-- Menú móvil hamburguesa -->
+        <div class="mobile-menu-toggle" id="mobileToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
     <div class="container">
         <!-- Sidebar Izquierdo -->
         <aside class="sidebar">
             <!-- Información de la Empresa -->
             <div class="user-info">
                 <div class="user-avatar">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%235A8DFF'/%3E%3Ctext x='200' y='200' font-size='180' fill='white' text-anchor='middle' alignment-baseline='middle'%3EB%3C/text%3E%3C/svg%3E" alt="BetaTech Solutions">
+                    <img src="img/getpanama.png" alt="BetaTech Solutions">
                 </div>
-                <h1 class="user-name">BetaTech Solutions</h1>
-                <p class="user-username">@betatech</p>
+                <h1 class="user-name">Get Panamá</h1>
+                <p class="user-username">@get.panama</p>
             </div>
-
-            <!-- Estadísticas -->
-            <div class="user-stats">
-                <div class="stat-item">
-                    <span class="stat-number">128</span>
-                    <span class="stat-label">Proyectos</span>
+            <!-- Información General -->
+            <div class="general-info">
+                <h3>Información General</h3>
+                
+                <div class="info-grid">
+                  <div class="info-section phone">
+                    <div class="info-section-title">Teléfono</div>
+                    <div class="info-section-value">+507 6123-4567</div>
+                  </div>
+                  
+                  <div class="info-section email">
+                    <div class="info-section-title">Email</div>
+                    <a href="mailto:info@panamaget.com" class="info-section-value">info@panamaget.com</a>
+                  </div>
+                  
+                  <div class="info-section schedule">
+                    <div class="info-section-title">Horario</div>
+                    <div class="info-section-value">Lun-Dom 8:00-18:00</div>
+                  </div>
+                  
+                  <div class="info-section clients">
+                    <div class="info-section-title">Clientes</div>
+                    <div class="info-section-value">500+ tours realizados</div>
+                  </div>
+                  
+                  <div class="info-section certification">
+                    <div class="info-section-title">Certificación</div>
+                    <div class="info-section-value">Operador Turístico Oficial</div>
+                  </div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">250</span>
-                    <span class="stat-label">Empleados</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">75</span>
-                    <span class="stat-label">Casos Éxito</span>
-                </div>
-            </div>
-            </aside>
+              </div>
+        </aside>
 
         <!-- Contenido Principal -->
         <main class="main-content">
             <!-- Header con imagen de portada -->
             <header class="profile-header">
                 <div class="cover-image">
-                    <img src="img/empresa.jpg" alt="Banner BetaTech">
+                    <img src="img/banner.avif" alt="Banner BetaTech">
                     <div class="cover-overlay">
-                        <h2 class="cover-title">BetaTech Solutions</h2>
-                        <button class="explore-btn">Conócenos</button>
+                        <h2 class="cover-title">Get Panamá</h2>
+                        <button class="explore-btn" onclick="window.open('https://www.panamaget.com', '_blank')">Conócenos</button>
                     </div>
                 </div>
             </header>
@@ -58,125 +120,56 @@
             <nav class="destinations-nav">
                 <h3>Planes Activos</h3>
                 <div class="destinations-tabs">
-                    <button class="tab-btn active">Todos</button>
+                    <button class="tab-btn active" data-category="todos">Todos</button>
+                    <button class="tab-btn" data-category="tropical">Tropical</button>
+                    <button class="tab-btn" data-category="historico">Histórico</button>
+                    <button class="tab-btn" data-category="naturaleza">Naturaleza</button>
                 </div>
             </nav>
 
             <!-- Grid de Proyectos -->
             <section class="destinations-grid">
-                <!-- Proyecto 1 -->
-                <article class="destination-card">
-                    <div class="destination-image">
-                        <img src="img/portal-corporativo.jpg" alt="Portal Corporativo">
-                        <span class="destination-badge">Completado</span>
-                    </div>
-                    <div class="destination-info">
-                        <h4>Portal Corporativo</h4>
-                        <p class="destination-location">📍 Panamá</p>
-                        <p class="destination-date">Completado en mayo 2025</p>
-                        <div class="destination-meta">
-                            <span class="rating">⭐ 4.8</span>
-                            <button class="save-btn" data-tooltip="Ver detalles">🔍</button>
-                        </div>
-                    </div>
-                </article>
-                <!-- Proyecto 2 -->
-                <article class="destination-card">
-                    <div class="destination-image">
-                        <img src="img/app-movil.jpg" alt="Aplicación Móvil">
-                        <span class="destination-badge pending">En Proceso</span>
-                    </div>
-                    <div class="destination-info">
-                        <h4>Aplicación Móvil</h4>
-                        <p class="destination-location">📍 Remote</p>
-                        <p class="destination-date">Entrega prevista ago 2025</p>
-                        <div class="destination-meta">
-                            <span class="rating">⭐ 4.6</span>
-                            <button class="save-btn" data-tooltip="Ver detalles">🔍</button>
-                        </div>
-                    </div>
-                </article>
-                <!-- Proyecto 3 -->
-                <article class="destination-card">
-                    <div class="destination-image">
-                        <img src="img/e-commerce.jpg" alt="E-commerce">
-                        <span class="destination-badge">Completado</span>
-                    </div>
-                    <div class="destination-info">
-                        <h4>E-commerce</h4>
-                        <p class="destination-location">📍 Ciudad de Panamá</p>
-                        <p class="destination-date">Completado en mar 2025</p>
-                        <div class="destination-meta">
-                            <span class="rating">⭐ 4.9</span>
-                            <button class="save-btn" data-tooltip="Ver detalles">🔍</button>
-                        </div>
-                    </div>
-                </article>
-                <!-- Proyecto 4 -->
-                <article class="destination-card">
-                    <div class="destination-image">
-                        <img src="img/automatizacion.jpg" alt="Automatización Industrial">
-                        <span class="destination-badge pending">En Proceso</span>
-                    </div>
-                    <div class="destination-info">
-                        <h4>Automatización Industrial</h4>
-                        <p class="destination-location">📍 Colón</p>
-                        <p class="destination-date">Entrega prevista jul 2025</p>
-                        <div class="destination-meta">
-                            <span class="rating">⭐ 4.7</span>
-                            <button class="save-btn" data-tooltip="Ver detalles">🔍</button>
-                        </div>
-                    </div>
-                </article>
+                <!-- Las cartas se cargarán aquí dinámicamente -->
             </section>
-
-            <!-- Sección de Clientes Destacados -->
-            <section class="saved-places">
-                <div class="section-header">
-                    <h3>Clientes Destacados</h3>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active">Todos</button>
-                        <button class="filter-btn">Pymes</button>
-                        <button class="filter-btn">Corporativos</button>
+            
+            <!-- Template para las cartas de destino -->
+            <template id="destination-card-template">
+                <article class="destination-card">
+                    <div class="destination-image">
+                        <img src="" alt="" class="destination-img">
                     </div>
-                </div>
-
-                <div class="saved-grid">
-                    <div class="saved-card">
-                        <img src="img/cliente1.jpg" alt="Panamá Travel">
-                        <div class="saved-info">
-                            <h5>Panamá Travel</h5>
-                            <p>🗺️ Agencia de Viajes</p>
-                            <div class="saved-actions">
-                                <span class="saved-rating">⭐ 4.9</span>
-                                <button class="remove-btn" data-tooltip="Eliminar">🗑️</button>
-                            </div>
+                    <div class="destination-info">
+                        <div class="horizontal-info">
+                            <h4 class="destination-name"></h4>
+                            <button class="save-btn save-btn-overlay" onclick="event.preventDefault(); toggleSave(this)" data-saved="false">
+                                <span class="heart-icon">♡</span>
+                            </button>
+                        </div>
+                        
+                        <p class="destination-location">
+                            <i data-lucide="map-pin" class="icon"></i>
+                            <span class="destination-province"></span>
+                        </p>
+                        
+                        <p class="destination-date">
+                            <span class="destination-type"></span>
+                        </p>
+                        
+                        <div class="destination-meta">
+                            <span class="destination-badge">
+                                <span class="badge-text"></span>
+                            </span>
+                            <span class="rating">
+                                <i data-lucide="star" class="icon filled"></i>
+                                <span class="rating-value"></span>
+                            </span>
+                            <span class="price">
+                                <span class="price-text"></span>
+                            </span>
                         </div>
                     </div>
-                    <div class="saved-card">
-                        <img src="img/cliente2.jpg" alt="Global Finance">
-                        <div class="saved-info">
-                            <h5>Global Finance</h5>
-                            <p>🏦 Sector Bancario</p>
-                            <div class="saved-actions">
-                                <span class="saved-rating">⭐ 4.7</span>
-                                <button class="remove-btn" data-tooltip="Eliminar">🗑️</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="saved-card">
-                        <img src="img/cliente3.jpg" alt="EcoGreen">
-                        <div class="saved-info">
-                            <h5>EcoGreen</h5>
-                            <p>🌱 Energías Renovables</p>
-                            <div class="saved-actions">
-                                <span class="saved-rating">⭐ 5.0</span>
-                                <button class="remove-btn" data-tooltip="Eliminar">🗑️</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </article>
+            </template>            
         </main>
 
         <!-- Sidebar Derecho -->
@@ -185,16 +178,24 @@
             <div class="user-details">
                 <h3>Sobre Nosotros</h3>
                 <p class="user-bio">
-                    BetaTech Solutions es una empresa líder en desarrollo de software y consultoría IT, comprometida con la innovación y la excelencia.
+                    Ser reconocidos como el principal operador de turismo de aventura en Panamá, ofreciendo experiencias únicas que conecten a los viajeros con la naturaleza, la cultura y la autenticidad de los destin
                 </p>
                 <div class="user-meta">
-                    <p><span class="icon">📍</span> Ciudad de Panamá, Panamá</p>
-                    <p><span class="icon">📅</span> Fundada en 2010</p>
-                    <p><span class="icon">🌐</span> <a href="https://www.betatech.com">www.betatech.com</a></p>
+                    <p>
+                        <i data-lucide="map-pin" class="icon"></i>
+                        Ciudad de Panamá, Panamá
+                    </p>
+                    <p>
+                        <i data-lucide="calendar" class="icon"></i>
+                        Fundada en 2010
+                    </p>
+                    <p>
+                        <i data-lucide="globe" class="icon"></i>
+                        <a href="https://www.panamaget.com">www.panamaget.com</a>
+                    </p>
                 </div>
                 <div class="action-buttons">
                     <button class="btn-primary" id="editProfileBtn">Editar Perfil</button>
-                    <button class="btn-secondary">Configuración</button>
                 </div>
             </div>
 
@@ -203,26 +204,27 @@
                 <h3>Actividad Reciente</h3>
                 <div class="activity-list">
                     <div class="activity-item">
-                        <span class="activity-icon">🚀</span>
-                        <p>Lanzó servicio <strong>Portal Corporativo</strong></p>
-                        <span class="activity-time">Hace 3 horas</span>
+                        <i data-lucide="rocket" class="activity-icon"></i>
+                        <div class="activity-content">
+                            <p>Lanzó servicio <strong>Portal Corporativo</strong></p>
+                            <span class="activity-time">Hace 3 horas</span>
+                        </div>
                     </div>
                     <div class="activity-item">
-                        <span class="activity-icon">🏆</span>
-                        <p>Publicó caso de <strong>Global Finance</strong></p>
-                        <span class="activity-time">Hace 1 día</span>
+                        <i data-lucide="trophy" class="activity-icon"></i>
+                        <div class="activity-content">
+                            <p>Publicó caso de <strong>Global Finance</strong></p>
+                            <span class="activity-time">Hace 1 día</span>
+                        </div>
                     </div>
                     <div class="activity-item">
-                        <span class="activity-icon">🛠️</span>
-                        <p>Actualizó proyecto <strong>Automatización Industrial</strong></p>
-                        <span class="activity-time">Hace 2 días</span>
+                        <i data-lucide="wrench" class="activity-icon"></i>
+                        <div class="activity-content">
+                            <p>Actualizó proyecto <strong>Automatización Industrial</strong></p>
+                            <span class="activity-time">Hace 2 días</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Tiempo actual -->
-            <div class="time-widget">
-                <span class="current-time"></span>
             </div>
         </aside>
     </div>
@@ -232,7 +234,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Editar Perfil de Empresa</h2>
-                <button class="close-modal" id="closeModalBtn">&times;</button>
+                <button class="close-modal" id="closeModalBtn">
+                    <i data-lucide="x" class="icon"></i>
+                </button>
             </div>
             <form class="edit-profile-form" id="editProfileForm">
                 <div class="form-group">
@@ -243,6 +247,7 @@
                         </div>
                         <input type="file" id="avatarInput" accept="image/*" hidden>
                         <button type="button" class="upload-btn" onclick="document.getElementById('avatarInput').click()">
+                            <i data-lucide="upload" class="icon"></i>
                             Cambiar Logo
                         </button>
                     </div>
@@ -255,6 +260,7 @@
                         </div>
                         <input type="file" id="bannerInput" accept="image/*" hidden>
                         <button type="button" class="upload-btn" onclick="document.getElementById('bannerInput').click()">
+                            <i data-lucide="upload" class="icon"></i>
                             Cambiar Banner
                         </button>
                     </div>
@@ -286,63 +292,516 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Logo y descripción -->
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <img class="logo-icon" src="img/logowhite.png" alt="">
+                        <span class="footer-logo-text">TourIstmo</span>
+                    </a>
+                    <p class="footer-description">
+                        Explora, comparte y disfruta de los mejores destinos turísticos de Panamá. 
+                        Tu aventura comienza aquí.
+                    </p>
+                </div>
+
+                <!-- Navegación principal -->
+                <div class="footer-section">
+                    <h4>TourIstmo</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.jsp">Inicio</a></li>
+                        <li><a href="formulario.jsp">Agregar Destino</a></li>
+                        <li><a href="planes.jsp">Planes Turísticos</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Reservar</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colaboración y Soporte -->
+                <div class="footer-section">
+                    <h4>Colabora</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Únete al equipo</a></li>
+                        <li><a href="#">Publica tus planes</a></li>
+                    </ul>
+                    
+                    <h4 style="margin-top: var(--spacing-lg);">Soporte</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                        <li><a href="#">Ayuda</a></li>
+                    </ul>
+                </div>
+
+                <!-- Métodos de pago y app -->
+                <div class="footer-section">
+                    <div class="footer-payments">
+                        <h4>Métodos de Pago</h4>
+                        <div class="payment-methods">
+                            <div class="payment-icon">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
+                            </div>
+                            <div class="payment-icon">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+                            </div>
+                            <div class="payment-icon">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-app">
+                        <h4>Descarga la App</h4>
+                        <a href="#" class="app-download">
+                            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Descargar en App Store">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2025 Touristmo. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
     <script>
-    // El mismo script de perfil-usuario.js funciona sin cambios
-    document.addEventListener('DOMContentLoaded', function() {
-        // Placeholder para imágenes que fallen
-        document.querySelectorAll('img').forEach(img => {
-            img.onerror = function() {
-                const w = this.width||400, h = this.height||300;
-                const txt = this.alt.charAt(0).toUpperCase()||'?';
-                this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'%3E%3Crect width='${w}' height='${h}' fill='%23E0E6ED'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='%237F8C8D' text-anchor='middle' alignment-baseline='middle'%3E${txt}%3C/text%3E%3C/svg%3E`;
-            };
-        });
-        // Reloj
-        function updateTime(){
-            const now=new Date();
-            const h=now.getHours().toString().padStart(2,'0');
-            const m=now.getMinutes().toString().padStart(2,'0');
-            document.querySelector('.current-time').textContent=`${h}:${m}`;
+        document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar Lucide Icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+    
+    // Placeholder para imágenes que fallen
+    document.querySelectorAll('img').forEach(img => {
+        img.onerror = function() {
+            const w = this.width || 400, h = this.height || 300;
+            const txt = this.alt.charAt(0).toUpperCase() || '?';
+            this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'%3E%3Crect width='${w}' height='${h}' fill='%23E0E6ED'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='%237F8C8D' text-anchor='middle' alignment-baseline='middle'%3E${txt}%3C/text%3E%3C/svg%3E`;
+        };
+    });
+
+    // Reloj
+    function updateTime() {
+        const now = new Date();
+        const h = now.getHours().toString().padStart(2, '0');
+        const m = now.getMinutes().toString().padStart(2, '0');
+        const timeElement = document.querySelector('.current-time');
+        if (timeElement) {
+            timeElement.textContent = `${h}:${m}`;
         }
-        updateTime();
-        setInterval(updateTime,60000);
+    }
+    updateTime();
+    setInterval(updateTime, 60000);
 
-        // Modal
-        const modal=document.getElementById('editProfileModal');
-        const openBtn=document.getElementById('editProfileBtn');
-        const closeBtns=[ document.getElementById('closeModalBtn'), document.getElementById('cancelEditBtn') ];
-        openBtn.onclick=()=>{ modal.classList.add('active'); document.body.style.overflow='hidden'; };
-        closeBtns.forEach(b=>b.onclick=()=>{ modal.classList.remove('active'); document.body.style.overflow='auto'; });
-        modal.addEventListener('click',e=>{ if(e.target===modal) closeBtns[0].onclick(); });
+    // Modal
+    const modal = document.getElementById('editProfileModal');
+    const openBtn = document.getElementById('editProfileBtn');
+    const closeBtns = [document.getElementById('closeModalBtn'), document.getElementById('cancelEditBtn')];
+    
+    if (modal && openBtn) {
+        openBtn.onclick = () => { 
+            modal.classList.add('active'); 
+            document.body.style.overflow = 'hidden'; 
+        };
+        
+        closeBtns.forEach(b => {
+            if (b) {
+                b.onclick = () => { 
+                    modal.classList.remove('active'); 
+                    document.body.style.overflow = 'auto'; 
+                };
+            }
+        });
+        
+        modal.addEventListener('click', e => { 
+            if (e.target === modal && closeBtns[0]) {
+                closeBtns[0].onclick(); 
+            }
+        });
+    }
 
-        // Previews
-        ['avatar','banner'].forEach(type=>{
-            const inp=document.getElementById(`${type}Input`);
-            const prev=document.getElementById(`${type}Preview`);
-            inp.addEventListener('change',e=>{
-                const f=e.target.files[0];
-                if(f&&f.type.startsWith('image/')){
-                    const r=new FileReader();
-                    r.onload=ev=> prev.src=ev.target.result;
+    // Previews
+    ['avatar', 'banner'].forEach(type => {
+        const inp = document.getElementById(`${type}Input`);
+        const prev = document.getElementById(`${type}Preview`);
+        if (inp && prev) {
+            inp.addEventListener('change', e => {
+                const f = e.target.files[0];
+                if (f && f.type.startsWith('image/')) {
+                    const r = new FileReader();
+                    r.onload = ev => prev.src = ev.target.result;
                     r.readAsDataURL(f);
                 }
             });
-        });
+        }
+    });
 
-        // Guardar cambios
-        document.getElementById('editProfileForm').addEventListener('submit',e=>{
+    // Guardar cambios
+    const editForm = document.getElementById('editProfileForm');
+    if (editForm) {
+        editForm.addEventListener('submit', e => {
             e.preventDefault();
-            document.querySelector('.user-name').textContent = document.getElementById('nameInput').value;
-            document.querySelector('.user-username').textContent = '@' + document.getElementById('usernameInput').value;
-            document.querySelector('.user-bio').textContent = document.getElementById('bioInput').value;
-            document.querySelector('.user-meta p:first-child').innerHTML = '<span class="icon">📍</span> ' + document.getElementById('locationInput').value;
-            document.querySelector('.user-avatar img').src = document.getElementById('avatarPreview').src;
-            document.querySelector('.cover-image img').src = document.getElementById('bannerPreview').src;
+            const userName = document.querySelector('.user-name');
+            const userUsername = document.querySelector('.user-username');
+            const userBio = document.querySelector('.user-bio');
+            const userMeta = document.querySelector('.user-meta p:first-child');
+            const userAvatar = document.querySelector('.user-avatar img');
+            const coverImage = document.querySelector('.cover-image img');
+            
+            if (userName) userName.textContent = document.getElementById('nameInput').value;
+            if (userUsername) userUsername.textContent = '@' + document.getElementById('usernameInput').value;
+            if (userBio) userBio.textContent = document.getElementById('bioInput').value;
+            if (userMeta) userMeta.innerHTML = '<i data-lucide="map-pin" class="icon"></i> ' + document.getElementById('locationInput').value;
+            if (userAvatar) userAvatar.src = document.getElementById('avatarPreview').src;
+            if (coverImage) coverImage.src = document.getElementById('bannerPreview').src;
+            
+            // Reinicializar iconos después de actualizar el DOM
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
             modal.classList.remove('active');
-            document.body.style.overflow='auto';
+            document.body.style.overflow = 'auto';
             alert('Perfil actualizado correctamente!');
         });
+    }
+
+    // Cargar destinos de ejemplo
+    loadDestinations(exampleDestinations);
+    
+    // INICIALIZAR FILTROS DESPUÉS DE CARGAR LA PÁGINA
+    initializeFilters();
+});
+
+// Función para cargar destinos dinámicamente
+function loadDestinations(destinations) {
+    const grid = document.querySelector('.destinations-grid');
+    const template = document.querySelector('#destination-card-template');
+    const linkTemplate = document.querySelector('#destination-link-template');
+    
+    if (!grid || !template) return;
+    
+    // Limpiar grid existente
+    grid.innerHTML = '';
+    
+    destinations.forEach(destination => {
+        // Decidir qué template usar basado en si tiene URL
+        const templateToUse = destination.url ? linkTemplate : template;
+        if (!templateToUse) return;
+        
+        const clone = templateToUse.content.cloneNode(true);
+        
+        // Configurar la imagen
+        const img = clone.querySelector('.destination-img');
+        if (img) {
+            img.src = destination.imagen || destination.image;
+            img.alt = destination.nombre || destination.name;
+            
+            // Agregar manejo de error para imágenes dinámicas
+            img.onerror = function() {
+                const w = this.width || 400, h = this.height || 300;
+                const txt = this.alt.charAt(0).toUpperCase() || '?';
+                this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'%3E%3Crect width='${w}' height='${h}' fill='%23E0E6ED'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='%237F8C8D' text-anchor='middle' alignment-baseline='middle'%3E${txt}%3C/text%3E%3C/svg%3E`;
+            };
+        }
+        
+        // Configurar información básica
+        const nameElement = clone.querySelector('.destination-name');
+        if (nameElement) nameElement.textContent = destination.nombre || destination.name;
+        
+        const provinceElement = clone.querySelector('.destination-province');
+        if (provinceElement) provinceElement.textContent = destination.provincia || destination.location;
+        
+        const typeElement = clone.querySelector('.destination-type');
+        if (typeElement) typeElement.textContent = destination.tipo || destination.type;
+        
+        // Configurar rating
+        const ratingElement = clone.querySelector('.rating-value');
+        if (ratingElement) ratingElement.textContent = destination.rating || '4.5';
+        
+        // Configurar precio
+        const priceElement = clone.querySelector('.price-text');
+        if (priceElement) priceElement.textContent = destination.precio || destination.price;
+        
+        // Configurar badge si existe
+        const badgeElement = clone.querySelector('.badge-text');
+        if (badgeElement && destination.badge) {
+            badgeElement.textContent = destination.badge;
+            const badgeContainer = clone.querySelector('.destination-badge');
+            if (badgeContainer) {
+                badgeContainer.className = `destination-badge ${destination.badge.toLowerCase()}`;
+            }
+        }
+        
+        // Configurar URL si es un enlace
+        if (destination.url) {
+            const linkElement = clone.querySelector('.destination-link');
+            if (linkElement) linkElement.href = destination.url;
+        }
+        
+        // Agregar clase de tipo para estilos específicos
+        if (destination.tipo) {
+            const dateElement = clone.querySelector('.destination-date');
+            if (dateElement) dateElement.classList.add(destination.tipo.toLowerCase());
+        }
+        
+        grid.appendChild(clone);
     });
+    
+    // Reinicializar los iconos de Lucide después de agregar el contenido
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+// Función para alternar el estado de guardado
+function toggleSave(button) {
+    const isSaved = button.dataset.saved === 'true';
+    button.dataset.saved = !isSaved;
+    
+    const heartIcon = button.querySelector('.heart-icon');
+    if (heartIcon) {
+        // Cambiar entre heart (vacío) y heart-filled (lleno)
+        heartIcon.setAttribute('data-lucide', isSaved ? 'heart' : 'heart');
+        heartIcon.classList.toggle('filled', !isSaved);
+        
+        // Reinicializar los iconos de Lucide
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    }
+    
+    // Aquí puedes agregar lógica para guardar/quitar de favoritos
+    console.log('Toggled save state:', !isSaved);
+}
+
+// Ejemplo de datos para cargar - ACTUALIZADO para coincidir con las categorías
+const exampleDestinations = [
+    {
+        nombre: "Archipiélago de Las Perlas (Full Day)",
+        imagen: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+        provincia: "San Blas",
+        precio: "$79",
+        rating: "4.8",
+        tipo: "Tropical"
+    },
+    {
+        nombre: "Canal de Panamá Experience",
+        imagen: "https://images.unsplash.com/photo-1645932700624-5075c8d2df58?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        provincia: "Miraflores",
+        precio: "$45",
+        rating: "4.8",
+        tipo: "Histórico"
+    },
+    {
+        nombre: "Gamboa Rainforest Adventure",
+        imagen: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+        provincia: "Gamboa",
+        precio: "$95",
+        rating: "4.7",
+        tipo: "Naturaleza"
+    },
+    {
+        nombre: "City Tour Panamá",
+        imagen: "https://images.unsplash.com/photo-1540610410855-b4c8877b761c?q=80&w=2848&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        provincia: "Panamá",
+        precio: "$70",
+        rating: "4.9",
+        tipo: "Histórico"
+    },
+    {
+        nombre: "Playa Blanca Excursión",
+        imagen: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+        provincia: "Colón",
+        precio: "$85",
+        rating: "4.6",
+        tipo: "Tropical"
+    },
+    {
+        nombre: "Parque Nacional Soberanía",
+        imagen: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+        provincia: "Panamá",
+        precio: "$60",
+        rating: "4.8",
+        tipo: "Naturaleza"
+    }
+];
+
+// FUNCIÓN PARA INICIALIZAR LOS FILTROS
+function initializeFilters() {
+    // Obtener elementos del DOM después de que se haya cargado
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    
+    // Verificar que los elementos existen
+    if (tabButtons.length === 0) {
+        console.log('No se encontraron botones de filtro (.tab-btn)');
+        return;
+    }
+
+    // Función para filtrar destinos CORREGIDA
+    function filterDestinations(category) {
+        // Buscar las tarjetas cada vez que se filtra (porque se generan dinámicamente)
+        const destinationCards = document.querySelectorAll('.destination-card');
+        const noResults = document.getElementById('noResults');
+        let visibleCards = 0;
+        
+        console.log('Filtrando por categoría:', category);
+        console.log('Tarjetas encontradas:', destinationCards.length);
+
+        if (destinationCards.length === 0) {
+            console.log('No se encontraron tarjetas de destino (.destination-card)');
+            return;
+        }
+
+        // Procesar cada tarjeta
+        destinationCards.forEach((card, index) => {
+            // Obtener la categoría del tipo de destino
+            const typeElement = card.querySelector('.destination-type');
+            const cardCategory = typeElement ? typeElement.textContent.toLowerCase() : '';
+            
+            console.log(`Tarjeta ${index}: categoría="${cardCategory}"`);
+            
+            // Resetear animación
+            card.style.animation = 'none';
+            card.style.animationDelay = '0s';
+            
+            // Verificar si debe mostrarse
+            const shouldShow = category === 'todos' || cardCategory === category;
+            
+            if (shouldShow) {
+                card.classList.remove('hidden');
+                card.style.display = 'block';
+                
+                // Aplicar animación con delay
+                setTimeout(() => {
+                    card.style.animationDelay = `${visibleCards * 0.1}s`;
+                    card.style.animation = 'fadeInUp 0.6s ease forwards';
+                }, 10);
+                
+                visibleCards++;
+            } else {
+                card.classList.add('hidden');
+                card.style.display = 'none';
+            }
+        });
+
+        console.log('Tarjetas visibles:', visibleCards);
+
+        // Mostrar/ocultar mensaje de "no hay resultados"
+        if (noResults) {
+            if (visibleCards === 0) {
+                noResults.classList.add('show');
+                noResults.style.display = 'block';
+            } else {
+                noResults.classList.remove('show');
+                noResults.style.display = 'none';
+            }
+        } else if (visibleCards === 0) {
+            // Si no existe el elemento noResults, crear uno temporalmente
+            const grid = document.querySelector('.destinations-grid');
+            if (grid) {
+                let tempMessage = grid.querySelector('.temp-no-results');
+                if (!tempMessage) {
+                    tempMessage = document.createElement('div');
+                    tempMessage.className = 'temp-no-results';
+                    tempMessage.innerHTML = '<p>No se encontraron destinos para esta categoría.</p>';
+                    tempMessage.style.cssText = 'text-align: center; padding: 2rem; color: #666; grid-column: 1/-1;';
+                    grid.appendChild(tempMessage);
+                }
+                tempMessage.style.display = 'block';
+            }
+        } else {
+            // Ocultar mensaje temporal si existe
+            const tempMessage = document.querySelector('.temp-no-results');
+            if (tempMessage) {
+                tempMessage.style.display = 'none';
+            }
+        }
+    }
+
+    // Event listeners para los botones de filtro
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            console.log('Botón clickeado:', this.dataset.category);
+            
+            // Remover clase active de todos los botones
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Añadir clase active al botón clickeado
+            this.classList.add('active');
+            
+            // Filtrar destinos según la categoría seleccionada
+            const category = this.dataset.category;
+            filterDestinations(category);
+        });
+    });
+
+    // Event listeners para botones del carrito
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.cart-btn')) {
+            const card = e.target.closest('.destination-card');
+            if (card) {
+                const destinationName = card.querySelector('.destination-name');
+                const destinationPrice = card.querySelector('.price-text');
+                
+                if (destinationName && destinationPrice) {
+                    alert(`¡Agregado al carrito: ${destinationName.textContent}\nPrecio: ${destinationPrice.textContent}\n\n¡Gracias por elegir Get Panamá!`);
+                }
+            }
+        }
+    });
+
+    // Animación inicial (esperar un poco más para que se carguen los destinos)
+    setTimeout(() => {
+        filterDestinations('todos');
+    }, 500);
+}
+
+// CSS para las animaciones (agregar al final del archivo CSS)
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .destination-card.hidden {
+        display: none !important;
+    }
+    
+    .destination-card {
+        animation-fill-mode: both;
+    }
+    
+    .temp-no-results {
+        display: none;
+        text-align: center;
+        padding: 2rem;
+        color: #666;
+        grid-column: 1/-1;
+    }
+    
+    .tab-btn {
+        transition: all 0.3s ease;
+    }
+    
+    .tab-btn.active {
+        background-color: #007bff;
+        color: white;
+    }
+`;
+document.head.appendChild(style);
     </script>
 </body>
 </html>

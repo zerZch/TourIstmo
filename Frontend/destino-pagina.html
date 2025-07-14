@@ -4,88 +4,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Destinos | tourIstmo</title>
-  <link rel="stylesheet" href="global.css" />
-
-  <!-- Reglas extra para la grilla y la tarjeta -->
-  <style>
-    /* Contenedor con padding lateral para que las tarjetas no peguen al borde */
-    .container{
-      padding-left:5%;
-      padding-right:5%;
-    }
-
-    /* ===== Grid responsive ===== */
-    .grid-cards{
-      display:grid;
-      gap:24px;
-      grid-template-columns:repeat(3,1fr);
-    }
-    @media(max-width:1024px){
-      .grid-cards{grid-template-columns:repeat(2,1fr);}
-    }
-    @media(max-width:600px){
-      .grid-cards{grid-template-columns:1fr;}
-    }
-
-    /* ===== Bloque tarjeta con sombra, esquinas redondeadas y texto centrado ===== */
-    a.card{
-      display:block;
-      color:inherit;
-      text-decoration:none;
-      border-radius:10px;
-      overflow:hidden;
-      background:#fff;
-      box-shadow:0 4px 12px rgba(0,0,0,.1);
-      transition:transform .15s;
-    }
-    a.card:hover{transform:translateY(-4px);}
-
-    .card-img{
-      height:220px;
-      object-fit:cover;
-      width:100%;
-    }
-    .card-body{
-      padding:16px;
-      text-align:center;       /* --- centra texto --- */
-    }
-    .card-title{
-      font-size:1.4rem;
-      font-weight:700;
-      margin-bottom:6px;
-    }
-  </style>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/destinopag.css"/>
 </head>
 
 <body>
   <!-- ===== Encabezado ===== -->
-  <header>
-    <div class="container wrapper">
-      <img src="assets/logo-touristmo.svg" class="logo" alt="Logo tourIstmo" />
-      <h1>tourIstmo</h1>
+  <nav class="floating-navbar" id="navbar">
+    <!-- Menú Izquierdo -->
+    <div class="menu-left">
+        <a href="#destino" class="nav-link">Destino</a>
+        <a href="#planes" class="nav-link">Planes</a>
+        <a href="#perfil" class="nav-link">Perfil</a>
     </div>
-  </header>
 
-  <!-- ===== Menú principal ===== -->
-  <nav class="menu">
-    <ul>
-      <li><a href="index.html">Destinos</a></li>
-      <li><a href="planes.html">Planes</a></li>
-      <li><a href="perfil.html">Perfil</a></li>
-    </ul>
+    <!-- Logo Central -->
+    <div class="menu-center">
+        <a href="#" class="menu-title">
+            <img class="logo-icon"  src="img/logo.svg" alt="">
+            <span>TourIstmo</span>
+        </a>
+    </div>
+
+    <!-- Menú Derecho -->
+    <div class="menu-right">
+        <a href="#login" class="cta-button-nav">Login</a>
+    </div>
+
+    <!-- Menú móvil hamburguesa -->
+    <div class="mobile-menu-toggle" id="mobileToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
   </nav>
 
   <!-- ===== Listado de Destinos ===== -->
   <section class="container">
     <h2 class="section-title" style="text-align:center;">Explora destinos en Panamá</h2>
 
-    <!-- buscador sencillo -->
-    <div class="form-row" style="margin-bottom:24px;justify-content:center;">
-      <div class="field" style="flex:1;max-width:400px;">
-        <input id="searchInput" type="text" placeholder="Buscar por nombre, provincia o tipo…" />
+    <!-- buscador y filtros -->
+    <div class="search-filters">
+      <div class="form-row" style="margin-bottom:24px;justify-content:center;">
+        <div class="field" style="flex:1;max-width:400px;">
+          <input id="searchInput" type="text" placeholder="Buscar por nombre, provincia o tipo…" />
+        </div>
+        <div class="field" style="max-width:160px;">
+          <button class="btn-primary" id="searchBtn">Buscar</button>
+        </div>
       </div>
-      <div class="field" style="max-width:160px;">
-        <button class="btn-primary" id="searchBtn">Buscar</button>
+      
+      <!-- Filtros adicionales -->
+      <div class="filters-row">
+        <select id="provinciaFilter" class="filter-select">
+          <option value="">Todas las provincias</option>
+          <option value="Panamá">Panamá</option>
+          <option value="Bocas del Toro">Bocas del Toro</option>
+          <option value="Chiriquí">Chiriquí</option>
+          <option value="Coclé">Coclé</option>
+          <option value="Guna Yala">Guna Yala</option>
+          <option value="Darién">Darién</option>
+        </select>
+        
+        <select id="tipoFilter" class="filter-select">
+          <option value="">Todos los tipos</option>
+          <option value="Histórico">Histórico</option>
+          <option value="Playa">Playa</option>
+          <option value="Aventura">Aventura</option>
+          <option value="Natural">Natural</option>
+          <option value="Paradisíaco">Paradisíaco</option>
+          <option value="Ingeniería">Ingeniería</option>
+        </select>
+        
+        <select id="precioFilter" class="filter-select">
+          <option value="">Todos los precios</option>
+          <option value="gratis">Gratis</option>
+          <option value="pago">De pago</option>
+        </select>
       </div>
     </div>
 
@@ -96,89 +91,449 @@
   </section>
 
   <!-- ===== Footer ===== -->
-  <footer>
-    <div class="wrapper">
-      <small>&copy; <span id="year"></span> tourIstmo · Todos los derechos reservados</small>
-    </div>
-  </footer>
+  <!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="footer-container">
+      <div class="footer-grid">
+          <!-- Logo y descripción -->
+          <div class="footer-brand">
+              <a href="#" class="footer-logo">
+                  <img class="logo-icon"  src="img/logowhite.png" alt="">
+                  <span class="footer-logo-text">TourIstmo</span>
+              </a>
+              <p class="footer-description">
+                  Explora, comparte y disfruta de los mejores destinos turísticos de Panamá. 
+                  Tu aventura comienza aquí.
+              </p>
+          </div>
 
-<!-- ===== Script (igual que antes) ===== -->
-<script>
-/* ---------- CONFIG ---------- */
-const pageSize = 20;
-const apiBase  = '/api/destinos';
+          <!-- Navegación principal -->
+          <div class="footer-section">
+              <h4>TourIstmo</h4>
+              <ul class="footer-links">
+                  <li><a href="index.jsp">Inicio</a></li>
+                  <li><a href="formulario.jsp">Agregar Destino</a></li>
+                  <li><a href="planes.jsp">Planes Turísticos</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Reservar</a></li>
+              </ul>
+          </div>
 
-/* ---------- Datos de prueba ---------- */
-const mockData = Array.from({length:57},(_,i)=>({
-  id:i+1,
-  nombre:`Destino ${i+1}`,
-  provincia:'Panamá',
-  tipo:'Playa',
-  precio:i%3?10.00:null,
-  imagen:'https://via.placeholder.com/400x220?text=Destino+'+(i+1)
-}));
+          <!-- Colaboración y Soporte -->
+          <div class="footer-section">
+              <h4>Colabora</h4>
+              <ul class="footer-links">
+                  <li><a href="#">Únete al equipo</a></li>
+                  <li><a href="#">Publica tus planes</a></li>
+              </ul>
+              
+              <h4 style="margin-top: var(--spacing-lg);">Soporte</h4>
+              <ul class="footer-links">
+                  <li><a href="#">Términos y Condiciones</a></li>
+                  <li><a href="#">Privacidad</a></li>
+                  <li><a href="#">Ayuda</a></li>
+              </ul>
+          </div>
 
-/* ---------- Utilidades ---------- */
-const gridEl = document.getElementById('destinosGrid');
-const pagEl  = document.getElementById('paginador');
-
-function cardHTML(d){
-  return `
-    <a href="destino.html?id=${d.id}" class="card">
-      <img src="${d.imagen}" alt="Imagen de ${d.nombre}" class="card-img">
-      <div class="card-body">
-        <h3 class="card-title">${d.nombre}</h3>
-        <p class="card-meta">${d.provincia} · ${d.tipo}</p>
-        <p><strong>${d.precio ?? 'Gratis'}</strong></p>
+          <!-- Métodos de pago y app -->
+          <div class="footer-section">
+              <div class="footer-payments">
+                  <h4>Métodos de Pago</h4>
+                  <div class="payment-methods">
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
+                      </div>
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+                      </div>
+                      <div class="payment-icon">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="footer-app">
+                  <h4>Descarga la App</h4>
+                  <a href="#" class="app-download">
+                      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Descargar en App Store">
+                  </a>
+              </div>
+          </div>
       </div>
-    </a>`;
-}
 
-/* ---------- Render ---------- */
+      <div class="footer-bottom">
+          <p class="footer-copyright">
+              © 2025 Touristmo. Todos los derechos reservados.
+          </p>
+      </div>
+  </div>
+</footer>
+
+  <!-- ===== Script ===== -->
+  <script>
+    /* ===== CONFIGURACIÓN ===== */
+const pageSize = 12;
+const apiBase = '/api/destinos';
+
+/* ===== DATOS MOCK MEJORADOS ===== */
+const mockDestinos = [
+  {
+    id: 1,
+    nombre: 'Casco Viejo',
+    provincia: 'Panamá',
+    tipo: 'Histórico',
+    precio: 25,
+    rating: 4.9,
+    imagen: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=220&fit=crop'
+  },
+  {
+    id: 2,
+    nombre: 'Bocas del Toro',
+    provincia: 'Bocas del Toro',
+    tipo: 'Playa',
+    precio: null,
+    rating: 4.8,
+    imagen: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=220&fit=crop'
+  },
+  {
+    id: 3,
+    nombre: 'Canal de Panamá',
+    provincia: 'Panamá',
+    tipo: 'Ingeniería',
+    precio: 35,
+    rating: 4.7,
+    imagen: 'https://images.unsplash.com/photo-1641176716788-d4816a66dc6d?w=400&h=220&fit=crop'
+  },
+  {
+    id: 4,
+    nombre: 'San Blas',
+    provincia: 'Guna Yala',
+    tipo: 'Paradisíaco',
+    precio: null,
+    rating: 4.9,
+    imagen: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=220&fit=crop'
+  },
+  {
+    id: 5,
+    nombre: 'Volcán Barú',
+    provincia: 'Chiriquí',
+    tipo: 'Aventura',
+    precio: 45,
+    rating: 4.6,
+    imagen: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=220&fit=crop'
+  },
+  {
+    id: 6,
+    nombre: 'El Valle de Antón',
+    provincia: 'Coclé',
+    tipo: 'Natural',
+    precio: 30,
+    rating: 4.5,
+    imagen: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=220&fit=crop'
+  },
+  {
+    id: 7,
+    nombre: 'Isla Coiba',
+    provincia: 'Veraguas',
+    tipo: 'Natural',
+    precio: null,
+    rating: 4.8,
+    imagen: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=220&fit=crop'
+  },
+  {
+    id: 8,
+    nombre: 'Cerro Azul',
+    provincia: 'Panamá',
+    tipo: 'Natural',
+    precio: 20,
+    rating: 4.4,
+    imagen: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=220&fit=crop'
+  },
+  {
+    id: 9,
+    nombre: 'Playa Venao',
+    provincia: 'Los Santos',
+    tipo: 'Playa',
+    precio: null,
+    rating: 4.6,
+    imagen: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=220&fit=crop'
+  },
+  {
+    id: 10,
+    nombre: 'Gamboa',
+    provincia: 'Panamá',
+    tipo: 'Natural',
+    precio: 40,
+    rating: 4.5,
+    imagen: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=220&fit=crop'
+  },
+  {
+    id: 11,
+    nombre: 'Portobelo',
+    provincia: 'Colón',
+    tipo: 'Histórico',
+    precio: 15,
+    rating: 4.3,
+    imagen: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=220&fit=crop'
+  },
+  {
+    id: 12,
+    nombre: 'Boquete',
+    provincia: 'Chiriquí',
+    tipo: 'Aventura',
+    precio: 35,
+    rating: 4.7,
+    imagen: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=220&fit=crop'
+  },
+  {
+    id: 13,
+    nombre: 'Pedasí',
+    provincia: 'Los Santos',
+    tipo: 'Playa',
+    precio: null,
+    rating: 4.4,
+    imagen: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=220&fit=crop'
+  },
+  {
+    id: 14,
+    nombre: 'Azuero',
+    provincia: 'Herrera',
+    tipo: 'Cultural',
+    precio: 25,
+    rating: 4.2,
+    imagen: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=220&fit=crop'
+  },
+  {
+    id: 15,
+    nombre: 'Chitré',
+    provincia: 'Herrera',
+    tipo: 'Cultural',
+    precio: 20,
+    rating: 4.1,
+    imagen: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=220&fit=crop'
+  }
+];
+
+/* ===== ICONOS SVG ===== */
+const icons = {
+  mapPin: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>',
+  star: '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>',
+  heart: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  heartFilled: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'
+};
+
+/* ===== ELEMENTOS DOM ===== */
+const gridEl = document.getElementById('destinosGrid');
+const pagEl = document.getElementById('paginador');
+const searchInput = document.getElementById('searchInput');
+const searchBtn = document.getElementById('searchBtn');
+const provinciaFilter = document.getElementById('provinciaFilter');
+const tipoFilter = document.getElementById('tipoFilter');
+const precioFilter = document.getElementById('precioFilter');
+
+/* ===== VARIABLES GLOBALES ===== */
 let listAll = [];
-let current = 1;
+let filteredList = [];
+let currentPage = 1;
+let savedDestinos = new Set(); // Para mantener los favoritos
 
-function renderPage(page){
-  current = page;
-  const start = (page-1)*pageSize;
-  const slice = listAll.slice(start,start+pageSize);
-  gridEl.innerHTML = slice.map(cardHTML).join('');
+/* ===== FUNCIONES PRINCIPALES ===== */
 
-  const totalPages = Math.ceil(listAll.length/pageSize);
-  let html='';
-  for(let i=1;i<=totalPages;i++){
-    html += `<button class="btn-outline" style="margin:0 4px;${i===page?'background:#00417e;color:#fff;':''}" onclick="renderPage(${i})">${i}</button>`;
-  }
-  pagEl.innerHTML = html;
+// Generar HTML de tarjeta
+function cardHTML(destino) {
+  const priceText = destino.precio ? `$${destino.precio}` : 'Gratis';
+  const isSaved = savedDestinos.has(destino.id);
+  const heartIcon = isSaved ? icons.heartFilled : icons.heart;
+  
+  return `
+    <div class="card" style="position: relative;">
+      <button class="save-btn ${isSaved ? 'saved' : ''}" 
+              onclick="toggleSave(${destino.id}, this)" 
+              data-saved="${isSaved}">
+        <span class="heart-icon">${heartIcon}</span>
+      </button>
+      <a href="destino.html?id=${destino.id}" style="text-decoration: none; color: inherit;">
+        <img src="${destino.imagen}" alt="Imagen de ${destino.nombre}" class="card-img">
+        <div class="card-body">
+          <h3 class="card-title">${destino.nombre}</h3>
+          <div class="card-meta">
+            <div class="card-location">
+              <span class="location-icon">${icons.mapPin}</span>
+              ${destino.provincia}
+            </div>
+          </div>
+          <div class="card-type ${destino.tipo.toLowerCase()}">${destino.tipo}</div>
+          <div class="card-rating">
+            <span class="star-icon">${icons.star}</span>
+            ${destino.rating || '4.5'}
+          </div>
+          <div class="card-price">${priceText}</div>
+        </div>
+      </a>
+    </div>
+  `;
 }
 
-/* ---------- Carga ---------- */
-async function loadDestinos(query=''){
-  try{
-    const url = query ? `${apiBase}?q=${encodeURIComponent(query)}` : apiBase;
-    const r   = await fetch(url);
-    listAll   = await r.json();
-  }catch(e){
-    listAll = mockData.filter(d=>d.nombre.toLowerCase().includes(query.toLowerCase()));
+// Función para toggle de favoritos
+function toggleSave(destinoId, btn) {
+  const isSaved = savedDestinos.has(destinoId);
+  const heartIcon = btn.querySelector('.heart-icon');
+  
+  if (isSaved) {
+    // Remover de favoritos
+    savedDestinos.delete(destinoId);
+    heartIcon.innerHTML = icons.heart;
+    btn.style.color = 'var(--text-muted)';
+    btn.dataset.saved = 'false';
+    btn.classList.remove('saved');
+  } else {
+    // Agregar a favoritos
+    savedDestinos.add(destinoId);
+    heartIcon.innerHTML = icons.heartFilled;
+    btn.style.color = 'var(--error)';
+    btn.dataset.saved = 'true';
+    btn.classList.add('saved');
   }
-  if(!listAll.length){
-    gridEl.innerHTML = '<p>No se encontraron destinos.</p>';
-    pagEl.innerHTML  = '';
-    return;
-  }
+  
+  // Animación
+  btn.style.transform = 'scale(1.2)';
+  setTimeout(() => {
+    btn.style.transform = 'scale(1)';
+  }, 150);
+}
+
+// Aplicar filtros
+function applyFilters() {
+  const searchTerm = searchInput.value.toLowerCase().trim();
+  const provincia = provinciaFilter.value;
+  const tipo = tipoFilter.value;
+  const precio = precioFilter.value;
+  
+  filteredList = listAll.filter(destino => {
+    const matchesSearch = !searchTerm || 
+      destino.nombre.toLowerCase().includes(searchTerm) ||
+      destino.provincia.toLowerCase().includes(searchTerm) ||
+      destino.tipo.toLowerCase().includes(searchTerm);
+    
+    const matchesProvincia = !provincia || destino.provincia === provincia;
+    const matchesTipo = !tipo || destino.tipo === tipo;
+    const matchesPrecio = !precio || 
+      (precio === 'gratis' && !destino.precio) ||
+      (precio === 'pago' && destino.precio);
+    
+    return matchesSearch && matchesProvincia && matchesTipo && matchesPrecio;
+  });
+  
   renderPage(1);
 }
 
-/* ---------- Buscador ---------- */
-document.getElementById('searchBtn').addEventListener('click',()=>{
-  loadDestinos(document.getElementById('searchInput').value.trim());
+// Renderizar página
+function renderPage(page) {
+  currentPage = page;
+  const start = (page - 1) * pageSize;
+  const slice = filteredList.slice(start, start + pageSize);
+  
+  if (slice.length === 0) {
+    gridEl.innerHTML = `
+      <div class="empty-message" style="grid-column: 1 / -1;">
+        <h3>No se encontraron destinos</h3>
+        <p>Intenta ajustar tus filtros de búsqueda</p>
+      </div>
+    `;
+    pagEl.innerHTML = '';
+    return;
+  }
+  
+  gridEl.innerHTML = slice.map(cardHTML).join('');
+  renderPagination();
+}
+
+// Renderizar paginación
+function renderPagination() {
+  const totalPages = Math.ceil(filteredList.length / pageSize);
+  
+  if (totalPages <= 1) {
+    pagEl.innerHTML = '';
+    return;
+  }
+  
+  let html = '';
+  
+  // Botón anterior
+  if (currentPage > 1) {
+    html += `<button onclick="renderPage(${currentPage - 1})">‹ Anterior</button>`;
+  }
+  
+  // Páginas
+  for (let i = 1; i <= totalPages; i++) {
+    const isActive = i === currentPage;
+    html += `<button class="${isActive ? 'active' : ''}" 
+                     onclick="renderPage(${i})">${i}</button>`;
+  }
+  
+  // Botón siguiente
+  if (currentPage < totalPages) {
+    html += `<button onclick="renderPage(${currentPage + 1})">Siguiente ›</button>`;
+  }
+  
+  pagEl.innerHTML = html;
+}
+
+// Cargar destinos
+async function loadDestinos() {
+  try {
+    console.log('Intentando cargar desde API:', apiBase);
+    gridEl.innerHTML = '<div class="loading-message" style="grid-column: 1 / -1;">Cargando destinos...</div>';
+    
+    const response = await fetch(apiBase);
+    if (!response.ok) throw new Error('API no disponible');
+    
+    const data = await response.json();
+    listAll = data;
+    console.log('Datos cargados desde API');
+  } catch (error) {
+    console.warn('Usando datos mock - Error:', error.message);
+    listAll = mockDestinos;
+  }
+  
+  filteredList = [...listAll];
+  renderPage(1);
+}
+
+/* ===== EVENT LISTENERS ===== */
+
+// Búsqueda
+searchBtn.addEventListener('click', applyFilters);
+searchInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    applyFilters();
+  }
 });
 
-/* ---------- Footer ---------- */
-document.getElementById('year').textContent = new Date().getFullYear();
+// Filtros
+provinciaFilter.addEventListener('change', applyFilters);
+tipoFilter.addEventListener('change', applyFilters);
+precioFilter.addEventListener('change', applyFilters);
 
-/* ---------- Init ---------- */
-loadDestinos();
-</script>
+// Búsqueda en tiempo real (opcional)
+searchInput.addEventListener('input', () => {
+  clearTimeout(searchInput.timeout);
+  searchInput.timeout = setTimeout(applyFilters, 300);
+});
+
+/* ===== INICIALIZACIÓN ===== */
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM cargado, inicializando destinos...');
+  
+  // Footer año
+  const yearElement = document.getElementById('year');
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+  
+  // Cargar destinos
+  loadDestinos();
+});
+  </script>
 </body>
 </html>
