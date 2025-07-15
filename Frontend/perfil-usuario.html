@@ -54,34 +54,13 @@
                 <h1 class="user-name">Jenna Smith</h1>
                 <p class="user-username">@jennasmith</p>
             </div>
-
-
-            <!-- Estadísticas -->
-            <div class="user-stats">
-                <div class="stat-item">
-                    <span class="stat-number">42</span>
-                    <span class="stat-label">Destinos</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">1,302</span>
-                    <span class="stat-label">Seguidores</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">18K</span>
-                    <span class="stat-label">Guardados</span>
-                </div>
-            </div>
-
-            <div class="button-container">
-                <button class="follow-btn">Seguir</button>
-            </div>
         </aside>
 
         <!-- Contenido Principal -->
         <main class="main-content">
             <!-- Navegación de Destinos -->
             <nav class="destinations-nav">
-                <h3>Destinos Recientes</h3>
+                <h2>Destinos Recientes</h2>
                 <div class="destinations-tabs">
                     <button class="tab-btn active">Todos</button>
                     <button class="tab-btn">Visitados</button>
@@ -90,7 +69,6 @@
             </nav>
 
             <!-- Grid de Destinos -->
-            <!-- Reemplazar toda la sección destinations-grid -->
             <section class="destinations-grid">
                 <!-- El contenido será generado dinámicamente por JavaScript -->
             </section>
@@ -100,36 +78,6 @@
                 <p><i data-lucide="search-x"></i> No se encontraron destinos para esta categoría.</p>
             </div>
 
-            <!-- Agregar templates antes del cierre del body -->
-            <template id="destination-link-template">
-                <a href="" class="destination-link">
-                    <article class="destination-card">
-                        <div class="destination-image">
-                            <img class="destination-img" src="" alt="">
-                            <span class="destination-badge">
-                                <span class="badge-text"></span>
-                            </span>
-                        </div>
-                        <div class="destination-info">
-                            <h4 class="destination-name"></h4>
-                            <p class="destination-location"></p>
-                            <p class="destination-type"></p>
-                            <p class="destination-date"></p>
-                            <p class="destination-date"></p>
-                            <div class="destination-meta">
-                                <span class="rating">
-                                    <i data-lucide="star"></i>
-                                    <span class="rating-value"></span>
-                                </span>
-                                <span class="price-text"></span>
-                                <button class="save-btn" onclick="toggleSave(this)">
-                                    <i data-lucide="heart"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-                </a>
-            </template>
 
             <!-- Sección de Sitios Guardados -->
             <section class="saved-places">
@@ -143,184 +91,9 @@
                     </div>
                 </div>
 
-                <div class="saved-grid">
-                    <!-- Sitio Guardado 1 -->
-                    <div class="saved-card">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=300" alt="Restaurante">
-                        <div class="saved-info">
-                            <h5>La Montaña Azul</h5>
-                            <p>🍴 Restaurante • Suiza</p>
-                            <div class="saved-actions">
-                                <span class="saved-rating">⭐ 4.9</span>
-                                <button class="remove-btn">🗑️</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sitio Guardado 2 -->
-                    <div class="saved-card">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300" alt="Hotel">
-                        <div class="saved-info">
-                            <h5>Alpine Resort</h5>
-                            <p>🏨 Hotel • Austria</p>
-                            <div class="saved-actions">
-                                <span class="saved-rating">⭐ 4.7</span>
-                                <button class="remove-btn">🗑️</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sitio Guardado 3 -->
-                    <div class="saved-card">
-                        <img src="https://images.unsplash.com/photo-1533284133567-0da9844151e0?w=300" alt="Mirador">
-                        <div class="saved-info">
-                            <h5>Mirador del Águila</h5>
-                            <p>🏔️ Atracción • Perú</p>
-                            <div class="saved-actions">
-                                <span class="saved-rating">⭐ 5.0</span>
-                                <button class="remove-btn">🗑️</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <article class="destination-card">
-                <div class="destination-image">
-                  <img src="..." alt="..." class="destination-img">
-                  <span class="destination-badge">Visitado</span>
-                </div>
-                <div class="destination-info">
-                  <h4 class="destination-name">Nombre del destino</h4>
-                  <p class="destination-location">📍 Ubicación</p>
-                  <p class="destination-date">
-                    <span class="destination-type"></span>
-                  </p>
-                  <p class="destination-date">
-                    <span class="destination-type"></span>  
-                  </p>
-
-                  <div class="destination-meta">
-                    <span class="destination-badge">
-                        <span class="badge-text"></span>
-                    </span>
-                    <span class="rating">
-                        <i data-lucide="star" class="icon filled"></i>
-                        <span class="rating-value"></span>
-                    </span>
-                    <span class="price">
-                        <span class="price-text"></span>
-                    </span>
-                    <button class="save-btn" onclick="toggleSave(this)">🤍</button>
-                  </div>
-            
-                </div>
-              </article>
-        </main>
-
-        <!-- Sidebar Derecho -->
-        <aside class="right-sidebar">
-            <!-- Información Adicional del Usuario -->
-            <div class="user-details">
-                <h3>Sobre mí</h3>
-                <p class="user-bio">
-                    Exploradora apasionada de montañas y paisajes naturales. 
-                    Siempre en busca de nuevas aventuras y lugares por descubrir. 
-                    Amante de la fotografía y las culturas locales.
-                </p>
                 
-                <div class="user-meta">
-                    <p><span class="icon">📍</span> Barcelona, España</p>
-                    <p><span class="icon">📅</span> Miembro desde 2021</p>
-                    <p><span class="icon">🌐</span> <a href="#">jennasmith.travel</a></p>
-                </div>
-
-                <div class="action-buttons">
-                    <button class="btn-primary" id="editProfileBtn">Editar Perfil</button>
-                </div>
-            </div>
-
-            <!-- Widget de Actividad -->
-            <div class="activity-widget">
-                <h3>Actividad Reciente</h3>
-                <div class="activity-list">
-                    <div class="activity-item">
-                        <span class="activity-icon">📸</span>
-                        <p>Añadió fotos a <strong>Picos de Europa</strong></p>
-                        <span class="activity-time">Hace 2 horas</span>
-                    </div>
-                    <div class="activity-item">
-                        <span class="activity-icon">💜</span>
-                        <p>Guardó <strong>Mirador del Águila</strong></p>
-                        <span class="activity-time">Hace 5 horas</span>
-                    </div>
-                    <div class="activity-item">
-                        <span class="activity-icon">✈️</span>
-                        <p>Planificó viaje a <strong>Patagonia</strong></p>
-                        <span class="activity-time">Hace 1 día</span>
-                    </div>
-                </div>
-            </div>
-        </aside>
-    </div>
-
-    <!-- Modal de Edición de Perfil -->
-    <div class="edit-profile-modal" id="editProfileModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Editar Perfil</h2>
-                <button class="close-modal" id="closeModalBtn">&times;</button>
-            </div>
             
-            <form class="edit-profile-form" id="editProfileForm">
-                <!-- Editar Foto de Perfil -->
-                <div class="form-group">
-                    <label>Foto de Perfil</label>
-                    <div class="avatar-upload">
-                        <div class="avatar-preview">
-                            <img id="avatarPreview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23FF5A7D'/%3E%3Ctext x='200' y='200' font-size='180' fill='white' text-anchor='middle' alignment-baseline='middle'%3EJ%3C/text%3E%3C/svg%3E" alt="Avatar">
-                        </div>
-                        <input type="file" id="avatarInput" accept="image/*" hidden>
-                        <button type="button" class="upload-btn" onclick="document.getElementById('avatarInput').click()">
-                            Cambiar Foto
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Editar Nombre -->
-                <div class="form-group">
-                    <label for="nameInput">Nombre Completo</label>
-                    <input type="text" id="nameInput" class="form-input" value="Jenna Smith" required>
-                </div>
-
-                <!-- Editar Username -->
-                <div class="form-group">
-                    <label for="usernameInput">Nombre de Usuario</label>
-                    <div class="input-with-prefix">
-                        <span class="input-prefix">@</span>
-                        <input type="text" id="usernameInput" class="form-input" value="jennasmith" required>
-                    </div>
-                </div>
-
-                <!-- Editar Sobre Mí -->
-                <div class="form-group">
-                    <label for="bioInput">Sobre Mí</label>
-                    <textarea id="bioInput" class="form-textarea" rows="4" required>Exploradora apasionada de montañas y paisajes naturales. Siempre en busca de nuevas aventuras y lugares por descubrir. Amante de la fotografía y las culturas locales.</textarea>
-                </div>
-
-                <!-- Editar Ubicación -->
-                <div class="form-group">
-                    <label for="locationInput">Ubicación</label>
-                    <input type="text" id="locationInput" class="form-input" value="Barcelona, España" required>
-                </div>
-
-                <!-- Botones de Acción -->
-                <div class="form-actions">
-                    <button type="button" class="btn-cancel" id="cancelEditBtn">Cancelar</button>
-                    <button type="submit" class="btn-save">Guardar Cambios</button>
-                </div>
-            </form>
-        </div>
+        </main>
     </div>
 
     <!-- ===== Footer ===== -->
@@ -401,393 +174,402 @@
     </div>
   </footer>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-// Inicializar Lucide Icons
-if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
+    // ============================================
+// DATOS DE EJEMPLO
+// ============================================
+
+// Destinos recientes del usuario (usando el mismo formato que ya tienes)
+const destinosRecientes = [
+    {
+        nombre: "Biomuseo",
+        imagen: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        provincia: "Panamá",
+        precio: "$25",
+        rating: "4.5",
+        tipo: "Museo",
+        estado: "Visitado",
+        visitado: "marzo 2024",
+        duracion: "2-3 horas",
+        favorito: true
+    },
+    {
+        nombre: "Casco Viejo",
+        imagen: "https://images.unsplash.com/photo-1540610410855-b4c8877b761c?auto=format&fit=crop&w=400&q=80",
+        provincia: "Panamá",
+        precio: "Gratis",
+        rating: "4.8",
+        tipo: "Histórico",
+        estado: "Visitado",
+        visitado: "enero 2024",
+        duracion: "Medio día",
+        favorito: false
+    },
+    {
+        nombre: "Parque Nacional Soberanía",
+        imagen: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=400&q=80",
+        provincia: "Panamá",
+        precio: "$60",
+        rating: "4.8",
+        tipo: "Naturaleza",
+        estado: "Pendiente",
+        duracion: "Día completo",
+        favorito: true
+    },
+    {
+        nombre: "Esclusas de Miraflores",
+        imagen: "https://images.unsplash.com/photo-1645932700624-5075c8d2df58?auto=format&fit=crop&w=400&q=80",
+        provincia: "Panamá",
+        precio: "$18",
+        rating: "4.9",
+        tipo: "Histórico",
+        estado: "Visitado",
+        visitado: "febrero 2024",
+        duracion: "2 horas",
+        favorito: true
+    },
+    {
+        nombre: "Isla Taboga",
+        imagen: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=400&q=80",
+        provincia: "Panamá",
+        precio: "$35",
+        rating: "4.6",
+        tipo: "Playa",
+        estado: "Pendiente",
+        duracion: "Día completo",
+        favorito: false
+    }
+];
+
+// Sitios guardados del usuario (restaurantes, hoteles, atracciones)
+const sitiosGuardados = [
+    {
+        nombre: "Restaurante Maito",
+        imagen: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?auto=format&fit=crop&w=400&q=80",
+        ubicacion: "Casco Viejo, Panamá",
+        categoria: "Restaurantes",
+        rating: "4.7",
+        precio: "$$$",
+        telefono: "+507 228-9606",
+        horario: "12:00 PM - 10:00 PM",
+        descripcion: "Restaurante de alta cocina panameña",
+        favorito: true
+    },
+    {
+        nombre: "Hotel Bristol Panama",
+        imagen: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=400&q=80",
+        ubicacion: "Vía España, Panamá",
+        categoria: "Hoteles",
+        rating: "4.5",
+        precio: "$$$",
+        telefono: "+507 264-0000",
+        servicios: ["WiFi", "Spa", "Piscina", "Gym"],
+        descripcion: "Hotel de lujo en el corazón de la ciudad",
+        favorito: false
+    },
+    {
+        nombre: "Parque Natural Metropolitano",
+        imagen: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=400&q=80",
+        ubicacion: "Panamá",
+        categoria: "Atracciones",
+        rating: "4.4",
+        precio: "$10",
+        telefono: "+507 232-5552",
+        horario: "6:00 AM - 5:00 PM",
+        descripcion: "Parque natural urbano con senderos y vida silvestre",
+        favorito: true
+    },
+    {
+        nombre: "Donde José",
+        imagen: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=400&q=80",
+        ubicacion: "Casco Viejo, Panamá",
+        categoria: "Restaurantes",
+        rating: "4.3",
+        precio: "$$",
+        telefono: "+507 262-1682",
+        horario: "11:00 AM - 11:00 PM",
+        descripcion: "Comida tradicional panameña en ambiente familiar",
+        favorito: false
+    },
+    {
+        nombre: "The American Trade Hotel",
+        imagen: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=400&q=80",
+        ubicacion: "Casco Viejo, Panamá",
+        categoria: "Hoteles",
+        rating: "4.6",
+        precio: "$$$$",
+        telefono: "+507 211-2200",
+        servicios: ["WiFi", "Restaurante", "Bar", "Terraza"],
+        descripcion: "Hotel boutique histórico con diseño contemporáneo",
+        favorito: true
+    },
+    {
+        nombre: "Amador Causeway",
+        imagen: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=400&q=80",
+        ubicacion: "Panamá",
+        categoria: "Atracciones",
+        rating: "4.2",
+        precio: "Gratis",
+        telefono: "N/A",
+        horario: "24 horas",
+        descripcion: "Calzada escénica con vista al skyline de la ciudad",
+        favorito: false
+    }
+];
+
+// ============================================
+// FUNCIONES PRINCIPALES
+// ============================================
+
+// Función para crear cartas de destinos recientes
+function createDestinationCard(destination) {
+    return `
+        <div class="destination-card" data-category="${destination.tipo.toLowerCase()}" data-state="${destination.estado.toLowerCase()}">
+            <div class="destination-image">
+                <img src="${destination.imagen}" alt="${destination.nombre}" class="destination-img">
+                <button class="save-btn" onclick="toggleSave(this)" data-saved="${destination.favorito}">
+                    <i data-lucide="heart"></i>
+                </button>
+                <div class="destination-badge ${destination.estado.toLowerCase()}">
+                    <span class="badge-text">${destination.estado}</span>
+                </div>
+            </div>
+            <div class="destination-info">
+                <h3 class="destination-name">${destination.nombre}</h3>
+                <div class="destination-meta">
+                    <span class="destination-location">
+                        <i data-lucide="map-pin"></i> ${destination.provincia}
+                    </span>
+                    <span class="destination-type">
+                        <i data-lucide="${getTypeIcon(destination.tipo)}"></i> ${destination.tipo}
+                    </span>
+                </div>
+                <div class="destination-rating">
+                    <div class="rating">
+                        <i data-lucide="star"></i>
+                        <span class="rating-value">${destination.rating}</span>
+                    </div>
+                    <span class="price-text">
+                        <i data-lucide="dollar-sign"></i> ${destination.precio}
+                    </span>
+                </div>
+                <div class="destination-details">
+                    <div class="destination-date">
+                        ${destination.visitado ? 
+                            `<i data-lucide="check-circle"></i> Visitado en ${destination.visitado}` : 
+                            `<i data-lucide="clock"></i> Pendiente por visitar`
+                        }
+                    </div>
+                    <div class="destination-duration">
+                        <i data-lucide="timer"></i> ${destination.duracion}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
 }
 
-// Placeholder para imágenes que fallen
-document.querySelectorAll('img').forEach(img => {
-    img.onerror = function() {
-        const w = this.width || 400, h = this.height || 300;
-        const txt = this.alt.charAt(0).toUpperCase() || '?';
-        this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'%3E%3Crect width='${w}' height='${h}' fill='%23E0E6ED'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='%237F8C8D' text-anchor='middle' alignment-baseline='middle'%3E${txt}%3C/text%3E%3C/svg%3E`;
-    };
-});
+// Función para crear cartas de sitios guardados
+function createSavedPlaceCard(place) {
+    return `
+        <div class="saved-place-card" data-category="${place.categoria.toLowerCase()}">
+            <div class="saved-place-image">
+                <img src="${place.imagen}" alt="${place.nombre}" class="saved-place-img">
+                <button class="save-btn" onclick="toggleSave(this)" data-saved="${place.favorito}">
+                    <i data-lucide="heart"></i>
+                </button>
+                <div class="category-badge ${place.categoria.toLowerCase()}">
+                    <span class="category-text">${place.categoria}</span>
+                </div>
+            </div>
+            <div class="saved-place-info">
+                <h3 class="saved-place-name">${place.nombre}</h3>
+                <div class="saved-place-meta">
+                    <span class="saved-place-location">
+                        <i data-lucide="map-pin"></i> ${place.ubicacion}
+                    </span>
+                    <div class="saved-place-rating">
+                        <div class="rating">
+                            <i data-lucide="star"></i>
+                            <span class="rating-value">${place.rating}</span>
+                        </div>
+                        <span class="price-level">${place.precio}</span>
+                    </div>
+                </div>
+                <div class="saved-place-details">
+                    ${place.telefono && place.telefono !== 'N/A' ? 
+                        `<div class="contact-info">
+                            <i data-lucide="phone"></i> ${place.telefono}
+                        </div>` : ''
+                    }
+                    ${place.horario ? 
+                        `<div class="schedule-info">
+                            <i data-lucide="clock"></i> ${place.horario}
+                        </div>` : ''
+                    }
+                    ${place.servicios ? 
+                        `<div class="services-info">
+                            <i data-lucide="check-circle"></i> ${place.servicios.join(', ')}
+                        </div>` : ''
+                    }
+                </div>
+                <p class="saved-place-description">${place.descripcion}</p>
+            </div>
+        </div>
+    `;
+}
 
-// Modal de perfil
-const modal = document.getElementById('editProfileModal');
-const openBtn = document.getElementById('editProfileBtn');
-const closeBtns = [document.getElementById('closeModalBtn'), document.getElementById('cancelEditBtn')];
+// Función para cargar destinos recientes
+function loadDestinationsRecent() {
+    const grid = document.querySelector('.destinations-grid');
+    if (!grid) {
+        console.log('No se encontró .destinations-grid');
+        return;
+    }
 
-if (modal && openBtn) {
-    openBtn.onclick = () => { 
-        modal.classList.add('active'); 
-        document.body.style.overflow = 'hidden'; 
-    };
+    // Limpiar grid existente
+    grid.innerHTML = '';
+
+    // Generar cartas de destinos
+    destinosRecientes.forEach(destination => {
+        const cardHTML = createDestinationCard(destination);
+        grid.innerHTML += cardHTML;
+    });
+
+    // Configurar manejo de errores de imágenes
+    setupImageErrorHandling();
     
-    closeBtns.forEach(b => {
-        if (b) {
-            b.onclick = () => { 
-                modal.classList.remove('active'); 
-                document.body.style.overflow = 'auto'; 
+    // Reinicializar iconos de Lucide
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+
+    console.log('Destinos recientes cargados:', destinosRecientes.length);
+}
+
+// Función para cargar sitios guardados
+function loadSavedPlaces() {
+    const savedPlacesSection = document.querySelector('.saved-places');
+    if (!savedPlacesSection) {
+        console.log('No se encontró .saved-places');
+        return;
+    }
+
+    // Buscar si ya existe un grid de sitios guardados, sino crearlo
+    let savedPlacesGrid = savedPlacesSection.querySelector('.saved-places-grid');
+    if (!savedPlacesGrid) {
+        savedPlacesGrid = document.createElement('div');
+        savedPlacesGrid.className = 'saved-places-grid';
+        savedPlacesSection.appendChild(savedPlacesGrid);
+    }
+
+    // Limpiar grid existente
+    savedPlacesGrid.innerHTML = '';
+
+    // Generar cartas de sitios guardados
+    sitiosGuardados.forEach(place => {
+        const cardHTML = createSavedPlaceCard(place);
+        savedPlacesGrid.innerHTML += cardHTML;
+    });
+
+    // Configurar manejo de errores de imágenes
+    setupImageErrorHandling();
+    
+    // Reinicializar iconos de Lucide
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+
+    console.log('Sitios guardados cargados:', sitiosGuardados.length);
+}
+
+// Función para configurar manejo de errores de imágenes
+function setupImageErrorHandling() {
+    document.querySelectorAll('img').forEach(img => {
+        if (!img.hasAttribute('data-error-handled')) {
+            img.setAttribute('data-error-handled', 'true');
+            img.onerror = function() {
+                const w = this.width || 400;
+                const h = this.height || 300;
+                const txt = this.alt.charAt(0).toUpperCase() || '?';
+                this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'%3E%3Crect width='${w}' height='${h}' fill='%23E0E6ED'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='%237F8C8D' text-anchor='middle' alignment-baseline='middle'%3E${txt}%3C/text%3E%3C/svg%3E`;
             };
         }
     });
-    
-    modal.addEventListener('click', e => { 
-        if (e.target === modal && closeBtns[0]) {
-            closeBtns[0].onclick(); 
-        }
-    });
 }
 
-// Previews de imágenes
-['avatar', 'banner'].forEach(type => {
-    const inp = document.getElementById(`${type}Input`);
-    const prev = document.getElementById(`${type}Preview`);
-    if (inp && prev) {
-        inp.addEventListener('change', e => {
-            const f = e.target.files[0];
-            if (f && f.type.startsWith('image/')) {
-                const r = new FileReader();
-                r.onload = ev => prev.src = ev.target.result;
-                r.readAsDataURL(f);
-            }
-        });
-    }
-});
-
-// Guardar cambios de perfil
-const editForm = document.getElementById('editProfileForm');
-if (editForm) {
-    editForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const userName = document.querySelector('.user-name');
-        const userUsername = document.querySelector('.user-username');
-        const userBio = document.querySelector('.user-bio');
-        const userMeta = document.querySelector('.user-meta p:first-child');
-        const userAvatar = document.querySelector('.user-avatar img');
-        const coverImage = document.querySelector('.cover-image img');
-        
-        if (userName) userName.textContent = document.getElementById('nameInput').value;
-        if (userUsername) userUsername.textContent = '@' + document.getElementById('usernameInput').value;
-        if (userBio) userBio.textContent = document.getElementById('bioInput').value;
-        if (userMeta) userMeta.innerHTML = '<i data-lucide="map-pin" class="icon"></i> ' + document.getElementById('locationInput').value;
-        if (userAvatar) userAvatar.src = document.getElementById('avatarPreview').src;
-        if (coverImage) coverImage.src = document.getElementById('bannerPreview').src;
-        
-        // Reinicializar iconos después de actualizar el DOM
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-        
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-        alert('Perfil actualizado correctamente!');
-    });
-}
-
-// Cargar destinos de ejemplo
-loadDestinations(exampleDestinations);
-
-// INICIALIZAR FILTROS DESPUÉS DE CARGAR LA PÁGINA
-initializeFilters();
-});
-
-// Función para cargar destinos dinámicamente
-function loadDestinations(destinations) {
-const grid = document.querySelector('.destinations-grid');
-const template = document.querySelector('#destination-card-template');
-const linkTemplate = document.querySelector('#destination-link-template');
-
-if (!grid || !template) return;
-
-// Limpiar grid existente
-grid.innerHTML = '';
-
-destinations.forEach(destination => {
-    // Decidir qué template usar basado en si tiene URL
-    const templateToUse = destination.url ? linkTemplate : template;
-    if (!templateToUse) return;
-    
-    const clone = templateToUse.content.cloneNode(true);
-    
-    // Configurar la imagen
-    const img = clone.querySelector('.destination-img');
-    if (img) {
-        img.src = destination.imagen || destination.image;
-        img.alt = destination.nombre || destination.name;
-        
-        // Agregar manejo de error para imágenes dinámicas
-        img.onerror = function() {
-            const w = this.width || 400, h = this.height || 300;
-            const txt = this.alt.charAt(0).toUpperCase() || '?';
-            this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'%3E%3Crect width='${w}' height='${h}' fill='%23E0E6ED'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='%237F8C8D' text-anchor='middle' alignment-baseline='middle'%3E${txt}%3C/text%3E%3C/svg%3E`;
-        };
-    }
-    
-    // Configurar información básica
-    const nameElement = clone.querySelector('.destination-name');
-    if (nameElement) nameElement.textContent = destination.nombre || destination.name;
-    
-    const locationElement = clone.querySelector('.destination-location');
-    if (locationElement) {
-        locationElement.innerHTML = `<i data-lucide="map-pin"></i> ${destination.provincia || destination.ubicacion || destination.location}`;
-    }
-    
-    // Configurar tipo/categoría con icono
-    const typeElements = clone.querySelectorAll('.destination-type');
-    typeElements.forEach(typeElement => {
-        if (typeElement && destination.tipo) {
-            const typeIcon = getTypeIcon(destination.tipo);
-            typeElement.innerHTML = `<i data-lucide="${typeIcon}"></i> ${destination.tipo}`;
-        }
-    });
-    
-    // Configurar rating con icono
-    const ratingValue = clone.querySelector('.rating-value');
-    if (ratingValue) {
-        ratingValue.textContent = destination.rating || '4.5';
-    }
-    
-    // Configurar precio
-    const priceText = clone.querySelector('.price-text');
-    if (priceText && destination.precio) {
-        priceText.innerHTML = `<i data-lucide="dollar-sign"></i> ${destination.precio}`;
-    }
-    
-    // Configurar badge si existe
-    const badgeText = clone.querySelector('.badge-text');
-    if (badgeText && destination.estado) {
-        badgeText.textContent = destination.estado;
-        const badgeElement = clone.querySelector('.destination-badge');
-        if (badgeElement) {
-            badgeElement.className = `destination-badge ${destination.estado.toLowerCase()}`;
-        }
-    }
-    
-    // Configurar estado de visita en las fechas
-    const dateElements = clone.querySelectorAll('.destination-date');
-    if (dateElements.length > 0) {
-        if (destination.visitado) {
-            dateElements[0].innerHTML = `<i data-lucide="check-circle"></i> Visitado en ${destination.visitado}`;
-        } else {
-            dateElements[0].innerHTML = `<i data-lucide="clock"></i> Pendiente por visitar`;
-        }
-        
-        // Segunda fecha para información adicional si existe
-        if (dateElements[1] && destination.duracion) {
-            dateElements[1].innerHTML = `<i data-lucide="timer"></i> ${destination.duracion}`;
-        }
-    }
-    
-    // Configurar URL si es un enlace
-    if (destination.url) {
-        const linkElement = clone.querySelector('.destination-link');
-        if (linkElement) linkElement.href = destination.url;
-    }
-    
-    // Configurar estado de favorito
-    const saveBtn = clone.querySelector('.save-btn');
-    if (saveBtn && destination.favorito) {
-        saveBtn.dataset.saved = 'true';
-        saveBtn.classList.add('saved');
-        saveBtn.innerHTML = '<i data-lucide="heart"></i>';
-    } else if (saveBtn) {
-        saveBtn.innerHTML = '<i data-lucide="heart"></i>';
-    }
-    
-    grid.appendChild(clone);
-});
-
-// Reinicializar los iconos de Lucide después de agregar el contenido
-if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-}
-}
-
-// Función para obtener el icono según el tipo de destino
+// Función para obtener el icono según el tipo de destino (ya existe en tu código)
 function getTypeIcon(tipo) {
-const iconMap = {
-    'Naturaleza': 'tree-pine',
-    'Histórico': 'landmark',
-    'Museo': 'building',
-    'Playa': 'waves',
-    'Aventura': 'mountain',
-    'Gastronomía': 'utensils',
-    'Cultura': 'palette',
-    'Religioso': 'church',
-    'Arqueológico': 'pyramid',
-    'Parque': 'trees'
-};
-return iconMap[tipo] || 'map-pin';
+    const iconMap = {
+        'Naturaleza': 'tree-pine',
+        'Histórico': 'landmark',
+        'Museo': 'building',
+        'Playa': 'waves',
+        'Aventura': 'mountain',
+        'Gastronomía': 'utensils',
+        'Cultura': 'palette',
+        'Religioso': 'church',
+        'Arqueológico': 'pyramid',
+        'Parque': 'trees'
+    };
+    return iconMap[tipo] || 'map-pin';
 }
 
-// Función para alternar el estado de guardado/favorito
+// Función para obtener el icono según la categoría de sitio guardado
+function getCategoryIcon(categoria) {
+    const iconMap = {
+        'Restaurantes': 'utensils',
+        'Hoteles': 'bed',
+        'Atracciones': 'camera',
+        'Entretenimiento': 'music'
+    };
+    return iconMap[categoria] || 'map-pin';
+}
+
+// Función para alternar el estado de guardado/favorito (adaptada de tu código)
 function toggleSave(button) {
-const isSaved = button.dataset.saved === 'true';
-button.dataset.saved = !isSaved;
+    const isSaved = button.dataset.saved === 'true';
+    button.dataset.saved = !isSaved;
 
-// Cambiar el icono visual
-if (!isSaved) {
-    button.innerHTML = '<i data-lucide="heart" class="filled"></i>';
-    button.classList.add('saved');
-} else {
-    button.innerHTML = '<i data-lucide="heart"></i>';
-    button.classList.remove('saved');
+    // Cambiar el icono visual
+    if (!isSaved) {
+        button.innerHTML = '<i data-lucide="heart" class="filled"></i>';
+        button.classList.add('saved');
+    } else {
+        button.innerHTML = '<i data-lucide="heart"></i>';
+        button.classList.remove('saved');
+    }
+
+    // Reinicializar iconos
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+
+    console.log('Toggled save state:', !isSaved);
 }
 
-// Reinicializar iconos
-if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-}
+// ============================================
+// FILTROS PARA DESTINOS RECIENTES
+// ============================================
 
-// Aquí puedes agregar lógica para guardar/quitar de favoritos
-console.log('Toggled save state:', !isSaved);
-}
-
-// Ejemplo de datos de destinos - ACTUALIZADO con nueva estructura
-const exampleDestinations = [
-{
-    nombre: "Biomuseo",
-    imagen: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    provincia: "Panamá",
-    precio: "$25",
-    rating: "4.5",
-    tipo: "Museo",
-    estado: "Visitado",
-    visitado: "marzo 2024",
-    duracion: "2-3 horas",
-    favorito: true
-},
-{
-    nombre: "Casco Viejo",
-    imagen: "https://images.unsplash.com/photo-1540610410855-b4c8877b761c?q=80&w=2848&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    provincia: "Panamá",
-    precio: "Gratis",
-    rating: "4.8",
-    tipo: "Histórico",
-    estado: "Visitado",
-    visitado: "enero 2024",
-    duracion: "Medio día",
-    favorito: false
-},
-{
-    nombre: "Parque Nacional Soberanía",
-    imagen: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    provincia: "Panamá",
-    precio: "$60",
-    rating: "4.8",
-    tipo: "Naturaleza",
-    estado: "Pendiente",
-    duracion: "Día completo",
-    favorito: true
-},
-{
-    nombre: "Esclusas de Miraflores",
-    imagen: "https://images.unsplash.com/photo-1645932700624-5075c8d2df58?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    provincia: "Panamá",
-    precio: "$18",
-    rating: "4.9",
-    tipo: "Histórico",
-    estado: "Visitado",
-    visitado: "febrero 2024",
-    duracion: "2 horas",
-    favorito: true
-},
-{
-    nombre: "Isla Taboga",
-    imagen: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    provincia: "Panamá",
-    precio: "$35",
-    rating: "4.6",
-    tipo: "Playa",
-    estado: "Pendiente",
-    duracion: "Día completo",
-    favorito: false
-},
-{
-    nombre: "Cerro Ancón",
-    imagen: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    provincia: "Panamá",
-    precio: "Gratis",
-    rating: "4.4",
-    tipo: "Naturaleza",
-    estado: "Visitado",
-    visitado: "abril 2024",
-    duracion: "1-2 horas",
-    favorito: false
-},
-{
-    nombre: "Mercado de Mariscos",
-    imagen: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    provincia: "Panamá",
-    precio: "$40",
-    rating: "4.3",
-    tipo: "Gastronomía",
-    estado: "Pendiente",
-    duracion: "2 horas",
-    favorito: true
-},
-{
-    nombre: "Catedral Metropolitana",
-    imagen: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    provincia: "Panamá",
-    precio: "Gratis",
-    rating: "4.2",
-    tipo: "Religioso",
-    estado: "Visitado",
-    visitado: "mayo 2024",
-    duracion: "1 hora",
-    favorito: false
-}
-];
-
-// FUNCIÓN PARA INICIALIZAR LOS FILTROS
-function initializeFilters() {
-// Obtener elementos del DOM después de que se haya cargado
-const tabButtons = document.querySelectorAll('.tab-btn');
-
-// Verificar que los elementos existen
-if (tabButtons.length === 0) {
-    console.log('No se encontraron botones de filtro (.tab-btn)');
-    return;
-}
-
-// Función para filtrar destinos
+// Función para filtrar destinos recientes (adaptada de tu código)
 function filterDestinations(category) {
-    // Buscar las tarjetas cada vez que se filtra (porque se generan dinámicamente)
     const destinationCards = document.querySelectorAll('.destination-card');
     const noResults = document.getElementById('noResults');
     let visibleCards = 0;
     
     console.log('Filtrando por categoría:', category);
-    console.log('Tarjetas encontradas:', destinationCards.length);
 
-    if (destinationCards.length === 0) {
-        console.log('No se encontraron tarjetas de destino (.destination-card)');
-        return;
-    }
-
-    // Procesar cada tarjeta
     destinationCards.forEach((card, index) => {
-        // Obtener la categoría del destino
         const categoryElement = card.querySelector('.destination-type');
         const cardCategory = categoryElement ? categoryElement.textContent.toLowerCase().replace(/.*\s/, '') : '';
         
-        // También verificar el estado del destino (visitado/pendiente)
         const stateElement = card.querySelector('.destination-badge .badge-text');
         const cardState = stateElement ? stateElement.textContent.toLowerCase() : '';
-        
-        console.log(`Tarjeta ${index}: categoría="${cardCategory}", estado="${cardState}"`);
         
         // Resetear animación
         card.style.animation = 'none';
         card.style.animationDelay = '0s';
         
-        // Verificar si debe mostrarse
         let shouldShow = false;
         
         if (category === 'todos') {
@@ -796,9 +578,6 @@ function filterDestinations(category) {
             shouldShow = cardState === 'visitado';
         } else if (category === 'pendientes') {
             shouldShow = cardState === 'pendiente';
-        } else if (category === 'favoritos') {
-            const saveBtn = card.querySelector('.save-btn');
-            shouldShow = saveBtn && (saveBtn.dataset.saved === 'true' || saveBtn.classList.contains('saved'));
         } else {
             shouldShow = cardCategory === category;
         }
@@ -807,7 +586,6 @@ function filterDestinations(category) {
             card.classList.remove('hidden');
             card.style.display = 'block';
             
-            // Aplicar animación con delay
             setTimeout(() => {
                 card.style.animationDelay = `${visibleCards * 0.1}s`;
                 card.style.animation = 'fadeInUp 0.6s ease forwards';
@@ -820,198 +598,146 @@ function filterDestinations(category) {
         }
     });
 
-    console.log('Tarjetas visibles:', visibleCards);
-
-    // Mostrar/ocultar mensaje de "no hay resultados"
+    // Manejo de mensaje "no hay resultados"
     if (noResults) {
-        if (visibleCards === 0) {
-            noResults.classList.add('show');
-            noResults.style.display = 'block';
-        } else {
-            noResults.classList.remove('show');
-            noResults.style.display = 'none';
-        }
-    } else if (visibleCards === 0) {
-        // Si no existe el elemento noResults, crear uno temporalmente
-        const grid = document.querySelector('.destinations-grid');
-        if (grid) {
-            let tempMessage = grid.querySelector('.temp-no-results');
-            if (!tempMessage) {
-                tempMessage = document.createElement('div');
-                tempMessage.className = 'temp-no-results';
-                tempMessage.innerHTML = '<p><i data-lucide="search-x"></i> No se encontraron destinos para esta categoría.</p>';
-                tempMessage.style.cssText = 'text-align: center; padding: 2rem; color: #666; grid-column: 1/-1;';
-                grid.appendChild(tempMessage);
-                if (typeof lucide !== 'undefined') {
-                    lucide.createIcons();
-                }
-            }
-            tempMessage.style.display = 'block';
-        }
-    } else {
-        // Ocultar mensaje temporal si existe
-        const tempMessage = document.querySelector('.temp-no-results');
-        if (tempMessage) {
-            tempMessage.style.display = 'none';
-        }
+        noResults.style.display = visibleCards === 0 ? 'block' : 'none';
     }
 }
 
-// Event listeners para los botones de filtro
-tabButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        console.log('Botón clickeado:', this.dataset.category);
+// ============================================
+// FILTROS PARA SITIOS GUARDADOS
+// ============================================
+
+// Función para filtrar sitios guardados
+function filterSavedPlaces(category) {
+    const savedPlaceCards = document.querySelectorAll('.saved-place-card');
+    let visibleCards = 0;
+    
+    console.log('Filtrando sitios guardados por categoría:', category);
+
+    savedPlaceCards.forEach((card, index) => {
+        const cardCategory = card.dataset.category;
         
-        // Remover clase active de todos los botones
-        tabButtons.forEach(btn => btn.classList.remove('active'));
+        // Resetear animación
+        card.style.animation = 'none';
+        card.style.animationDelay = '0s';
         
-        // Añadir clase active al botón clickeado
-        this.classList.add('active');
+        let shouldShow = false;
         
-        // Filtrar destinos según la categoría seleccionada
-        const category = this.dataset.category;
-        filterDestinations(category);
+        if (category === 'todos') {
+            shouldShow = true;
+        } else {
+            shouldShow = cardCategory === category;
+        }
+        
+        if (shouldShow) {
+            card.classList.remove('hidden');
+            card.style.display = 'block';
+            
+            setTimeout(() => {
+                card.style.animationDelay = `${visibleCards * 0.1}s`;
+                card.style.animation = 'fadeInUp 0.6s ease forwards';
+            }, 10);
+            
+            visibleCards++;
+        } else {
+            card.classList.add('hidden');
+            card.style.display = 'none';
+        }
     });
+
+    console.log('Sitios guardados visibles:', visibleCards);
+}
+
+// ============================================
+// INICIALIZACIÓN
+// ============================================
+
+// Función para inicializar los filtros de destinos recientes
+function initializeDestinationFilters() {
+    const tabButtons = document.querySelectorAll('.destinations-tabs .tab-btn');
+    
+    if (tabButtons.length === 0) {
+        console.log('No se encontraron botones de filtro de destinos');
+        return;
+    }
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remover clase active de todos los botones
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Añadir clase active al botón clickeado
+            this.classList.add('active');
+            
+            // Obtener categoría del texto del botón
+            const category = this.textContent.toLowerCase();
+            filterDestinations(category);
+        });
+    });
+}
+
+// Función para inicializar los filtros de sitios guardados
+function initializeSavedPlacesFilters() {
+    const filterButtons = document.querySelectorAll('.saved-places .filter-btn');
+    
+    if (filterButtons.length === 0) {
+        console.log('No se encontraron botones de filtro de sitios guardados');
+        return;
+    }
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remover clase active de todos los botones
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Añadir clase active al botón clickeado
+            this.classList.add('active');
+            
+            // Obtener categoría del texto del botón
+            const category = this.textContent.toLowerCase();
+            filterSavedPlaces(category);
+        });
+    });
+}
+
+// Función principal de inicialización
+function initializeAll() {
+    // Cargar contenido
+    loadDestinationsRecent();
+    loadSavedPlaces();
+    
+    // Inicializar filtros
+    initializeDestinationFilters();
+    initializeSavedPlacesFilters();
+    
+    // Filtrar por defecto
+    setTimeout(() => {
+        filterDestinations('todos');
+        filterSavedPlaces('todos');
+    }, 100);
+    
+    console.log('Aplicación inicializada correctamente');
+}
+
+// Event listener para cuando se carga el DOM
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar Lucide Icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+    
+    // Inicializar toda la aplicación
+    initializeAll();
 });
 
-// Event listeners para botones de favorito
+// Event listener global para botones de favorito
 document.addEventListener('click', function(e) {
     if (e.target.closest('.save-btn')) {
         const button = e.target.closest('.save-btn');
         toggleSave(button);
     }
 });
-
-// Animación inicial (esperar un poco más para que se carguen los destinos)
-setTimeout(() => {
-    filterDestinations('todos');
-}, 500);
-}
-
-// CSS para las animaciones y estilos específicos de destinos
-const style = document.createElement('style');
-style.textContent = `
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.destination-card.hidden {
-    display: none !important;
-}
-
-.destination-card {
-    animation-fill-mode: both;
-}
-
-.temp-no-results {
-    display: none;
-    text-align: center;
-    padding: 2rem;
-    color: #666;
-    grid-column: 1/-1;
-}
-
-.temp-no-results i {
-    margin-right: 0.5rem;
-}
-
-.tab-btn {
-    transition: all 0.3s ease;
-}
-
-.tab-btn.active {
-    background-color: #007bff;
-    color: white;
-}
-
-.destination-badge.visitado {
-    background-color: #28a745;
-    color: white;
-}
-
-.destination-badge.pendiente {
-    background-color: #ffc107;
-    color: #212529;
-}
-
-.destination-location i,
-.destination-type i,
-.destination-date i,
-.price-text i {
-    margin-right: 0.5rem;
-    width: 16px;
-    height: 16px;
-}
-
-.save-btn {
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 50%;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.save-btn:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-    transform: scale(1.1);
-}
-
-.save-btn.saved {
-    animation: pulse 0.3s ease;
-}
-
-.save-btn.saved i {
-    color: #ff6b6b;
-    fill: #ff6b6b;
-}
-
-.save-btn i {
-    width: 20px;
-    height: 20px;
-    transition: all 0.2s ease;
-}
-
-.rating i {
-    color: #ffd700;
-    fill: #ffd700;
-    margin-right: 0.25rem;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
-/* Estilos adicionales para iconos */
-.destination-type i {
-    color: #007bff;
-}
-
-.destination-location i {
-    color: #dc3545;
-}
-
-.destination-date i {
-    color: #28a745;
-}
-
-.price-text i {
-    color: #28a745;
-}
-`;
-document.head.appendChild(style);
-</script>
+  </script>
 </body>
 </html>

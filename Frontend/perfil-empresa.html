@@ -41,7 +41,7 @@
         <!-- Logo Central -->
         <div class="menu-center">
             <a href="#" class="menu-title">
-                <img class="logo-icon" src="img/logo.svg" alt="">
+                <img class="logo-icon" src="img/logo.svg">
                 <span>TourIstmo</span>
             </a>
         </div>
@@ -65,9 +65,9 @@
             <!-- Información de la Empresa -->
             <div class="user-info">
                 <div class="user-avatar">
-                    <img src="img/getpanama.png" alt="BetaTech Solutions">
+                    <img src="img/getpanama.png" id="LOGO">
                 </div>
-                <h1 class="user-name">Get Panamá</h1>
+                <h1 class="user-name" id="NOMBRE">Get Panamá</h1>
                 <p class="user-username">@get.panama</p>
             </div>
             <!-- Información General -->
@@ -77,21 +77,21 @@
                 <div class="info-grid">
                   <div class="info-section phone">
                     <div class="info-section-title">Teléfono</div>
-                    <div class="info-section-value">+507 6123-4567</div>
+                    <div class="info-section-value" id="TELEFONO">+507 6123-4567</div>
                   </div>
                   
                   <div class="info-section email">
                     <div class="info-section-title">Email</div>
-                    <a href="mailto:info@panamaget.com" class="info-section-value">info@panamaget.com</a>
+                    <a href="mailto:info@panamaget.com" class="info-section-value" id="CORREO">info@panamaget.com</a>
                   </div>
                   
                   <div class="info-section schedule">
-                    <div class="info-section-title">Horario</div>
+                    <div class="info-section-title">Facebook</div>
                     <div class="info-section-value">Lun-Dom 8:00-18:00</div>
                   </div>
                   
                   <div class="info-section clients">
-                    <div class="info-section-title">Clientes</div>
+                    <div class="info-section-title">Instagram</div>
                     <div class="info-section-value">500+ tours realizados</div>
                   </div>
                   
@@ -108,9 +108,9 @@
             <!-- Header con imagen de portada -->
             <header class="profile-header">
                 <div class="cover-image">
-                    <img src="img/banner.avif" alt="Banner BetaTech">
+                    <img src="img/banner.avif" id="BANNER">
                     <div class="cover-overlay">
-                        <h2 class="cover-title">Get Panamá</h2>
+                        <h2 class="cover-title" id="NOMBRE">Get Panamá</h2>
                         <button class="explore-btn" onclick="window.open('https://www.panamaget.com', '_blank')">Conócenos</button>
                     </div>
                 </div>
@@ -177,53 +177,25 @@
             <!-- Sobre Nosotros -->
             <div class="user-details">
                 <h3>Sobre Nosotros</h3>
-                <p class="user-bio">
+                <p class="user-bio" id="DESCRIPCION">
                     Ser reconocidos como el principal operador de turismo de aventura en Panamá, ofreciendo experiencias únicas que conecten a los viajeros con la naturaleza, la cultura y la autenticidad de los destin
                 </p>
                 <div class="user-meta">
                     <p>
-                        <i data-lucide="map-pin" class="icon"></i>
+                        <i data-lucide="map-pin" class="icon" id="UBICACION_TEXTO"></i>
                         Ciudad de Panamá, Panamá
                     </p>
                     <p>
-                        <i data-lucide="calendar" class="icon"></i>
+                        <i data-lucide="calendar" class="icon" id="TIPO?"></i>
                         Fundada en 2010
                     </p>
                     <p>
                         <i data-lucide="globe" class="icon"></i>
-                        <a href="https://www.panamaget.com">www.panamaget.com</a>
+                        <a href="https://www.panamaget.com" id="PAGINA_WEB_URL">www.panamaget.com</a>
                     </p>
                 </div>
                 <div class="action-buttons">
                     <button class="btn-primary" id="editProfileBtn">Editar Perfil</button>
-                </div>
-            </div>
-
-            <!-- Widget de Actividad -->
-            <div class="activity-widget">
-                <h3>Actividad Reciente</h3>
-                <div class="activity-list">
-                    <div class="activity-item">
-                        <i data-lucide="rocket" class="activity-icon"></i>
-                        <div class="activity-content">
-                            <p>Lanzó servicio <strong>Portal Corporativo</strong></p>
-                            <span class="activity-time">Hace 3 horas</span>
-                        </div>
-                    </div>
-                    <div class="activity-item">
-                        <i data-lucide="trophy" class="activity-icon"></i>
-                        <div class="activity-content">
-                            <p>Publicó caso de <strong>Global Finance</strong></p>
-                            <span class="activity-time">Hace 1 día</span>
-                        </div>
-                    </div>
-                    <div class="activity-item">
-                        <i data-lucide="wrench" class="activity-icon"></i>
-                        <div class="activity-content">
-                            <p>Actualizó proyecto <strong>Automatización Industrial</strong></p>
-                            <span class="activity-time">Hace 2 días</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </aside>

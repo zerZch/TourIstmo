@@ -107,6 +107,8 @@
     gap: var(--spacing-lg);
     grid-template-columns: repeat(3, 1fr);
     margin-top: var(--spacing-xl);
+    padding: var(--spacing-3xl);
+    background-color: var(--primary-teal);
 }
 
 @media (max-width: 1024px) {
@@ -158,8 +160,9 @@
     border-color: var(--primary-teal);
 }
 
-/* ===== Tarjetas de destinos mejoradas ===== */
-a.card {
+/* ===== Tarjetas de destinos ===== */
+
+.card {
     background: var(--bg-secondary);
     border-radius: var(--border-radius-xl);
     overflow: hidden;
@@ -194,6 +197,7 @@ a.card:hover .card-img {
     padding: var(--spacing-lg);
     text-align: center;
     background: var(--bg-primary);
+
 }
 
 .card-title {
