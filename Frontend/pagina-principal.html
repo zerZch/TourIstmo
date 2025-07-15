@@ -13,7 +13,6 @@
 </head>
 
 <body>
-
 <!-- Navbar Flotante -->
  <nav class="floating-navbar" id="navbar">
     <!-- Menú Izquierdo -->
@@ -33,7 +32,20 @@
 
     <!-- Menú Derecho -->
     <div class="menu-right">
-      <button class="cta-button-nav" onclick="window.location.href='login.html'">Login</button>
+        <!-- Barra de Búsqueda -->
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <span class="search-icon" data-icon="search"></span>
+                <input type="text" class="search-input" placeholder="Buscar destinos..." />
+                <button class="search-clear" data-icon="x" style="display: none;"></button>
+            </div>
+        </div>
+        
+        <!-- Redes Sociales -->
+        <div class="social-container">
+            <a href="https://www.facebook.com" class="social-link" data-icon="facebook" aria-label="Facebook"></a>
+            <a href="https://www.instagram.com" class="social-link" data-icon="instagram" aria-label="Instagram"></a>
+        </div>
     </div>
 
     <!-- Menú móvil hamburguesa -->
@@ -49,9 +61,8 @@
   <div class="hero-content">
     <h1 class="hero-title">Explora las maravillas de Panamá</h1>
     <p class="hero-subtitle">Un lugar donde la naturaleza y la aventura se unen</p>
-    <a href="#destinos" class="hero-cta">
-      <span>Descubre más</span>
-      <span>→</span>
+    <a href="login.html" class="hero-cta">
+      <span>Iniciar Sesión</span>
     </a>
   </div>
   
@@ -96,7 +107,99 @@
       <a href="planes-pagina.jsp" class="btn-primary">Ver todos los planes</a>
     </div>
   </section>
+
+    <!-- ===== SECCIÓN DE NOTICIAS ===== -->
+    <section class="news-section">
+        <div class="container">
+            <!-- Encabezado de la sección -->
+            <div class="news-header">
+                <h2 class="news-title">Últimas Noticias</h2>
+                <p class="news-subtitle">Mantente informado sobre las últimas novedades del sector turístico</p>
+            </div>
+
+            <!-- Grid de noticias -->
+            <div class="news-grid">
+                <!-- Noticia 1 - Artículo -->
+                <article class="news-card news-card--featured">
+                    <div class="news-card__image">
+                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Destinos turísticos sostenibles">
+                        <div class="news-card__badge">
+                            <span class="badge badge--article">Artículo</span>
+                        </div>
+                    </div>
+                    <div class="news-card__content">
+                        <div class="news-card__meta">
+                            <span class="news-meta__date">15 Jul 2025</span>
+                            <span class="news-meta__category">Turismo Sostenible</span>
+                        </div>
+                        <h3 class="news-card__title">Costa Rica lidera iniciativas de turismo sostenible en Centroamérica</h3>
+                        <p class="news-card__excerpt">El país implementa nuevas políticas para promover el ecoturismo y reducir el impacto ambiental del sector, estableciendo estándares regionales.</p>
+                        <a href="https://es.travel2latam.com/news-98827-costa-rica-se-consolida-como-referente-mundial-en-turismo-sostenible" class="news-card__link" target="_blank" rel="noopener noreferrer">
+                            Leer más
+                            <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Noticia 2 - Video -->
+                <article class="news-card news-card--video">
+                    <div class="news-card__image">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Playas de Panamá">
+                        <div class="news-card__badge">
+                            <span class="badge badge--video">Video</span>
+                        </div>
+                        <div class="video-overlay">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="news-card__content">
+                        <div class="news-card__meta">
+                            <span class="news-meta__date">12 Jul 2025</span>
+                            <span class="news-meta__category">Promoción Turística</span>
+                        </div>
+                        <h3 class="news-card__title">Panamá presenta nueva campaña para atraer turistas internacionales</h3>
+                        <p class="news-card__excerpt">Documental promocional destaca la diversidad natural y cultural del país, con enfoque en experiencias auténticas y aventura.</p>
+                        <a href="https://www.youtube.com/watch?v=Dt6VEIN_o6o" class="news-card__link" target="_blank" rel="noopener noreferrer">
+                            Ver video
+                            <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Noticia 3 - Artículo -->
+                <article class="news-card">
+                    <div class="news-card__image">
+                        <img src="https://imascono.com/wp-content/uploads/2024/01/Turismo-tecnologia_01.jpg" alt="Turismo digital">
+                        <div class="news-card__badge">
+                            <span class="badge badge--article">Artículo</span>
+                        </div>
+                    </div>
+                    <div class="news-card__content">
+                        <div class="news-card__meta">
+                            <span class="news-meta__date">10 Jul 2025</span>
+                            <span class="news-meta__category">Innovación</span>
+                        </div>
+                        <h3 class="news-card__title">La transformación digital revoluciona la experiencia turística</h3>
+                        <p class="news-card__excerpt">Nuevas tecnologías como realidad aumentada y aplicaciones móviles están cambiando la forma en que los viajeros exploran destinos.</p>
+                        <a href="https://www.ostelea.com/actualidad/blog-turismo/turismo-digital" class="news-card__link" target="_blank" rel="noopener noreferrer">
+                            Leer más
+                            <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 </main>
+
 
 <!-- ===== Footer ===== -->
 <footer class="footer">
@@ -142,23 +245,6 @@
               </ul>
           </div>
 
-          <!-- Métodos de pago y app -->
-          <div class="footer-section">
-              <div class="footer-payments">
-                  <h4>Métodos de Pago</h4>
-                  <div class="payment-methods">
-                      <div class="payment-icon">
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
-                      </div>
-                      <div class="payment-icon">
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
-                      </div>
-                      <div class="payment-icon">
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
-                      </div>
-                  </div>
-              </div>
-              
               <div class="footer-app">
                   <h4>Descarga la App</h4>
                   <a href="#" class="app-download">
@@ -348,8 +434,42 @@ document.addEventListener('DOMContentLoaded', function () {
         mapPin: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>',
         star: '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>',
         heart: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
-        heartFilled: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'
+        heartFilled: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+        search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>',
+        x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+        facebook: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
+        instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>',
     };
+
+
+    // ====================================================
+    // FUNCION DE INICIALIZACION DE ICONOS DESDE EL HTML
+    // ===================================================
+
+    function initializeIcons() {
+    const elements = document.querySelectorAll('[data-icon]');
+    console.log('Elementos con data-icon encontrados:', elements.length);
+    
+    elements.forEach(element => {
+        const iconName = element.getAttribute('data-icon');
+        console.log('Procesando icono:', iconName);
+        if (icons[iconName]) {
+            element.innerHTML = icons[iconName];
+        }
+    });
+    }
+
+    // =====================
+    // FUNCION DE BUSQUEDA
+    // =====================
+
+    function handleSearch(searchTerm) {
+    if (searchTerm && searchTerm.trim() !== '') {
+        // Redirigir a Google con el término de búsqueda
+        const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
+        window.open(googleSearchUrl, '_blank');
+    }
+}
 
     // ===============================
     // FUNCIONES UTILITARIAS
@@ -474,6 +594,47 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.classList.remove('keyboard-navigation');
         });
     }
+
+    // Función para manejar la funcionalidad de búsqueda
+    function initSearchFunctionality() {
+    const searchInput = document.querySelector('.search-input');
+    const searchClear = document.querySelector('.search-clear');
+    const searchIcon = document.querySelector('.search-icon');
+    
+    if (searchInput && searchClear) {
+        // Mostrar/ocultar botón de limpiar
+        searchInput.addEventListener('input', function() {
+            if (this.value.length > 0) {
+                searchClear.style.display = 'flex';
+            } else {
+                searchClear.style.display = 'none';
+            }
+        });
+        
+        // Limpiar búsqueda
+        searchClear.addEventListener('click', function() {
+            searchInput.value = '';
+            searchInput.focus();
+            this.style.display = 'none';
+        });
+        
+        // Manejar búsqueda con Enter
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleSearch(this.value);
+            }
+        });
+
+        // Manejar clic en el icono de búsqueda
+        if (searchIcon) {
+            searchIcon.style.cursor = 'pointer'; // Cambiar cursor para indicar que es clickeable
+            searchIcon.addEventListener('click', function() {
+                handleSearch(searchInput.value);
+            });
+        }
+    }
+}
 
     // ===============================
     // HERO SLIDER FUNCTIONS
@@ -618,6 +779,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setupIntersectionObserver();
         setupAccessibility();
         startHeroSlideshow();
+        initializeIcons(); 
         
         // Load carousels
         loadCarousel('destCarousel', '/api/destinations', mockDestinations, false);
