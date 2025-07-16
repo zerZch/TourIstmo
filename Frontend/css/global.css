@@ -262,14 +262,27 @@
     border-color: #bc1888;
 }
 
-.social-link[data-icon="twitter"]:hover {
-    background: #1da1f2;
-    border-color: #1da1f2;
+.power-off {
+  background: white;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
 }
 
-.social-link[data-icon="youtube"]:hover {
-    background: #ff0000;
-    border-color: #ff0000;
+.power-off:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.power-off:active {
+  transform: scale(0.95);
+}
+
+.power-off.show {
+  display: inline-block;
 }
 
 /* ===== RESPONSIVE ===== */

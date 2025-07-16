@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Condiciones - Touristmo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #e67e22;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #34495e;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            border-left: 4px solid #e67e22;
+            padding-left: 15px;
+        }
+
+        .section h3 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .section p {
+            color: #555;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .section ul {
+            color: #555;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .contact-info {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .back-btn {
+            background: #e67e22;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .back-btn:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .content-card {
+                padding: 25px;
+                margin: 20px 10px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="pagina-principal.html" class="logo">
+                <div class="logo-icon">🌴</div>
+                <h1>Touristmo</h1>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="pagina-principal.html">Inicio</a></li>
+                    <li><a href="destino-pagina.html">Destinos</a></li>
+                    <li><a href="planes-pagina.html">Planes</a></li>
+                    <li><a href="sobrenos.html">Nosotros</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="content-card">
+            <h1 class="page-title">Términos y Condiciones</h1>
+            <p class="subtitle">Última actualización: 16 de julio de 2025</p>
+
+            <div class="section">
+                <h2>1. Aceptación de los Términos</h2>
+                <p>Al acceder y utilizar Touristmo, usted acepta estar sujeto a estos términos y condiciones. Si no está de acuerdo con alguna parte de estos términos, no debe utilizar nuestros servicios.</p>
+            </div>
+
+            <div class="section">
+                <h2>2. Descripción del Servicio</h2>
+                <p>Touristmo es una plataforma digital que permite a los usuarios:</p>
+                <ul>
+                    <li>Explorar destinos turísticos en Panamá</li>
+                    <li>Crear y compartir planes de viaje</li>
+                    <li>Reservar servicios turísticos</li>
+                    <li>Conectar con otros viajeros y empresas turísticas</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>3. Registro y Cuenta de Usuario</h2>
+                <h3>3.1 Requisitos de Registro</h3>
+                <p>Para utilizar ciertos servicios, debe crear una cuenta proporcionando información precisa y completa.</p>
+                
+                <h3>3.2 Responsabilidad del Usuario</h3>
+                <p>Usted es responsable de mantener la confidencialidad de su cuenta y contraseña, y de todas las actividades que ocurran bajo su cuenta.</p>
+            </div>
+
+            <div class="section">
+                <h2>4. Uso Aceptable</h2>
+                <p>Al utilizar Touristmo, usted se compromete a:</p>
+                <ul>
+                    <li>Proporcionar información veraz y actualizada</li>
+                    <li>No utilizar el servicio para actividades ilegales</li>
+                    <li>Respetar los derechos de otros usuarios</li>
+                    <li>No publicar contenido ofensivo o inapropiado</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>5. Contenido del Usuario</h2>
+                <p>Usted retiene los derechos sobre el contenido que publique, pero nos otorga una licencia para utilizarlo en nuestra plataforma. Todo contenido debe cumplir con nuestras políticas de comunidad.</p>
+            </div>
+
+            <div class="section">
+                <h2>6. Reservas y Pagos</h2>
+                <div class="highlight">
+                    <p><strong>Importante:</strong> Las reservas están sujetas a disponibilidad. Los pagos se procesan de forma segura a través de nuestros proveedores de pago certificados.</p>
+                </div>
+                <p>Las políticas de cancelación y reembolso varían según el proveedor de servicios.</p>
+            </div>
+
+            <div class="section">
+                <h2>7. Limitación de Responsabilidad</h2>
+                <p>Touristmo actúa como intermediario entre usuarios y proveedores de servicios turísticos. No somos responsables por:</p>
+                <ul>
+                    <li>La calidad de los servicios proporcionados por terceros</li>
+                    <li>Cambios en itinerarios por causas de fuerza mayor</li>
+                    <li>Pérdidas o daños indirectos</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>8. Modificaciones</h2>
+                <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios serán efectivos inmediatamente después de su publicación en la plataforma.</p>
+            </div>
+
+            <div class="section">
+                <h2>9. Terminación</h2>
+                <p>Podemos suspender o terminar su cuenta si viola estos términos o por cualquier razón, con o sin previo aviso.</p>
+            </div>
+
+            <div class="section">
+                <h2>10. Ley Aplicable</h2>
+                <p>Estos términos se rigen por las leyes de la República de Panamá. Cualquier disputa será resuelta en los tribunales competentes de Panamá.</p>
+            </div>
+
+            <div class="contact-info">
+                <h3>¿Preguntas sobre estos términos?</h3>
+                <p>Contáctanos: <strong>legal@touristmo.com</strong></p>
+                <p>Teléfono: <strong>+507 123-4567</strong></p>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="javascript:history.back()" class="back-btn">Volver</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Smooth scrolling para navegación interna
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Efecto de aparición al scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar animación a las secciones
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Confirmar al salir de la página
+        window.addEventListener('beforeunload', function(e) {
+            // Solo mostrar si el usuario ha interactuado con la página
+            if (performance.navigation.type === 1) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+    </script>
+</body>
+</html>

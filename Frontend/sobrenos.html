@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tourIstmo | Sobre Nosotros</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/paginaprincipal.css">
+    <link rel="stylesheet" href="css/sobrenos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Modak&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar Flotante -->
+    <nav class="floating-navbar" id="navbar">
+        <!-- Menú Izquierdo -->
+        <div class="menu-left">
+            <a href="destino-pagina.html" class="nav-link">Destinos</a>
+            <a href="planes-pagina.html" class="nav-link">Planes</a>
+            <a href="perfil-empresa.html" class="nav-link">Perfil</a>
+        </div>
+
+        <!-- Logo Central -->
+        <div class="menu-center">
+            <a href="pagina-principal.html" class="menu-title">
+                <img class="logo-icon" src="img/logo.svg" alt="TourIstmo Logo">
+                <span>TourIstmo</span>
+            </a>
+        </div>
+
+        <!-- Menú Derecho -->
+        <div class="menu-right">
+            <!-- Barra de Búsqueda -->
+            <div class="search-container">
+                <div class="search-input-wrapper">
+                    <span class="search-icon" data-icon="search"></span>
+                    <input type="text" class="search-input" placeholder="Buscar información..." />
+                    <button class="search-clear" data-icon="x" style="display: none;"></button>
+                </div>
+            </div>
+            
+            <!-- Redes Sociales -->
+            <div class="social-container">
+                <a href="" class="social-link" data-icon="facebook" aria-label="Facebook"></a>
+                <a href="https://www.instagram.com" class="social-link" data-icon="instagram" aria-label="Instagram"></a>
+            </div>
+        </div>
+
+        <!-- Menú móvil hamburguesa -->
+        <div class="mobile-menu-toggle" id="mobileToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- ===== Hero Section ===== -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1 class="about-hero-title">Conoce a Nuestro Equipo</h1>
+            <p class="about-hero-subtitle">
+                Somos un grupo de desarrolladores apasionados por crear experiencias digitales 
+                excepcionales que conecten a las personas con las maravillas turísticas de Panamá.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== Contenido Principal ===== -->
+    <main class="about-main">
+        <div class="container">
+            <!-- Introducción -->
+            <section class="about-intro">
+                <h2 class="about-intro-title">Nuestra Historia</h2>
+                <p class="about-intro-text">
+                    TourIstmo nació como un proyecto semestral con la visión de revolucionar la forma en que 
+                    las personas descubren y experimentan los destinos turísticos de Panamá. Combinamos 
+                    tecnología moderna con un profundo amor por nuestro país para crear una plataforma 
+                    que inspire y facilite aventuras inolvidables.
+                </p>
+                
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Desarrolladores</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1</span>
+                        <span class="stat-label">Semestre</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Pasión</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Compromiso</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección del Equipo -->
+            <section class="team-section" id="equipo">
+                <h2 class="team-title">Nuestro Equipo</h2>
+                <div class="team-grid" id="teamGrid">
+                    <!-- Los miembros del equipo se cargarán aquí dinámicamente -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ===== Sección de Tecnologías ===== -->
+    <section class="tech-section" id="tecnologias">
+        <div class="container">
+            <h2 class="tech-title">Tecnologías que Utilizamos</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon" data-icon="code"></div>
+                    <h3 class="tech-name">HTML5 & CSS3</h3>
+                    <p class="tech-description">Estructura y diseño moderno</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon" data-icon="database"></div>
+                    <h3 class="tech-name">JSP</h3>
+                    <p class="tech-description">Backend robusto y escalable</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon" data-icon="server"></div>
+                    <h3 class="tech-name">Oracle MySQL</h3>
+                    <p class="tech-description">Base de datos confiable</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Call to Action ===== -->
+    <section class="cta-section" id="contacto">
+        <div class="container">
+            <h2 class="cta-title">¿Tienes alguna pregunta?</h2>
+            <p class="cta-text">
+                Estamos aquí para ayudarte. Si tienes alguna consulta sobre el proyecto 
+                o quieres saber más sobre nuestro trabajo, no dudes en contactarnos.
+            </p>
+            <a href="pagina-principal.html" class="cta-button">
+                <span data-icon="home"></span>
+                Volver al Inicio
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Logo y descripción -->
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <img class="logo-icon" src="img/logowhite.png" alt="TourIstmo Logo">
+                        <span class="footer-logo-text">TourIstmo</span>
+                    </a>
+                    <p class="footer-description">
+                        Explora, comparte y disfruta de los mejores destinos turísticos de Panamá. 
+                        Tu aventura comienza aquí.
+                    </p>
+                </div>
+
+                <!-- Navegación principal -->
+                <div class="footer-section">
+                    <h4>TourIstmo</h4>
+                    <ul class="footer-links">
+                        <li><a href="pagina-principal.html">Inicio</a></li>
+                        <li><a href="planes-pagina.html">Planes Turísticos</a></li>
+                        <li><a href="destino-pagina.html">Destinos Turísticos</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colaboración y Soporte -->
+                <div class="footer-section">
+                    <h4>Colabora</h4>
+                    <ul class="footer-links">
+                        <li><a href="sobrenos.html">Sobre Nosotros</a></li>
+                        <li><a href="FormularioDestino.html">Añade Destinos</a></li>
+                    </ul>
+                    
+                    <h4 style="margin-top: var(--spacing-lg);">Soporte</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                        <li><a href="#">Ayuda</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copyright">
+                © 2025 Touristmo. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== JavaScript ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ===============================
+            // VARIABLES GLOBALES
+            // ===============================
+            
+            const navbar = document.getElementById('navbar');
+            const mobileToggle = document.getElementById('mobileToggle');
+            const menuLeft = document.querySelector('.menu-left');
+            const menuRight = document.querySelector('.menu-right');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            let lastScrollTop = 0;
+            let scrollTimer = null;
+
+            // ===============================
+            // DATOS DEL EQUIPO
+            // ===============================
+            const teamMembers = [
+                {
+                    id: 1,
+                    name: "Miriam Angulo",
+                    cedula: "9-766-202",
+                    role: "Ingeniería en Software",
+                    photo: "img/miriam.jpeg",
+                    experience: "Se posiciona como la desarrolladora más versátil del equipo, con expertise que abarca desde la gestión de bases de datos y desarrollo backend hasta frontend y lógica de negocio. Su experiencia en Java, Spring Boot y arquitecturas de microservicios la convierte en una pieza clave para la cohesión técnica del proyecto."
+                },
+                {
+                    id: 2,
+                    name: "Carlos Delgado",
+                    cedula: "E-8-204947",
+                    role: "Ingeniería en Software",
+                    photo: "img/carlos.jpeg",
+                    experience: "Aporta la perspectiva de lógica de negocio y gestión de datos. Su background en Java, Spring Boot y arquitecturas escalables lo posiciona como el puente entre los requerimientos funcionales y la implementación técnica."
+                },
+                {
+                    id: 3,
+                    name: "Diego Jaen",
+                    cedula: "7-718-1410",
+                    role: "Ingeniería en Software",
+                    photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
+                    experience: "Combina su experiencia como analista de bases de datos con desarrollo backend. Su expertise en MySQL, PostgreSQL y optimización de consultas, junto con su capacidad para diseñar estructuras de datos eficientes, es fundamental para el rendimiento del sistema."
+                },
+                {
+                    id: 4,
+                    name: "David Pimentel",
+                    cedula: "8-1010-750",
+                    role: "Ingeniería en Software",
+                    photo: "img/david.jpeg",
+                    experience: "Aporta solidez en la capa de datos y servicios backend. Como full-stack developer especializado en metodologías ágiles, JavaScript, Node.js y DevOps, su enfoque en integración continua y despliegue automatizado fortalece la infraestructura del sistema."
+                },
+                {
+                    id: 5,
+                    name: "Elbis Vallejos",
+                    cedula: "9-766-202",
+                    role: "Ingeniería en Software",
+                    photo: "img/elbis.jpeg",
+                    experience: "Se especializa en la experiencia de usuario y lógica de aplicación. Como full-stack developer con enfoque en JavaScript, Node.js y metodologías ágiles, se encarga de traducir los requerimientos en interfaces funcionales y lógica de frontend."
+                }
+            ];
+
+            // ===============================
+            // ICONOS SVG
+            // ===============================
+            const icons = {
+                search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>',
+                x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+                facebook: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
+                instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>',
+                code: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>',
+                zap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg>',
+                database: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="m3 5v14c0 3 4 6 9 6s9-3 9-6V5"/><path d="m3 12c0 3 4 6 9 6s9-3 9-6"/></svg>',
+                server: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="4" rx="1" ry="1"/><rect x="2" y="9" width="20" height="4" rx="1" ry="1"/><rect x="2" y="15" width="20" height="4" rx="1" ry="1"/><line x1="6" y1="5" x2="6.01" y2="5"/><line x1="6" y1="11" x2="6.01" y2="11"/><line x1="6" y1="17" x2="6.01" y2="17"/></svg>',
+                home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>',
+                code2: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2"/><path d="M9.5 4h-2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/><path d="M10 2l4 20"/></svg>'
+            };
+
+            // ===============================
+            // FUNCIONES UTILITARIAS
+            // ===============================
+            function initializeIcons() {
+                const elements = document.querySelectorAll('[data-icon]');
+                elements.forEach(element => {
+                    const iconName = element.getAttribute('data-icon');
+                    if (icons[iconName]) {
+                        element.innerHTML = icons[iconName];
+                    }
+                });
+            }
+
+            function handleSearch(searchTerm) {
+                if (searchTerm && searchTerm.trim() !== '') {
+                    const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
+                    window.open(googleSearchUrl, '_blank');
+                }
+            }
+
+            function detectDevice() {
+                const isMobile = window.innerWidth <= 768;
+                const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+                if (navbar) {
+                    navbar.classList.toggle('mobile-device', isMobile);
+                    navbar.classList.toggle('tablet-device', isTablet);
+                }
+            }
+
+            function toggleMobileMenu() {
+                if (mobileToggle && menuLeft && menuRight) {
+                    mobileToggle.classList.toggle('active');
+                    menuLeft.classList.toggle('mobile-open');
+                    menuRight.classList.toggle('mobile-open');
+                    document.body.style.overflow = mobileToggle.classList.contains('active') ? 'hidden' : '';
+                }
+            }
+
+            function handleScroll() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (navbar) {
+                    navbar.classList.toggle('scrolled', scrollTop > 100);
+
+                    if (window.innerWidth <= 768) {
+                        navbar.style.transform = (scrollTop > lastScrollTop && scrollTop > 200)
+                            ? 'translateX(-50%) translateY(-100px)'
+                            : 'translateX(-50%) translateY(0)';
+                        navbar.style.opacity = (scrollTop > lastScrollTop && scrollTop > 200) ? '0.8' : '1';
+                    }
+                }
+
+                lastScrollTop = scrollTop;
+            }
+
+            function smoothScrollTo(targetId) {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop - 120;
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                }
+            }
+
+            function updateActiveLink() {
+                const scrollPosition = window.scrollY + 150;
+                navLinks.forEach(link => {
+                    const targetId = link.getAttribute('href');
+                    if (targetId && targetId.startsWith('#')) {
+                        const section = document.querySelector(targetId);
+                        if (section) {
+                            const top = section.offsetTop;
+                            const bottom = top + section.offsetHeight;
+                            if (scrollPosition >= top && scrollPosition < bottom) {
+                                navLinks.forEach(l => l.classList.remove('active'));
+                                link.classList.add('active');
+                            }
+                        }
+                    }
+                });
+            }
+
+            function animateNavbarEntrance() {
+                if (navbar) {
+                    navbar.style.opacity = '0';
+                    navbar.style.transform = 'translateX(-50%) translateY(-50px) scale(0.9)';
+                    setTimeout(() => {
+                        navbar.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                        navbar.style.opacity = '1';
+                        navbar.style.transform = 'translateX(-50%) translateY(0) scale(1)';
+                    }, 200);
+                }
+            }
+
+            function initSearchFunctionality() {
+                const searchInput = document.querySelector('.search-input');
+                const searchClear = document.querySelector('.search-clear');
+                const searchIcon = document.querySelector('.search-icon');
+                
+                if (searchInput && searchClear) {
+                    // Mostrar/ocultar botón de limpiar
+                    searchInput.addEventListener('input', function() {
+                        if (this.value.length > 0) {
+                            searchClear.style.display = 'flex';
+                        } else {
+                            searchClear.style.display = 'none';
+                        }
+                    });
+                    
+                    // Limpiar búsqueda
+                    searchClear.addEventListener('click', function() {
+                        searchInput.value = '';
+                        searchInput.focus();
+                        this.style.display = 'none';
+                    });
+                    
+                    // Manejar búsqueda con Enter
+                    searchInput.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            handleSearch(this.value);
+                        }
+                    });
+
+                    // Manejar clic en el icono de búsqueda
+                    if (searchIcon) {
+                        searchIcon.style.cursor = 'pointer';
+                        searchIcon.addEventListener('click', function() {
+                            handleSearch(searchInput.value);
+                        });
+                    }
+                }
+            }
+
+            // ===============================
+            // FUNCIONES DEL EQUIPO
+            // ===============================
+            function generateTeamMemberHTML(member) {
+                return `
+                    <div class="team-card" data-aos="fade-up" data-aos-delay="${member.id * 100}">
+                        <img src="${member.photo}" alt="${member.name}" class="team-photo">
+                        <div class="team-info">
+                            <h3 class="team-name">${member.name}</h3>
+                            <p class="team-cedula">Cédula: ${member.cedula}</p>
+                            <span class="team-role">${member.role}</span>
+                            <div class="team-experience">
+                                <h4 class="experience-title">
+                                    <span class="experience-icon" data-icon="code2"></span>
+                                    Experiencia como Desarrollador
+                                </h4>
+                                <p class="experience-text">${member.experience}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function loadTeamMembers() {
+                const teamGrid = document.getElementById('teamGrid');
+                if (teamGrid) {
+                    teamGrid.innerHTML = teamMembers.map(member => generateTeamMemberHTML(member)).join('');
+                    // Reinicializar iconos después de cargar el contenido
+                    initializeIcons();
+                }
+            }
+
+            function animateOnScroll() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                }, { 
+                    threshold: 0.1,
+                    rootMargin: '-50px 0px'
+                });
+
+                // Observar elementos animables
+                document.querySelectorAll('.team-card, .tech-item, .stat-item').forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(30px)';
+                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    observer.observe(el);
+                });
+            }
+
+            function addHoverEffects() {
+                // Efectos de hover para tarjetas del equipo
+                document.querySelectorAll('.team-card').forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-8px) scale(1.02)';
+                    });
+                    
+                    card.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(-8px) scale(1)';
+                    });
+                });
+
+                // Efectos de hover para elementos tech
+                document.querySelectorAll('.tech-item').forEach(item => {
+                    item.addEventListener('mouseenter', function() {
+                        const icon = this.querySelector('.tech-icon');
+                        if (icon) {
+                            icon.style.transform = 'scale(1.2) rotate(5deg)';
+                            icon.style.color = 'var(--accent-orange)';
+                        }
+                    });
+                    
+                    item.addEventListener('mouseleave', function() {
+                        const icon = this.querySelector('.tech-icon');
+                        if (icon) {
+                            icon.style.transform = 'scale(1) rotate(0deg)';
+                            icon.style.color = 'var(--primary-teal)';
+                        }
+                    });
+                });
+            }
+
+            function addParallaxEffect() {
+                window.addEventListener('scroll', () => {
+                    const scrolled = window.pageYOffset;
+                    const heroSection = document.querySelector('.about-hero');
+                    
+                    if (heroSection) {
+                        const rate = scrolled * -0.5;
+                        heroSection.style.transform = `translateY(${rate}px)`;
+                    }
+                }, { passive: true });
+            }
+
+            // ===============================
+            // INICIALIZACIÓN
+            // ===============================
+            function init() {
+                detectDevice();
+                animateNavbarEntrance();
+                initializeIcons();
+                initSearchFunctionality();
+                loadTeamMembers();
+                animateOnScroll();
+                addParallaxEffect();
+                
+                // Añadir efectos de hover después de un pequeño delay
+                setTimeout(() => {
+                    addHoverEffects();
+                }, 500);
+            }
+
+            // ===============================
+            // EVENT LISTENERS
+            // ===============================
+            
+            // Scroll events con optimización
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(() => {
+                    handleScroll();
+                    updateActiveLink();
+                }, 10);
+            }, { passive: true });
+
+            // Resize events
+            window.addEventListener('resize', () => {
+                detectDevice();
+                if (window.innerWidth > 768 && mobileToggle && mobileToggle.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            });
+
+            // Mobile menu toggle
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', toggleMobileMenu);
+            }
+
+            // Navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        smoothScrollTo(href);
+                        if (mobileToggle && mobileToggle.classList.contains('active')) {
+                            toggleMobileMenu();
+                        }
+                    }
+                });
+            });
+
+            // Efecto de escritura en el hero
+            function typeWriter(element, text, speed = 50) {
+                let i = 0;
+                element.innerHTML = '';
+                
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    }
+                }
+                type();
+            }
+
+            // Efecto de contadores animados
+            function animateCounters() {
+                const counters = document.querySelectorAll('.stat-number');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const counter = entry.target;
+                            const target = counter.textContent;
+                            
+                            if (target === '∞') return;
+                            
+                            const targetNum = parseInt(target);
+                            let current = 0;
+                            const increment = targetNum / 50;
+                            
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= targetNum) {
+                                    counter.textContent = targetNum;
+                                    clearInterval(timer);
+                                } else {
+                                    counter.textContent = Math.floor(current);
+                                }
+                            }, 30);
+                            
+                            observer.unobserve(counter);
+                        }
+                    });
+                });
+                
+                counters.forEach(counter => observer.observe(counter));
+            }
+
+            // Efectos adicionales
+            setTimeout(() => {
+                animateCounters();
+            }, 1000);
+
+            // Inicializar todo
+            init();
+        });
+    </script>
+</body>
+</html>

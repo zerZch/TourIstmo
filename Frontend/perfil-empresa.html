@@ -8,25 +8,9 @@
     <link rel="stylesheet" href="css/perfil-empresa.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Modak&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <!-- Lucide Icons CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
-    <script>
-        // Inicializar iconos cuando el DOM y Lucide estén listos
-        document.addEventListener('DOMContentLoaded', function() {
-            // Esperar a que Lucide esté completamente cargado
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            } else {
-                // Fallback si Lucide no está listo
-                setTimeout(() => {
-                    if (typeof lucide !== 'undefined') {
-                        lucide.createIcons();
-                    }
-                }, 100);
-            }
-        });
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
     <!-- Navbar Flotante -->
@@ -37,20 +21,17 @@
             <a href="#planes" class="nav-link">Planes</a>
             <a href="#perfil" class="nav-link">Perfil</a>
         </div>
-
         <!-- Logo Central -->
         <div class="menu-center">
             <a href="#" class="menu-title">
-                <img class="logo-icon" src="img/logo.svg">
+                <img class="logo-icon" src="img/logo.svg" alt="">
                 <span>TourIstmo</span>
             </a>
         </div>
-
         <!-- Menú Derecho -->
         <div class="menu-right">
             <a href="#login" class="cta-button-nav">Login</a>
         </div>
-
         <!-- Menú móvil hamburguesa -->
         <div class="mobile-menu-toggle" id="mobileToggle">
             <span></span>
@@ -65,37 +46,33 @@
             <!-- Información de la Empresa -->
             <div class="user-info">
                 <div class="user-avatar">
-                    <img src="img/getpanama.png" id="LOGO">
+                    <img src="img/getpanama.png" alt="Get Panamá">
                 </div>
-                <h1 class="user-name" id="NOMBRE">Get Panamá</h1>
+                <h1 class="user-name">Get Panamá</h1>
                 <p class="user-username">@get.panama</p>
             </div>
             <!-- Información General -->
             <div class="general-info">
                 <h3>Información General</h3>
-                
                 <div class="info-grid">
-                  <div class="info-section phone">
-                    <div class="info-section-title">Teléfono</div>
-                    <div class="info-section-value" id="TELEFONO">+507 6123-4567</div>
-                  </div>
-                  
-                  <div class="info-section email">
-                    <div class="info-section-title">Email</div>
-                    <a href="mailto:info@panamaget.com" class="info-section-value" id="CORREO">info@panamaget.com</a>
-                  </div>
-                  
-                  <div class="info-section schedule">
-                    <div class="info-section-title">Facebook</div>
-                    <div class="info-section-value"></div>
-                  </div>
-                  
-                  <div class="info-section clients">
-                    <div class="info-section-title">Instagram</div>
-                    <div class="info-section-value"></div>
-                  </div>
+                    <div class="info-section phone">
+                        <div class="info-section-title">Teléfono</div>
+                        <div class="info-section-value">+507 6123-4567</div>
+                    </div>
+                    <div class="info-section email">
+                        <div class="info-section-title">Email</div>
+                        <a href="mailto:info@panamaget.com" class="info-section-value">info@panamaget.com</a>
+                    </div>
+                    <div class="info-section schedule">
+                        <div class="info-section-title">Facebook</div>
+                        <div class="info-section-value">@getpanama</div>
+                    </div>
+                    <div class="info-section clients">
+                        <div class="info-section-title">Instagram</div>
+                        <div class="info-section-value">@get.panama</div>
+                    </div>
                 </div>
-              </div>
+            </div>
         </aside>
 
         <!-- Contenido Principal -->
@@ -103,68 +80,35 @@
             <!-- Header con imagen de portada -->
             <header class="profile-header">
                 <div class="cover-image">
-                    <img src="img/banner.avif" id="BANNER">
+                    <img src="img/banner.avif" alt="Get Panamá">
                     <div class="cover-overlay">
-                        <h2 class="cover-title" id="NOMBRE">Get Panamá</h2>
+                        <h2 class="cover-title">Get Panamá</h2>
                         <button class="explore-btn" onclick="window.open('https://www.panamaget.com', '_blank')">Conócenos</button>
                     </div>
                 </div>
             </header>
 
-            <!-- Navegación de Planes Activos -->
+            <!-- Navegación de Planes -->
             <nav class="destinations-nav">
-                <h3>Planes Activos</h3>
+                <h2>Planes Activos</h2>
                 <div class="destinations-tabs">
                     <button class="tab-btn active" data-category="todos">Todos</button>
-                    <button class="tab-btn" data-category="tropical">Tropical</button>
-                    <button class="tab-btn" data-category="historico">Histórico</button>
                     <button class="tab-btn" data-category="naturaleza">Naturaleza</button>
+                    <button class="tab-btn" data-category="urbano">Urbano</button>
+                    <button class="tab-btn" data-category="cultural">Cultural</button>
+                    <button class="tab-btn" data-category="tropical">Tropical</button>
                 </div>
             </nav>
 
-            <!-- Grid de Proyectos -->
+            <!-- Grid de Planes -->
             <section class="destinations-grid">
-                <!-- Las cartas se cargarán aquí dinámicamente -->
+                <!-- El contenido será generado dinámicamente por JavaScript -->
             </section>
-            
-            <!-- Template para las cartas de destino -->
-            <template id="destination-card-template">
-                <article class="destination-card">
-                    <div class="destination-image">
-                        <img src="" alt="" class="destination-img">
-                    </div>
-                    <div class="destination-info">
-                        <div class="horizontal-info">
-                            <h4 class="destination-name"></h4>
-                            <button class="save-btn save-btn-overlay" onclick="event.preventDefault(); toggleSave(this)" data-saved="false">
-                                <span class="heart-icon">♡</span>
-                            </button>
-                        </div>
-                        
-                        <p class="destination-location">
-                            <i data-lucide="map-pin" class="icon"></i>
-                            <span class="destination-province"></span>
-                        </p>
-                        
-                        <p class="destination-date">
-                            <span class="destination-type"></span>
-                        </p>
-                        
-                        <div class="destination-meta">
-                            <span class="destination-badge">
-                                <span class="badge-text"></span>
-                            </span>
-                            <span class="rating">
-                                <i data-lucide="star" class="icon filled"></i>
-                                <span class="rating-value"></span>
-                            </span>
-                            <span class="price">
-                                <span class="price-text"></span>
-                            </span>
-                        </div>
-                    </div>
-                </article>
-            </template>            
+
+            <!-- Agregar mensaje de no resultados -->
+            <div id="noResults" class="no-results" style="display: none;">
+                <p><i data-lucide="search-x"></i> No se encontraron planes para esta categoría.</p>
+            </div>
         </main>
 
         <!-- Sidebar Derecho -->
@@ -172,11 +116,11 @@
             <!-- Sobre Nosotros -->
             <div class="user-details">
                 <h3>Sobre Nosotros</h3>
-                <p class="user-bio" id="DESCRIPCION">
-                    Ser reconocidos como el principal operador de turismo de aventura en Panamá, ofreciendo experiencias únicas que conecten a los viajeros con la naturaleza, la cultura y la autenticidad de los destin
+                <p class="user-bio">
+                    Ser reconocidos como el principal operador de turismo de aventura en Panamá, ofreciendo experiencias únicas que conecten a los viajeros con la naturaleza, la cultura y la autenticidad de los destinos panameños.
                 </p>
                 <div class="action-buttons">
-                    <button class="btn-primary" id="editProfileBtn">Editar Perfil</button>
+                    <a href="Formularioplanes.html" class="btn-primary">Registra un plan</a>
                 </div>
             </div>
         </aside>
@@ -193,11 +137,10 @@
                         <span class="footer-logo-text">TourIstmo</span>
                     </a>
                     <p class="footer-description">
-                        Explora, comparte y disfruta de los mejores destinos turísticos de Panamá. 
+                        Explora, comparte y disfruta de los mejores destinos turísticos de Panamá.
                         Tu aventura comienza aquí.
                     </p>
                 </div>
-
                 <!-- Navegación principal -->
                 <div class="footer-section">
                     <h4>TourIstmo</h4>
@@ -209,7 +152,6 @@
                         <li><a href="#">Reservar</a></li>
                     </ul>
                 </div>
-
                 <!-- Colaboración y Soporte -->
                 <div class="footer-section">
                     <h4>Colabora</h4>
@@ -217,7 +159,6 @@
                         <li><a href="#">Únete al equipo</a></li>
                         <li><a href="#">Publica tus planes</a></li>
                     </ul>
-                    
                     <h4 style="margin-top: var(--spacing-lg);">Soporte</h4>
                     <ul class="footer-links">
                         <li><a href="#">Términos y Condiciones</a></li>
@@ -225,33 +166,7 @@
                         <li><a href="#">Ayuda</a></li>
                     </ul>
                 </div>
-
-                <!-- Métodos de pago y app -->
-                <div class="footer-section">
-                    <div class="footer-payments">
-                        <h4>Métodos de Pago</h4>
-                        <div class="payment-methods">
-                            <div class="payment-icon">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
-                            </div>
-                            <div class="payment-icon">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
-                            </div>
-                            <div class="payment-icon">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="footer-app">
-                        <h4>Descarga la App</h4>
-                        <a href="#" class="app-download">
-                            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Descargar en App Store">
-                        </a>
-                    </div>
-                </div>
             </div>
-
             <div class="footer-bottom">
                 <p class="footer-copyright">
                     © 2025 Touristmo. Todos los derechos reservados.
@@ -259,439 +174,401 @@
             </div>
         </div>
     </footer>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar Lucide Icons
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
-    
-    // Placeholder para imágenes que fallen
-    document.querySelectorAll('img').forEach(img => {
-        img.onerror = function() {
-            const w = this.width || 400, h = this.height || 300;
-            const txt = this.alt.charAt(0).toUpperCase() || '?';
-            this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'%3E%3Crect width='${w}' height='${h}' fill='%23E0E6ED'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='%237F8C8D' text-anchor='middle' alignment-baseline='middle'%3E${txt}%3C/text%3E%3C/svg%3E`;
-        };
-    });
-
-    // Reloj
-    function updateTime() {
-        const now = new Date();
-        const h = now.getHours().toString().padStart(2, '0');
-        const m = now.getMinutes().toString().padStart(2, '0');
-        const timeElement = document.querySelector('.current-time');
-        if (timeElement) {
-            timeElement.textContent = `${h}:${m}`;
-        }
-    }
-    updateTime();
-    setInterval(updateTime, 60000);
-
-    // Modal
-    const modal = document.getElementById('editProfileModal');
-    const openBtn = document.getElementById('editProfileBtn');
-    const closeBtns = [document.getElementById('closeModalBtn'), document.getElementById('cancelEditBtn')];
-    
-    if (modal && openBtn) {
-        openBtn.onclick = () => { 
-            modal.classList.add('active'); 
-            document.body.style.overflow = 'hidden'; 
-        };
-        
-        closeBtns.forEach(b => {
-            if (b) {
-                b.onclick = () => { 
-                    modal.classList.remove('active'); 
-                    document.body.style.overflow = 'auto'; 
-                };
+        // ============================================
+        // DATOS DE EJEMPLO - PLANES DE EMPRESA
+        // ============================================
+        const planesEmpresa = [
+            {
+                id: 1,
+                nombre: "Archipiélago de Las Perlas Full Day",
+                descripcion: "Excursión completa al archipiélago de Las Perlas con transporte incluido, almuerzo y actividades acuáticas en aguas cristalinas.",
+                imagen: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                ubicacion: "San Blas, Panamá",
+                precio: "$85",
+                rating: "4.8",
+                tipo: "Tropical",
+                horario: "8:00 AM - 6:00 PM",
+                duracion: "1 día",
+                empresa: "Get Panamá"
+            },
+            {
+                id: 2,
+                nombre: "Canal de Panamá Experience",
+                descripcion: "Tour histórico por las esclusas de Miraflores con centro de visitantes y observación del funcionamiento del canal.",
+                imagen: "https://images.unsplash.com/photo-1645932700624-5075c8d2df58?auto=format&fit=crop&w=400&q=80",
+                ubicacion: "Miraflores, Panamá",
+                precio: "$45",
+                rating: "4.9",
+                tipo: "Cultural",
+                horario: "8:00 AM - 5:00 PM",
+                duracion: "4 horas",
+                empresa: "Get Panamá"
+            },
+            {
+                id: 3,
+                nombre: "Gamboa Rainforest Adventure",
+                descripcion: "Aventura en la selva tropical de Gamboa con senderismo, observación de aves y visita al teleférico del dosel.",
+                imagen: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=400&q=80",
+                ubicacion: "Gamboa, Panamá",
+                precio: "$95",
+                rating: "4.7",
+                tipo: "Naturaleza",
+                horario: "7:00 AM - 4:00 PM",
+                duracion: "1 día",
+                empresa: "Get Panamá"
+            },
+            {
+                id: 4,
+                nombre: "City Tour Casco Viejo",
+                descripcion: "Recorrido por el centro histórico de Panamá, declarado Patrimonio de la Humanidad, con guía especializado.",
+                imagen: "https://images.unsplash.com/photo-1540610410855-b4c8877b761c?auto=format&fit=crop&w=400&q=80",
+                ubicacion: "Casco Viejo, Panamá",
+                precio: "$35",
+                rating: "4.6",
+                tipo: "Cultural",
+                horario: "9:00 AM - 1:00 PM",
+                duracion: "4 horas",
+                empresa: "Get Panamá"
+            },
+            {
+                id: 5,
+                nombre: "Playa Blanca Beach Day",
+                descripcion: "Día de playa en Playa Blanca con transporte, almuerzo y actividades acuáticas incluidas.",
+                imagen: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80",
+                ubicacion: "Playa Blanca, Colón",
+                precio: "$65",
+                rating: "4.5",
+                tipo: "Tropical",
+                horario: "8:00 AM - 5:00 PM",
+                duracion: "1 día",
+                empresa: "Get Panamá"
+            },
+            {
+                id: 6,
+                nombre: "Metro Tour Panamá",
+                descripcion: "Tour urbano utilizando el metro de Panamá para conocer los puntos más importantes de la ciudad moderna.",
+                imagen: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=400&q=80",
+                ubicacion: "Ciudad de Panamá",
+                precio: "$25",
+                rating: "4.3",
+                tipo: "Urbano",
+                horario: "10:00 AM - 2:00 PM",
+                duracion: "4 horas",
+                empresa: "Get Panamá"
+            },
+            {
+                id: 7,
+                nombre: "Biomuseo & Amador",
+                descripcion: "Visita al Biomuseo diseñado por Frank Gehry y recorrido por la Calzada de Amador con vistas panorámicas.",
+                imagen: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80",
+                ubicacion: "Amador, Panamá",
+                precio: "$40",
+                rating: "4.7",
+                tipo: "Cultural",
+                horario: "9:00 AM - 3:00 PM",
+                duracion: "6 horas",
+                empresa: "Get Panamá"
+            },
+            {
+                id: 8,
+                nombre: "Parque Metropolitano Hiking",
+                descripcion: "Caminata guiada por el único parque natural urbano de América con observación de flora y fauna local.",
+                imagen: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=400&q=80",
+                ubicacion: "Parque Metropolitano",
+                precio: "$30",
+                rating: "4.4",
+                tipo: "Naturaleza",
+                horario: "6:00 AM - 10:00 AM",
+                duracion: "4 horas",
+                empresa: "Get Panamá"
+            },
+            {
+                id: 9,
+                nombre: "Cinta Costera Night Walk",
+                descripcion: "Caminata nocturna por la Cinta Costera con vistas del skyline iluminado y la bahía de Panamá.",
+                imagen: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=400&q=80",
+                ubicacion: "Cinta Costera",
+                precio: "$20",
+                rating: "4.2",
+                tipo: "Urbano",
+                horario: "7:00 PM - 9:00 PM",
+                duracion: "2 horas",
+                empresa: "Get Panamá"
+            },
+            {
+                id: 10,
+                nombre: "Isla Taboga Adventure",
+                descripcion: "Excursión a la Isla de las Flores con ferry, almuerzo, playa y recorrido histórico por el pueblo colonial.",
+                imagen: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=400&q=80",
+                ubicacion: "Isla Taboga",
+                precio: "$55",
+                rating: "4.6",
+                tipo: "Tropical",
+                horario: "8:00 AM - 4:00 PM",
+                duracion: "1 día",
+                empresa: "Get Panamá"
             }
-        });
-        
-        modal.addEventListener('click', e => { 
-            if (e.target === modal && closeBtns[0]) {
-                closeBtns[0].onclick(); 
-            }
-        });
-    }
+        ];
 
-    // Previews
-    ['avatar', 'banner'].forEach(type => {
-        const inp = document.getElementById(`${type}Input`);
-        const prev = document.getElementById(`${type}Preview`);
-        if (inp && prev) {
-            inp.addEventListener('change', e => {
-                const f = e.target.files[0];
-                if (f && f.type.startsWith('image/')) {
-                    const r = new FileReader();
-                    r.onload = ev => prev.src = ev.target.result;
-                    r.readAsDataURL(f);
+        // ============================================
+        // FUNCIONES DE UTILIDAD
+        // ============================================
+        
+        // Función para configurar manejo de errores de imágenes
+        function setupImageErrorHandling() {
+            document.querySelectorAll('img').forEach(img => {
+                if (!img.hasAttribute('data-error-handled')) {
+                    img.setAttribute('data-error-handled', 'true');
+                    img.onerror = function() {
+                        const w = this.width || 400;
+                        const h = this.height || 300;
+                        const txt = this.alt.charAt(0).toUpperCase() || '?';
+                        this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'%3E%3Crect width='${w}' height='${h}' fill='%23E0E6ED'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='%237F8C8D' text-anchor='middle' alignment-baseline='middle'%3E${txt}%3C/text%3E%3C/svg%3E`;
+                    };
                 }
             });
         }
-    });
 
-    // Guardar cambios
-    const editForm = document.getElementById('editProfileForm');
-    if (editForm) {
-        editForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const userName = document.querySelector('.user-name');
-            const userUsername = document.querySelector('.user-username');
-            const userBio = document.querySelector('.user-bio');
-            const userMeta = document.querySelector('.user-meta p:first-child');
-            const userAvatar = document.querySelector('.user-avatar img');
-            const coverImage = document.querySelector('.cover-image img');
+        // Función para obtener iconos según el tipo (usando Lucide)
+        function getTypeIcon(tipo) {
+            const typeIcons = {
+                'naturaleza': 'tree-pine',
+                'urbano': 'building-2', 
+                'cultural': 'landmark',
+                'tropical': 'palm-tree'
+            };
+            return typeIcons[tipo.toLowerCase()] || 'map-pin';
+        }
+
+        // ============================================
+        // FUNCIÓN PRINCIPAL DE GENERACIÓN DE CARDS
+        // ============================================
+        
+        // Función principal generateCardHTML (única función para generar cards)
+        function generateCardHTML(plan) {
+            const url = `plan.html?id=${plan.id}`;
+            const priceText = plan.precio ? plan.precio : 'Gratis';
+            const typeIcon = getTypeIcon(plan.tipo);
             
-            if (userName) userName.textContent = document.getElementById('nameInput').value;
-            if (userUsername) userUsername.textContent = '@' + document.getElementById('usernameInput').value;
-            if (userBio) userBio.textContent = document.getElementById('bioInput').value;
-            if (userMeta) userMeta.innerHTML = '<i data-lucide="map-pin" class="icon"></i> ' + document.getElementById('locationInput').value;
-            if (userAvatar) userAvatar.src = document.getElementById('avatarPreview').src;
-            if (coverImage) coverImage.src = document.getElementById('bannerPreview').src;
+            return `
+                <a href="${url}" class="destination-card" data-category="${plan.tipo.toLowerCase()}">
+                    <div class="destination-image">
+                        <img src="${plan.imagen}" alt="${plan.nombre}" class="destination-img">
+                    </div>
+                    <div class="destination-info">
+                        <div class="horizontal-info">
+                            <h4 class="destination-name">${plan.nombre}</h4>
+                        </div>
+                        <p class="destination-location">
+                            <span class="location-icon"><i data-lucide="map-pin"></i></span>
+                            ${plan.ubicacion}
+                        </p>
+                        <p class="destination-type ${plan.tipo.toLowerCase()}">${plan.tipo}</p>
+                        <div class="destination-meta">
+                            <span class="rating">
+                                <span class="star-icon"><i data-lucide="star" fill="currentColor"></i></span>
+                                ${plan.rating || '4.5'}
+                            </span>
+                            <span class="price">${priceText}</span>
+                        </div>
+                    </div>
+                </a>
+            `;
+        }
+
+        // ============================================
+        // FUNCIÓN DE CARGA DE CONTENIDO
+        // ============================================
+        
+        // Función para cargar planes
+        function loadPlans() {
+            const grid = document.querySelector('.destinations-grid');
+            if (!grid) {
+                console.log('No se encontró .destinations-grid');
+                return;
+            }
+
+            // Limpiar grid existente
+            grid.innerHTML = '';
+
+            // Generar cartas usando generateCardHTML
+            planesEmpresa.forEach(plan => {
+                const cardHTML = generateCardHTML(plan);
+                grid.innerHTML += cardHTML;
+            });
+
+            // Configurar manejo de errores de imágenes
+            setupImageErrorHandling();
             
-            // Reinicializar iconos después de actualizar el DOM
+            // Reinicializar iconos de Lucide
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
-            
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-            alert('Perfil actualizado correctamente!');
-        });
-    }
 
-    // Cargar destinos de ejemplo
-    loadDestinations(exampleDestinations);
-    
-    // INICIALIZAR FILTROS DESPUÉS DE CARGAR LA PÁGINA
-    initializeFilters();
-});
-
-// Función para cargar destinos dinámicamente
-function loadDestinations(destinations) {
-    const grid = document.querySelector('.destinations-grid');
-    const template = document.querySelector('#destination-card-template');
-    const linkTemplate = document.querySelector('#destination-link-template');
-    
-    if (!grid || !template) return;
-    
-    // Limpiar grid existente
-    grid.innerHTML = '';
-    
-    destinations.forEach(destination => {
-        // Decidir qué template usar basado en si tiene URL
-        const templateToUse = destination.url ? linkTemplate : template;
-        if (!templateToUse) return;
-        
-        const clone = templateToUse.content.cloneNode(true);
-        
-        // Configurar la imagen
-        const img = clone.querySelector('.destination-img');
-        if (img) {
-            img.src = destination.imagen || destination.image;
-            img.alt = destination.nombre || destination.name;
-            
-            // Agregar manejo de error para imágenes dinámicas
-            img.onerror = function() {
-                const w = this.width || 400, h = this.height || 300;
-                const txt = this.alt.charAt(0).toUpperCase() || '?';
-                this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'%3E%3Crect width='${w}' height='${h}' fill='%23E0E6ED'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='%237F8C8D' text-anchor='middle' alignment-baseline='middle'%3E${txt}%3C/text%3E%3C/svg%3E`;
-            };
+            console.log('Planes cargados:', planesEmpresa.length);
         }
+
+        // ============================================
+        // FUNCIÓN DE INTERACCIÓN
+        // ============================================
         
-        // Configurar información básica
-        const nameElement = clone.querySelector('.destination-name');
-        if (nameElement) nameElement.textContent = destination.nombre || destination.name;
-        
-        const provinceElement = clone.querySelector('.destination-province');
-        if (provinceElement) provinceElement.textContent = destination.provincia || destination.location;
-        
-        const typeElement = clone.querySelector('.destination-type');
-        if (typeElement) typeElement.textContent = destination.tipo || destination.type;
-        
-        // Configurar rating
-        const ratingElement = clone.querySelector('.rating-value');
-        if (ratingElement) ratingElement.textContent = destination.rating || '4.5';
-        
-        // Configurar precio
-        const priceElement = clone.querySelector('.price-text');
-        if (priceElement) priceElement.textContent = destination.precio || destination.price;
-        
-        // Configurar badge si existe
-        const badgeElement = clone.querySelector('.badge-text');
-        if (badgeElement && destination.badge) {
-            badgeElement.textContent = destination.badge;
-            const badgeContainer = clone.querySelector('.destination-badge');
-            if (badgeContainer) {
-                badgeContainer.className = `destination-badge ${destination.badge.toLowerCase()}`;
+        // Función para alternar el estado de guardado/favorito
+        function toggleSave(button) {
+            const isSaved = button.dataset.saved === 'true';
+            button.dataset.saved = !isSaved;
+            
+            // Cambiar el icono visual
+            const heartIcon = button.querySelector('.heart-icon i, i');
+            if (!isSaved) {
+                button.classList.add('saved');
+                if (heartIcon) {
+                    heartIcon.classList.add('filled');
+                }
+            } else {
+                button.classList.remove('saved');
+                if (heartIcon) {
+                    heartIcon.classList.remove('filled');
+                }
             }
-        }
-        
-        // Configurar URL si es un enlace
-        if (destination.url) {
-            const linkElement = clone.querySelector('.destination-link');
-            if (linkElement) linkElement.href = destination.url;
-        }
-        
-        // Agregar clase de tipo para estilos específicos
-        if (destination.tipo) {
-            const dateElement = clone.querySelector('.destination-date');
-            if (dateElement) dateElement.classList.add(destination.tipo.toLowerCase());
-        }
-        
-        grid.appendChild(clone);
-    });
-    
-    // Reinicializar los iconos de Lucide después de agregar el contenido
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
-}
 
-// Función para alternar el estado de guardado
-function toggleSave(button) {
-    const isSaved = button.dataset.saved === 'true';
-    button.dataset.saved = !isSaved;
-    
-    const heartIcon = button.querySelector('.heart-icon');
-    if (heartIcon) {
-        // Cambiar entre heart (vacío) y heart-filled (lleno)
-        heartIcon.setAttribute('data-lucide', isSaved ? 'heart' : 'heart');
-        heartIcon.classList.toggle('filled', !isSaved);
-        
-        // Reinicializar los iconos de Lucide
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-    }
-    
-    // Aquí puedes agregar lógica para guardar/quitar de favoritos
-    console.log('Toggled save state:', !isSaved);
-}
+            // Reinicializar iconos
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
 
-// Ejemplo de datos para cargar - ACTUALIZADO para coincidir con las categorías
-const exampleDestinations = [
-    {
-        nombre: "Archipiélago de Las Perlas (Full Day)",
-        imagen: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-        provincia: "San Blas",
-        precio: "$79",
-        rating: "4.8",
-        tipo: "Tropical"
-    },
-    {
-        nombre: "Canal de Panamá Experience",
-        imagen: "https://images.unsplash.com/photo-1645932700624-5075c8d2df58?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        provincia: "Miraflores",
-        precio: "$45",
-        rating: "4.8",
-        tipo: "Histórico"
-    },
-    {
-        nombre: "Gamboa Rainforest Adventure",
-        imagen: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-        provincia: "Gamboa",
-        precio: "$95",
-        rating: "4.7",
-        tipo: "Naturaleza"
-    },
-    {
-        nombre: "City Tour Panamá",
-        imagen: "https://images.unsplash.com/photo-1540610410855-b4c8877b761c?q=80&w=2848&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        provincia: "Panamá",
-        precio: "$70",
-        rating: "4.9",
-        tipo: "Histórico"
-    },
-    {
-        nombre: "Playa Blanca Excursión",
-        imagen: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-        provincia: "Colón",
-        precio: "$85",
-        rating: "4.6",
-        tipo: "Tropical"
-    },
-    {
-        nombre: "Parque Nacional Soberanía",
-        imagen: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-        provincia: "Panamá",
-        precio: "$60",
-        rating: "4.8",
-        tipo: "Naturaleza"
-    }
-];
-
-// FUNCIÓN PARA INICIALIZAR LOS FILTROS
-function initializeFilters() {
-    // Obtener elementos del DOM después de que se haya cargado
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    
-    // Verificar que los elementos existen
-    if (tabButtons.length === 0) {
-        console.log('No se encontraron botones de filtro (.tab-btn)');
-        return;
-    }
-
-    // Función para filtrar destinos CORREGIDA
-    function filterDestinations(category) {
-        // Buscar las tarjetas cada vez que se filtra (porque se generan dinámicamente)
-        const destinationCards = document.querySelectorAll('.destination-card');
-        const noResults = document.getElementById('noResults');
-        let visibleCards = 0;
-        
-        console.log('Filtrando por categoría:', category);
-        console.log('Tarjetas encontradas:', destinationCards.length);
-
-        if (destinationCards.length === 0) {
-            console.log('No se encontraron tarjetas de destino (.destination-card)');
-            return;
+            console.log('Toggled save state:', !isSaved);
         }
 
-        // Procesar cada tarjeta
-        destinationCards.forEach((card, index) => {
-            // Obtener la categoría del tipo de destino
-            const typeElement = card.querySelector('.destination-type');
-            const cardCategory = typeElement ? typeElement.textContent.toLowerCase() : '';
-            
-            console.log(`Tarjeta ${index}: categoría="${cardCategory}"`);
-            
-            // Resetear animación
-            card.style.animation = 'none';
-            card.style.animationDelay = '0s';
-            
-            // Verificar si debe mostrarse
-            const shouldShow = category === 'todos' || cardCategory === category;
-            
-            if (shouldShow) {
-                card.classList.remove('hidden');
-                card.style.display = 'block';
+        // ============================================
+        // FILTROS
+        // ============================================
+        
+        // Función para filtrar planes por tipo
+        function filterPlans(category) {
+            const planCards = document.querySelectorAll('.destination-card');
+            const noResults = document.getElementById('noResults');
+            let visibleCards = 0;
+
+            console.log('Filtrando planes por categoría:', category);
+
+            planCards.forEach((card, index) => {
+                const cardCategory = card.dataset.category;
                 
-                // Aplicar animación con delay
+                // Resetear animación
+                card.style.animation = 'none';
+                card.style.animationDelay = '0s';
+
+                let shouldShow = false;
+                
+                if (category === 'todos') {
+                    shouldShow = true;
+                } else {
+                    shouldShow = cardCategory === category;
+                }
+
+                if (shouldShow) {
+                    card.classList.remove('hidden');
+                    card.style.display = 'block';
+                    // Animación escalonada
+                    setTimeout(() => {
+                        card.style.animationDelay = `${visibleCards * 0.1}s`;
+                        card.style.animation = 'fadeInUp 0.6s ease forwards';
+                    }, 10);
+                    visibleCards++;
+                } else {
+                    card.classList.add('hidden');
+                    card.style.display = 'none';
+                }
+            });
+
+            // Manejo de mensaje "no hay resultados"
+            if (noResults) {
+                noResults.style.display = visibleCards === 0 ? 'block' : 'none';
+            }
+
+            console.log('Planes visibles:', visibleCards);
+        }
+
+        // ============================================
+        // INICIALIZACIÓN DE FILTROS
+        // ============================================
+        
+        // Función para inicializar los filtros de planes
+        function initializePlanFilters() {
+            const tabButtons = document.querySelectorAll('.destinations-tabs .tab-btn');
+            if (tabButtons.length === 0) {
+                console.log('No se encontraron botones de filtro de planes');
+                return;
+            }
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remover clase active de todos los botones
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    // Añadir clase active al botón clickeado
+                    this.classList.add('active');
+                    
+                    // Obtener categoría del data-category
+                    const category = this.dataset.category;
+                    filterPlans(category);
+                });
+            });
+        }
+
+        // ============================================
+        // INICIALIZACIÓN PRINCIPAL
+        // ============================================
+        
+        // Función principal de inicialización
+        function initializeAll() {
+            try {
+                // Cargar contenido
+                loadPlans();
+
+                // Inicializar filtros
+                initializePlanFilters();
+
+                // Filtrar por defecto después de que se haya cargado el contenido
                 setTimeout(() => {
-                    card.style.animationDelay = `${visibleCards * 0.1}s`;
-                    card.style.animation = 'fadeInUp 0.6s ease forwards';
-                }, 10);
-                
-                visibleCards++;
-            } else {
-                card.classList.add('hidden');
-                card.style.display = 'none';
+                    filterPlans('todos');
+                }, 100);
+
+                console.log('Aplicación inicializada correctamente');
+            } catch (error) {
+                console.error('Error al inicializar la aplicación:', error);
+            }
+        }
+
+        // ============================================
+        // EVENT LISTENERS
+        // ============================================
+        
+        // Event listener para cuando se carga el DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                // Inicializar Lucide Icons
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+
+                // Inicializar toda la aplicación
+                initializeAll();
+            } catch (error) {
+                console.error('Error en DOMContentLoaded:', error);
             }
         });
 
-        console.log('Tarjetas visibles:', visibleCards);
-
-        // Mostrar/ocultar mensaje de "no hay resultados"
-        if (noResults) {
-            if (visibleCards === 0) {
-                noResults.classList.add('show');
-                noResults.style.display = 'block';
-            } else {
-                noResults.classList.remove('show');
-                noResults.style.display = 'none';
+        // Event listener global para botones de favorito
+        document.addEventListener('click', function(e) {
+            // Manejar clicks en botones de guardado
+            if (e.target.closest('.save-btn')) {
+                const button = e.target.closest('.save-btn');
+                toggleSave(button);
+                return;
             }
-        } else if (visibleCards === 0) {
-            // Si no existe el elemento noResults, crear uno temporalmente
-            const grid = document.querySelector('.destinations-grid');
-            if (grid) {
-                let tempMessage = grid.querySelector('.temp-no-results');
-                if (!tempMessage) {
-                    tempMessage = document.createElement('div');
-                    tempMessage.className = 'temp-no-results';
-                    tempMessage.innerHTML = '<p>No se encontraron destinos para esta categoría.</p>';
-                    tempMessage.style.cssText = 'text-align: center; padding: 2rem; color: #666; grid-column: 1/-1;';
-                    grid.appendChild(tempMessage);
-                }
-                tempMessage.style.display = 'block';
-            }
-        } else {
-            // Ocultar mensaje temporal si existe
-            const tempMessage = document.querySelector('.temp-no-results');
-            if (tempMessage) {
-                tempMessage.style.display = 'none';
-            }
-        }
-    }
-
-    // Event listeners para los botones de filtro
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            console.log('Botón clickeado:', this.dataset.category);
-            
-            // Remover clase active de todos los botones
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Añadir clase active al botón clickeado
-            this.classList.add('active');
-            
-            // Filtrar destinos según la categoría seleccionada
-            const category = this.dataset.category;
-            filterDestinations(category);
         });
-    });
-
-    // Event listeners para botones del carrito
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.cart-btn')) {
-            const card = e.target.closest('.destination-card');
-            if (card) {
-                const destinationName = card.querySelector('.destination-name');
-                const destinationPrice = card.querySelector('.price-text');
-                
-                if (destinationName && destinationPrice) {
-                    alert(`¡Agregado al carrito: ${destinationName.textContent}\nPrecio: ${destinationPrice.textContent}\n\n¡Gracias por elegir Get Panamá!`);
-                }
-            }
-        }
-    });
-
-    // Animación inicial (esperar un poco más para que se carguen los destinos)
-    setTimeout(() => {
-        filterDestinations('todos');
-    }, 500);
-}
-
-// CSS para las animaciones (agregar al final del archivo CSS)
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    .destination-card.hidden {
-        display: none !important;
-    }
-    
-    .destination-card {
-        animation-fill-mode: both;
-    }
-    
-    .temp-no-results {
-        display: none;
-        text-align: center;
-        padding: 2rem;
-        color: #666;
-        grid-column: 1/-1;
-    }
-    
-    .tab-btn {
-        transition: all 0.3s ease;
-    }
-    
-    .tab-btn.active {
-        background-color: #007bff;
-        color: white;
-    }
-`;
-document.head.appendChild(style);
     </script>
 </body>
 </html>
