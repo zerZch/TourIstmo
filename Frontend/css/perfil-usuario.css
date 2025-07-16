@@ -235,10 +235,190 @@ body {
 /* Grid de destinos */
 .destinations-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-lg);
-    padding: var(--spacing-2xl);
+    grid-template-columns: repeat(auto-fill, 300px);
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl);
     max-width: 100%;
+}
+
+/* Carta de destino */
+.destination-card {
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-xl);
+    overflow: hidden;
+    transition: var(--transition-normal);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 300px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    font-family: var(--font-family-primary);
+}
+
+.destination-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    text-decoration: none;
+}
+
+/* Imagen del destino */
+.destination-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.destination-img, .saved-place-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+.destination-card:hover .destination-img,
+.destination-card:hover .saved-place-img {
+    transform: scale(1.1);
+}
+
+/* Información del destino */
+.destination-info {
+    padding: var(--spacing-xs);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.horizontal-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+
+.destination-name, .saved-place-name {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+    font-family: var(--font-family-display);
+    margin: 0;
+    line-height: 1.3;
+    flex-grow: 1;
+}
+
+/* Ubicación */
+.destination-location {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s) !important;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+}
+
+.destination-location .location-icon,
+.destination-location i {
+    width:24px;
+    height: 24px;
+    color: var(--text-muted);
+    
+}
+
+/* Tipo con icono */
+.destination-type {
+    display: flex;
+    align-items: center;
+}
+
+.destination-type .type-icon,
+.destination-type i {
+    width: 16px;
+    height: 16px;
+    color: var(--primary-teal);
+}
+
+.destination-type .type-text {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--text-secondary);
+    text-transform: capitalize;
+}
+
+/* Meta información - Rating y Precio */
+.destination-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-weight: var(--font-bold);
+    font-size: var(--text-sm);
+    color: var(--accent-orange);
+}
+
+.rating .star-icon,
+.rating i {
+    width: 24px;
+    height: 24px;
+    color: var(--accent-orange);
+    fill: var(--accent-orange);
+}
+
+.price {
+    font-weight: var(--font-bold);
+    font-size: var(--text-base);
+    color: var(--text-primary);
+}
+
+.saved-place-description, .description {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Estilos específicos para animaciones */
+.destination-card.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .destination-card {
+        flex: 0 0 280px;
+    }
+    
+    .destination-image {
+        height: 180px;
+    }
+    
+    .destination-info {
+        padding: var(--spacing-md);
+    }
+    
+    .destination-name, .saved-place-name {
+        font-size: var(--text-base);
+    }
 }
 
 /* Carta de destino */
@@ -259,6 +439,7 @@ body {
 .destination-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-xl);
+    color: inherit;
     text-decoration: none;
 }
 
@@ -269,19 +450,20 @@ body {
     overflow: hidden;
 }
 
-.destination-img {
+.destination-img, .saved-place-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: var(--transition-slow);
 }
 
-.destination-card:hover .destination-img {
+.destination-card:hover .destination-img,
+.destination-card:hover .saved-place-img {
     transform: scale(1.1);
 }
 
-/* Badge de estado */
-.destination-badge {
+/* Badge de tipo (reemplaza badge de estado) */
+.type-badge {
     position: absolute;
     top: var(--spacing-md);
     right: var(--spacing-md);
@@ -289,127 +471,161 @@ body {
     border-radius: var(--border-radius-full);
     font-size: var(--text-xs);
     font-weight: var(--font-semibold);
-    text-transform: uppercase;
+    text-transform: capitalize;
     letter-spacing: 0.5px;
     font-family: var(--font-family-primary);
+    color: var(--text-white);
 }
 
-.destination-badge.visitado {
+.type-badge.naturaleza {
     background: var(--status-success);
-    color: var(--text-white);
 }
 
-.destination-badge.pendiente {
-    background: var(--status-pending);
-    color: var(--text-white);
+.type-badge.urbano {
+    background: var(--primary-blue);
+}
+
+.type-badge.cultural {
+    background: var(--accent-purple);
+}
+
+.type-badge.tropical {
+    background: var(--primary-teal);
 }
 
 /* Información del destino */
 .destination-info {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-xl);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-xs);
     flex-grow: 1;
 }
 
-.destination-name {
+.horizontal-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0;
+}
+
+.destination-name, .saved-place-name {
     font-size: var(--text-lg);
     font-weight: var(--font-bold);
     color: var(--text-primary);
     font-family: var(--font-family-display);
     margin: 0;
     line-height: 1.3;
+    flex-grow: 1;
 }
 
-/* Meta información */
-.destination-meta {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-}
-
-.destination-location,
-.destination-type {
+/* Ubicación */
+.destination-location {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-bottom: 0;
     display: flex;
     align-items: center;
-    gap: var(--spacing-xs);
-    color: var(--text-secondary);
-    font-size: var(--text-sm);
-    font-weight: var(--font-medium);
+    gap: var(--spacing-md);
 }
 
-.destination-location i,
-.destination-type i {
-    width: 16px;
-    height: 16px;
-    color: var(--primary-teal);
+/* Tipo con icono */
+.destination-type {
+    display: inline-block;
+    background-color: #e3f2fd;
+    color: #1565c0;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-top: var(--spacing-xs);
+    border: 1px solid #bbdefb;
+    white-space: nowrap;
+    width: fit-content;
 }
 
-/* Rating y precio */
-.destination-rating {
+/* Variantes de color para diferentes tipos/categorías */
+.destination-type.historico {
+  background-color: #fff3e0;
+  color: #ef6c00;
+  border-color: #ffcc02;
+}
+
+.destination-type.natural {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+  border-color: #a5d6a7;
+}
+
+.destination-type.urbano {
+  background-color: #fce4ec;
+  color: #c2185b;
+  border-color: #f8bbd9;
+}
+
+.destination-type.cultural {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+  border-color: #ce93d8;
+}
+
+/* Meta información - Rating y Precio */
+.destination-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
 }
 
-.rating {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    font-weight: var(--font-medium);
-    font-size: var(--text-sm);
-    color: var(--text-primary);
-}
+/* Hover effect */
+.destination-type:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    }
+    
+      .destination-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: var(--spacing-sm);
+      }
+    
+      .rating {
+        font-size: var(--text-sm);
+        font-weight: var(--font-medium);
+        color: var(--accent-orange);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+      }
+    
+      .price {
+        font-size: var(--text-base);
+        font-weight: var(--font-bold);
+        color: var(--primary-teal);
+      }
 
-.rating i {
-    width: 16px;
-    height: 16px;
-    color: var(--status-pending);
-}
-
-.price-text {
-    font-weight: var(--font-bold);
-    font-size: var(--text-base);
-    color: var(--accent-orange);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-}
-
-.price-text i {
-    width: 14px;
-    height: 14px;
-}
-
-/* Detalles adicionales */
+/* Detalles - Descripción */
 .destination-details {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-    margin-top: var(--spacing-sm);
-    padding-top: var(--spacing-sm);
     border-top: 1px solid var(--border-color);
+    padding-top: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
 }
 
-.destination-date,
-.destination-duration {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    color: var(--text-muted);
+.saved-place-description, .description {
+    color: var(--text-secondary);
     font-size: var(--text-sm);
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.destination-date i,
-.destination-duration i {
-    width: 14px;
-    height: 14px;
-    color: var(--primary-teal);
-}
-
-/* Botón de guardar en destinos */
+/* Botón de guardar */
 .destination-card .save-btn {
     position: absolute;
     top: var(--spacing-md);
@@ -440,461 +656,46 @@ body {
     color: var(--text-white);
 }
 
+.destination-card .save-btn .heart-icon,
 .destination-card .save-btn i {
     width: 18px;
     height: 18px;
 }
 
-/* ===== SECCIÓN DE SITIOS GUARDADOS ===== */
-.saved-places {
-    padding: 30px;
-    border-top: 1px solid var(--border-color);
+/* Estilos específicos para animaciones */
+.destination-card.hidden {
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--spacing-xl);
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.section-header h3 {
-    font-size: var(--text-xl);
-    font-weight: var(--font-bold);
-    color: var(--primary-teal);
-    font-family: var(--font-family-display);
-}
-
-.filter-buttons {
-    display: flex;
-    gap: var(--spacing-sm);
-}
-
-.filter-btn {
-    padding: var(--spacing-xs) var(--spacing-md);
-    border: 1px solid var(--border-color);
-    background: transparent;
-    border-radius: var(--border-radius-lg);
-    font-size: var(--text-sm);
-    cursor: pointer;
-    transition: var(--transition-fast);
-    color: var(--text-muted);
-    font-family: var(--font-family-primary);
-}
-
-.filter-btn.active {
-    background: var(--company-primary);
-    color: white;
-    border-color: var(--company-primary);
-}
-
-/* Grid de sitios guardados */
-.saved-places-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
-}
-
-/* Carta de sitio guardado */
-.saved-place-card {
-    background: var(--bg-primary);
-    border-radius: var(--border-radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition-fast);
-    border: 1px solid var(--border-color);
-    max-width: 380px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    font-family: var(--font-family-primary);
-}
-
-.saved-place-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-}
-
-/* Imagen del sitio guardado */
-.saved-place-image {
-    position: relative;
-    height: 180px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.saved-place-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition-slow);
-}
-
-.saved-place-card:hover .saved-place-img {
-    transform: scale(1.05);
-}
-
-/* Badge de categoría */
-.category-badge {
-    position: absolute;
-    top: var(--spacing-md);
-    right: var(--spacing-md);
-    padding: var(--spacing-xs) var(--spacing-md);
-    border-radius: var(--border-radius-full);
-    font-size: var(--text-xs);
-    font-weight: var(--font-semibold);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-family: var(--font-family-primary);
-}
-
-.category-badge.restaurantes {
-    background: var(--status-success);
-    color: var(--text-white);
-}
-
-.category-badge.hoteles {
-    background: var(--primary-teal);
-    color: var(--text-white);
-}
-
-.category-badge.atracciones {
-    background: var(--accent-orange);
-    color: var(--text-white);
-}
-
-/* Información del sitio guardado */
-.saved-place-info {
-    padding: var(--spacing-lg);
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    flex-grow: 1;
-}
-
-.saved-place-name {
-    font-size: var(--text-lg);
-    font-weight: var(--font-bold);
-    color: var(--text-primary);
-    font-family: var(--font-family-display);
-    margin: 0;
-    line-height: 1.3;
-}
-
-/* Meta información del sitio */
-.saved-place-meta {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-}
-
-.saved-place-location {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    color: var(--text-secondary);
-    font-size: var(--text-sm);
-    font-weight: var(--font-medium);
-}
-
-.saved-place-location i {
-    width: 16px;
-    height: 16px;
-    color: var(--primary-teal);
-}
-
-.saved-place-rating {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: var(--spacing-xs);
-}
-
-.saved-place-rating .rating {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    font-weight: var(--font-medium);
-    font-size: var(--text-sm);
-    color: var(--text-primary);
-}
-
-.saved-place-rating .rating i {
-    width: 16px;
-    height: 16px;
-    color: var(--status-pending);
-}
-
-.price-level {
-    font-weight: var(--font-bold);
-    font-size: var(--text-base);
-    color: var(--accent-orange);
-}
-
-/* Detalles del sitio */
-.saved-place-details {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-    margin-top: var(--spacing-sm);
-}
-
-.contact-info,
-.schedule-info,
-.services-info {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-xs);
-    color: var(--text-muted);
-    font-size: var(--text-sm);
-    line-height: 1.4;
-}
-
-.contact-info i,
-.schedule-info i,
-.services-info i {
-    width: 14px;
-    height: 14px;
-    color: var(--primary-teal);
-    margin-top: 2px;
-    flex-shrink: 0;
-}
-
-/* Descripción */
-.saved-place-description {
-    color: var(--text-secondary);
-    font-size: var(--text-sm);
-    line-height: 1.5;
-    margin-top: var(--spacing-sm);
-    padding-top: var(--spacing-sm);
-    border-top: 1px solid var(--border-color);
-    margin-bottom: 0;
-}
-
-/* Botón de guardar en sitios */
-.saved-place-card .save-btn {
-    position: absolute;
-    top: var(--spacing-md);
-    left: var(--spacing-md);
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: var(--transition-fast);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    z-index: 2;
-}
-
-.saved-place-card .save-btn:hover {
-    background: var(--accent-orange);
-    color: var(--text-white);
-    transform: scale(1.1);
-}
-
-.saved-place-card .save-btn.saved {
-    background: var(--accent-orange);
-    color: var(--text-white);
-}
-
-.saved-place-card .save-btn i {
-    width: 16px;
-    height: 16px;
-}
-
-/* ===== ESTILOS ORIGINALES MANTENIDOS ===== */
-.destination-location{
-    color: var(--text-muted);
-    font-size: var(--text-sm);
-    margin-top: var(--spacing-xs);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-}
-
-.destination-date {
-    display: inline-block;
-    background-color: #e3f2fd;
-    color: #1565c0;
-    padding: 4px 12px;
-    border-radius: 16px;
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: capitalize;
-    margin-top: 8px;
-    border: 1px solid #bbdefb;
-    white-space: nowrap;
-}
-
-/* Variantes por tipo */
-.destination-date.historico {
-    background-color: #fff3e0;
-    color: #ef6c00;
-    border-color: #ffcc02;
-}
-  
-.destination-date.naturaleza {
-    background-color: #e8f5e8;
-    color: #2e7d32;
-    border-color: #a5d6a7;
-}
-  
-.destination-date.urbano {
-    background-color: #fce4ec;
-    color: #c2185b;
-    border-color: #f8bbd9;
-}
-  
-.destination-date.cultural {
-    background-color: #f3e5f5;
-    color: #7b1fa2;
-    border-color: #ce93d8;
-}
-  
-.destination-date.playa {
-    background-color: #e0f2f1;
-    color: #00695c;
-    border-color: #80cbc4;
-}
-
-.destination-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: var(--spacing-sm);
-}
-
-.price {
-    font-weight: var(--font-semibold);
-    font-size: var(--text-base);
-    color: var(--text-dark);
-}
-
-.save-btn {
-    background: var(--bg-secondary);
-    border: none;
-    width: 36px;
-    height: 36px;
-    border-radius: var(--border-radius-lg);
-    cursor: pointer;
-    transition: var(--transition-fast);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    position: relative;
-}
-
-.save-btn:hover {
-    color: white;
-    transform: scale(1.1);
-}
-
-.save-btn-overlay {
-    position: relative;
-    top: -4px;
-}
-
-.saved-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: var(--spacing-lg);
-}
-
-.saved-card {
-    background: white;
-    border-radius: var(--border-radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition-fast);
-    border: 1px solid var(--border-color);
-}
-
-.saved-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-.saved-card img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-}
-
-.saved-info {
-    padding: var(--spacing-md);
-}
-
-.saved-info h5 {
-    font-size: var(--text-base);
-    font-weight: var(--font-semibold);
-    color: var(--text-dark);
-    margin-bottom: var(--spacing-xs);
-}
-
-.saved-info p {
-    color: var(--text-muted);
-    font-size: var(--text-sm);
-    margin-bottom: var(--spacing-sm);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-}
-
-.saved-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.saved-rating {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    color: var(--status-pending);
-    font-weight: var(--font-medium);
-    font-size: var(--text-sm);
-}
-
-.remove-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: var(--transition-fast);
-    width: 30px;
-    height: 30px;
-    border-radius: var(--border-radius);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.remove-btn:hover {
-    background: var(--status-error);
-    color: white;
-}
-
-/* ===== MENSAJE DE NO RESULTADOS ===== */
-.no-results {
-    text-align: center;
-    padding: var(--spacing-3xl);
-    color: var(--text-muted);
-    font-size: var(--text-lg);
-    font-family: var(--font-family-display);
-}
-
-.no-results i {
-    width: 48px;
-    height: 48px;
-    margin-bottom: var(--spacing-md);
-    color: var(--primary-teal);
+/* Responsivo */
+@media (max-width: 768px) {
+    .destination-card {
+        flex: 0 0 280px;
+    }
+    
+    .destination-image {
+        height: 180px;
+    }
+    
+    .destination-info {
+        padding: var(--spacing-md);
+    }
+    
+    .destination-name, .saved-place-name {
+        font-size: var(--text-base);
+    }
 }
 
 /* ===== RESPONSIVE DESIGN ===== */

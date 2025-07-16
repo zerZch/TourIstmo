@@ -170,7 +170,7 @@
   }
 
   .destination-info {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-xl);
     position: relative;
     width: 100%;
   }
@@ -252,7 +252,8 @@
     gap: var(--spacing-xs);
   }
 
-  .destination-date {
+  /* Tipo con icono */
+  .destination-type {
     display: inline-block;
     background-color: #e3f2fd;
     color: #1565c0;
@@ -263,42 +264,36 @@
     text-transform: capitalize;
     margin-top: 8px;
     border: 1px solid #bbdefb;
-    white-space: nowrap;
+    width: fit-content;
 }
 
 /* Variantes de color para diferentes tipos/categorías */
-.destination-date.historico {
+.destination-type.historico {
   background-color: #fff3e0;
   color: #ef6c00;
   border-color: #ffcc02;
 }
 
-.destination-date.natural {
+.destination-type.natural {
   background-color: #e8f5e8;
   color: #2e7d32;
   border-color: #a5d6a7;
 }
 
-.destination-date.aventura {
+.destination-type.urbano {
   background-color: #fce4ec;
   color: #c2185b;
   border-color: #f8bbd9;
 }
 
-.destination-date.cultural {
+.destination-type.cultural {
   background-color: #f3e5f5;
   color: #7b1fa2;
   border-color: #ce93d8;
 }
 
-.destination-date.playa {
-  background-color: #e0f2f1;
-  color: #00695c;
-  border-color: #80cbc4;
-}
-
 /* Hover effect */
-.destination-date:hover {
+.destination-type:hover {
 transform: translateY(-1px);
 box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 transition: all 0.2s ease;

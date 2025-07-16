@@ -87,17 +87,12 @@
                   
                   <div class="info-section schedule">
                     <div class="info-section-title">Facebook</div>
-                    <div class="info-section-value">Lun-Dom 8:00-18:00</div>
+                    <div class="info-section-value"></div>
                   </div>
                   
                   <div class="info-section clients">
                     <div class="info-section-title">Instagram</div>
-                    <div class="info-section-value">500+ tours realizados</div>
-                  </div>
-                  
-                  <div class="info-section certification">
-                    <div class="info-section-title">Certificación</div>
-                    <div class="info-section-value">Operador Turístico Oficial</div>
+                    <div class="info-section-value"></div>
                   </div>
                 </div>
               </div>
@@ -180,88 +175,11 @@
                 <p class="user-bio" id="DESCRIPCION">
                     Ser reconocidos como el principal operador de turismo de aventura en Panamá, ofreciendo experiencias únicas que conecten a los viajeros con la naturaleza, la cultura y la autenticidad de los destin
                 </p>
-                <div class="user-meta">
-                    <p>
-                        <i data-lucide="map-pin" class="icon" id="UBICACION_TEXTO"></i>
-                        Ciudad de Panamá, Panamá
-                    </p>
-                    <p>
-                        <i data-lucide="calendar" class="icon" id="TIPO?"></i>
-                        Fundada en 2010
-                    </p>
-                    <p>
-                        <i data-lucide="globe" class="icon"></i>
-                        <a href="https://www.panamaget.com" id="PAGINA_WEB_URL">www.panamaget.com</a>
-                    </p>
-                </div>
                 <div class="action-buttons">
                     <button class="btn-primary" id="editProfileBtn">Editar Perfil</button>
                 </div>
             </div>
         </aside>
-    </div>
-
-    <!-- Modal de Edición de Perfil de Empresa -->
-    <div class="edit-profile-modal" id="editProfileModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Editar Perfil de Empresa</h2>
-                <button class="close-modal" id="closeModalBtn">
-                    <i data-lucide="x" class="icon"></i>
-                </button>
-            </div>
-            <form class="edit-profile-form" id="editProfileForm">
-                <div class="form-group">
-                    <label>Logo de Empresa</label>
-                    <div class="avatar-upload">
-                        <div class="avatar-preview">
-                            <img id="avatarPreview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%235A8DFF'/%3E%3Ctext x='200' y='200' font-size='180' fill='white' text-anchor='middle' alignment-baseline='middle'%3EB%3C/text%3E%3C/svg%3E" alt="Logo">
-                        </div>
-                        <input type="file" id="avatarInput" accept="image/*" hidden>
-                        <button type="button" class="upload-btn" onclick="document.getElementById('avatarInput').click()">
-                            <i data-lucide="upload" class="icon"></i>
-                            Cambiar Logo
-                        </button>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Banner de Empresa</label>
-                    <div class="banner-upload">
-                        <div class="banner-preview">
-                            <img id="bannerPreview" src="img/empresa-banner.jpg" alt="Banner">
-                        </div>
-                        <input type="file" id="bannerInput" accept="image/*" hidden>
-                        <button type="button" class="upload-btn" onclick="document.getElementById('bannerInput').click()">
-                            <i data-lucide="upload" class="icon"></i>
-                            Cambiar Banner
-                        </button>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="nameInput">Nombre de la Empresa</label>
-                    <input type="text" id="nameInput" class="form-input" value="BetaTech Solutions" required>
-                </div>
-                <div class="form-group">
-                    <label for="usernameInput">Nombre de Usuario</label>
-                    <div class="input-with-prefix">
-                        <span class="input-prefix">@</span>
-                        <input type="text" id="usernameInput" class="form-input" value="betatech" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="bioInput">Sobre Nosotros</label>
-                    <textarea id="bioInput" class="form-textarea" rows="4" required>BetaTech Solutions es una empresa líder en desarrollo de software y consultoría IT, comprometida con la innovación y la excelencia.</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="locationInput">Ubicación</label>
-                    <input type="text" id="locationInput" class="form-input" value="Ciudad de Panamá, Panamá" required>
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="btn-cancel" id="cancelEditBtn">Cancelar</button>
-                    <button type="submit" class="btn-save">Guardar Cambios</button>
-                </div>
-            </form>
-        </div>
     </div>
 
     <!-- Footer -->
